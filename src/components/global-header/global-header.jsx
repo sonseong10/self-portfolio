@@ -25,6 +25,7 @@ const GlobalHeader = () => {
 const globalHeader = css`
   position: sticky;
   top: 0;
+  height: 60px;
   background-color: ${palette.white};
   border-bottom: 1px solid ${palette.gray[500]};
 `;
@@ -41,9 +42,10 @@ const logoWrap = css`
   align-items: center;
   justify-content: center;
   margin: 0;
-  margin-right: 32px;
-  width: 34px;
-  height: 34px;
+  margin-right: 12px;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
 
   img {
     display: block;
