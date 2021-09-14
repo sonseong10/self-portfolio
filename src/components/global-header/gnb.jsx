@@ -25,6 +25,8 @@ const Gnb = () => {
   );
 };
 
+export default Gnb;
+
 const gnb = css`
   flex: 1;
 
@@ -62,5 +64,3 @@ const gnb = css`
     }
   }
 `;
-
-export default Gnb;

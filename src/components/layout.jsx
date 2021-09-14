@@ -1,6 +1,7 @@
 import React from "react";
 import { css } from "@emotion/react";
 import media from "../assets/styles/constants/media";
+import palette from "../assets/styles/constants/palette";
 
 const Layout = ({ children }) => {
   return <div css={container}>{children}</div>;
@@ -8,10 +9,19 @@ const Layout = ({ children }) => {
 
 export default Layout;
 
-const Main = ({ children }) => {
-  return <main>{children}</main>;
+const Header = ({ children }) => {
+  return (
+    <header css={globalHeader}>
+      <div css={container}>{children}</div>
+    </header>
+  );
 };
 
+const Main = ({ children }) => {
+  return <main css={container}>{children}</main>;
+};
+
+Layout.Header = Header;
 Layout.Main = Main;
 
 const container = css`
@@ -24,4 +34,12 @@ const container = css`
   ${media.desktop} {
     max-width: 1140px;
   }
+`;
+
+const globalHeader = css`
+  position: sticky;
+  top: 0;
+  height: 60px;
+  background-color: ${palette.white};
+  border-bottom: 1px solid ${palette.gray[500]};
 `;
