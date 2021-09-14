@@ -15,6 +15,7 @@ const Main = ({ children }) => {
 Layout.Main = Main;
 
 const container = css`
+  padding: 0 10px;
   width: 100%;
   margin: 0 auto;
   ${media.tablet} {
