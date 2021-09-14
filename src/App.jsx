@@ -1,11 +1,12 @@
 import React from "react";
+import GlobalHeader from "./components/global-header/global-header";
 import { Global, css } from "@emotion/react";
 
 function App() {
   return (
     <>
       <div className="App">
-        <h1> Self Portfolio</h1>
+        <GlobalHeader />
       </div>
       <Global styles={globalStyle} />
     </>
