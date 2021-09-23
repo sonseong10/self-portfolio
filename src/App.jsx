@@ -3,6 +3,7 @@ import GlobalHeader from "./components/global-header/global-header";
 import { Global, css } from "@emotion/react";
 import Layout from "./components/layout";
 import Home from "./components/home/home";
+import Skill from "./components/skill/skill";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         </Layout.Header>
         <Layout.Main>
           <Home />
+          <Skill />
         </Layout.Main>
       </div>
       <Global styles={globalStyle} />
