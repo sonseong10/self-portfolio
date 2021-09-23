@@ -47,17 +47,18 @@ const gnb = css`
         height: 46px;
         ${typography.small}
         font-weight: 400;
-        color: ${palette.gray[300]};
-        transition: color 300ms ease-in-out;
+        color: ${palette.gray[100]};
+        border-radius: 4px;
+        transition: background-color 300ms ease-in-out;
 
         :active {
-          color: ${palette.gray[100]};
+          background-color: ${palette.gray[600]};
         }
 
         ${media.tablet} {
           ${typography.base}
           :hover {
-            color: ${palette.gray[100]};
+            background-color: ${palette.gray[600]};
           }
         }
       }
