@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import GlobalHeader from "./components/global-header/global-header";
 import { Global, css } from "@emotion/react";
 import Layout from "./components/layout";
 import Home from "./components/home/home";
 import Skill from "./components/skill/skill";
+import Projects from "./components/projects/projects";
 
-function App() {
+function App({ fetchItem }) {
+  const [skills, setSkills] = useState([]);
+
+  useEffect(() => {
+    const stopSync = fetchItem.fetchSkils((skills) => {
+      setSkills(skills);
+    });
+    return () => {
+      stopSync();
+    };
+  }, [fetchItem]);
+
   return (
     <>
       <div className="App">
@@ -14,7 +26,8 @@ function App() {
         </Layout.Header>
         <Layout.Main>
           <Home />
-          <Skill />
+          <Skill skills={skills} />
+          <Projects />
         </Layout.Main>
       </div>
       <Global styles={globalStyle} />

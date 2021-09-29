@@ -5,13 +5,13 @@ import SectionHeader from "../section-header/section-header";
 import LeftGroup from "./left-group/left-group";
 import RightGroup from "./right-group/right-group";
 
-const Skill = () => {
+const Skill = ({ skills }) => {
   return (
     <section css={section}>
       <SectionHeader title={"Skills"} />
 
       <div css={sectionBody}>
-        <LeftGroup />
+        <LeftGroup skills={skills} />
 
         <RightGroup />
       </div>
@@ -29,13 +29,13 @@ const sectionBody = css`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content: space-around;
 
   > div {
     width: 100%;
 
     &:first-of-type {
-      margin-bottom: 60px;
+      margin-bottom: 40px;
     }
   }
 
@@ -43,7 +43,7 @@ const sectionBody = css`
     flex-direction: row;
 
     > div {
-      width: 350px;
+      width: 340px;
 
       &:first-of-type {
         margin-bottom: 0;
