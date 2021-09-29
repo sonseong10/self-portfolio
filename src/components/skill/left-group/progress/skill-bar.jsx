@@ -34,10 +34,8 @@ const listItem = css`
     }
   }
 
-  ${media.desktop} {
+  ${media.tablet} {
     strong {
-      ${typography.base}
-
       &:first-of-type {
         text-align: right;
       }

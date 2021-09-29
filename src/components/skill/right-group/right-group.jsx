@@ -10,10 +10,9 @@ const RightGroup = () => {
       <div css={groupBox}>
         <h3>Description</h3>
         <p>
-          10 ~ 29: 작성된 코드를 보고 기능 추측을 할 수 있습니다. <br />
-          30 ~ 69: 코드 작성을 해본 경험이 있으며 학습해 나아갈 예정입니다.
-          <br />
-          70 ~ 100: 언어 사용의 이해도가 높으며 사용 경험이 많은 언어입니다.
+          10 ~ 29%: 작성된 코드의 동작을 예상 할 수 있습니다. <br />
+          30 ~ 69%: 사용 경험이 있으며 지속적 학습 예정입니다. <br />
+          70 ~ 100%: 사용법을 이해하며 경험이 많은 언어입니다.
         </p>
       </div>
 
@@ -36,7 +35,7 @@ const rightGroup = css`
 `;
 
 const groupBox = css`
-  margin-bottom: 26px;
+  margin-bottom: 16px;
 
   h3,
   p {
@@ -54,12 +53,8 @@ const groupBox = css`
     color: ${palette.gray[200]};
   }
 
-  ${media.tablet} {
-    margin-bottom: 14px;
-  }
-
   ${media.desktop} {
-    margin-bottom: 40px;
+    margin-bottom: 48px;
   }
 `;
 export default RightGroup;
