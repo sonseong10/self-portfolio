@@ -2,6 +2,7 @@ import React from "react";
 import { css } from "@emotion/react";
 import media from "../assets/styles/constants/media";
 import palette from "../assets/styles/constants/palette";
+import { gnbLevel } from "../assets/styles/constants/z-index";
 
 const Layout = ({ children }) => {
   return <div css={container}>{children}</div>;
@@ -42,4 +43,5 @@ const globalHeader = css`
   height: 60px;
   background-color: ${palette.white};
   border-bottom: 1px solid ${palette.gray[500]};
+  z-index: ${gnbLevel};
 `;
