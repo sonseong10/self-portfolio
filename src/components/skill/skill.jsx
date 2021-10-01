@@ -22,38 +22,16 @@ const Skill = ({ skills }) => {
 export default Skill;
 
 const section = css`
-  margin: 40px 0;
+  margin: 100px 0;
 `;
 
 const sectionBody = css`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: space-around;
-
-  > div {
-    width: 100%;
-
-    &:first-of-type {
-      margin-bottom: 40px;
-    }
-  }
+  justify-content: space-between;
 
   ${media.tablet} {
     flex-direction: row;
-
-    > div {
-      width: 340px;
-
-      &:first-of-type {
-        margin-bottom: 0;
-      }
-    }
-  }
-
-  ${media.desktop} {
-    > div {
-      width: 500px;
-    }
   }
 `;

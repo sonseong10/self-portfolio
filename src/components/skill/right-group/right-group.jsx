@@ -28,10 +28,22 @@ const RightGroup = () => {
     </div>
   );
 };
+
+export default RightGroup;
+
 const rightGroup = css`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+
+  ${media.tablet} {
+    width: 50%;
+    padding: 0 20px;
+  }
+
+  ${media.desktop} {
+    width: 40%;
+  }
 `;
 
 const groupBox = css`
@@ -57,4 +69,3 @@ const groupBox = css`
     margin-bottom: 48px;
   }
 `;
-export default RightGroup;
