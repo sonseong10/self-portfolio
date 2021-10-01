@@ -55,9 +55,12 @@ const globalStyle = css`
 
   html {
     box-sizing: border-box;
-    *:focus {
+    * {
       box-sizing: inherit;
-      outline: none;
+
+      &:focus {
+        outline: none;
+      }
     }
   }
 
