@@ -11,6 +11,15 @@ class FetchSkills {
     });
     return () => off(query);
   }
+
+  fetchProjects(onUpdate) {
+    const query = ref(this.db, `projects`);
+    onValue(query, (snapshot) => {
+      const value = snapshot.val();
+      value && onUpdate(value);
+    });
+    return () => off(query);
+  }
 }
 
 export default FetchSkills;

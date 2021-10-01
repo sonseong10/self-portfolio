@@ -8,10 +8,20 @@ import Projects from "./components/projects/projects";
 
 function App({ fetchItem }) {
   const [skills, setSkills] = useState([]);
+  const [projects, setProjects] = useState([]);
 
   useEffect(() => {
     const stopSync = fetchItem.fetchSkils((skills) => {
       setSkills(skills);
+    });
+    return () => {
+      stopSync();
+    };
+  }, [fetchItem]);
+
+  useEffect(() => {
+    const stopSync = fetchItem.fetchProjects((skills) => {
+      setProjects(skills);
     });
     return () => {
       stopSync();
@@ -27,7 +37,7 @@ function App({ fetchItem }) {
         <Layout.Main>
           <Home />
           <Skill skills={skills} />
-          <Projects />
+          <Projects projects={projects} />
         </Layout.Main>
       </div>
       <Global styles={globalStyle} />
@@ -45,8 +55,9 @@ const globalStyle = css`
 
   html {
     box-sizing: border-box;
-    * {
+    *:focus {
       box-sizing: inherit;
+      outline: none;
     }
   }
 
