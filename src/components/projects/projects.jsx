@@ -16,5 +16,5 @@ const Projects = ({ projects }) => {
 export default Projects;
 
 const section = css`
-  margin-bottom: 100px;
+  margin-bottom: 60px;
 `;

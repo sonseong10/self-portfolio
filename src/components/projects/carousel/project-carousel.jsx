@@ -40,7 +40,17 @@ const ProjectCarousel = ({ projects }) => {
 
   const mainSettings = {
     ...settings,
+    dots: false,
     arrows: true,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          dots: true,
+          arrows: false,
+        },
+      },
+    ],
   };
 
   const infoSettings = {
@@ -109,18 +119,37 @@ const carouselWrap = css`
 
   .left-group,
   .right-group {
+    height: 320px;
     width: 100%;
   }
 
   .left-group {
+    margin-bottom: 12px;
+
     .slide {
       width: 100%;
-      height: 500px;
 
       img {
         width: 100%;
-        height: 100%;
+        height: 320px;
+        background-color: ${palette.gray[600]};
         object-fit: contain;
+
+        ${media.desktop} {
+          height: 500px;
+        }
+      }
+    }
+
+    .slick-dots {
+      bottom: 0;
+
+      li {
+        margin: 0;
+
+        button::before {
+          color: ${palette.gray[400]};
+        }
       }
     }
   }
@@ -130,7 +159,6 @@ const carouselWrap = css`
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    height: 500px;
 
     div {
       width: 100%;
@@ -143,7 +171,16 @@ const carouselWrap = css`
     .left-group,
     .right-group {
       width: 50%;
-      padding: 0 20px;
+      padding: 0 10px;
+    }
+  }
+
+  ${media.desktop} {
+    flex-direction: row;
+
+    .left-group,
+    .right-group {
+      height: 500px;
     }
   }
 `;
@@ -179,7 +216,7 @@ const btnGroup = css`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 264px;
+    width: 40%;
     height: 48px;
     background-color: ${palette.gray[600]};
     ${typography.base};
@@ -189,9 +226,11 @@ const btnGroup = css`
 
     &:active {
       background-color: ${palette.brandTheme};
+      color: ${palette.white};
     }
 
-    ${media.tablet} {
+    ${media.desktop} {
+      width: 240px;
       &:hover {
         background-color: ${palette.brandTheme};
         color: ${palette.white};
@@ -201,22 +240,33 @@ const btnGroup = css`
 `;
 
 const dotGroup = css`
-  .slick-slide {
-    filter: grayscale(1);
-  }
+  display: none;
 
-  .slick-center {
-    filter: none;
+  ${media.tablet} {
+    display: block;
+    .slick-slide {
+      filter: grayscale(1);
+    }
+
+    .slick-center {
+      filter: none;
+    }
   }
 `;
 
 const dot = css`
-  height: 160px;
+  width: 100px !important;
+  height: 100px;
   cursor: pointer;
 
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+
+  ${media.desktop} {
+    width: 140px !important;
+    height: 140px;
   }
 `;
