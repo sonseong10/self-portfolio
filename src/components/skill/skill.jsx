@@ -22,7 +22,7 @@ const Skill = ({ skills }) => {
 export default Skill;
 
 const section = css`
-  margin: 100px 0;
+  margin: 60px 0;
 `;
 
 const sectionBody = css`
