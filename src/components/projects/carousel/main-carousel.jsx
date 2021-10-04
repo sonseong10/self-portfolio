@@ -22,6 +22,7 @@ const MainCarousel = ({ projects, mainSlickRef, infoSlick }) => {
         css={toolBtn}
         onClick={onClick}
         type="button"
+        aria-label="prev button"
       >
         <MyIcon name="chevron" />
       </button>
@@ -37,6 +38,7 @@ const MainCarousel = ({ projects, mainSlickRef, infoSlick }) => {
         css={toolBtn}
         onClick={onClick}
         type="button"
+        aria-label="next button"
       >
         <MyIcon name="chevron" />
       </button>

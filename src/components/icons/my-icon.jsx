@@ -5,6 +5,7 @@ const MyIcon = ({ name, className, style }) => {
   return React.createElement(svg[name], {
     className,
     style,
+    "aria-hidden": "true",
   });
 };
 
