@@ -59,7 +59,7 @@ const Projects = ({ projects }) => {
 export default Projects;
 
 const section = css`
-  margin-bottom: 60px;
+  margin: 0 -10px 60px;
 `;
 
 const carouselWrap = css`
@@ -70,7 +70,6 @@ const carouselWrap = css`
 
   .left-group,
   .right-group {
-    height: 320px;
     width: 100%;
   }
 
@@ -83,6 +82,7 @@ const carouselWrap = css`
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    padding: 0 10px;
 
     div {
       width: 100%;
@@ -94,11 +94,12 @@ const carouselWrap = css`
 
     .left-group,
     .right-group {
+      height: 320px;
       width: 50%;
-      padding: 0 10px;
     }
 
     .left-group {
+      padding: 0 10px;
       margin-bottom: 0;
     }
   }
