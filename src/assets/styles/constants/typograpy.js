@@ -4,7 +4,7 @@ const textStyle = (fontSize) => {
       return `
       font-size: ${fontSize}px;
       line-height: 16px;
-      letter-spacing: -0.5%;`;
+      letter-spacing: -0.005em;`;
     case 13:
       return `
       font-size: ${fontSize}px;
