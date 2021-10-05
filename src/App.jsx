@@ -5,6 +5,7 @@ import Home from "./components/home/home";
 import Skill from "./components/skill/skill";
 import Projects from "./components/projects/projects";
 import Layout from "./components/common/layout";
+import Promotion from "./components/promotion/promotion";
 
 function App({ fetchItem }) {
   const [skills, setSkills] = useState([]);
@@ -38,6 +39,7 @@ function App({ fetchItem }) {
           <Home />
           <Skill skills={skills} />
           <Projects projects={projects} />
+          <Promotion />
         </Layout.Main>
       </div>
       <Global styles={globalStyle} />
