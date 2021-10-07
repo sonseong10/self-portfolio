@@ -105,7 +105,7 @@ const decoration = css`
 
 const side = css`
   ${typography.small}
-  color: ${palette.gray[100]};
+  color: ${palette.gray[300]};
 
   ${media.tablet} {
     ${typography.base}
