@@ -3,6 +3,7 @@ class FetchSkills {
   constructor(app) {
     this.db = getDatabase(app);
   }
+
   fetchSkils(onUpdate) {
     const query = ref(this.db, `skills`);
     onValue(query, (snapshot) => {
@@ -14,6 +15,15 @@ class FetchSkills {
 
   fetchProjects(onUpdate) {
     const query = ref(this.db, `projects`);
+    onValue(query, (snapshot) => {
+      const value = snapshot.val();
+      value && onUpdate(value);
+    });
+    return () => off(query);
+  }
+
+  fetchArtworks(onUpdate) {
+    const query = ref(this.db, `artwork`);
     onValue(query, (snapshot) => {
       const value = snapshot.val();
       value && onUpdate(value);
