@@ -1,3 +1,5 @@
+import CarouselArrow from "../components/common/carousel-arrow";
+
 const settings = {
   arrows: false,
   dots: false,
@@ -9,8 +11,9 @@ const settings = {
 
 const mainSettings = {
   ...settings,
-  dots: false,
   arrows: true,
+  nextArrow: <CarouselArrow.NextArrow />,
+  prevArrow: <CarouselArrow.PrevArrow />,
 
   responsive: [
     {
@@ -32,9 +35,46 @@ const infoSettings = {
 
 const dotSettings = {
   ...settings,
+  centerPadding: "0",
   centerMode: true,
   slidesToShow: 3,
   focusOnSelect: true,
 };
 
-export { dotSettings, mainSettings, infoSettings };
+const artworkSettings = {
+  ...settings,
+  centerPadding: "0",
+  centerMode: true,
+  focusOnSelect: true,
+  slidesToShow: 3,
+  dots: false,
+  arrows: true,
+  nextArrow: <CarouselArrow.NextArrow />,
+  prevArrow: <CarouselArrow.PrevArrow />,
+
+  responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 1,
+        dots: true,
+        arrows: true,
+      },
+    },
+  ],
+};
+
+const artDotsSettings = {
+  ...settings,
+  speed: 0,
+  draggable: false,
+  touchMove: false,
+};
+
+export {
+  dotSettings,
+  mainSettings,
+  infoSettings,
+  artworkSettings,
+  artDotsSettings,
+};

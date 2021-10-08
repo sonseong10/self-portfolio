@@ -21,6 +21,7 @@ export default DotCarousel;
 const dot = css`
   width: 100px !important;
   height: 100px;
+  margin: 0 auto;
   cursor: pointer;
 
   img {
