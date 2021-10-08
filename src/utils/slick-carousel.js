@@ -58,7 +58,7 @@ const artworkSettings = {
       settings: {
         slidesToShow: 1,
         dots: true,
-        arrows: true,
+        arrows: false,
       },
     },
   ],
