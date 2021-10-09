@@ -4,50 +4,57 @@ import media from "../../assets/styles/constants/media";
 import palette from "../../assets/styles/constants/palette";
 import typography from "../../assets/styles/constants/typograpy";
 import SectionHeader from "../section-header/section-header";
+import GlobalSection from "../common/global-section";
 
 const Promotion = () => {
   return (
-    <section css={section}>
-      <div className="sr-only">
-        <SectionHeader title="promotion" />
+    <GlobalSection>
+      <div css={smHidden}>
+        <div className="sr-only">
+          <SectionHeader title="promotion" />
+        </div>
+
+        <p css={row} className="left">
+          <span css={decoration} className="space">
+            I'm have a
+          </span>
+          <span css={side}>
+            Grid Layout System <br /> knowledge
+          </span>
+        </p>
+
+        <p css={row} className="center">
+          <span css={decoration} className="regular">
+            Logo and illustration
+          </span>
+        </p>
+
+        <p css={row} className="right">
+          <span css={side} className="space">
+            for
+            <br /> Web Design
+          </span>
+          <span css={decoration}>experience</span>
+        </p>
       </div>
-
-      <p css={row} className="left">
-        <span css={decoration} className="space">
-          I'm have a
-        </span>
-        <span css={side}>
-          Grid Layout System <br /> knowledge
-        </span>
-      </p>
-
-      <p css={row} className="center">
-        <span css={decoration} className="regular">
-          Logo and illustration
-        </span>
-      </p>
-
-      <p css={row} className="right">
-        <span css={side} className="space">
-          for
-          <br /> Web Design
-        </span>
-        <span css={decoration}>experience</span>
-      </p>
-    </section>
+    </GlobalSection>
   );
 };
 
 export default Promotion;
 
-const section = css`
-  display: flex;
-  align-items: stretch;
-  justify-content: center;
-  flex-direction: column;
-  margin-bottom: 60px;
+const smHidden = css`
+  display: none;
 
   ${media.tablet} {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    flex-direction: column;
+    height: 400px;
+  }
+
+  ${media.desktop} {
     height: 600px;
   }
 `;
