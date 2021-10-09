@@ -1,6 +1,5 @@
-import { css } from "@emotion/react";
 import React from "react";
-import media from "../../../assets/styles/constants/media";
+import { css } from "@emotion/react";
 import SkillList from "./skill-list";
 
 const LeftGroup = ({ skills }) => {
@@ -15,12 +14,4 @@ export default LeftGroup;
 
 const leftGroup = css`
   width: 100%;
-
-  ${media.tablet} {
-    width: 50%;
-  }
-
-  ${media.desktop} {
-    width: 60%;
-  }
 `;

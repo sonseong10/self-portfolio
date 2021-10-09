@@ -1,5 +1,5 @@
-import { css } from "@emotion/react";
 import React from "react";
+import { css } from "@emotion/react";
 import media from "../../../assets/styles/constants/media";
 import palette from "../../../assets/styles/constants/palette";
 import typography from "../../../assets/styles/constants/typograpy";
@@ -35,19 +35,15 @@ const rightGroup = css`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  width: 100%;
 
   ${media.tablet} {
-    width: 50%;
-    padding: 0 20px;
-  }
-
-  ${media.desktop} {
-    width: 40%;
+    padding-left: 20px;
   }
 `;
 
 const groupBox = css`
-  margin-bottom: 16px;
+  margin-bottom: 28px;
 
   h3,
   p {
@@ -66,6 +62,6 @@ const groupBox = css`
   }
 
   ${media.desktop} {
-    margin-bottom: 48px;
+    margin-bottom: 26px;
   }
 `;

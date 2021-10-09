@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { css } from "@emotion/react";
-import SectionHeader from "../section-header/section-header";
-import Carousel from "../common/carousel";
 import { artDotsSettings, artworkSettings } from "../../utils/slick-carousel";
 import { resetButton } from "../../assets/styles/components/reset-button";
+import SectionHeader from "../section-header/section-header";
+import GlobalSection from "../common/global-section";
+import Carousel from "../common/carousel";
 import palette from "../../assets/styles/constants/palette";
 import media from "../../assets/styles/constants/media";
 import typography from "../../assets/styles/constants/typograpy";
@@ -21,7 +22,7 @@ const Artwork = ({ artwork }) => {
   }, []);
 
   return (
-    <section css={section}>
+    <GlobalSection>
       <SectionHeader title="Artworks" />
 
       <div css={carouselWrap}>
@@ -49,15 +50,11 @@ const Artwork = ({ artwork }) => {
           ))}
         </Carousel>
       </div>
-    </section>
+    </GlobalSection>
   );
 };
 
 export default Artwork;
-
-const section = css`
-  margin-bottom: 60px;
-`;
 
 const carouselWrap = css`
   margin: 0 -10px;

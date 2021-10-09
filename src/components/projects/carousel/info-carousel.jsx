@@ -3,8 +3,8 @@ import { css } from "@emotion/react";
 import media from "../../../assets/styles/constants/media";
 import palette from "../../../assets/styles/constants/palette";
 import typography from "../../../assets/styles/constants/typograpy";
-import Carousel from "../../common/carousel";
 import { infoSettings } from "../../../utils/slick-carousel";
+import Carousel from "../../common/carousel";
 
 const InfoCarousel = ({ projects, infoSlickRef, pagingSlick }) => {
   return (
@@ -37,7 +37,9 @@ export default InfoCarousel;
 
 const projectInfo = css`
   > div {
-    margin-bottom: 26px;
+    &:not(:last-of-type) {
+      margin-bottom: 26px;
+    }
 
     h3,
     p {

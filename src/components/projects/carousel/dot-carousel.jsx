@@ -1,7 +1,7 @@
-import { css } from "@emotion/react";
 import React from "react";
-import media from "../../../assets/styles/constants/media";
+import { css } from "@emotion/react";
 import { dotSettings } from "../../../utils/slick-carousel";
+import media from "../../../assets/styles/constants/media";
 import Carousel from "../../common/carousel.jsx";
 
 const DotCarousel = ({ projects, pagingSlickRef, mainSlick }) => {
@@ -19,8 +19,7 @@ const DotCarousel = ({ projects, pagingSlickRef, mainSlick }) => {
 export default DotCarousel;
 
 const dot = css`
-  width: 100px !important;
-  height: 100px;
+  height: 112px;
   margin: 0 auto;
   cursor: pointer;
 
@@ -31,7 +30,6 @@ const dot = css`
   }
 
   ${media.desktop} {
-    width: 140px !important;
-    height: 140px;
+    height: 174px;
   }
 `;

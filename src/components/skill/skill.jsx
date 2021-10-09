@@ -1,37 +1,28 @@
 import React from "react";
-import { css } from "@emotion/react";
-import media from "../../assets/styles/constants/media";
 import SectionHeader from "../section-header/section-header";
 import LeftGroup from "./left-group/left-group";
 import RightGroup from "./right-group/right-group";
+import GlobalSection from "../common/global-section";
+import SectionBody from "../common/section-body";
 
 const Skill = ({ skills }) => {
+  const leftRatio = 2;
+
   return (
-    <section css={section}>
+    <GlobalSection>
       <SectionHeader title={"Skills"} />
 
-      <div css={sectionBody}>
-        <LeftGroup skills={skills} />
+      <SectionBody>
+        <SectionBody.Inner ratio={leftRatio}>
+          <LeftGroup skills={skills} />
+        </SectionBody.Inner>
 
-        <RightGroup />
-      </div>
-    </section>
+        <SectionBody.Inner>
+          <RightGroup />
+        </SectionBody.Inner>
+      </SectionBody>
+    </GlobalSection>
   );
 };
 
 export default Skill;
-
-const section = css`
-  margin: 60px 0;
-`;
-
-const sectionBody = css`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-
-  ${media.tablet} {
-    flex-direction: row;
-  }
-`;

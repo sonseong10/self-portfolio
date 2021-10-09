@@ -1,5 +1,5 @@
-import { css } from "@emotion/react";
 import React from "react";
+import { css } from "@emotion/react";
 import SkillBar from "./progress/skill-bar";
 
 const SkillList = ({ list }) => {

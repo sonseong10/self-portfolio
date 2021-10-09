@@ -3,40 +3,43 @@ import { css } from "@emotion/react";
 import typography from "../../assets/styles/constants/typograpy";
 import palette from "../../assets/styles/constants/palette";
 import media from "../../assets/styles/constants/media";
+import GlobalSection from "../common/global-section";
 
 const Home = () => {
   return (
-    <section css={home}>
-      <div css={homeLeft}>
-        <h1>Developer</h1>
+    <GlobalSection>
+      <div css={home}>
+        <div css={homeLeft}>
+          <h1>Developer</h1>
 
-        <p>
-          성실하게 팀원과 협업 하며 변함없이 <br />
-          열심히 나아가는 개발자입니다.
-        </p>
+          <p>
+            성실하게 팀원과 협업 하며 변함없이 <br />
+            열심히 나아가는 개발자입니다.
+          </p>
+        </div>
+
+        <div css={homeRight}>
+          <dl>
+            <div>
+              <dt>Email</dt>
+              <dd>
+                <a href="mailto:sonseong10@gmail.com">sonseong10@gmail.com</a>
+              </dd>
+            </div>
+
+            <div>
+              <dt>Name</dt>
+              <dd>Son seongyeol</dd>
+            </div>
+
+            <div>
+              <dt>Date</dt>
+              <dd>1997-04-08</dd>
+            </div>
+          </dl>
+        </div>
       </div>
-
-      <div css={homeRight}>
-        <dl>
-          <div>
-            <dt>Email</dt>
-            <dd>
-              <a href="mailto:sonseong10@gmail.com">sonseong10@gmail.com</a>
-            </dd>
-          </div>
-
-          <div>
-            <dt>Name</dt>
-            <dd>Son seongyeol</dd>
-          </div>
-
-          <div>
-            <dt>Date</dt>
-            <dd>1997-04-08</dd>
-          </div>
-        </dl>
-      </div>
-    </section>
+    </GlobalSection>
   );
 };
 

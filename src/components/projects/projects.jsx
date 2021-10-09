@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
-import SectionHeader from "../section-header/section-header";
 import { css } from "@emotion/react";
+import GlobalSection from "../common/global-section";
+import SectionHeader from "../section-header/section-header";
+import SectionBody from "../common/section-body";
 import MainCarousel from "./carousel/main-carousel";
 import InfoCarousel from "./carousel/info-carousel";
 import DotCarousel from "./carousel/dot-carousel";
@@ -22,19 +24,19 @@ const Projects = ({ projects }) => {
   }, []);
 
   return (
-    <section css={section}>
+    <GlobalSection>
       <SectionHeader title={"Projects"} />
 
-      <div css={carouselWrap}>
-        <div className="left-group">
+      <SectionBody>
+        <SectionBody.Inner innerStyle={leftGroup}>
           <MainCarousel
             projects={projects}
             mainSlickRef={mainSlickRef}
             infoSlick={infoSlick}
           />
-        </div>
+        </SectionBody.Inner>
 
-        <div className="right-group">
+        <SectionBody.Inner innerStyle={rightGroup}>
           <div>
             <InfoCarousel
               projects={projects}
@@ -50,67 +52,49 @@ const Projects = ({ projects }) => {
               mainSlick={mainSlick}
             />
           </div>
-        </div>
-      </div>
-    </section>
+        </SectionBody.Inner>
+      </SectionBody>
+    </GlobalSection>
   );
 };
 
 export default Projects;
 
-const section = css`
-  margin: 0 -10px 60px;
-`;
-
-const carouselWrap = css`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-
-  .left-group,
-  .right-group {
-    width: 100%;
-  }
-
-  .left-group {
-    margin-bottom: 12px;
-  }
-
-  .right-group {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 10px;
-
-    div {
-      width: 100%;
-    }
-  }
+const leftGroup = css`
+  width: 100%;
+  margin-bottom: 12px;
 
   ${media.tablet} {
-    flex-direction: row;
-
-    .left-group,
-    .right-group {
-      height: 320px;
-      width: 50%;
-    }
-
-    .left-group {
-      padding: 0 10px;
-      margin-bottom: 0;
-    }
+    height: 320px;
+    width: 50%;
+    margin-bottom: 0;
   }
 
   ${media.desktop} {
-    flex-direction: row;
+    height: 500px;
+  }
+`;
 
-    .left-group,
-    .right-group {
-      height: 500px;
-    }
+const rightGroup = css`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  div {
+    width: 100%;
+    height: 100%;
+  }
+
+  ${media.tablet} {
+    width: 50%;
+    height: 320px;
+    padding: 0 20px;
+  }
+
+  ${media.desktop} {
+    height: 500px;
   }
 `;
 
