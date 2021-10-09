@@ -8,6 +8,7 @@ import Layout from "./components/common/layout";
 import Promotion from "./components/promotion/promotion";
 import Artwork from "./components/artwork/artwork";
 import About from "./components/about/about";
+import GlobalFooter from "./components/global-footer/global-footer";
 
 function App({ fetchItem }) {
   const [skills, setSkills] = useState([]);
@@ -55,6 +56,9 @@ function App({ fetchItem }) {
           <Artwork artwork={artwork} />
           <About />
         </Layout.Main>
+        <Layout.Footer>
+          <GlobalFooter />
+        </Layout.Footer>
       </div>
       <Global styles={globalStyle} />
     </>

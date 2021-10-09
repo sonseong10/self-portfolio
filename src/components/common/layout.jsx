@@ -22,8 +22,17 @@ const Main = ({ children }) => {
   return <main css={container}>{children}</main>;
 };
 
+const Footer = ({ children }) => {
+  return (
+    <footer css={globalFooter}>
+      <div css={container}>{children}</div>
+    </footer>
+  );
+};
+
 Layout.Header = Header;
 Layout.Main = Main;
+Layout.Footer = Footer;
 
 const container = css`
   padding: 0 10px;
@@ -44,4 +53,9 @@ const globalHeader = css`
   background-color: ${palette.white};
   border-bottom: 1px solid ${palette.gray[500]};
   z-index: ${gnbLevel};
+`;
+
+const globalFooter = css`
+  background-color: ${palette.gray[600]};
+  border-top: 1px solid ${palette.gray[500]};
 `;
