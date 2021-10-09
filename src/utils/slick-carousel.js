@@ -17,7 +17,7 @@ const mainSettings = {
 
   responsive: [
     {
-      breakpoint: 1200,
+      breakpoint: 768,
       settings: {
         dots: true,
         arrows: false,
