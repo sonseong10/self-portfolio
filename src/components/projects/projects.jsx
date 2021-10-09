@@ -62,7 +62,6 @@ export default Projects;
 
 const leftGroup = css`
   width: 100%;
-  margin-bottom: 12px;
 
   ${media.tablet} {
     height: 320px;

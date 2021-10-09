@@ -24,6 +24,14 @@ const sectionBody = css`
     align-items: center;
     justify-content: space-between;
   }
+
+  > div:first-of-type {
+    margin-bottom: 12px;
+
+    ${media.tablet} {
+      margin-bottom: 0;
+    }
+  }
 `;
 
 const inner = (ratio, style) => css`
