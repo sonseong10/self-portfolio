@@ -5,6 +5,7 @@ import palette from "../../../assets/styles/constants/palette";
 import typography from "../../../assets/styles/constants/typograpy";
 import { infoSettings } from "../../../utils/slick-carousel";
 import Carousel from "../../common/carousel";
+import Badge from "../../common/badge";
 
 const InfoCarousel = ({ projects, infoSlickRef, pagingSlick }) => {
   return (
@@ -14,7 +15,37 @@ const InfoCarousel = ({ projects, infoSlickRef, pagingSlick }) => {
           <div key={item.uid} css={projectInfo} className="infoWrap">
             <div>
               <h3>{item.title}</h3>
-              <p>{item.desc}</p>
+
+              <dl css={infoList}>
+                <div className="infoItem">
+                  <dt>설명</dt>
+                  <dd>
+                    <p>{item.desc}</p>
+                  </dd>
+                </div>
+                <div className="infoItem">
+                  <dt>인원</dt>
+                  <dd>
+                    <p>{item.personnel}명</p>
+                  </dd>
+                </div>
+                <div className="infoItem">
+                  <dt>역할</dt>
+                  <dd>
+                    <p>{item.role}</p>
+                  </dd>
+                </div>
+                <div className="infoItem">
+                  <dt>기술</dt>
+                  <dd>
+                    <ul css={badgeGroup}>
+                      {item.stack.map((item) => {
+                        return <Badge key={item} name={item} color="gray" />;
+                      })}
+                    </ul>
+                  </dd>
+                </div>
+              </dl>
             </div>
             <div css={btnGroup}>
               <a href={item.githubURL} target="_blank" rel="noreferrer">
@@ -51,11 +82,44 @@ const projectInfo = css`
       ${typography.base}
       color: ${palette.gray[100]};
     }
+  }
+`;
 
-    p {
+const infoList = css`
+  margin: 0;
+
+  .infoItem {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    dt,
+    dd {
       ${typography.small}
       color: ${palette.gray[200]};
     }
+
+    dt::after {
+      content: ":";
+      margin-right: 8px;
+    }
+
+    dd {
+      margin-left: 0px;
+    }
+  }
+`;
+
+const badgeGroup = css`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+
+  > li:not(:last-of-type) {
+    margin-right: 6px;
   }
 `;
 
