@@ -1,29 +1,11 @@
 import { getDatabase, ref, onValue, off } from "firebase/database";
-class FetchSkills {
+class FetchFirebase {
   constructor(app) {
     this.db = getDatabase(app);
   }
 
-  fetchSkils(onUpdate) {
-    const query = ref(this.db, `skills`);
-    onValue(query, (snapshot) => {
-      const value = snapshot.val();
-      value && onUpdate(value);
-    });
-    return () => off(query);
-  }
-
-  fetchProjects(onUpdate) {
-    const query = ref(this.db, `projects`);
-    onValue(query, (snapshot) => {
-      const value = snapshot.val();
-      value && onUpdate(value);
-    });
-    return () => off(query);
-  }
-
-  fetchArtworks(onUpdate) {
-    const query = ref(this.db, `artwork`);
+  fetchData(onUpdate, target) {
+    const query = ref(this.db, target);
     onValue(query, (snapshot) => {
       const value = snapshot.val();
       value && onUpdate(value);
@@ -32,4 +14,4 @@ class FetchSkills {
   }
 }
 
-export default FetchSkills;
+export default FetchFirebase;

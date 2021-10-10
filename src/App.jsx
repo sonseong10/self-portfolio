@@ -16,27 +16,27 @@ function App({ fetchItem }) {
   const [artwork, setArtwork] = useState([]);
 
   useEffect(() => {
-    const stopSync = fetchItem.fetchSkils((skills) => {
+    const stopSync = fetchItem.fetchData((skills) => {
       setSkills(skills);
-    });
+    }, "skills");
     return () => {
       stopSync();
     };
   }, [fetchItem]);
 
   useEffect(() => {
-    const stopSync = fetchItem.fetchProjects((projects) => {
+    const stopSync = fetchItem.fetchData((projects) => {
       setProjects(projects);
-    });
+    }, "projects");
     return () => {
       stopSync();
     };
   }, [fetchItem]);
 
   useEffect(() => {
-    const stopSync = fetchItem.fetchArtworks((artworks) => {
+    const stopSync = fetchItem.fetchData((artworks) => {
       setArtwork(artworks);
-    });
+    }, "artwork");
     return () => {
       stopSync();
     };
