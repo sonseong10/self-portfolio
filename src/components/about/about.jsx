@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import GlobalSection from "../common/global-section";
 import SectionBody from "../common/section-body";
 import SectionHeader from "../section-header/section-header";
@@ -8,8 +8,15 @@ import { css } from "@emotion/react";
 import typography from "../../assets/styles/constants/typograpy";
 import palette from "../../assets/styles/constants/palette";
 import media from "../../assets/styles/constants/media";
+import MyIcon from "../icons/my-icon";
 
 const About = () => {
+  const [show, setShow] = useState(false);
+
+  const onToggle = () => {
+    setShow(!show);
+  };
+
   return (
     <GlobalSection>
       <SectionHeader title="About" />
@@ -18,7 +25,7 @@ const About = () => {
         <SectionBody.Inner innerStyle={leftInner}>
           <ul css={historyList}>
             <li>
-              <div css={card}>
+              <button css={card} onClick={onToggle} type="button">
                 <div css={cardLeft}>
                   <div className="imgWrap">
                     <img src={collegeLogo} alt="brand logo" />
@@ -47,7 +54,15 @@ const About = () => {
                     </div>
                   </dl>
                 </div>
-              </div>
+
+                <div css={iconBox} className={show && "isActive"}>
+                  <MyIcon name="chevron" />
+                </div>
+              </button>
+              <ul css={drawer} className={show && "isActive"}>
+                <li>컴퓨터시스템과 전공</li>
+                <li>3-In프로젝트 수료</li>
+              </ul>
             </li>
           </ul>
         </SectionBody.Inner>
@@ -88,13 +103,17 @@ const rightInner = css`
 `;
 
 const card = css`
+  position: relative;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   padding: 6px 10px;
+  margin-bottom: 8px;
   width: 100%;
+  background-color: ${palette.white};
   border: 1px solid ${palette.gray[500]};
   border-radius: 4px;
+  cursor: pointer;
 `;
 
 const cardLeft = css`
@@ -108,6 +127,49 @@ const cardLeft = css`
       width: 100%;
       height: 100%;
       object-fit: cover;
+    }
+  }
+`;
+
+const iconBox = css`
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  align-items: 40px;
+  transform: translateY(-50%);
+  transition: transform 300ms ease-in-out;
+
+  &.isActive {
+    transform: rotate(180deg) translateY(50%);
+  }
+
+  svg {
+    width: 24px;
+    height: 24px;
+    path {
+      fill: ${palette.gray[200]};
+    }
+  }
+`;
+
+const drawer = css`
+  li {
+    opacity: 0;
+    visibility: hidden;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.01em;
+    color: #3f4150;
+  }
+
+  &.isActive {
+    li {
+      opacity: 1;
+      visibility: visible;
     }
   }
 `;
