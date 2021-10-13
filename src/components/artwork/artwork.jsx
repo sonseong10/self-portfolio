@@ -8,8 +8,10 @@ import Carousel from "../common/carousel";
 import palette from "../../assets/styles/constants/palette";
 import media from "../../assets/styles/constants/media";
 import typography from "../../assets/styles/constants/typograpy";
+import { useHistory } from "react-router-dom";
 
 const Artwork = ({ artwork }) => {
+  const history = useHistory();
   const gallerySlickRef = useRef(null);
   const linkSlickRef = useRef(null);
 
@@ -20,6 +22,13 @@ const Artwork = ({ artwork }) => {
     setGallerySlick(gallerySlickRef.current);
     setLinkSlick(linkSlickRef.current);
   }, []);
+
+  const goToGallery = (uid) => {
+    history.push({
+      pathname: "artwork",
+      state: { uid },
+    });
+  };
 
   return (
     <GlobalSection>
@@ -45,7 +54,14 @@ const Artwork = ({ artwork }) => {
         >
           {artwork.map((item) => (
             <div key={item.uid} css={btnWrap}>
-              <button type="button">More</button>
+              <button
+                type="button"
+                onClick={() => {
+                  goToGallery(item.uid);
+                }}
+              >
+                More
+              </button>
             </div>
           ))}
         </Carousel>

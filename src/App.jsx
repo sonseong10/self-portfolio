@@ -9,6 +9,8 @@ import Promotion from "./components/promotion/promotion";
 import Artwork from "./components/artwork/artwork";
 import About from "./components/about/about";
 import GlobalFooter from "./components/global-footer/global-footer";
+import { Route } from "react-router-dom";
+import Gallery from "./components/gallery/gallery";
 
 function App({ fetchItem }) {
   const [skills, setSkills] = useState([]);
@@ -48,14 +50,21 @@ function App({ fetchItem }) {
         <Layout.Header>
           <GlobalHeader />
         </Layout.Header>
-        <Layout.Main>
-          <Home />
-          <Skill skills={skills} />
-          <Projects projects={projects} />
-          <Promotion />
-          <Artwork artwork={artwork} />
-          <About />
-        </Layout.Main>
+        <Route exact path="/">
+          <Layout.Main>
+            <Home />
+            <Skill skills={skills} />
+            <Projects projects={projects} />
+            <Promotion />
+            <Artwork artwork={artwork} />
+            <About />
+          </Layout.Main>
+        </Route>
+        <Route path="/artwork">
+          <Layout>
+            <Gallery artwork={artwork}></Gallery>
+          </Layout>
+        </Route>
         <Layout.Footer>
           <GlobalFooter />
         </Layout.Footer>
