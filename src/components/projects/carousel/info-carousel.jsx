@@ -69,7 +69,7 @@ export default InfoCarousel;
 const projectInfo = css`
   > div {
     &:not(:last-of-type) {
-      margin-bottom: 26px;
+      margin-bottom: 12px;
     }
 
     h3,

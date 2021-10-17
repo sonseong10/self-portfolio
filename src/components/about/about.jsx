@@ -160,6 +160,7 @@ const drawer = css`
   li {
     opacity: 0;
     visibility: hidden;
+    max-height: 0;
     font-size: 14px;
     line-height: 24px;
     letter-spacing: -0.01em;
@@ -170,6 +171,7 @@ const drawer = css`
     li {
       opacity: 1;
       visibility: visible;
+      max-height: 100%;
     }
   }
 `;
