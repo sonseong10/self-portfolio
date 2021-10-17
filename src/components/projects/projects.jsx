@@ -8,7 +8,7 @@ import InfoCarousel from "./carousel/info-carousel";
 import DotCarousel from "./carousel/dot-carousel";
 import media from "../../assets/styles/constants/media";
 
-const Projects = ({ projects }) => {
+const Projects = ({ projects, sectionRef }) => {
   const mainSlickRef = useRef(null);
   const infoSlickRef = useRef(null);
   const pagingSlickRef = useRef(null);
@@ -24,7 +24,7 @@ const Projects = ({ projects }) => {
   }, []);
 
   return (
-    <GlobalSection>
+    <GlobalSection ref={(el) => (sectionRef.current[1] = el)}>
       <SectionHeader title={"Projects"} />
 
       <SectionBody>

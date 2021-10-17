@@ -5,11 +5,11 @@ import RightGroup from "./right-group/right-group";
 import GlobalSection from "../common/global-section";
 import SectionBody from "../common/section-body";
 
-const Skill = ({ skills }) => {
+const Skill = ({ skills, sectionRef }) => {
   const leftRatio = 2;
 
   return (
-    <GlobalSection>
+    <GlobalSection ref={(el) => (sectionRef.current[0] = el)}>
       <SectionHeader title={"Skills"} />
 
       <SectionBody>

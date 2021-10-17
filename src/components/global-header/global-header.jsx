@@ -7,7 +7,7 @@ import { resetButton } from "../../assets/styles/components/reset-button";
 import palette from "../../assets/styles/constants/palette";
 import { useHistory } from "react-router-dom";
 
-const GlobalHeader = () => {
+const GlobalHeader = ({ sectionRef }) => {
   const history = useHistory();
   const goToRoot = () => {
     history.push("/");
@@ -22,7 +22,7 @@ const GlobalHeader = () => {
         </figure>
       </button>
 
-      <Gnb />
+      <Gnb sectionRef={sectionRef} />
     </div>
   );
 };

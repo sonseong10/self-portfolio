@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import GlobalHeader from "./components/global-header/global-header";
 import { Global, css } from "@emotion/react";
 import Home from "./components/home/home";
@@ -13,6 +13,8 @@ import { Route } from "react-router-dom";
 import Gallery from "./components/gallery/gallery";
 
 function App({ fetchItem }) {
+  const sectionRef = useRef([]);
+
   const [skills, setSkills] = useState([]);
   const [projects, setProjects] = useState([]);
   const [artwork, setArtwork] = useState([]);
@@ -48,15 +50,15 @@ function App({ fetchItem }) {
     <>
       <div className="App">
         <Layout.Header>
-          <GlobalHeader />
+          <GlobalHeader sectionRef={sectionRef} />
         </Layout.Header>
         <Route exact path="/">
           <Layout.Main>
             <Home />
-            <Skill skills={skills} />
-            <Projects projects={projects} />
+            <Skill skills={skills} sectionRef={sectionRef} />
+            <Projects projects={projects} sectionRef={sectionRef} />
             <Promotion />
-            <Artwork artwork={artwork} />
+            <Artwork artwork={artwork} sectionRef={sectionRef} />
             <About />
           </Layout.Main>
         </Route>

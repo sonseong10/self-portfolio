@@ -1,10 +1,14 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import { css } from "@emotion/react";
 import media from "../../assets/styles/constants/media";
 
-const GlobalSection = ({ children }) => {
-  return <section css={section}>{children}</section>;
-};
+const GlobalSection = forwardRef(({ children }, ref) => {
+  return (
+    <section css={section} ref={ref}>
+      {children}
+    </section>
+  );
+});
 
 export default GlobalSection;
 

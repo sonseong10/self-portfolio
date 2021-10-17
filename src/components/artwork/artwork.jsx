@@ -10,7 +10,7 @@ import media from "../../assets/styles/constants/media";
 import typography from "../../assets/styles/constants/typograpy";
 import { useHistory } from "react-router-dom";
 
-const Artwork = ({ artwork }) => {
+const Artwork = ({ artwork, sectionRef }) => {
   const history = useHistory();
   const gallerySlickRef = useRef(null);
   const linkSlickRef = useRef(null);
@@ -31,7 +31,7 @@ const Artwork = ({ artwork }) => {
   };
 
   return (
-    <GlobalSection>
+    <GlobalSection ref={(el) => (sectionRef.current[2] = el)}>
       <SectionHeader title="Artworks" />
 
       <div css={carouselWrap}>
