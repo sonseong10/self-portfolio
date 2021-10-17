@@ -41,8 +41,13 @@ const Artwork = ({ artwork }) => {
           ref={gallerySlickRef}
         >
           {artwork.map((item) => (
-            <div key={item.uid} className="slide">
-              <img src={item.thumbnailURL} alt="projects01" />
+            <div key={item.uid} css={card}>
+              <div className="imgBox">
+                <img src={item.thumbnailURL} alt="projects01" />
+              </div>
+              <div className="overlab">
+                <strong className="title">{item.title}</strong>
+              </div>
             </div>
           ))}
         </Carousel>
@@ -75,9 +80,17 @@ export default Artwork;
 const carouselWrap = css`
   margin: 0 -10px;
 
-  .slide {
+  ${media.tablet} {
+    margin: 0;
+  }
+`;
+
+const card = css`
+  position: relative;
+  margin-bottom: 24px;
+
+  .imgBox {
     cursor: pointer;
-    margin-bottom: 24px;
 
     img {
       width: 100%;
@@ -98,8 +111,37 @@ const carouselWrap = css`
     }
   }
 
-  ${media.tablet} {
-    margin: 0;
+  .overlab {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    transition: opacity 300ms ease-in-out;
+
+    strong {
+      ${typography.base};
+      color: ${palette.white};
+    }
+  }
+
+  &:active {
+    .overlab {
+      opacity: 1;
+    }
+  }
+
+  ${media.desktop} {
+    &:hover {
+      .overlab {
+        opacity: 1;
+      }
+    }
   }
 `;
 
