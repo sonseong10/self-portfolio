@@ -64,7 +64,7 @@ const leftGroup = css`
   width: 100%;
 
   ${media.tablet} {
-    height: 320px;
+    height: 400px;
     width: 50%;
     margin-bottom: 0;
   }
@@ -87,7 +87,7 @@ const rightGroup = css`
 
   ${media.tablet} {
     width: 50%;
-    height: 320px;
+    height: 400px;
     padding: 0 20px;
   }
 

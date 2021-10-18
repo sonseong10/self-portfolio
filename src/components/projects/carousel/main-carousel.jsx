@@ -29,7 +29,7 @@ const slideBox = css`
 
     img {
       width: 100%;
-      height: 320px;
+      height: 400px;
       background-color: ${palette.gray[600]};
       object-fit: contain;
 
