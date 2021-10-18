@@ -34,7 +34,9 @@ const Home = () => {
 
             <div>
               <dt>Date</dt>
-              <dd>1997-04-08</dd>
+              <dd>
+                <time dateTime="1997-04-08">1997-04-08</time>
+              </dd>
             </div>
           </dl>
         </div>
@@ -113,6 +115,7 @@ const homeRight = css`
 
       dd,
       a {
+        ${typography.base}
         color: ${palette.gray[200]};
       }
 
