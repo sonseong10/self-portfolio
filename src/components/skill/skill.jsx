@@ -6,15 +6,15 @@ import GlobalSection from "../common/global-section";
 import SectionBody from "../common/section-body";
 
 const Skill = ({ skills, sectionRef }) => {
-  const leftRatio = 2;
+  const skillRef = (el) => (sectionRef.current[0] = el);
 
   return (
-    <GlobalSection ref={(el) => (sectionRef.current[0] = el)}>
+    <GlobalSection ref={skillRef}>
       <SectionHeader title={"Skills"} />
 
       <SectionBody>
-        <SectionBody.Inner ratio={leftRatio}>
-          <LeftGroup skills={skills} />
+        <SectionBody.Inner ratio={2}>
+          <LeftGroup skills={skills} sectionRef={sectionRef} />
         </SectionBody.Inner>
 
         <SectionBody.Inner>

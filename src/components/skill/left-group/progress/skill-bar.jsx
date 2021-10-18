@@ -1,15 +1,36 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { css } from "@emotion/react";
 import media from "../../../../assets/styles/constants/media";
 import palette from "../../../../assets/styles/constants/palette";
 import typography from "../../../../assets/styles/constants/typograpy";
 
-const SkillBar = ({ item }) => {
+const SkillBar = ({ item, sectionRef }) => {
+  const itemsRef = useRef([]);
+  const [isActive, setIsActive] = useState(false);
+
+  useEffect(() => {
+    const chargeItem = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setIsActive(true);
+        }
+      });
+    };
+
+    const observerOption = { threshold: 1 };
+
+    const tabObserver = new IntersectionObserver(chargeItem, observerOption);
+
+    tabObserver.observe(sectionRef.current[0]);
+
+    return () => tabObserver.disconnect();
+  }, [sectionRef]);
+
   return (
     <li css={listItem} aria-label="skill level">
       <strong>{item.name}</strong>
-      <div css={progress} aria-hidden>
-        <div style={{ width: `${item.score}%` }}></div>
+      <div css={progress} ref={itemsRef} aria-hidden>
+        <div css={isActive && charge(item.score)}></div>
       </div>
       <strong>{item.score}%</strong>
     </li>
@@ -48,14 +69,22 @@ const progress = css`
   height: 8px;
   margin: 0 10px;
   background-color: ${palette.gray[500]};
+  overflow-x: hidden;
 
   div {
     height: 100%;
     background-color: ${palette.brandTheme};
+    transform: translate3d(-100%, 0, 0);
+    transition: transform 600ms ease-in-out;
   }
 
   ${media.desktop} {
     flex: 5;
     height: 10px;
   }
+`;
+
+const charge = (score) => css`
+  max-width: ${score}%;
+  transform: none !important;
 `;
