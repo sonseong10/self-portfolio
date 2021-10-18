@@ -47,7 +47,6 @@ const artworkSettings = {
   centerMode: true,
   focusOnSelect: true,
   slidesToShow: 3,
-  dots: false,
   arrows: true,
   nextArrow: <CarouselArrow.NextArrow />,
   prevArrow: <CarouselArrow.PrevArrow />,

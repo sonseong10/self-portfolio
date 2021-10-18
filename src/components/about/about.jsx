@@ -91,6 +91,7 @@ const historyList = css`
   margin: 0;
   padding-left: 0;
   list-style: none;
+  overflow-y: hidden;
 `;
 
 const leftInner = css`

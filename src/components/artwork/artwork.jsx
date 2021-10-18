@@ -80,6 +80,18 @@ export default Artwork;
 const carouselWrap = css`
   margin: 0 -10px;
 
+  .slick-dots {
+    bottom: 36px;
+
+    li {
+      margin: 0;
+
+      button::before {
+        color: ${palette.gray[400]};
+      }
+    }
+  }
+
   ${media.tablet} {
     margin: 0;
   }
@@ -96,18 +108,6 @@ const card = css`
       width: 100%;
       height: 100%;
       object-fit: cover;
-    }
-  }
-
-  .slick-dots {
-    bottom: 36px;
-
-    li {
-      margin: 0;
-
-      button::before {
-        color: ${palette.gray[400]};
-      }
     }
   }
 
