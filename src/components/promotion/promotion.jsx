@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { css } from "@emotion/react";
 import media from "../../assets/styles/constants/media";
 import palette from "../../assets/styles/constants/palette";
@@ -6,19 +6,39 @@ import typography from "../../assets/styles/constants/typograpy";
 import SectionHeader from "../section-header/section-header";
 import GlobalSection from "../common/global-section";
 
-const Promotion = () => {
+const Promotion = ({ promotionRef }) => {
+  const [isActive, setIsActive] = useState(false);
+
+  useEffect(() => {
+    const chargeItem = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setIsActive(true);
+        }
+      });
+    };
+
+    const observerOption = { threshold: 1 };
+
+    const tabObserver = new IntersectionObserver(chargeItem, observerOption);
+
+    tabObserver.observe(promotionRef.current);
+
+    return () => tabObserver.disconnect();
+  }, [promotionRef]);
+
   return (
-    <GlobalSection>
+    <GlobalSection ref={promotionRef}>
       <div css={smHidden}>
         <div className="sr-only">
           <SectionHeader title="promotion" />
         </div>
 
         <p css={row} className="left">
-          <span css={decoration} className="space">
+          <span css={decoration} className={`${isActive && "isActive"} space`}>
             I'm have a
           </span>
-          <span css={side}>
+          <span css={side} className={isActive && "isActive"}>
             Grid Layout System <br /> knowledge
           </span>
         </p>
@@ -30,11 +50,13 @@ const Promotion = () => {
         </p>
 
         <p css={row} className="right">
-          <span css={side} className="space">
+          <span css={side} className={`${isActive && "isActive"} space`}>
             for
             <br /> Web Design
           </span>
-          <span css={decoration}>experience</span>
+          <span css={decoration} className={isActive && "isActive"}>
+            experience
+          </span>
         </p>
       </div>
     </GlobalSection>
@@ -63,9 +85,28 @@ const row = css`
   display: flex;
   align-items: center;
   margin: 0;
+  overflow-x: hidden;
 
   &.left {
     justify-content: flex-start;
+
+    span:first-of-type {
+      transform: translate3d(-100%, 0, 0);
+      transition: transform 600ms ease-in-out;
+
+      &.isActive {
+        transform: none;
+      }
+    }
+
+    span:last-of-type {
+      opacity: 0;
+      transition: opacity 600ms ease-in-out;
+
+      &.isActive {
+        opacity: 1;
+      }
+    }
   }
 
   &.center {
@@ -74,6 +115,24 @@ const row = css`
 
   &.right {
     justify-content: flex-end;
+
+    span:last-of-type {
+      transform: translate3d(100%, 0, 0);
+      transition: transform 600ms ease-in-out;
+
+      &.isActive {
+        transform: none;
+      }
+    }
+
+    span:first-of-type {
+      opacity: 0;
+      transition: opacity 600ms ease-in-out;
+
+      &.isActive {
+        opacity: 1;
+      }
+    }
   }
 
   &:not(:last-of-type) {

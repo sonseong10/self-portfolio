@@ -14,6 +14,7 @@ import Gallery from "./components/gallery/gallery";
 
 function App({ fetchItem }) {
   const sectionRef = useRef([]);
+  const promotionRef = useRef();
 
   const [skills, setSkills] = useState([]);
   const [projects, setProjects] = useState([]);
@@ -57,7 +58,7 @@ function App({ fetchItem }) {
             <Home />
             <Skill skills={skills} sectionRef={sectionRef} />
             <Projects projects={projects} sectionRef={sectionRef} />
-            <Promotion />
+            <Promotion promotionRef={promotionRef} />
             <Artwork artwork={artwork} sectionRef={sectionRef} />
             <About />
           </Layout.Main>
