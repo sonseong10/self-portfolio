@@ -1,35 +1,25 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { css } from "@emotion/react";
 import media from "../../../../assets/styles/constants/media";
 import palette from "../../../../assets/styles/constants/palette";
 import typography from "../../../../assets/styles/constants/typograpy";
+import Observer from "../../../../utils/observer";
 
 const SkillBar = ({ item, sectionRef }) => {
-  const itemsRef = useRef([]);
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
-    const chargeItem = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setIsActive(true);
-        }
-      });
-    };
+    const observer = Observer(setIsActive);
 
-    const observerOption = { threshold: 1 };
+    observer.observe(sectionRef.current[0]);
 
-    const tabObserver = new IntersectionObserver(chargeItem, observerOption);
-
-    tabObserver.observe(sectionRef.current[0]);
-
-    return () => tabObserver.disconnect();
+    return () => observer.disconnect();
   }, [sectionRef]);
 
   return (
     <li css={listItem} aria-label="skill level">
       <strong>{item.name}</strong>
-      <div css={progress} ref={itemsRef} aria-hidden>
+      <div css={progress} aria-hidden>
         <div css={isActive && charge(item.score)}></div>
       </div>
       <strong>{item.score}%</strong>

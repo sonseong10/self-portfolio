@@ -5,26 +5,17 @@ import palette from "../../assets/styles/constants/palette";
 import typography from "../../assets/styles/constants/typograpy";
 import SectionHeader from "../section-header/section-header";
 import GlobalSection from "../common/global-section";
+import Observer from "../../utils/observer";
 
 const Promotion = ({ promotionRef }) => {
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
-    const chargeItem = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setIsActive(true);
-        }
-      });
-    };
+    const observer = Observer(setIsActive);
 
-    const observerOption = { threshold: 1 };
+    observer.observe(promotionRef.current);
 
-    const tabObserver = new IntersectionObserver(chargeItem, observerOption);
-
-    tabObserver.observe(promotionRef.current);
-
-    return () => tabObserver.disconnect();
+    return () => observer.disconnect();
   }, [promotionRef]);
 
   return (

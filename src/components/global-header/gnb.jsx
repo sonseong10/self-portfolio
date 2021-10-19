@@ -4,6 +4,7 @@ import { resetButton } from "../../assets/styles/components/reset-button";
 import media from "../../assets/styles/constants/media";
 import palette from "../../assets/styles/constants/palette";
 import typography from "../../assets/styles/constants/typograpy";
+import Observer from "../../utils/observer";
 
 const listItem = ["Skills", "Projects", "Artworks"];
 
@@ -12,21 +13,11 @@ const Gnb = ({ sectionRef }) => {
   const [activeTab, setActiveTab] = useState(false);
 
   useEffect(() => {
-    const changeTab = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveTab(entry.target);
-        }
-      });
-    };
+    const observer = Observer(setActiveTab);
 
-    const observerOption = { threshold: 1 };
+    sectionRef.current.forEach((tab) => observer.observe(tab));
 
-    const tabObserver = new IntersectionObserver(changeTab, observerOption);
-
-    sectionRef.current.forEach((tab) => tabObserver.observe(tab));
-
-    return () => tabObserver.disconnect();
+    return () => observer.disconnect();
   }, [sectionRef]);
 
   const onBtnClick = (index) => {
