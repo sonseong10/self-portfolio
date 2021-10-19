@@ -9,7 +9,7 @@ const listItem = ["Skills", "Projects", "Artworks"];
 
 const Gnb = ({ sectionRef }) => {
   const tabRef = useRef([]);
-  const [activeTab, setActiveTab] = useState();
+  const [activeTab, setActiveTab] = useState(false);
 
   useEffect(() => {
     const changeTab = (entries) => {
@@ -62,6 +62,17 @@ const Gnb = ({ sectionRef }) => {
 
 export default Gnb;
 
+const gnbState = css`
+  position: absolute;
+  bottom: -7px;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #0066ff;
+  content: "";
+`;
+
 const gnb = css`
   flex: 1;
 
@@ -77,27 +88,36 @@ const gnb = css`
       flex: 1;
 
       button {
+        position: relative;
         ${resetButton}
         padding: 0 8px;
         height: 46px;
         ${typography.small}
         font-weight: 400;
         color: ${palette.gray[100]};
-        border-radius: 4px;
-        transition: background-color 300ms ease-in-out;
+        font-weight: 700;
 
         :active {
-          background-color: ${palette.gray[600]};
+          color: ${palette.brandTheme};
+          &::after {
+            ${gnbState}
+          }
         }
 
         &.isActive {
-          background-color: ${palette.gray[600]};
+          color: ${palette.brandTheme};
+          &::after {
+            ${gnbState}
+          }
         }
 
         ${media.tablet} {
           ${typography.base}
           :hover {
-            background-color: ${palette.gray[600]};
+            color: ${palette.brandTheme};
+            &::after {
+              ${gnbState}
+            }
           }
         }
       }
