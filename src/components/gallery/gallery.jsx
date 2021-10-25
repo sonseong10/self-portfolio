@@ -6,8 +6,6 @@ const Gallery = ({ artwork }) => {
   const location = useLocation();
   const uid = location.state.uid - 1;
 
-  console.log(uid);
-
   return (
     <div css={imgWrap}>
       <img src={uid !== null && artwork[uid].designURL} alt="test" />
