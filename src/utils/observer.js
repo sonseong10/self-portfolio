@@ -7,7 +7,7 @@ const Observer = (setState) => {
     });
   };
 
-  const observerOption = { threshold: 1 };
+  const observerOption = { threshold: 0.5 };
 
   const setObserver = new IntersectionObserver(target, observerOption);
 
