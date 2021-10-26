@@ -5,12 +5,18 @@ import media from "../../assets/styles/constants/media";
 import Gnb from "./gnb";
 import { resetButton } from "../../assets/styles/components/reset-button";
 import palette from "../../assets/styles/constants/palette";
-import { useHistory } from "react-router-dom";
+import { useHistory, Route } from "react-router-dom";
+import typography from "../../assets/styles/constants/typograpy";
 
 const GlobalHeader = ({ sectionRef }) => {
   const history = useHistory();
   const goToRoot = () => {
     history.push("/");
+    window.scrollTo(0, 0);
+  };
+
+  const test = () => {
+    history.goBack();
   };
 
   return (
@@ -22,7 +28,15 @@ const GlobalHeader = ({ sectionRef }) => {
         </figure>
       </button>
 
-      <Gnb sectionRef={sectionRef} />
+      <Route path="/" exact>
+        <Gnb sectionRef={sectionRef} />
+      </Route>
+
+      <Route path="/artwork/:uid">
+        <button css={backBtn} onClick={test} type="button">
+          Back
+        </button>
+      </Route>
     </div>
   );
 };
@@ -30,6 +44,7 @@ const GlobalHeader = ({ sectionRef }) => {
 export default GlobalHeader;
 
 const headerWrapper = css`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -39,6 +54,11 @@ const headerWrapper = css`
 const rootBtn = css`
   ${resetButton}
   background-color: ${palette.white};
+  margin-right: 12px;
+
+  ${media.tablet} {
+    margin-right: 80px;
+  }
 `;
 
 const logoWrap = css`
@@ -46,7 +66,6 @@ const logoWrap = css`
   align-items: center;
   justify-content: center;
   margin: 0;
-  margin-right: 12px;
   width: 40px;
   height: 40px;
   padding: 8px;
@@ -57,8 +76,26 @@ const logoWrap = css`
     height: 100%;
     object-fit: cover;
   }
+`;
+
+const backBtn = css`
+  position: absolute;
+  right: 0;
+  ${resetButton}
+  padding: 0 8px;
+  height: 46px;
+  ${typography.small}
+  font-weight: 400;
+  color: ${palette.gray[100]};
+
+  :active {
+    color: ${palette.brandTheme};
+  }
 
   ${media.tablet} {
-    margin-right: 80px;
+    ${typography.base}
+    :hover {
+      color: ${palette.brandTheme};
+    }
   }
 `;

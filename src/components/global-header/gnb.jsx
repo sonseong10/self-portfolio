@@ -86,7 +86,6 @@ const gnb = css`
         ${typography.small}
         font-weight: 400;
         color: ${palette.gray[100]};
-        font-weight: 700;
 
         :active {
           color: ${palette.brandTheme};
