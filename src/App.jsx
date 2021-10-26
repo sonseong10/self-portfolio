@@ -63,7 +63,7 @@ function App({ fetchItem }) {
             <About />
           </Layout.Main>
         </Route>
-        <Route path="/artwork">
+        <Route path="/artwork/:uid">
           <Layout>
             <Gallery artwork={artwork}></Gallery>
           </Layout>

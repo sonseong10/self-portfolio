@@ -23,11 +23,8 @@ const Artwork = ({ artwork, sectionRef }) => {
     setLinkSlick(linkSlickRef.current);
   }, []);
 
-  const goToGallery = (uid) => {
-    history.push({
-      pathname: "artwork",
-      state: { uid },
-    });
+  const goToGallery = (index) => {
+    history.push(`artwork/${index}`);
   };
 
   return (
@@ -57,12 +54,12 @@ const Artwork = ({ artwork, sectionRef }) => {
           navFor={gallerySlick}
           ref={linkSlickRef}
         >
-          {artwork.map((item) => (
+          {artwork.map((item, index) => (
             <div key={item.uid} css={btnWrap}>
               <button
                 type="button"
                 onClick={() => {
-                  goToGallery(item.uid);
+                  goToGallery(index);
                 }}
               >
                 More

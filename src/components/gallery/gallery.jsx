@@ -1,14 +1,21 @@
+import React, { useEffect, useState } from "react";
 import { css } from "@emotion/react";
-import React from "react";
-import { useLocation } from "react-router";
+import { useRouteMatch } from "react-router";
 
 const Gallery = ({ artwork }) => {
-  const location = useLocation();
-  const uid = location.state.uid - 1;
+  const match = useRouteMatch();
+
+  const [item, setUid] = useState({});
+
+  useEffect(() => {
+    setUid({ ...artwork[match.params.uid] });
+  }, [artwork, match.params.uid]);
+
+  const { designURL } = item;
 
   return (
     <div css={imgWrap}>
-      <img src={uid !== null && artwork[uid].designURL} alt="test" />
+      <img src={designURL} alt="Design result" />
     </div>
   );
 };
