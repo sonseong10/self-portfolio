@@ -134,22 +134,20 @@ const btnGroup = css`
     align-items: center;
     width: 46%;
     height: 48px;
-    background-color: ${palette.gray[600]};
+    background-color: ${palette.gray[200]};
     ${typography.base};
-    color: ${palette.gray[100]};
+    color: ${palette.white};
     text-decoration: none;
-    transition: background-color 200ms ease-in-out, color 200ms ease-in-out;
+    transition: background-color 200ms ease-in-out;
 
     &:active {
       background-color: ${palette.brandTheme};
-      color: ${palette.white};
     }
 
     ${media.desktop} {
       width: 240px;
       &:hover {
         background-color: ${palette.brandTheme};
-        color: ${palette.white};
       }
     }
   }

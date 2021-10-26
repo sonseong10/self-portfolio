@@ -151,20 +151,19 @@ const btnWrap = css`
     ${resetButton}
     width: 240px;
     height: 48px;
+    background-color: ${palette.gray[200]};
     ${typography.base}
-    background-color: ${palette.gray[600]};
-    transition: background-color 200ms ease-in-out, color 200ms ease-in-out;
+    color: ${palette.white};
+    transition: background-color 200ms ease-in-out;
 
     &:active {
       background-color: ${palette.brandTheme};
-      color: ${palette.white};
     }
 
     ${media.desktop} {
       width: 240px;
       &:hover {
         background-color: ${palette.brandTheme};
-        color: ${palette.white};
       }
     }
   }
