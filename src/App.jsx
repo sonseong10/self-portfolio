@@ -51,7 +51,7 @@ function App({ fetchItem }) {
     <>
       <div className="App">
         <Layout.Header>
-          <GlobalHeader sectionRef={sectionRef} />
+          <GlobalHeader sectionRef={sectionRef} artwork={artwork} />
         </Layout.Header>
         <Route exact path="/">
           <Layout.Main>

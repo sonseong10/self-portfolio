@@ -6,17 +6,14 @@ import Gnb from "./gnb";
 import { resetButton } from "../../assets/styles/components/reset-button";
 import palette from "../../assets/styles/constants/palette";
 import { useHistory, Route } from "react-router-dom";
-import typography from "../../assets/styles/constants/typograpy";
+import Lnb from "./lnb";
 
-const GlobalHeader = ({ sectionRef }) => {
+const GlobalHeader = ({ sectionRef, artwork }) => {
   const history = useHistory();
+
   const goToRoot = () => {
     history.push("/");
     window.scrollTo(0, 0);
-  };
-
-  const test = () => {
-    history.goBack();
   };
 
   return (
@@ -33,9 +30,7 @@ const GlobalHeader = ({ sectionRef }) => {
       </Route>
 
       <Route path="/artwork/:uid">
-        <button css={backBtn} onClick={test} type="button">
-          Back
-        </button>
+        <Lnb artwork={artwork} />
       </Route>
     </div>
   );
@@ -75,27 +70,5 @@ const logoWrap = css`
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
-`;
-
-const backBtn = css`
-  position: absolute;
-  right: 0;
-  ${resetButton}
-  padding: 0 8px;
-  height: 46px;
-  ${typography.small}
-  font-weight: 700;
-  color: ${palette.gray[100]};
-
-  :active {
-    color: ${palette.brandTheme};
-  }
-
-  ${media.tablet} {
-    ${typography.base}
-    :hover {
-      color: ${palette.brandTheme};
-    }
   }
 `;

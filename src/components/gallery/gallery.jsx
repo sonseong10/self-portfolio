@@ -15,7 +15,11 @@ const Gallery = ({ artwork }) => {
 
   return (
     <div css={imgWrap}>
-      <img src={designURL} alt="Design result" />
+      {designURL ? (
+        <img src={designURL} alt="Design result" />
+      ) : (
+        <p css={loding}>Loding...</p>
+      )}
     </div>
   );
 };
@@ -32,4 +36,8 @@ const imgWrap = css`
     height: 100%;
     object-fit: cover;
   }
+`;
+
+const loding = css`
+  text-align: center;
 `;
