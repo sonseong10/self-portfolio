@@ -1,11 +1,11 @@
 import React from "react";
 import { css } from "@emotion/react";
-import media from "../../../assets/styles/constants/media";
 import palette from "../../../assets/styles/constants/palette";
 import typography from "../../../assets/styles/constants/typograpy";
 import { infoSettings } from "../../../utils/slick-carousel";
 import Carousel from "../../common/carousel";
 import Badge from "../../common/badge";
+import BaseButton from "../../common/base-button";
 
 const InfoCarousel = ({ projects, infoSlickRef, pagingSlick }) => {
   return (
@@ -48,13 +48,10 @@ const InfoCarousel = ({ projects, infoSlickRef, pagingSlick }) => {
               </dl>
             </div>
             <div css={btnGroup}>
-              <a href={item.githubURL} target="_blank" rel="noreferrer">
-                Github
-              </a>
+              <BaseButton.Link URL={item.githubURL} title="Github" />
+
               {item.deployURL && (
-                <a href={item.deployURL} target="_blank" rel="noreferrer">
-                  Demo Site
-                </a>
+                <BaseButton.Link URL={item.deployURL} title="Demo Site" />
               )}
             </div>
           </div>
@@ -127,28 +124,4 @@ const btnGroup = css`
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 46%;
-    height: 48px;
-    background-color: ${palette.gray[200]};
-    ${typography.base};
-    color: ${palette.white};
-    text-decoration: none;
-    transition: background-color 200ms ease-in-out;
-
-    &:active {
-      background-color: ${palette.brandTheme};
-    }
-
-    ${media.desktop} {
-      width: 240px;
-      &:hover {
-        background-color: ${palette.brandTheme};
-      }
-    }
-  }
 `;

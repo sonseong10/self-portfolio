@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { css } from "@emotion/react";
 import { artDotsSettings, artworkSettings } from "../../utils/slick-carousel";
-import { resetButton } from "../../assets/styles/components/reset-button";
 import SectionHeader from "../section-header/section-header";
 import GlobalSection from "../common/global-section";
 import Carousel from "../common/carousel";
@@ -9,6 +8,7 @@ import palette from "../../assets/styles/constants/palette";
 import media from "../../assets/styles/constants/media";
 import typography from "../../assets/styles/constants/typograpy";
 import { useHistory } from "react-router-dom";
+import BaseButton from "../common/base-button";
 
 const Artwork = ({ artwork, sectionRef }) => {
   const history = useHistory();
@@ -56,14 +56,7 @@ const Artwork = ({ artwork, sectionRef }) => {
         >
           {artwork.map((item, index) => (
             <div key={item.uid} css={btnWrap}>
-              <button
-                type="button"
-                onClick={() => {
-                  goToGallery(index);
-                }}
-              >
-                More
-              </button>
+              <BaseButton title="More" handleEvent={() => goToGallery(index)} />
             </div>
           ))}
         </Carousel>
@@ -146,25 +139,4 @@ const btnWrap = css`
   display: flex !important;
   justify-content: center;
   align-items: center;
-
-  button {
-    ${resetButton}
-    width: 240px;
-    height: 48px;
-    background-color: ${palette.gray[200]};
-    ${typography.base}
-    color: ${palette.white};
-    transition: background-color 200ms ease-in-out;
-
-    &:active {
-      background-color: ${palette.brandTheme};
-    }
-
-    ${media.desktop} {
-      width: 240px;
-      &:hover {
-        background-color: ${palette.brandTheme};
-      }
-    }
-  }
 `;
