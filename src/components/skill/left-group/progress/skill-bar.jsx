@@ -59,12 +59,14 @@ const progress = css`
   height: 8px;
   margin: 0 10px;
   background-color: ${palette.gray[500]};
+  border-radius: 4px;
   overflow-x: hidden;
 
   div {
     height: 100%;
     background-color: ${palette.brandTheme};
     transform: translate3d(-100%, 0, 0);
+    border-radius: 4px;
     transition: transform 600ms ease-in-out;
   }
 

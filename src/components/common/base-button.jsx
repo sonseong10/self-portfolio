@@ -35,6 +35,7 @@ const baseStyle = css`
   ${typography.base};
   color: ${palette.white};
   text-decoration: none;
+  border-radius: 4px;
   transition: background-color 200ms ease-in-out;
 
   &:active {
