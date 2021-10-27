@@ -84,7 +84,7 @@ const gnb = css`
         padding: 0 8px;
         height: 46px;
         ${typography.small}
-        font-weight: 400;
+        font-weight: 700;
         color: ${palette.gray[100]};
 
         :active {
