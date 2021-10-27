@@ -60,6 +60,7 @@ const primaryBtn = css`
 
 const primaryLink = css`
   ${baseStyle}
+  width: 46%;
 
   ${media.tablet} {
     width: 46%;
