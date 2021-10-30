@@ -1,5 +1,5 @@
-import { css } from "@emotion/react";
 import React from "react";
+import { css } from "@emotion/react";
 import { resetButton } from "../../assets/styles/components/reset-button";
 import media from "../../assets/styles/constants/media";
 import palette from "../../assets/styles/constants/palette";
@@ -17,7 +17,7 @@ export default BaseButton;
 
 const Link = ({ title, URL }) => {
   return (
-    <a href={URL} target="_blank" rel="noreferrer" css={primaryLink}>
+    <a href={URL} css={primaryLink}>
       {title}
     </a>
   );
