@@ -1,16 +1,16 @@
-import React from "react";
+import React, { memo } from "react";
 import { css } from "@emotion/react";
 import palette from "../../assets/styles/constants/palette";
 import typography from "../../assets/styles/constants/typograpy";
 
-const Badge = ({ name, color }) => {
+const Badge = memo(({ name, color }) => {
   return <li css={badge(color)}>{name}</li>;
-};
+});
 
 export default Badge;
 
 const badge = (color) => css`
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
   padding: 2px 6px;
