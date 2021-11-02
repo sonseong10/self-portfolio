@@ -4,7 +4,7 @@ import palette from "../../assets/styles/constants/palette";
 import typography from "../../assets/styles/constants/typograpy";
 
 const Badge = memo(({ name, color }) => {
-  return <li css={badge(color)}>{name}</li>;
+  return <div css={badge(color)}>{name}</div>;
 });
 
 export default Badge;
@@ -16,6 +16,7 @@ const badge = (color) => css`
   padding: 2px 6px;
   ${colorPick(color)};
   ${typography.tiny};
+  font-weight: 700;
   border-radius: 4px;
 `;
 

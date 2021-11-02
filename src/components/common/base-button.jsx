@@ -31,15 +31,17 @@ const baseStyle = css`
   justify-content: center;
   align-items: center;
   height: 48px;
-  background-color: ${palette.gray[200]};
+  background-color: ${palette.white};
   ${typography.base};
-  color: ${palette.white};
+  font-weight: 700;
+  color: ${palette.gray[200]};
   text-decoration: none;
+  border: 1px solid ${palette.gray[500]};
   border-radius: 4px;
-  transition: background-color 200ms ease-in-out;
+  transition: background-color 300ms ease-in-out;
 
   &:active {
-    background-color: ${palette.brandTheme};
+    background-color: ${palette.gray[600]};
   }
 
   ${media.tablet} {
@@ -49,7 +51,7 @@ const baseStyle = css`
   ${media.desktop} {
     width: 240px;
     &:hover {
-      background-color: ${palette.brandTheme};
+      background-color: ${palette.gray[600]};
     }
   }
 `;
