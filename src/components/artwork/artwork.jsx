@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import { css } from "@emotion/react";
-import { artDotsSettings, artworkSettings } from "../../utils/slick-carousel";
+import { artworkSettings } from "../../utils/slick-carousel";
 import SectionHeader from "../section-header/section-header";
 import GlobalSection from "../common/global-section";
 import Carousel from "../common/carousel";
@@ -12,16 +12,6 @@ import BaseButton from "../common/base-button";
 
 const Artwork = ({ artwork, sectionRef }) => {
   const history = useHistory();
-  const gallerySlickRef = useRef(null);
-  const linkSlickRef = useRef(null);
-
-  const [gallerySlick, setGallerySlick] = useState(null);
-  const [linkSlick, setLinkSlick] = useState(null);
-
-  useEffect(() => {
-    setGallerySlick(gallerySlickRef.current);
-    setLinkSlick(linkSlickRef.current);
-  }, []);
 
   const goToGallery = (index) => {
     history.push(`artwork/${index}`);
@@ -32,31 +22,21 @@ const Artwork = ({ artwork, sectionRef }) => {
       <SectionHeader title="Artworks" />
 
       <div css={carouselWrap}>
-        <Carousel
-          setting={artworkSettings}
-          navFor={linkSlick}
-          ref={gallerySlickRef}
-        >
-          {artwork.map((item) => (
+        <Carousel setting={artworkSettings}>
+          {artwork.map((item, index) => (
             <div key={item.uid} css={card}>
               <div className="imgBox">
                 <img src={item.thumbnailURL} alt="projects01" />
               </div>
-              <div className="overlab">
-                <strong className="title">{item.title}</strong>
-              </div>
-            </div>
-          ))}
-        </Carousel>
 
-        <Carousel
-          setting={artDotsSettings}
-          navFor={gallerySlick}
-          ref={linkSlickRef}
-        >
-          {artwork.map((item, index) => (
-            <div key={item.uid} css={btnWrap}>
-              <BaseButton title="More" handleEvent={() => goToGallery(index)} />
+              <strong>{item.title}</strong>
+
+              <div css={btnWrap}>
+                <BaseButton
+                  title="More"
+                  handleEvent={() => goToGallery(index)}
+                />
+              </div>
             </div>
           ))}
         </Carousel>
@@ -71,19 +51,43 @@ const carouselWrap = css`
   margin: 0 -10px;
 
   .slick-dots {
-    bottom: 36px;
+    bottom: 122px;
 
     li {
       margin: 0;
 
       button::before {
-        color: ${palette.gray[400]};
+        color: ${palette.gray[300]};
       }
     }
   }
 
+  @media (orientation: landscape) {
+    /* Landscape 모드일 때 적용할 CSS */
+    width: 340px;
+    margin: 0 auto;
+  }
+
   ${media.tablet} {
+    width: auto;
     margin: 0;
+
+    .slick-slide {
+      transform: scale(0.6);
+      opacity: 0.8;
+      transition: transform 300ms ease-in-out, opacity 300ms ease-in-out;
+
+      ${media.desktop} {
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+
+    .slick-center {
+      transform: scale(1);
+      opacity: 1;
+    }
   }
 `;
 
@@ -96,41 +100,25 @@ const card = css`
 
     img {
       width: 100%;
-      height: 100%;
+      height: auto;
       object-fit: cover;
     }
-  }
 
-  .overlab {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-    opacity: 0;
-    transition: opacity 300ms ease-in-out;
-
-    strong {
-      ${typography.base};
-      color: ${palette.white};
+    ${media.tablet} {
+      border-radius: 4px;
+      overflow: hidden;
     }
   }
 
-  &:active {
-    .overlab {
-      opacity: 1;
-    }
-  }
+  strong {
+    display: block;
+    margin: 10px 0;
+    text-align: center;
+    ${typography.base}
+    color: ${palette.gray[100]};
 
-  ${media.desktop} {
-    &:hover {
-      .overlab {
-        opacity: 1;
-      }
+    ${media.tablet} {
+      ${typography.midium}
     }
   }
 `;

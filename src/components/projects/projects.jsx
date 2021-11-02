@@ -1,58 +1,22 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import { css } from "@emotion/react";
 import GlobalSection from "../common/global-section";
 import SectionHeader from "../section-header/section-header";
 import SectionBody from "../common/section-body";
-import MainCarousel from "./carousel/main-carousel";
-import InfoCarousel from "./carousel/info-carousel";
-import DotCarousel from "./carousel/dot-carousel";
-import media from "../../assets/styles/constants/media";
+import palette from "../../assets/styles/constants/palette";
+import DrawerItem from "./drawer/drawer-item";
 
 const Projects = ({ projects, sectionRef }) => {
-  const mainSlickRef = useRef(null);
-  const infoSlickRef = useRef(null);
-  const pagingSlickRef = useRef(null);
-
-  const [mainSlick, setMainSlick] = useState(null);
-  const [infoSlick, setInfoSlick] = useState(null);
-  const [pagingSlick, setPagingSlick] = useState(null);
-
-  useEffect(() => {
-    setMainSlick(mainSlickRef.current);
-    setPagingSlick(pagingSlickRef.current);
-    setInfoSlick(infoSlickRef.current);
-  }, []);
-
   return (
     <GlobalSection ref={(el) => (sectionRef.current[1] = el)}>
       <SectionHeader title={"Projects"} />
 
       <SectionBody>
-        <SectionBody.Inner innerStyle={leftGroup}>
-          <MainCarousel
-            projects={projects}
-            mainSlickRef={mainSlickRef}
-            infoSlick={infoSlick}
-          />
-        </SectionBody.Inner>
-
-        <SectionBody.Inner innerStyle={rightGroup}>
-          <div>
-            <InfoCarousel
-              projects={projects}
-              infoSlickRef={infoSlickRef}
-              pagingSlick={pagingSlick}
-            />
-          </div>
-
-          <div css={dotGroup}>
-            <DotCarousel
-              projects={projects}
-              pagingSlickRef={pagingSlickRef}
-              mainSlick={mainSlick}
-            />
-          </div>
-        </SectionBody.Inner>
+        <ul css={projectList}>
+          {projects.map((project, index) => (
+            <DrawerItem key={index} project={project} index={index} />
+          ))}
+        </ul>
       </SectionBody>
     </GlobalSection>
   );
@@ -60,53 +24,11 @@ const Projects = ({ projects, sectionRef }) => {
 
 export default Projects;
 
-const leftGroup = css`
+const projectList = css`
+  margin: 0;
+  padding-left: 0;
   width: 100%;
-
-  ${media.tablet} {
-    height: 400px;
-    width: 50%;
-    margin-bottom: 0;
-  }
-
-  ${media.desktop} {
-    height: 500px;
-  }
-`;
-
-const rightGroup = css`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-
-  div {
-    width: 100%;
-  }
-
-  ${media.tablet} {
-    width: 50%;
-    height: 400px;
-    padding: 0 20px;
-  }
-
-  ${media.desktop} {
-    height: 500px;
-  }
-`;
-
-const dotGroup = css`
-  display: none;
-
-  ${media.tablet} {
-    display: block;
-    .slick-slide {
-      filter: grayscale(1);
-    }
-
-    .slick-center {
-      filter: none;
-    }
-  }
+  list-style: none;
+  border-top: 1px solid ${palette.gray[300]};
+  border-bottom: 1px solid ${palette.gray[300]};
 `;
