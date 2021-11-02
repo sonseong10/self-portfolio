@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { css } from "@emotion/react";
 import { useRouteMatch } from "react-router";
 
-const Gallery = ({ artwork }) => {
+const Gallery = memo(({ artwork }) => {
   const match = useRouteMatch();
 
   const [item, setUid] = useState({});
@@ -22,13 +22,14 @@ const Gallery = ({ artwork }) => {
       )}
     </div>
   );
-};
+});
 
 export default Gallery;
 
 const imgWrap = css`
   width: 100%;
   margin: 0 auto;
+  padding: 26px 0;
 
   img {
     display: block;
