@@ -27,26 +27,26 @@ const Promotion = ({ promotionRef }) => {
 
         <p css={row} className="left">
           <span css={decoration} className={`${isActive && "isActive"} space`}>
-            I'm have a
+            I'M LEARNING
           </span>
           <span css={side} className={isActive && "isActive"}>
-            Grid Layout System <br /> knowledge
+            BRAND LOGO <br /> ILLUSTRATION
           </span>
         </p>
 
         <p css={row} className="center">
           <span css={decoration} className="regular">
-            Logo and illustration
+            WEB PUBLISHING
           </span>
         </p>
 
         <p css={row} className="right">
           <span css={side} className={`${isActive && "isActive"} space`}>
-            for
-            <br /> Web Design
+            PASSION <br />
+            IN
           </span>
           <span css={decoration} className={isActive && "isActive"}>
-            experience
+            UI/UX DESIGN
           </span>
         </p>
       </div>
@@ -156,7 +156,7 @@ const decoration = css`
   }
 
   ${media.tablet} {
-    font-size: 80px;
+    font-size: 86px;
 
     span {
       ${typography.base}
@@ -164,13 +164,13 @@ const decoration = css`
   }
 
   ${media.desktop} {
-    font-size: 120px;
+    font-size: 130px;
   }
 `;
 
 const side = css`
   ${typography.small}
-  color: ${palette.gray[300]};
+  color: ${palette.gray[200]};
 
   ${media.tablet} {
     ${typography.base}
