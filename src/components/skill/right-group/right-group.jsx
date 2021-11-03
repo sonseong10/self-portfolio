@@ -40,6 +40,10 @@ const rightGroup = css`
   ${media.tablet} {
     padding-left: 20px;
   }
+
+  @media (orientation: landscape) {
+    padding-left: 20px;
+  }
 `;
 
 const groupBox = css`

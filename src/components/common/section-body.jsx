@@ -2,8 +2,8 @@ import React from "react";
 import { css } from "@emotion/react";
 import media from "../../assets/styles/constants/media";
 
-const SectionBody = ({ children }) => {
-  return <div css={sectionBody}>{children}</div>;
+const SectionBody = ({ children, style }) => {
+  return <div css={sectionBody(style)}>{children}</div>;
 };
 
 const Inner = ({ children, ratio = 1, innerStyle }) => {
@@ -14,7 +14,7 @@ SectionBody.Inner = Inner;
 
 export default SectionBody;
 
-const sectionBody = css`
+const sectionBody = (style) => css`
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -32,6 +32,8 @@ const sectionBody = css`
       margin-bottom: 0;
     }
   }
+
+  ${style}
 `;
 
 const inner = (ratio, style) => css`
