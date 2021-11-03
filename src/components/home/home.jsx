@@ -1,11 +1,11 @@
-import React from "react";
+import React, { memo } from "react";
 import { css } from "@emotion/react";
 import typography from "../../assets/styles/constants/typograpy";
 import palette from "../../assets/styles/constants/palette";
 import media from "../../assets/styles/constants/media";
 import GlobalSection from "../common/global-section";
 
-const Home = () => {
+const Home = memo(() => {
   return (
     <GlobalSection>
       <div css={home}>
@@ -33,7 +33,7 @@ const Home = () => {
             </div>
 
             <div>
-              <dt>Date</dt>
+              <dt>Birthday</dt>
               <dd>
                 <time dateTime="1997-04-08">1997-04-08</time>
               </dd>
@@ -43,7 +43,7 @@ const Home = () => {
       </div>
     </GlobalSection>
   );
-};
+});
 
 const home = css`
   display: flex;
