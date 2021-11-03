@@ -14,6 +14,9 @@ const artworkSettings = {
   centerPadding: "0",
   centerMode: true,
   focusOnSelect: true,
+  autoplay: true,
+  speed: 1000,
+  autoplaySpeed: 3000,
   slidesToShow: 3,
   arrows: true,
   nextArrow: <CarouselArrow.NextArrow />,
@@ -31,11 +34,4 @@ const artworkSettings = {
   ],
 };
 
-const artDotsSettings = {
-  ...settings,
-  speed: 0,
-  draggable: false,
-  touchMove: false,
-};
-
-export { artworkSettings, artDotsSettings };
+export { artworkSettings };
