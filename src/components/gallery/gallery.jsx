@@ -1,15 +1,20 @@
 import React, { memo, useEffect, useState } from "react";
 import { css } from "@emotion/react";
-import { useRouteMatch } from "react-router";
+import { useHistory, useRouteMatch } from "react-router";
 
 const Gallery = memo(({ artwork }) => {
+  const history = useHistory();
   const match = useRouteMatch();
+  const uid = match.params.uid;
 
   const [item, setUid] = useState({});
-
   useEffect(() => {
-    setUid({ ...artwork[match.params.uid] });
-  }, [artwork, match.params.uid]);
+    if (uid <= artwork.length - 1) {
+      setUid({ ...artwork[uid] });
+    } else {
+      history.push("/error");
+    }
+  }, [artwork, uid, history]);
 
   const { designURL } = item;
 

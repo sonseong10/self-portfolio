@@ -9,8 +9,9 @@ import Promotion from "./components/promotion/promotion";
 import Artwork from "./components/artwork/artwork";
 import About from "./components/about/about";
 import GlobalFooter from "./components/global-footer/global-footer";
-import { Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import Gallery from "./components/gallery/gallery";
+import ErrorPage from "./components/error-page/404";
 
 function App({ fetchItem }) {
   const sectionRef = useRef([]);
@@ -53,21 +54,29 @@ function App({ fetchItem }) {
         <Layout.Header>
           <GlobalHeader sectionRef={sectionRef} artwork={artwork} />
         </Layout.Header>
-        <Route exact path="/">
-          <Layout.Main>
-            <Home />
-            <Skill skills={skills} sectionRef={sectionRef} />
-            <Projects projects={projects} sectionRef={sectionRef} />
-            <Promotion promotionRef={promotionRef} />
-            <Artwork artwork={artwork} sectionRef={sectionRef} />
-            <About />
-          </Layout.Main>
-        </Route>
-        <Route path="/artwork/:uid">
-          <Layout>
-            <Gallery artwork={artwork}></Gallery>
-          </Layout>
-        </Route>
+        <Switch>
+          <Route exact path="/">
+            <Layout.Main>
+              <Home />
+              <Skill skills={skills} sectionRef={sectionRef} />
+              <Projects projects={projects} sectionRef={sectionRef} />
+              <Promotion promotionRef={promotionRef} />
+              <Artwork artwork={artwork} sectionRef={sectionRef} />
+              <About />
+            </Layout.Main>
+          </Route>
+          <Route path="/artwork/:uid">
+            <Layout>
+              <Gallery artwork={artwork}></Gallery>
+            </Layout>
+          </Route>
+          <Route path={["*", "/error"]}>
+            <Layout>
+              <ErrorPage />
+            </Layout>
+          </Route>
+        </Switch>
+
         <Layout.Footer>
           <GlobalFooter />
         </Layout.Footer>
