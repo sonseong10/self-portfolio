@@ -136,7 +136,7 @@ const info = css`
   transition: max-height 300ms ease-in-out;
 
   &.isActive {
-    max-height: 500px;
+    max-height: 644px;
   }
 
   ${media.tablet} {
