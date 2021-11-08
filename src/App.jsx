@@ -12,6 +12,7 @@ import GlobalFooter from "./components/global-footer/global-footer";
 import { Switch, Route } from "react-router-dom";
 import Gallery from "./components/gallery/gallery";
 import ErrorPage from "./components/error-page/404";
+import useChannelPluginEffect from "./useChannelPluginEffect";
 
 function App({ fetchItem }) {
   const sectionRef = useRef([]);
@@ -47,6 +48,8 @@ function App({ fetchItem }) {
       stopSync();
     };
   }, [fetchItem]);
+
+  useChannelPluginEffect();
 
   return (
     <>
