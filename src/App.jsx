@@ -13,6 +13,7 @@ import { Switch, Route } from "react-router-dom";
 import Gallery from "./components/gallery/gallery";
 import ErrorPage from "./components/error-page/404";
 import useChannelPluginEffect from "./useChannelPluginEffect";
+import ToTop from "./components/common/to-top";
 
 function App({ fetchItem }) {
   const sectionRef = useRef([]);
@@ -70,7 +71,7 @@ function App({ fetchItem }) {
           </Route>
           <Route path="/artwork/:uid">
             <Layout>
-              <Gallery artwork={artwork}></Gallery>
+              <Gallery artwork={artwork} />
             </Layout>
           </Route>
           <Route path={["*", "/error"]}>
@@ -84,6 +85,7 @@ function App({ fetchItem }) {
           <GlobalFooter />
         </Layout.Footer>
       </div>
+      <ToTop />
       <Global styles={globalStyle} />
     </>
   );
