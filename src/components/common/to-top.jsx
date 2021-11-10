@@ -72,7 +72,6 @@ const topBtn = css`
       ${resetButton};
       width: 46px;
       height: 46px;
-      background-color: ${palette.white};
       ${typography.base}
       color: ${palette.gray[200]};
       font-weight: 700;

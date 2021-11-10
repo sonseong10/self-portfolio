@@ -1,14 +1,15 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { memo, useEffect, useRef, useState } from "react";
 import { css } from "@emotion/react";
 import { resetButton } from "../../assets/styles/components/reset-button";
 import media from "../../assets/styles/constants/media";
 import palette from "../../assets/styles/constants/palette";
 import typography from "../../assets/styles/constants/typograpy";
 import Observer from "../../utils/observer";
+import ThemeButton from "../common/theme-button";
 
 const listItem = ["Skills", "Projects", "Artworks"];
 
-const Gnb = ({ sectionRef }) => {
+const Gnb = memo(({ sectionRef, toggleTheme, theme }) => {
   const tabRef = useRef([]);
   const [activeTab, setActiveTab] = useState(false);
 
@@ -28,28 +29,31 @@ const Gnb = ({ sectionRef }) => {
     setActiveTab(sectionRef.current[index]);
   };
   return (
-    <nav css={gnb}>
-      <h2 className="sr-only">global navgation</h2>
+    <>
+      <nav css={gnb}>
+        <h2 className="sr-only">global navgation</h2>
 
-      <ul>
-        {listItem.map((item, index) => (
-          <li key={index}>
-            <button
-              ref={tabRef}
-              className={
-                sectionRef.current[index] === activeTab ? "isActive" : ""
-              }
-              onClick={() => onBtnClick(index)}
-              type="button"
-            >
-              {item}
-            </button>
-          </li>
-        ))}
-      </ul>
-    </nav>
+        <ul>
+          {listItem.map((item, index) => (
+            <li key={index}>
+              <button
+                ref={tabRef}
+                className={
+                  sectionRef.current[index] === activeTab ? "isActive" : ""
+                }
+                onClick={() => onBtnClick(index)}
+                type="button"
+              >
+                {item}
+              </button>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      <ThemeButton toggleTheme={toggleTheme} theme={theme} />
+    </>
   );
-};
+});
 
 export default Gnb;
 
@@ -79,8 +83,8 @@ const gnb = css`
       flex: 1;
 
       button {
+        ${resetButton};
         position: relative;
-        ${resetButton}
         padding: 0 8px;
         height: 46px;
         ${typography.small}

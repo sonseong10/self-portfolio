@@ -8,7 +8,7 @@ import palette from "../../assets/styles/constants/palette";
 import { useHistory, Route } from "react-router-dom";
 import Lnb from "./lnb";
 
-const GlobalHeader = ({ sectionRef, artwork }) => {
+const GlobalHeader = ({ sectionRef, artwork, toggleTheme, theme }) => {
   const history = useHistory();
 
   const goToRoot = () => {
@@ -26,7 +26,7 @@ const GlobalHeader = ({ sectionRef, artwork }) => {
       </button>
 
       <Route path="/" exact>
-        <Gnb sectionRef={sectionRef} />
+        <Gnb sectionRef={sectionRef} toggleTheme={toggleTheme} theme={theme} />
       </Route>
 
       <Route path="/artwork/:uid">

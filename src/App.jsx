@@ -14,6 +14,9 @@ import Gallery from "./components/gallery/gallery";
 import ErrorPage from "./components/error-page/404";
 import useChannelPluginEffect from "./useChannelPluginEffect";
 import ToTop from "./components/common/to-top";
+import palette from "./assets/styles/constants/palette";
+import useTheme from "./utils/useTheme";
+import media from "./assets/styles/constants/media";
 
 function App({ fetchItem }) {
   const sectionRef = useRef([]);
@@ -22,6 +25,8 @@ function App({ fetchItem }) {
   const [skills, setSkills] = useState([]);
   const [projects, setProjects] = useState([]);
   const [artwork, setArtwork] = useState([]);
+
+  const [theme, onToggle] = useTheme();
 
   useEffect(() => {
     const stopSync = fetchItem.fetchData((skills) => {
@@ -54,9 +59,14 @@ function App({ fetchItem }) {
 
   return (
     <>
-      <div className="App">
+      <div className={`App ${theme === "dark" && "dark"}`}>
         <Layout.Header>
-          <GlobalHeader sectionRef={sectionRef} artwork={artwork} />
+          <GlobalHeader
+            sectionRef={sectionRef}
+            artwork={artwork}
+            toggleTheme={onToggle}
+            theme={theme}
+          />
         </Layout.Header>
         <Switch>
           <Route exact path="/">
@@ -120,6 +130,62 @@ const globalStyle = css`
     clip: rect(0, 0, 0, 0) !important;
     white-space: nowrap !important;
     border: 0 !important;
+  }
+
+  .App.dark {
+    background-color: ${palette.gray[100]};
+
+    header,
+    figure,
+    footer {
+      background-color: ${palette.gray[100]};
+      border-color: ${palette.gray[200]};
+    }
+
+    h1,
+    h2,
+    h3,
+    strong,
+    span,
+    a,
+    dt,
+    button {
+      color: ${palette.gray[600]};
+      border-color: ${palette.gray[100]};
+    }
+
+    button,
+    a {
+      background-color: ${palette.gray[100]};
+      border-color: ${palette.gray[200]};
+
+      &:active {
+        background-color: ${palette.gray[300]};
+      }
+
+      ${media.tablet} {
+        &:hover {
+          background-color: ${palette.gray[300]};
+        }
+      }
+    }
+
+    header *[type="button"],
+    .slick-dots button {
+      background-color: transparent;
+    }
+
+    li > div {
+      border-color: ${palette.gray[200]};
+    }
+
+    p,
+    dd,
+    li,
+    time,
+    span.side {
+      color: ${palette.gray[500]};
+    }
   }
 `;
 
