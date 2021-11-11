@@ -133,13 +133,17 @@ const globalStyle = css`
   }
 
   .App.dark {
-    background-color: ${palette.gray[100]};
+    background-color: ${palette.darkTheme.primary};
 
     header,
     figure,
     footer {
-      background-color: ${palette.gray[100]};
-      border-color: ${palette.gray[200]};
+      background-color: ${palette.darkTheme.primary};
+      border-color: ${palette.darkTheme.secondary};
+    }
+
+    footer {
+      background-color: ${palette.darkTheme.secondary};
     }
 
     h1,
@@ -150,22 +154,22 @@ const globalStyle = css`
     a,
     dt,
     button {
-      color: ${palette.gray[600]};
-      border-color: ${palette.gray[100]};
+      color: ${palette.darkTheme.fontPrimary};
+      border-color: ${palette.darkTheme.secondary};
     }
 
     button,
-    a {
-      background-color: ${palette.gray[100]};
-      border-color: ${palette.gray[200]};
+    div > a {
+      background-color: ${palette.darkTheme.primary};
+      border-color: ${palette.darkTheme.secondary};
 
       &:active {
-        background-color: ${palette.gray[300]};
+        background-color: ${palette.darkTheme.secondary};
       }
 
       ${media.tablet} {
         &:hover {
-          background-color: ${palette.gray[300]};
+          background-color: ${palette.darkTheme.secondary};
         }
       }
     }
@@ -176,7 +180,7 @@ const globalStyle = css`
     }
 
     li > div {
-      border-color: ${palette.gray[200]};
+      border-color: ${palette.darkTheme.secondary};
     }
 
     p,
@@ -184,7 +188,7 @@ const globalStyle = css`
     li,
     time,
     span.side {
-      color: ${palette.gray[500]};
+      color: ${palette.darkTheme.fontSecondary};
     }
   }
 `;

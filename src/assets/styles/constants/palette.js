@@ -12,11 +12,19 @@ export const white = "#fff";
 
 export const brandTheme = "#0066ff";
 
+export const darkTheme = {
+  primary: "#121212",
+  secondary: "#1c1c1d",
+  fontPrimary: white,
+  fontSecondary: gray[600],
+};
+
 const palette = {
   gray,
   black,
   white,
   brandTheme,
+  darkTheme,
 };
 
 export default palette;
