@@ -1,14 +1,18 @@
 import React from "react";
 import { css } from "@emotion/react";
 import SkillBar from "./progress/skill-bar";
+import LoadingSkeleton from "./loading-skeleton";
 
-const SkillList = ({ list, sectionRef }) => {
+const SkillList = ({ list, sectionRef, loading }) => {
   return (
     <ul css={listStyle}>
-      {list &&
+      {loading ? (
+        <LoadingSkeleton count={9} />
+      ) : (
         list.map((item) => (
           <SkillBar key={item.uid} item={item} sectionRef={sectionRef} />
-        ))}
+        ))
+      )}
     </ul>
   );
 };

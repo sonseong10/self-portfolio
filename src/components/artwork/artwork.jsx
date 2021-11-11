@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { css } from "@emotion/react";
 import { artworkSettings } from "../../utils/slick-carousel";
 import SectionHeader from "../section-header/section-header";
@@ -9,9 +9,12 @@ import media from "../../assets/styles/constants/media";
 import typography from "../../assets/styles/constants/typograpy";
 import { useHistory } from "react-router-dom";
 import BaseButton from "../common/base-button";
+import LoadingSkeleton from "./loading-skeleton";
 
-const Artwork = ({ artwork, sectionRef }) => {
+const Artwork = ({ artwork, sectionRef, loading }) => {
   const history = useHistory();
+
+  const [loaded, setLoaded] = useState(false);
 
   const goToGallery = (index) => {
     history.push(`artwork/${index}`);
@@ -22,24 +25,41 @@ const Artwork = ({ artwork, sectionRef }) => {
       <SectionHeader title="Artworks" />
 
       <div css={carouselWrap}>
-        <Carousel setting={artworkSettings}>
-          {artwork.map((item, index) => (
-            <div key={item.uid} css={card}>
-              <div className="imgBox">
-                <img src={item.thumbnailURL} alt="projects01" />
-              </div>
+        {loading ? (
+          <LoadingSkeleton />
+        ) : (
+          <Carousel setting={artworkSettings}>
+            {artwork.map((item, index) => (
+              <div key={item.uid} css={card}>
+                <div className="imgBox">
+                  {loaded ? null : (
+                    <div
+                      style={{
+                        background: `${palette.gray[600]}`,
+                        height: "314px",
+                        width: "314px",
+                      }}
+                    />
+                  )}
+                  <img
+                    src={item.thumbnailURL}
+                    alt={`projects0${index}`}
+                    onLoad={() => setLoaded(true)}
+                  />
+                </div>
 
-              <strong>{item.title}</strong>
+                <strong>{item.title}</strong>
 
-              <div css={btnWrap}>
-                <BaseButton
-                  title="More"
-                  handleEvent={() => goToGallery(index)}
-                />
+                <div css={btnWrap}>
+                  <BaseButton
+                    title="More"
+                    handleEvent={() => goToGallery(index)}
+                  />
+                </div>
               </div>
-            </div>
-          ))}
-        </Carousel>
+            ))}
+          </Carousel>
+        )}
       </div>
     </GlobalSection>
   );

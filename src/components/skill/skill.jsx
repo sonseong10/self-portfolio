@@ -6,7 +6,7 @@ import GlobalSection from "../common/global-section";
 import SectionBody from "../common/section-body";
 import { css } from "@emotion/react";
 
-const Skill = ({ skills, sectionRef }) => {
+const Skill = ({ skills, sectionRef, loading }) => {
   const skillRef = (el) => (sectionRef.current[0] = el);
 
   return (
@@ -15,7 +15,11 @@ const Skill = ({ skills, sectionRef }) => {
 
       <SectionBody style={moblieRow}>
         <SectionBody.Inner ratio={2}>
-          <LeftGroup skills={skills} sectionRef={sectionRef} />
+          <LeftGroup
+            skills={skills}
+            sectionRef={sectionRef}
+            loading={loading}
+          />
         </SectionBody.Inner>
 
         <SectionBody.Inner>

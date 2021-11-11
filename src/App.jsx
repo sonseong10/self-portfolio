@@ -23,18 +23,29 @@ function App({ fetchItem }) {
   const promotionRef = useRef();
 
   const [skills, setSkills] = useState([]);
+  const [skillLoading, setSkillLoading] = useState(undefined);
+
   const [projects, setProjects] = useState([]);
+
   const [artwork, setArtwork] = useState([]);
+  const [artworkLoading, setArtworkLoading] = useState(undefined);
 
   const [theme, onToggle] = useTheme();
 
   useEffect(() => {
-    const stopSync = fetchItem.fetchData((skills) => {
-      setSkills(skills);
-    }, "skills");
-    return () => {
-      stopSync();
-    };
+    try {
+      setSkillLoading(true);
+      const stopSync = fetchItem.fetchData((skills) => {
+        setSkills(skills);
+        setSkillLoading(false);
+      }, "skills");
+      return () => {
+        stopSync();
+      };
+    } catch (error) {
+      setSkillLoading(true);
+      console.error(error);
+    }
   }, [fetchItem]);
 
   useEffect(() => {
@@ -47,12 +58,19 @@ function App({ fetchItem }) {
   }, [fetchItem]);
 
   useEffect(() => {
-    const stopSync = fetchItem.fetchData((artworks) => {
-      setArtwork(artworks);
-    }, "artwork");
-    return () => {
-      stopSync();
-    };
+    try {
+      setArtworkLoading(true);
+      const stopSync = fetchItem.fetchData((artworks) => {
+        setArtwork(artworks);
+        setArtworkLoading(false);
+      }, "artwork");
+      return () => {
+        stopSync();
+      };
+    } catch (error) {
+      setArtworkLoading(true);
+      console.error(error);
+    }
   }, [fetchItem]);
 
   useChannelPluginEffect();
@@ -72,10 +90,18 @@ function App({ fetchItem }) {
           <Route exact path="/">
             <Layout.Main>
               <Home />
-              <Skill skills={skills} sectionRef={sectionRef} />
+              <Skill
+                skills={skills}
+                sectionRef={sectionRef}
+                loading={skillLoading}
+              />
               <Projects projects={projects} sectionRef={sectionRef} />
               <Promotion promotionRef={promotionRef} />
-              <Artwork artwork={artwork} sectionRef={sectionRef} />
+              <Artwork
+                artwork={artwork}
+                sectionRef={sectionRef}
+                loading={artworkLoading}
+              />
               <About />
             </Layout.Main>
           </Route>
