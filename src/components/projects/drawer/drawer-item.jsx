@@ -133,10 +133,10 @@ const info = css`
   max-height: 0;
   border-bottom: 1px solid ${palette.gray[500]};
   overflow: hidden;
-  transition: max-height 300ms ease-in-out;
+  transition: max-height 400ms ease-in-out;
 
   &.isActive {
-    max-height: 644px;
+    max-height: 1000px;
   }
 
   ${media.tablet} {
