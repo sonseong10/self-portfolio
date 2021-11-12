@@ -95,17 +95,21 @@ const carouselWrap = css`
     .slick-slide {
       transform: scale(0.6);
       opacity: 0.8;
-      transition: transform 300ms ease-in-out, opacity 300ms ease-in-out;
+
+      transition: transform 300ms ease-in-out, opacity 300ms ease-in-out,
+        box-shadow 300ms ease-in-out;
 
       ${media.desktop} {
         &:hover {
+          box-shadow: 4px 4px 12px rgba(0, 0, 0, 13%);
           opacity: 1;
         }
       }
     }
 
     .slick-center {
-      transform: scale(1);
+      transform: scale(0.9);
+      box-shadow: 4px 4px 12px rgba(0, 0, 0, 13%);
       opacity: 1;
     }
   }
