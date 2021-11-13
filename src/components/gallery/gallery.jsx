@@ -34,6 +34,7 @@ export default Gallery;
 const imgWrap = css`
   width: 100%;
   margin: 0 auto;
+  min-height: 100vh;
   padding: 26px 0;
 
   img {
