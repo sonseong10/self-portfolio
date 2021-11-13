@@ -93,6 +93,9 @@ const carouselWrap = css`
     margin: 0;
 
     .slick-slide {
+      border-radius: 4px;
+      overflow: hidden;
+      padding: 10px;
       transform: scale(0.6);
       opacity: 0.8;
 
