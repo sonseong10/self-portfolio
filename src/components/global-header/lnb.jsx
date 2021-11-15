@@ -25,7 +25,12 @@ const Lnb = ({ artwork }) => {
     <>
       {item && <h2 css={title}>{item.title}</h2>}
 
-      <button css={backBtn} onClick={goToBack} type="button">
+      <button
+        css={backBtn}
+        onClick={goToBack}
+        type="button"
+        aria-label="Go back"
+      >
         Back
       </button>
     </>

@@ -38,7 +38,7 @@ const ToTop = () => {
 
   return (
     <div css={topBtn} className={scrollFlag && "isActive"}>
-      <button type="button" onClick={movoToTop}>
+      <button onClick={movoToTop} type="button" aria-label="Back to Top">
         Top
       </button>
     </div>

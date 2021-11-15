@@ -21,7 +21,7 @@ const Gallery = memo(({ artwork }) => {
   return (
     <div css={imgWrap}>
       {designURL ? (
-        <img src={designURL} alt="Design result" />
+        <img src={designURL} alt={`${designURL} Design result`} />
       ) : (
         <p css={loding}>Loding...</p>
       )}

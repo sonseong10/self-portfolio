@@ -43,6 +43,7 @@ const Gnb = memo(({ sectionRef, toggleTheme, theme }) => {
                 }
                 onClick={() => onBtnClick(index)}
                 type="button"
+                aria-label={`${item}으로 이동`}
               >
                 {item}
               </button>

@@ -5,7 +5,12 @@ import typography from "../../assets/styles/constants/typograpy";
 
 const ThemeButton = memo(({ toggleTheme, theme }) => {
   return (
-    <button css={themeBtn} onClick={toggleTheme} type="button">
+    <button
+      css={themeBtn}
+      onClick={toggleTheme}
+      type="button"
+      aria-label={`${theme} 모드 변경`}
+    >
       {theme === "dark" ? "🌚" : "🌝"}
     </button>
   );

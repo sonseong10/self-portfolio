@@ -28,8 +28,12 @@ const DrawerItem = ({ project, index }) => {
 
   return (
     <li css={drawerItem}>
-      <button onClick={onBtnClick} type="button">
-        {project.title}
+      <button
+        onClick={onBtnClick}
+        type="button"
+        aria-label={`${title} 펼쳐보기`}
+      >
+        {title}
 
         <div css={iconBox} className={isActive ? "isActive" : undefined}>
           <MyIcon name="chevron" />
