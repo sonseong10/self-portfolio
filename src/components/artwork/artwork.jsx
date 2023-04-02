@@ -7,17 +7,17 @@ import Carousel from "../common/carousel";
 import palette from "../../assets/styles/constants/palette";
 import media from "../../assets/styles/constants/media";
 import typography from "../../assets/styles/constants/typograpy";
-import { useHistory } from "react-router-dom";
 import BaseButton from "../common/base-button";
 import LoadingSkeleton from "./loading-skeleton";
+import { useNavigate } from "react-router-dom";
 
 const Artwork = ({ artwork, sectionRef, loading }) => {
-  const history = useHistory();
+  const history = useNavigate();
 
   const [loaded, setLoaded] = useState(false);
 
   const goToGallery = (index) => {
-    history.push(`artwork/${index}`);
+    history(`artwork/${index}`);
   };
 
   return (

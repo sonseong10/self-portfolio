@@ -37,7 +37,7 @@ const ToTop = () => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
 
   return (
-    <div css={topBtn} className={scrollFlag && "isActive"}>
+    <div css={topBtn} className={scrollFlag ? "isActive" : undefined}>
       <button onClick={movoToTop} type="button" aria-label="Back to Top">
         Top
       </button>

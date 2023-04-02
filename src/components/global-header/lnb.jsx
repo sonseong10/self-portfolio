@@ -4,10 +4,10 @@ import { resetButton } from "../../assets/styles/components/reset-button";
 import media from "../../assets/styles/constants/media";
 import palette from "../../assets/styles/constants/palette";
 import typography from "../../assets/styles/constants/typograpy";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Lnb = ({ artwork }) => {
-  const history = useHistory();
+  const history = useNavigate();
 
   const [item, setUid] = useState({});
 

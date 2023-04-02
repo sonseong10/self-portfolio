@@ -1,6 +1,6 @@
 import React from "react";
 import { css } from "@emotion/react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Logo from "../../assets/images/logo.svg";
 import media from "../../assets/styles/constants/media";
 import palette from "../../assets/styles/constants/palette";
@@ -8,10 +8,10 @@ import typography from "../../assets/styles/constants/typograpy";
 import BaseButton from "../common/base-button";
 
 const ErrorPage = () => {
-  const history = useHistory();
+  const history = useNavigate();
 
   const goToHome = () => {
-    history.push("/");
+    history("/");
   };
   return (
     <div css={pageWrap}>

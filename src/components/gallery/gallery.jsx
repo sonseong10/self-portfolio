@@ -1,10 +1,10 @@
 import React, { memo, useEffect, useState } from "react";
 import { css } from "@emotion/react";
-import { useHistory, useRouteMatch } from "react-router";
+import { useMatch, useNavigate } from "react-router-dom";
 
 const Gallery = memo(({ artwork }) => {
-  const history = useHistory();
-  const match = useRouteMatch();
+  const history = useNavigate();
+  const match = useMatch();
   const uid = match.params.uid;
 
   const [item, setUid] = useState({});
@@ -12,7 +12,7 @@ const Gallery = memo(({ artwork }) => {
     if (uid <= artwork.length - 1) {
       setUid({ ...artwork[uid] });
     } else {
-      history.push("/error");
+      history("/error");
     }
   }, [artwork, uid, history]);
 

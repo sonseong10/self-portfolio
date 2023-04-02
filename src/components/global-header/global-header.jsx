@@ -5,14 +5,14 @@ import media from "../../assets/styles/constants/media";
 import Gnb from "./gnb";
 import { resetButton } from "../../assets/styles/components/reset-button";
 import palette from "../../assets/styles/constants/palette";
-import { useHistory, Route } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import Lnb from "./lnb";
 
 const GlobalHeader = ({ sectionRef, artwork, toggleTheme, theme }) => {
-  const history = useHistory();
+  const history = useNavigate();
 
   const goToRoot = () => {
-    history.push("/");
+    history("/");
     window.scrollTo(0, 0);
   };
 
@@ -25,13 +25,19 @@ const GlobalHeader = ({ sectionRef, artwork, toggleTheme, theme }) => {
         </figure>
       </button>
 
-      <Route path="/" exact>
-        <Gnb sectionRef={sectionRef} toggleTheme={toggleTheme} theme={theme} />
-      </Route>
+      {/* <Routes>
+        <Route path="/" exact>
+          <Gnb
+            sectionRef={sectionRef}
+            toggleTheme={toggleTheme}
+            theme={theme}
+          />
+        </Route>
 
-      <Route path="/artwork/:uid">
-        <Lnb artwork={artwork} />
-      </Route>
+        <Route path="/artwork/:uid">
+          <Lnb artwork={artwork} />
+        </Route>
+      </Routes> */}
     </div>
   );
 };

@@ -39,7 +39,9 @@ const Gnb = memo(({ sectionRef, toggleTheme, theme }) => {
               <button
                 ref={tabRef}
                 className={
-                  sectionRef.current[index] === activeTab ? "isActive" : ""
+                  sectionRef.current[index] === activeTab
+                    ? "isActive"
+                    : undefined
                 }
                 onClick={() => onBtnClick(index)}
                 type="button"

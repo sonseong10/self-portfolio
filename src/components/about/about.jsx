@@ -55,11 +55,11 @@ const About = () => {
                   </dl>
                 </div>
 
-                <div css={iconBox} className={show && "isActive"}>
+                <div css={iconBox} className={show ? "isActive" : undefined}>
                   <MyIcon name="chevron" />
                 </div>
               </button>
-              <ul css={drawer} className={show && "isActive"}>
+              <ul css={drawer} className={show ? "isActive" : undefined}>
                 <li>컴퓨터시스템과 전공</li>
                 <li>3-In프로젝트 수료</li>
               </ul>

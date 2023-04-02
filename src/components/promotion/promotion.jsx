@@ -26,10 +26,13 @@ const Promotion = ({ promotionRef }) => {
         </div>
 
         <p css={row} className="left">
-          <span css={decoration} className={`${isActive && "isActive"} space`}>
+          <span
+            css={decoration}
+            className={`${isActive ? "isActive" : undefined} space`}
+          >
             I'M LEARNING
           </span>
-          <span css={side} className={isActive && "isActive"}>
+          <span css={side} className={isActive ? "isActive" : undefined}>
             BRAND LOGO <br /> ILLUSTRATION
           </span>
         </p>
@@ -41,11 +44,14 @@ const Promotion = ({ promotionRef }) => {
         </p>
 
         <p css={row} className="right">
-          <span css={side} className={`${isActive && "isActive"} space`}>
+          <span
+            css={side}
+            className={`${isActive ? "isActive" : undefined} space`}
+          >
             PASSION <br />
             IN
           </span>
-          <span css={decoration} className={isActive && "isActive"}>
+          <span css={decoration} className={isActive ? "isActive" : undefined}>
             UI/UX DESIGN
           </span>
         </p>
