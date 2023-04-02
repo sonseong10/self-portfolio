@@ -1,20 +1,20 @@
 import React, { memo } from "react";
-import { css } from "@emotion/react";
 import palette from "../../assets/styles/constants/palette";
 import typography from "../../assets/styles/constants/typograpy";
+import styled from "styled-components";
 
 const Badge = memo(({ name, color }) => {
-  return <div css={badge(color)}>{name}</div>;
+  return <BadgeStyle color={color}>{name}</BadgeStyle>;
 });
 
 export default Badge;
 
-const badge = (color) => css`
+const BadgeStyle = styled.div`
   display: inline-flex;
   justify-content: center;
   align-items: center;
   padding: 2px 6px;
-  ${colorPick(color)};
+  ${(props) => (props.color ? colorPick(props.color) : undefined)};
   ${typography.tiny};
   font-weight: 700;
   border-radius: 4px;

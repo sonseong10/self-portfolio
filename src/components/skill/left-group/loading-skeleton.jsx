@@ -1,6 +1,6 @@
 import React from "react";
-import { css } from "@emotion/react";
 import palette from "../../../assets/styles/constants/palette";
+import styled from "styled-components";
 
 const LoadingSkeleton = ({ count }) => {
   const renderItem = (count) => {
@@ -8,9 +8,9 @@ const LoadingSkeleton = ({ count }) => {
 
     for (let i = 0; i <= count - 1; i++) {
       result.push(
-        <li key={i} css={skeleton} aria-label="loading">
+        <Skeleton key={i} aria-label="loading">
           <div></div>
-        </li>
+        </Skeleton>
       );
     }
     return result;
@@ -19,7 +19,7 @@ const LoadingSkeleton = ({ count }) => {
   return <>{renderItem(count)}</>;
 };
 
-const skeleton = css`
+const Skeleton = styled.li`
   display: flex;
   align-items: center;
   justify-content: flex-start;

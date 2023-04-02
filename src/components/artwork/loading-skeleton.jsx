@@ -1,16 +1,16 @@
 import React from "react";
-import { css } from "@emotion/react";
 import typography from "../../assets/styles/constants/typograpy";
+import styled from "styled-components";
 
 const LoadingSkeleton = () => {
   return (
-    <div css={skeleton}>
+    <Skeleton>
       <p>Loading image</p>
-    </div>
+    </Skeleton>
   );
 };
 
-const skeleton = css`
+const Skeleton = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;

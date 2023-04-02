@@ -1,32 +1,32 @@
 import React from "react";
-import { css } from "@emotion/react";
 import media from "../../assets/styles/constants/media";
 import palette from "../../assets/styles/constants/palette";
 import { gnbLevel } from "../../assets/styles/constants/z-index";
+import styled from "styled-components";
 
 const Layout = ({ children }) => {
-  return <div css={container}>{children}</div>;
+  return <Container>{children}</Container>;
 };
 
 export default Layout;
 
 const Header = ({ children }) => {
   return (
-    <header css={globalHeader}>
-      <div css={container}>{children}</div>
-    </header>
+    <GlobalHeader>
+      <Container>{children}</Container>
+    </GlobalHeader>
   );
 };
 
 const Main = ({ children }) => {
-  return <main css={container}>{children}</main>;
+  return <Container as="main">{children}</Container>;
 };
 
 const Footer = ({ children }) => {
   return (
-    <footer css={globalFooter}>
-      <div css={container}>{children}</div>
-    </footer>
+    <GlobalFooter>
+      <Container>{children}</Container>
+    </GlobalFooter>
   );
 };
 
@@ -34,7 +34,7 @@ Layout.Header = Header;
 Layout.Main = Main;
 Layout.Footer = Footer;
 
-const container = css`
+const Container = styled.div`
   padding: 0 10px;
   width: 100%;
   margin: 0 auto;
@@ -46,7 +46,7 @@ const container = css`
   }
 `;
 
-const globalHeader = css`
+const GlobalHeader = styled.header`
   position: sticky;
   top: 0;
   height: 60px;
@@ -55,7 +55,7 @@ const globalHeader = css`
   z-index: ${gnbLevel};
 `;
 
-const globalFooter = css`
+const GlobalFooter = styled.footer`
   background-color: ${palette.gray[600]};
   border-top: 1px solid ${palette.gray[500]};
 `;

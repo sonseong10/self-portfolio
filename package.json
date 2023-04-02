@@ -3,9 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@craco/craco": "^7.1.0",
-    "@emotion/react": "^11.10.6",
-    "@emotion/styled": "^11.10.6",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
@@ -20,8 +17,8 @@
   },
   "scripts": {
     "start": "react-scripts --openssl-legacy-provider start",
-    "build": "craco build",
-    "test": "craco test",
+    "build": "react-scripts --openssl-legacy-provider  build",
+    "test": "react-scripts --openssl-legacy-provider  test",
     "eject": "react-scripts eject"
   },
   "overrides": {
@@ -48,8 +45,6 @@
     ]
   },
   "devDependencies": {
-    "@emotion/babel-plugin": "^11.10.6",
-    "@emotion/babel-preset-css-prop": "^11.10.0",
     "react-slick": "^0.29.0"
   }
 }

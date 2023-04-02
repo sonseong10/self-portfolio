@@ -1,11 +1,11 @@
 import React from "react";
-import { css } from "@emotion/react";
 import SkillBar from "./progress/skill-bar";
 import LoadingSkeleton from "./loading-skeleton";
+import styled from "styled-components";
 
 const SkillList = ({ list, sectionRef, loading }) => {
   return (
-    <ul css={listStyle}>
+    <ListStyle>
       {loading ? (
         <LoadingSkeleton count={9} />
       ) : (
@@ -13,13 +13,13 @@ const SkillList = ({ list, sectionRef, loading }) => {
           <SkillBar key={item.uid} item={item} sectionRef={sectionRef} />
         ))
       )}
-    </ul>
+    </ListStyle>
   );
 };
 
 export default SkillList;
 
-const listStyle = css`
+const ListStyle = styled.ol`
   margin: 0;
   padding-left: 0;
   list-style: none;

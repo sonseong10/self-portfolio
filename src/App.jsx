@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import GlobalHeader from "./components/global-header/global-header";
 import Home from "./components/home/home";
 import Skill from "./components/skill/skill";
-import styled from "styled-components";
 import Projects from "./components/projects/projects";
 import Layout from "./components/common/layout";
 import Promotion from "./components/promotion/promotion";
@@ -17,8 +16,9 @@ import ToTop from "./components/common/to-top";
 import palette from "./assets/styles/constants/palette";
 import useTheme from "./utils/useTheme";
 import media from "./assets/styles/constants/media";
+import { createGlobalStyle } from "styled-components";
 
-const GlobalStyle = styled.div`
+const GlobalStyle = createGlobalStyle`
   html,
   body,
   #root {
@@ -167,20 +167,21 @@ function App({ fetchItem }) {
 
   return (
     <BrowserRouter>
-      <GlobalStyle>
-        <div className={`App ${theme === "dark" ? "dark" : undefined}`}>
-          <Layout.Header>
-            <GlobalHeader
-              sectionRef={sectionRef}
-              artwork={artwork}
-              toggleTheme={onToggle}
-              theme={theme}
-            />
-          </Layout.Header>
+      <GlobalStyle />
+      <div className={`App ${theme === "dark" ? "dark" : undefined}`}>
+        <Layout.Header>
+          <GlobalHeader
+            sectionRef={sectionRef}
+            artwork={artwork}
+            toggleTheme={onToggle}
+            theme={theme}
+          />
+        </Layout.Header>
 
-          <Routes>
+        <Routes>
+          <Route path="/">
             <Route
-              path="/"
+              path="main"
               element={
                 <Layout.Main>
                   <Home />
@@ -199,40 +200,39 @@ function App({ fetchItem }) {
                   <About />
                 </Layout.Main>
               }
-            >
-              <Route
-                path="artwork/:uid"
-                element={
-                  <Layout>
-                    <Gallery artwork={artwork} />
-                  </Layout>
-                }
-              />
-              <Route
-                path={"error"}
-                element={
-                  <Layout>
-                    <ErrorPage />
-                  </Layout>
-                }
-              />
-              <Route
-                path={"*"}
-                element={
-                  <Layout>
-                    <ErrorPage />
-                  </Layout>
-                }
-              />
-            </Route>
-          </Routes>
+            />
+            <Route
+              path="artwork/:uid"
+              element={
+                <Layout>
+                  <Gallery artwork={artwork} />
+                </Layout>
+              }
+            />
+            <Route
+              path={"error"}
+              element={
+                <Layout>
+                  <ErrorPage />
+                </Layout>
+              }
+            />
+            <Route
+              path={"*"}
+              element={
+                <Layout>
+                  <ErrorPage />
+                </Layout>
+              }
+            />
+          </Route>
+        </Routes>
 
-          <Layout.Footer>
-            <GlobalFooter />
-          </Layout.Footer>
-        </div>
-        <ToTop />
-      </GlobalStyle>
+        <Layout.Footer>
+          <GlobalFooter />
+        </Layout.Footer>
+      </div>
+      <ToTop />
     </BrowserRouter>
   );
 }

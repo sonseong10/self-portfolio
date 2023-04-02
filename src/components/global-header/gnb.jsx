@@ -1,11 +1,11 @@
 import React, { memo, useEffect, useRef, useState } from "react";
-import { css } from "@emotion/react";
 import { resetButton } from "../../assets/styles/components/reset-button";
 import media from "../../assets/styles/constants/media";
 import palette from "../../assets/styles/constants/palette";
 import typography from "../../assets/styles/constants/typograpy";
 import Observer from "../../utils/observer";
 import ThemeButton from "../common/theme-button";
+import styled, { css } from "styled-components";
 
 const listItem = ["Skills", "Projects", "Artworks"];
 
@@ -30,7 +30,7 @@ const Gnb = memo(({ sectionRef, toggleTheme, theme }) => {
   };
   return (
     <>
-      <nav css={gnb}>
+      <NavigationBar>
         <h2 className="sr-only">global navgation</h2>
 
         <ul>
@@ -52,7 +52,7 @@ const Gnb = memo(({ sectionRef, toggleTheme, theme }) => {
             </li>
           ))}
         </ul>
-      </nav>
+      </NavigationBar>
       <ThemeButton toggleTheme={toggleTheme} theme={theme} />
     </>
   );
@@ -71,7 +71,7 @@ const gnbState = css`
   content: "";
 `;
 
-const gnb = css`
+const NavigationBar = styled.nav`
   flex: 1;
 
   ul {

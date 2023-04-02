@@ -1,20 +1,24 @@
 import React from "react";
-import { css } from "@emotion/react";
 import media from "../../assets/styles/constants/media";
+import styled from "styled-components";
 
 const SectionBody = ({ children, style }) => {
-  return <div css={sectionBody(style)}>{children}</div>;
+  return <SectionBodyStyle style={style}>{children}</SectionBodyStyle>;
 };
 
 const Inner = ({ children, ratio = 1, innerStyle }) => {
-  return <div css={inner(ratio, innerStyle)}>{children}</div>;
+  return (
+    <InnerStyle ratio={ratio} innerStyle={innerStyle}>
+      {children}
+    </InnerStyle>
+  );
 };
 
 SectionBody.Inner = Inner;
 
 export default SectionBody;
 
-const sectionBody = (style) => css`
+const SectionBodyStyle = styled.div`
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -33,14 +37,14 @@ const sectionBody = (style) => css`
     }
   }
 
-  ${style}
+  ${(props) => props.style}
 `;
 
-const inner = (ratio, style) => css`
+const InnerStyle = styled.div`
   flex: 1 1;
 
   ${media.desktop} {
-    flex: ${ratio};
+    flex: ${(props) => props.ratio};
   }
-  ${style};
+  ${(props) => props.style};
 `;

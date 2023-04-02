@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { css } from "@emotion/react";
 import { resetButton } from "../../assets/styles/components/reset-button";
 import palette from "../../assets/styles/constants/palette";
 import typography from "../../assets/styles/constants/typograpy";
 import media from "../../assets/styles/constants/media";
+import styled from "styled-components";
 
 const ToTop = () => {
   const [scrollFlag, setScrollFlag] = useState(false);
@@ -37,17 +37,17 @@ const ToTop = () => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
 
   return (
-    <div css={topBtn} className={scrollFlag ? "isActive" : undefined}>
+    <TopBtn className={scrollFlag ? "isActive" : undefined}>
       <button onClick={movoToTop} type="button" aria-label="Back to Top">
         Top
       </button>
-    </div>
+    </TopBtn>
   );
 };
 
 export default ToTop;
 
-const topBtn = css`
+const TopBtn = styled.div`
   display: none;
 
   ${media.desktop} {

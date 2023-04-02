@@ -1,18 +1,14 @@
 import React, { forwardRef } from "react";
-import { css } from "@emotion/react";
 import media from "../../assets/styles/constants/media";
+import styled from "styled-components";
 
 const GlobalSection = forwardRef(({ children }, ref) => {
-  return (
-    <section css={section} ref={ref}>
-      {children}
-    </section>
-  );
+  return <SectionStyle ref={ref}>{children}</SectionStyle>;
 });
 
 export default GlobalSection;
 
-const section = css`
+const SectionStyle = styled.section`
   margin-bottom: 60px;
 
   ${media.desktop} {

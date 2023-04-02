@@ -1,19 +1,19 @@
 import React from "react";
-import { css } from "@emotion/react";
 import palette from "../../assets/styles/constants/palette";
 import typography from "../../assets/styles/constants/typograpy";
+import styled from "styled-components";
 
 const SectionHeader = ({ title }) => {
   return (
-    <header css={sectionHeader}>
+    <SectionHeaderStyle>
       <h2>{title}</h2>
-    </header>
+    </SectionHeaderStyle>
   );
 };
 
 export default SectionHeader;
 
-const sectionHeader = css`
+const SectionHeaderStyle = styled.div`
   height: 36px;
   margin-bottom: 26px;
 

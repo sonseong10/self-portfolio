@@ -1,18 +1,18 @@
 import React from "react";
-import { css } from "@emotion/react";
 import palette from "../../assets/styles/constants/palette";
 import typography from "../../assets/styles/constants/typograpy";
 import media from "../../assets/styles/constants/media";
+import styled from "styled-components";
 
 const GlobalFooter = () => {
   return (
-    <dl css={fottorList}>
-      <div css={listItem} className="period">
+    <FottorList>
+      <ListItem className="period">
         <dt className="sr-only">Period</dt>
         <dd>2021-present</dd>
-      </div>
+      </ListItem>
 
-      <div css={listItem} className="license">
+      <ListItem className="license">
         <dt className="sr-only">License</dt>
         <dd>
           <a
@@ -23,9 +23,9 @@ const GlobalFooter = () => {
             MIT Licensed
           </a>
         </dd>
-      </div>
+      </ListItem>
 
-      <div css={listItem} className="author">
+      <ListItem className="author">
         <dt className="sr-only">Author</dt>
         <dd>
           <address>
@@ -38,14 +38,14 @@ const GlobalFooter = () => {
             </a>
           </address>
         </dd>
-      </div>
-    </dl>
+      </ListItem>
+    </FottorList>
   );
 };
 
 export default GlobalFooter;
 
-const fottorList = css`
+const FottorList = styled.dl`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -53,7 +53,7 @@ const fottorList = css`
   height: 140px;
 `;
 
-const listItem = css`
+const ListItem = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;

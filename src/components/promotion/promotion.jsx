@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { css } from "@emotion/react";
 import media from "../../assets/styles/constants/media";
 import palette from "../../assets/styles/constants/palette";
 import typography from "../../assets/styles/constants/typograpy";
 import SectionHeader from "../section-header/section-header";
 import GlobalSection from "../common/global-section";
 import Observer from "../../utils/observer";
+import styled from "styled-components";
 
 const Promotion = ({ promotionRef }) => {
   const [isActive, setIsActive] = useState(false);
@@ -20,49 +20,41 @@ const Promotion = ({ promotionRef }) => {
 
   return (
     <GlobalSection ref={promotionRef}>
-      <div css={smHidden}>
+      <SmHidden>
         <div className="sr-only">
           <SectionHeader title="promotion" />
         </div>
 
-        <p css={row} className="left">
-          <span
-            css={decoration}
-            className={`${isActive ? "isActive" : undefined} space`}
-          >
+        <RowText className="left">
+          <Decoration className={`${isActive ? "isActive" : undefined} space`}>
             I'M LEARNING
-          </span>
-          <span css={side} className={isActive ? "isActive" : undefined}>
+          </Decoration>
+          <SideText className={isActive ? "isActive" : undefined}>
             BRAND LOGO <br /> ILLUSTRATION
-          </span>
-        </p>
+          </SideText>
+        </RowText>
 
-        <p css={row} className="center">
-          <span css={decoration} className="regular">
-            WEB PUBLISHING
-          </span>
-        </p>
+        <RowText className="center">
+          <Decoration className="regular">WEB PUBLISHING</Decoration>
+        </RowText>
 
-        <p css={row} className="right">
-          <span
-            css={side}
-            className={`${isActive ? "isActive" : undefined} space`}
-          >
+        <RowText className="right">
+          <SideText className={`${isActive ? "isActive" : undefined} space`}>
             PASSION <br />
             IN
-          </span>
-          <span css={decoration} className={isActive ? "isActive" : undefined}>
+          </SideText>
+          <Decoration className={isActive ? "isActive" : undefined}>
             UI/UX DESIGN
-          </span>
-        </p>
-      </div>
+          </Decoration>
+        </RowText>
+      </SmHidden>
     </GlobalSection>
   );
 };
 
 export default Promotion;
 
-const smHidden = css`
+const SmHidden = styled.div`
   display: none;
 
   ${media.tablet} {
@@ -78,7 +70,7 @@ const smHidden = css`
   }
 `;
 
-const row = css`
+const RowText = styled.p`
   display: flex;
   align-items: center;
   margin: 0;
@@ -151,7 +143,7 @@ const row = css`
   }
 `;
 
-const decoration = css`
+const Decoration = styled.span`
   margin: 0;
   font-size: 32px;
   color: ${palette.gray[100]};
@@ -174,7 +166,7 @@ const decoration = css`
   }
 `;
 
-const side = css`
+const SideText = styled.span`
   ${typography.small}
   color: ${palette.gray[200]};
 

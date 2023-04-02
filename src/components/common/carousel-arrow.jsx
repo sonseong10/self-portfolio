@@ -1,8 +1,8 @@
 import React from "react";
-import { css } from "@emotion/react";
 import palette from "../../assets/styles/constants/palette";
 import MyIcon from "../icons/my-icon";
 import media from "../../assets/styles/constants/media";
+import styled from "styled-components";
 
 const CarouselArrow = ({ children }) => {
   return <button type="button">{children}</button>;
@@ -11,32 +11,30 @@ const CarouselArrow = ({ children }) => {
 const PrevArrow = (props) => {
   const { className, style, onClick } = props;
   return (
-    <button
+    <ToolBtn
       className={`${className} prevBtn`}
       style={{ ...style }}
-      css={toolBtn}
       onClick={onClick}
       type="button"
       aria-label="prev button"
     >
       <MyIcon name="chevron" />
-    </button>
+    </ToolBtn>
   );
 };
 
 const NextArrow = (props) => {
   const { className, style, onClick } = props;
   return (
-    <button
+    <ToolBtn
       className={`${className} nextBtn`}
       style={{ ...style }}
-      css={toolBtn}
       onClick={onClick}
       type="button"
       aria-label="next button"
     >
       <MyIcon name="chevron" />
-    </button>
+    </ToolBtn>
   );
 };
 
@@ -45,7 +43,7 @@ CarouselArrow.NextArrow = NextArrow;
 
 export default CarouselArrow;
 
-const toolBtn = css`
+const ToolBtn = styled.button`
   &.nextBtn,
   &.prevBtn {
     display: flex !important;

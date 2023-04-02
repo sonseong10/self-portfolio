@@ -1,20 +1,20 @@
 import React from "react";
-import { css } from "@emotion/react";
 import { useNavigate } from "react-router-dom";
 import Logo from "../../assets/images/logo.svg";
 import media from "../../assets/styles/constants/media";
 import palette from "../../assets/styles/constants/palette";
 import typography from "../../assets/styles/constants/typograpy";
 import BaseButton from "../common/base-button";
+import styled from "styled-components";
 
 const ErrorPage = () => {
   const history = useNavigate();
 
   const goToHome = () => {
-    history("/");
+    history("/main");
   };
   return (
-    <div css={pageWrap}>
+    <PageWrap>
       <img src={Logo} alt="brand logo" />
 
       <h2>죄송합니다. 페이지를 찾을 수 없습니다.</h2>
@@ -26,11 +26,11 @@ const ErrorPage = () => {
       </p>
 
       <BaseButton title="Back" handleEvent={goToHome} />
-    </div>
+    </PageWrap>
   );
 };
 
-const pageWrap = css`
+const PageWrap = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;

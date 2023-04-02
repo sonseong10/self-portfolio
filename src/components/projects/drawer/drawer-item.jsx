@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { css } from "@emotion/react";
 import { resetButton } from "../../../assets/styles/components/reset-button";
 import palette from "../../../assets/styles/constants/palette";
 import typography from "../../../assets/styles/constants/typograpy";
@@ -7,6 +6,7 @@ import MyIcon from "../../icons/my-icon";
 import media from "../../../assets/styles/constants/media";
 import Badge from "../../common/badge";
 import BaseButton from "../../common/base-button";
+import styled from "styled-components";
 
 const DrawerItem = ({ project, index }) => {
   const [isActive, setIsActive] = useState(false);
@@ -27,7 +27,7 @@ const DrawerItem = ({ project, index }) => {
   };
 
   return (
-    <li css={drawerItem}>
+    <DrawerItemStyle>
       <button
         onClick={onBtnClick}
         type="button"
@@ -35,58 +35,58 @@ const DrawerItem = ({ project, index }) => {
       >
         {title}
 
-        <div css={iconBox} className={isActive ? "isActive" : undefined}>
+        <IconBox className={isActive ? "isActive" : undefined}>
           <MyIcon name="chevron" />
-        </div>
+        </IconBox>
       </button>
 
-      <div css={info} className={isActive ? "isActive" : undefined}>
-        <div css={thumbnail}>
+      <Info className={isActive ? "isActive" : undefined}>
+        <Thumbnail>
           <img src={thumbnailURL} alt={`project 0${index}`} />
-        </div>
+        </Thumbnail>
 
-        <div css={detail}>
-          <dl css={detailList}>
-            <div css={detailItem}>
+        <Detail>
+          <DetailList>
+            <DetailItem>
               <dt>제목</dt>
               <dd>{title}</dd>
-            </div>
-            <div css={detailItem}>
+            </DetailItem>
+            <DetailItem>
               <dt>내용</dt>
               <dd>{desc}</dd>
-            </div>
-            <div css={detailItem}>
+            </DetailItem>
+            <DetailItem>
               <dt>역할</dt>
               <dd>{role}</dd>
-            </div>
-            <div css={detailItem}>
+            </DetailItem>
+            <DetailItem>
               <dt>인원</dt>
               <dd>{personnel}</dd>
-            </div>
-            <div css={detailItem}>
+            </DetailItem>
+            <DetailItem>
               <dt>핵심기술</dt>
               <dd className="badgeGroup">
                 {stack.map((item, index) => (
                   <Badge key={index} name={item} color="gray"></Badge>
                 ))}
               </dd>
-            </div>
-          </dl>
+            </DetailItem>
+          </DetailList>
 
-          <div css={btnGroup}>
+          <BtnGroup>
             <BaseButton.Link title="GitHub" URL={githubURL} />
 
             {deployURL && <BaseButton.Link title="DemoSite" URL={deployURL} />}
-          </div>
-        </div>
-      </div>
-    </li>
+          </BtnGroup>
+        </Detail>
+      </Info>
+    </DrawerItemStyle>
   );
 };
 
 export default DrawerItem;
 
-const drawerItem = css`
+const DrawerItemStyle = styled.li`
   button {
     position: relative;
     ${resetButton}
@@ -105,7 +105,7 @@ const drawerItem = css`
   }
 `;
 
-const iconBox = css`
+const IconBox = styled.span`
   position: absolute;
   top: 50%;
   right: 8px;
@@ -132,7 +132,7 @@ const iconBox = css`
   }
 `;
 
-const info = css`
+const Info = styled.div`
   padding: 0;
   max-height: 0;
   border-bottom: 1px solid ${palette.gray[500]};
@@ -150,7 +150,7 @@ const info = css`
   }
 `;
 
-const thumbnail = css`
+const Thumbnail = styled.div`
   width: 100%;
   margin-bottom: 12px;
 
@@ -181,7 +181,7 @@ const thumbnail = css`
   }
 `;
 
-const detail = css`
+const Detail = styled.div`
   flex: 1;
 
   ${media.tablet} {
@@ -189,7 +189,7 @@ const detail = css`
   }
 `;
 
-const detailList = css`
+const DetailList = styled.dl`
   margin: 0;
   margin-bottom: 8px;
 
@@ -198,7 +198,7 @@ const detailList = css`
   }
 `;
 
-const detailItem = css`
+const DetailItem = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -231,7 +231,7 @@ const detailItem = css`
   }
 `;
 
-const btnGroup = css`
+const BtnGroup = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;

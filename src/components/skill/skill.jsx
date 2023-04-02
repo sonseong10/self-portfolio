@@ -4,7 +4,7 @@ import LeftGroup from "./left-group/left-group";
 import RightGroup from "./right-group/right-group";
 import GlobalSection from "../common/global-section";
 import SectionBody from "../common/section-body";
-import { css } from "@emotion/react";
+import styled from "styled-components";
 
 const Skill = ({ skills, sectionRef, loading }) => {
   const skillRef = (el) => (sectionRef.current[0] = el);
@@ -13,7 +13,7 @@ const Skill = ({ skills, sectionRef, loading }) => {
     <GlobalSection ref={skillRef}>
       <SectionHeader title={"Skills"} />
 
-      <SectionBody style={moblieRow}>
+      <SectionBodyStyle>
         <SectionBody.Inner ratio={2}>
           <LeftGroup
             skills={skills}
@@ -25,14 +25,14 @@ const Skill = ({ skills, sectionRef, loading }) => {
         <SectionBody.Inner>
           <RightGroup />
         </SectionBody.Inner>
-      </SectionBody>
+      </SectionBodyStyle>
     </GlobalSection>
   );
 };
 
 export default Skill;
 
-const moblieRow = css`
+const SectionBodyStyle = styled(SectionBody)`
   @media (orientation: landscape) {
     flex-direction: row;
     align-items: center;

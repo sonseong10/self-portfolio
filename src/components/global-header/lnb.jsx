@@ -1,45 +1,41 @@
 import React, { useEffect, useState } from "react";
-import { css } from "@emotion/react";
 import { resetButton } from "../../assets/styles/components/reset-button";
 import media from "../../assets/styles/constants/media";
 import palette from "../../assets/styles/constants/palette";
 import typography from "../../assets/styles/constants/typograpy";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import styled from "styled-components";
 
 const Lnb = ({ artwork }) => {
   const history = useNavigate();
+  const location = useLocation();
 
   const [item, setUid] = useState({});
 
   useEffect(() => {
-    const pathname = history.location.pathname;
+    const pathname = location.pathname;
     const uid = pathname.charAt(pathname.length - 1);
     setUid({ ...artwork[uid] });
-  }, [artwork, history.location.pathname]);
+  }, [artwork, location.pathname]);
 
   const goToBack = () => {
-    history.goBack();
+    history(-1);
   };
 
   return (
     <>
-      {item && <h2 css={title}>{item.title}</h2>}
+      {item && <LocationBack>{item.title}</LocationBack>}
 
-      <button
-        css={backBtn}
-        onClick={goToBack}
-        type="button"
-        aria-label="Go back"
-      >
+      <BackBtn onClick={goToBack} type="button" aria-label="Go back">
         Back
-      </button>
+      </BackBtn>
     </>
   );
 };
 
 export default Lnb;
 
-const title = css`
+const LocationBack = styled.h2`
   position: absolute;
   top: 50%;
   left: 50%;
@@ -50,7 +46,7 @@ const title = css`
   transform: translate(-50%, -50%);
 `;
 
-const backBtn = css`
+const BackBtn = styled.button`
   position: absolute;
   right: 0;
   ${resetButton}

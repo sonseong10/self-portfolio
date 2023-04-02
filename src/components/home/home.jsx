@@ -1,24 +1,24 @@
 import React, { memo } from "react";
-import { css } from "@emotion/react";
 import typography from "../../assets/styles/constants/typograpy";
 import palette from "../../assets/styles/constants/palette";
 import media from "../../assets/styles/constants/media";
 import GlobalSection from "../common/global-section";
+import styled from "styled-components";
 
 const Home = memo(() => {
   return (
     <GlobalSection>
-      <div css={home}>
-        <div css={homeLeft}>
+      <HomeWrapper>
+        <HomeLeft>
           <h1>Developer</h1>
 
           <p>
             성실하게 팀원과 협업 하며 변함없이 <br />
             열심히 나아가는 개발자입니다.
           </p>
-        </div>
+        </HomeLeft>
 
-        <div css={homeRight}>
+        <HomeRight>
           <dl>
             <div>
               <dt>Email</dt>
@@ -39,13 +39,13 @@ const Home = memo(() => {
               </dd>
             </div>
           </dl>
-        </div>
-      </div>
+        </HomeRight>
+      </HomeWrapper>
     </GlobalSection>
   );
 });
 
-const home = css`
+const HomeWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -59,7 +59,7 @@ const home = css`
   }
 `;
 
-const homeLeft = css`
+const HomeLeft = styled.div`
   margin-bottom: 80px;
 
   h1,
@@ -96,7 +96,7 @@ const homeLeft = css`
   }
 `;
 
-const homeRight = css`
+const HomeRight = styled.div`
   dl {
     display: flex;
     align-items: center;

@@ -1,11 +1,10 @@
 import React, { memo, useEffect, useState } from "react";
-import { css } from "@emotion/react";
-import { useMatch, useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import styled from "styled-components";
 
 const Gallery = memo(({ artwork }) => {
   const history = useNavigate();
-  const match = useMatch();
-  const uid = match.params.uid;
+  const { uid } = useParams();
 
   const [item, setUid] = useState({});
   useEffect(() => {
@@ -14,24 +13,25 @@ const Gallery = memo(({ artwork }) => {
     } else {
       history("/error");
     }
+    window.scrollTo(0, 0);
   }, [artwork, uid, history]);
 
   const { designURL } = item;
 
   return (
-    <div css={imgWrap}>
+    <ImgWrap>
       {designURL ? (
         <img src={designURL} alt={`${designURL} Design result`} />
       ) : (
-        <p css={loding}>Loding...</p>
+        <LodingText>Loding...</LodingText>
       )}
-    </div>
+    </ImgWrap>
   );
 });
 
 export default Gallery;
 
-const imgWrap = css`
+const ImgWrap = styled.div`
   width: 100%;
   margin: 0 auto;
   min-height: 100vh;
@@ -45,6 +45,6 @@ const imgWrap = css`
   }
 `;
 
-const loding = css`
+const LodingText = styled.p`
   text-align: center;
 `;

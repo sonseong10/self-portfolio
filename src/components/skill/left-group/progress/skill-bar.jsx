@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { css } from "@emotion/react";
 import media from "../../../../assets/styles/constants/media";
 import palette from "../../../../assets/styles/constants/palette";
 import typography from "../../../../assets/styles/constants/typograpy";
 import Observer from "../../../../utils/observer";
+import styled from "styled-components";
 
 const SkillBar = ({ item, sectionRef }) => {
   const [isActive, setIsActive] = useState(false);
@@ -17,19 +17,19 @@ const SkillBar = ({ item, sectionRef }) => {
   }, [sectionRef]);
 
   return (
-    <li css={listItem} aria-label="skill level">
+    <ListItem aria-label="skill level">
       <strong>{item.name}</strong>
-      <div css={progress} aria-hidden>
-        <div css={isActive && charge(item.score)}></div>
-      </div>
+      <Progress aria-hidden>
+        {isActive && <Score score={item.score} />}
+      </Progress>
       <strong>{item.score}%</strong>
-    </li>
+    </ListItem>
   );
 };
 
 export default SkillBar;
 
-const listItem = css`
+const ListItem = styled.li`
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -54,7 +54,7 @@ const listItem = css`
   }
 `;
 
-const progress = css`
+const Progress = styled.div`
   flex: 3;
   height: 8px;
   margin: 0 10px;
@@ -76,7 +76,7 @@ const progress = css`
   }
 `;
 
-const charge = (score) => css`
-  max-width: ${score}%;
+const Score = styled.div`
+  max-width: ${(props) => props.score}%;
   transform: none !important;
 `;

@@ -1,50 +1,42 @@
 import React from "react";
-import { css } from "@emotion/react";
 import logo from "../../assets/images/logo.svg";
 import media from "../../assets/styles/constants/media";
 import Gnb from "./gnb";
 import { resetButton } from "../../assets/styles/components/reset-button";
 import palette from "../../assets/styles/constants/palette";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Lnb from "./lnb";
+import styled from "styled-components";
 
 const GlobalHeader = ({ sectionRef, artwork, toggleTheme, theme }) => {
   const history = useNavigate();
+  const loaction = useLocation();
 
   const goToRoot = () => {
-    history("/");
+    history("/main");
     window.scrollTo(0, 0);
   };
 
   return (
-    <div css={headerWrapper}>
-      <button onClick={goToRoot} css={rootBtn}>
-        <figure css={logoWrap}>
+    <HeaderWrapper>
+      <RootBtn onClick={goToRoot}>
+        <LogoImage>
           <img src={logo} alt="" />
           <figcaption className="sr-only">Brand logo</figcaption>
-        </figure>
-      </button>
+        </LogoImage>
+      </RootBtn>
+      {!loaction.pathname.includes("art") && (
+        <Gnb sectionRef={sectionRef} toggleTheme={toggleTheme} theme={theme} />
+      )}
 
-      {/* <Routes>
-        <Route path="/" exact>
-          <Gnb
-            sectionRef={sectionRef}
-            toggleTheme={toggleTheme}
-            theme={theme}
-          />
-        </Route>
-
-        <Route path="/artwork/:uid">
-          <Lnb artwork={artwork} />
-        </Route>
-      </Routes> */}
-    </div>
+      {loaction.pathname.includes("art") && <Lnb artwork={artwork} />}
+    </HeaderWrapper>
   );
 };
 
 export default GlobalHeader;
 
-const headerWrapper = css`
+const HeaderWrapper = styled.div`
   position: relative;
   display: flex;
   align-items: center;
@@ -52,7 +44,7 @@ const headerWrapper = css`
   height: 60px;
 `;
 
-const rootBtn = css`
+const RootBtn = styled.button`
   ${resetButton}
   background-color: ${palette.white};
   margin-right: 12px;
@@ -62,7 +54,7 @@ const rootBtn = css`
   }
 `;
 
-const logoWrap = css`
+const LogoImage = styled.figure`
   display: flex;
   align-items: center;
   justify-content: center;

@@ -1,10 +1,10 @@
 import React from "react";
-import { css } from "@emotion/react";
 import GlobalSection from "../common/global-section";
 import SectionHeader from "../section-header/section-header";
 import SectionBody from "../common/section-body";
 import palette from "../../assets/styles/constants/palette";
 import DrawerItem from "./drawer/drawer-item";
+import styled from "styled-components";
 
 const Projects = ({ projects, sectionRef }) => {
   return (
@@ -12,11 +12,11 @@ const Projects = ({ projects, sectionRef }) => {
       <SectionHeader title={"Projects"} />
 
       <SectionBody>
-        <ul css={projectList}>
+        <ProjectList>
           {projects.map((project, index) => (
             <DrawerItem key={index} project={project} index={index} />
           ))}
-        </ul>
+        </ProjectList>
       </SectionBody>
     </GlobalSection>
   );
@@ -24,7 +24,7 @@ const Projects = ({ projects, sectionRef }) => {
 
 export default Projects;
 
-const projectList = css`
+const ProjectList = styled.ul`
   margin: 0;
   padding-left: 0;
   width: 100%;

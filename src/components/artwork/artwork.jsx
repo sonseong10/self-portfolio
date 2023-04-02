@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { css } from "@emotion/react";
 import { artworkSettings } from "../../utils/slick-carousel";
 import SectionHeader from "../section-header/section-header";
 import GlobalSection from "../common/global-section";
@@ -10,6 +9,7 @@ import typography from "../../assets/styles/constants/typograpy";
 import BaseButton from "../common/base-button";
 import LoadingSkeleton from "./loading-skeleton";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 
 const Artwork = ({ artwork, sectionRef, loading }) => {
   const history = useNavigate();
@@ -17,20 +17,20 @@ const Artwork = ({ artwork, sectionRef, loading }) => {
   const [loaded, setLoaded] = useState(false);
 
   const goToGallery = (index) => {
-    history(`artwork/${index}`);
+    history(`/artwork/${index}`);
   };
 
   return (
     <GlobalSection ref={(el) => (sectionRef.current[2] = el)}>
       <SectionHeader title="Artworks" />
 
-      <div css={carouselWrap}>
+      <CarouselWrap>
         {loading ? (
           <LoadingSkeleton />
         ) : (
           <Carousel setting={artworkSettings}>
             {artwork.map((item, index) => (
-              <div key={item.uid} css={card}>
+              <Card key={item.uid}>
                 <div className="imgBox">
                   {loaded ? null : (
                     <div
@@ -50,24 +50,24 @@ const Artwork = ({ artwork, sectionRef, loading }) => {
 
                 <strong>{item.title}</strong>
 
-                <div css={btnWrap}>
+                <BtnWrap>
                   <BaseButton
                     title="More"
                     handleEvent={() => goToGallery(index)}
                   />
-                </div>
-              </div>
+                </BtnWrap>
+              </Card>
             ))}
           </Carousel>
         )}
-      </div>
+      </CarouselWrap>
     </GlobalSection>
   );
 };
 
 export default Artwork;
 
-const carouselWrap = css`
+const CarouselWrap = styled.div`
   margin: 0 -10px;
 
   .slick-dots {
@@ -118,7 +118,7 @@ const carouselWrap = css`
   }
 `;
 
-const card = css`
+const Card = styled.div`
   position: relative;
   margin-bottom: 24px;
 
@@ -150,7 +150,7 @@ const card = css`
   }
 `;
 
-const btnWrap = css`
+const BtnWrap = styled.div`
   display: flex !important;
   justify-content: center;
   align-items: center;

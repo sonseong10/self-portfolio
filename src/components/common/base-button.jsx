@@ -1,26 +1,22 @@
 import React from "react";
-import { css } from "@emotion/react";
 import { resetButton } from "../../assets/styles/components/reset-button";
 import media from "../../assets/styles/constants/media";
 import palette from "../../assets/styles/constants/palette";
 import typography from "../../assets/styles/constants/typograpy";
+import styled, { css } from "styled-components";
 
 const BaseButton = ({ title, handleEvent }) => {
   return (
-    <button css={primaryBtn} type="button" onClick={handleEvent}>
+    <PrimaryBtn type="button" onClick={handleEvent}>
       {title}
-    </button>
+    </PrimaryBtn>
   );
 };
 
 export default BaseButton;
 
 const Link = ({ title, URL }) => {
-  return (
-    <a href={URL} css={primaryLink}>
-      {title}
-    </a>
-  );
+  return <PrimaryLink href={URL}>{title}</PrimaryLink>;
 };
 
 BaseButton.Link = Link;
@@ -56,12 +52,12 @@ const baseStyle = css`
   }
 `;
 
-const primaryBtn = css`
+const PrimaryBtn = styled.button`
   width: 140px;
   ${baseStyle}
 `;
 
-const primaryLink = css`
+const PrimaryLink = styled.a`
   ${baseStyle}
   width: 46%;
 
