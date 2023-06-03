@@ -1,26 +1,17 @@
-import React, { useState } from "react";
-import { resetButton } from "../../../assets/styles/components/reset-button";
-import palette from "../../../assets/styles/constants/palette";
-import typography from "../../../assets/styles/constants/typograpy";
-import MyIcon from "../../icons/my-icon";
-import media from "../../../assets/styles/constants/media";
-import Badge from "../../common/badge";
-import BaseButton from "../../common/base-button";
-import styled from "styled-components";
+import React, {useState} from 'react';
+import {resetButton} from '../../../assets/styles/components/reset-button';
+import palette from '../../../assets/styles/constants/palette';
+import typography from '../../../assets/styles/constants/typograpy';
+import MyIcon from '../../icons/my-icon';
+import media from '../../../assets/styles/constants/media';
+import Badge from '../../common/badge';
+import BaseButton from '../../common/base-button.tsx';
+import styled from 'styled-components';
 
-const DrawerItem = ({ project, index }) => {
+const DrawerItem = ({project, index}) => {
   const [isActive, setIsActive] = useState(false);
 
-  const {
-    thumbnailURL,
-    title,
-    desc,
-    role,
-    personnel,
-    stack,
-    githubURL,
-    deployURL,
-  } = project;
+  const {thumbnailURL, title, desc, role, personnel, stack, githubURL, deployURL} = project;
 
   const onBtnClick = () => {
     setIsActive(!isActive);
@@ -28,19 +19,15 @@ const DrawerItem = ({ project, index }) => {
 
   return (
     <DrawerItemStyle>
-      <button
-        onClick={onBtnClick}
-        type="button"
-        aria-label={`${title} 펼쳐보기`}
-      >
+      <button onClick={onBtnClick} type="button" aria-label={`${title} 펼쳐보기`}>
         {title}
 
-        <IconBox className={isActive ? "isActive" : undefined}>
+        <IconBox className={isActive ? 'isActive' : undefined}>
           <MyIcon name="chevron" />
         </IconBox>
       </button>
 
-      <Info className={isActive ? "isActive" : undefined}>
+      <Info className={isActive ? 'isActive' : undefined}>
         <Thumbnail>
           <img src={thumbnailURL} alt={`project 0${index}`} />
         </Thumbnail>
@@ -211,7 +198,7 @@ const DetailItem = styled.div`
 
     &::after {
       margin-right: 8px;
-      content: ":";
+      content: ':';
     }
   }
 
