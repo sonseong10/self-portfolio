@@ -10,7 +10,7 @@ const Home = () => {
     <GlobalSection>
       <HomeWrapper>
         <HomeLeft>
-          <h1>Developer</h1>
+          <h1>FE Developer</h1>
 
           <p>
             성실하게 팀원과 협업 하며 변함없이 <br />

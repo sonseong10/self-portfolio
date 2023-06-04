@@ -25,8 +25,8 @@ const SkillBar = ({item, sectionRef}: ISkillBarProps) => {
   return (
     <ListItem aria-label="skill level">
       <strong>{item.name}</strong>
-      <Progress aria-hidden>{isActive && <Score score={item.score} />}</Progress>
-      <strong>{item.score}%</strong>
+      <Progress aria-hidden>{isActive && <Score score={item.score + (item.alpa ? item.alpa : 0)} />}</Progress>
+      <strong>{item.score + (item.alpa ? item.alpa : 0)}%</strong>
     </ListItem>
   );
 };
