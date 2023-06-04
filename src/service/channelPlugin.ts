@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 class ChannelService {
   constructor() {
     this.loadScript();
@@ -43,7 +44,7 @@ class ChannelService {
     }
   }
 
-  boot(settings: any) {
+  boot(settings: unknown) {
     window.ChannelIO('boot', settings);
   }
 

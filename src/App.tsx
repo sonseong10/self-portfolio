@@ -17,6 +17,8 @@ import palette from './assets/styles/constants/palette';
 import useTheme from './utils/useTheme';
 import media from './assets/styles/constants/media';
 import {createGlobalStyle} from 'styled-components';
+import FetchItem from './service/fetch-item';
+import type {IArtWorkData, IProjectData, ISkillsData} from 'types/type';
 
 const GlobalStyle = createGlobalStyle`
   html,
@@ -110,23 +112,27 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-function App({fetchItem}: any) {
+interface IAppProps {
+  fetchItem: FetchItem;
+}
+
+function App({fetchItem}: IAppProps) {
   const sectionRef = useRef<HTMLElement[]>([]);
   const promotionRef = useRef<HTMLElement>(null);
 
-  const [skills, setSkills] = useState([]);
+  const [skills, setSkills] = useState<ISkillsData[]>([]);
   const [skillLoading, setSkillLoading] = useState<boolean | undefined>(undefined);
 
-  const [projects, setProjects] = useState([]);
+  const [projects, setProjects] = useState<IProjectData[]>([]);
 
-  const [artwork, setArtwork] = useState([]);
+  const [artwork, setArtwork] = useState<IArtWorkData[]>([]);
   const [artworkLoading, setArtworkLoading] = useState<boolean | undefined>(undefined);
+  const {theme, toggleTheme} = useTheme();
 
-  const [theme, onToggle] = useTheme();
   useEffect(() => {
     try {
       setSkillLoading(true);
-      const stopSync = fetchItem.fetchData((skills: any) => {
+      const stopSync = fetchItem.fetchData((skills: ISkillsData[]) => {
         setSkills(skills);
         setSkillLoading(false);
       }, 'skills');
@@ -140,7 +146,7 @@ function App({fetchItem}: any) {
   }, [fetchItem]);
 
   useEffect(() => {
-    const stopSync = fetchItem.fetchData((projects: any) => {
+    const stopSync = fetchItem.fetchData((projects: IProjectData[]) => {
       setProjects(projects);
     }, 'projects');
     return () => {
@@ -151,7 +157,7 @@ function App({fetchItem}: any) {
   useEffect(() => {
     try {
       setArtworkLoading(true);
-      const stopSync = fetchItem.fetchData((artworks: any) => {
+      const stopSync = fetchItem.fetchData((artworks: IArtWorkData[]) => {
         setArtwork(artworks);
         setArtworkLoading(false);
       }, 'artwork');
@@ -170,13 +176,13 @@ function App({fetchItem}: any) {
       <GlobalStyle />
       <div className={`App ${theme === 'dark' ? 'dark' : undefined}`}>
         <Layout.Header>
-          <GlobalHeader sectionRef={sectionRef} artwork={artwork} toggleTheme={onToggle} theme={theme} />
+          <GlobalHeader sectionRef={sectionRef} artwork={artwork} toggleTheme={toggleTheme} theme={theme} />
         </Layout.Header>
 
         <Routes>
           <Route path="/">
             <Route
-              path="main"
+              path="/"
               element={
                 <Layout.Main>
                   <Home />
@@ -187,9 +193,9 @@ function App({fetchItem}: any) {
                   <Artwork artwork={artwork} sectionRef={sectionRef} loading={artworkLoading} />
                 </Layout.Main>
               }
-            />
+            ></Route>
             <Route
-              path="artwork/:uid"
+              path="/artwork/:uid"
               element={
                 <Layout>
                   <Gallery artwork={artwork} />
@@ -197,7 +203,7 @@ function App({fetchItem}: any) {
               }
             />
             <Route
-              path={'error'}
+              path={'/error'}
               element={
                 <Layout>
                   <ErrorPage />

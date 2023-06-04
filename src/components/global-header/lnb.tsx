@@ -5,20 +5,21 @@ import palette from '../../assets/styles/constants/palette';
 import typography from '../../assets/styles/constants/typograpy';
 import {useLocation, useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
+import type {IArtWorkData} from 'types/type';
 
 interface ILnbProps {
-  artwork: any;
+  artwork: IArtWorkData[];
 }
 const Lnb = ({artwork}: ILnbProps) => {
   const history = useNavigate();
   const location = useLocation();
 
-  const [item, setUid] = useState<{title: string}>();
+  const [item, setItem] = useState<{title: string}>();
 
   useEffect(() => {
     const pathname = location.pathname;
     const uid = pathname.charAt(pathname.length - 1);
-    setUid({...artwork[uid]});
+    setItem({...artwork[Number(uid)]});
   }, [artwork, location.pathname]);
 
   const goToBack = () => {
@@ -27,7 +28,7 @@ const Lnb = ({artwork}: ILnbProps) => {
 
   return (
     <>
-      {item && <LocationBack>{item.title}</LocationBack>}
+      {item && <Title>{item.title}</Title>}
 
       <BackBtn onClick={goToBack} type="button" aria-label="Go back">
         Back
@@ -38,7 +39,7 @@ const Lnb = ({artwork}: ILnbProps) => {
 
 export default Lnb;
 
-const LocationBack = styled.h2`
+const Title = styled.h2`
   position: absolute;
   top: 50%;
   left: 50%;

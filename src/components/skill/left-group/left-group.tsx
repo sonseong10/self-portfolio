@@ -1,11 +1,12 @@
 import React from 'react';
 import SkillList from './skill-list';
 import styled from 'styled-components';
+import type {ISkillsData} from 'types/type';
 
 interface ILeftGroupProps {
-  skills: any;
-  sectionRef: any;
-  loading: boolean;
+  skills: ISkillsData[];
+  sectionRef: React.MutableRefObject<HTMLElement[]>;
+  loading: boolean | undefined;
 }
 
 const LeftGroup = ({skills, sectionRef, loading}: ILeftGroupProps) => {

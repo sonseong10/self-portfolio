@@ -8,8 +8,8 @@ import styled from 'styled-components';
 const ToTop = () => {
   const [scrollFlag, setScrollFlag] = useState(false);
 
-  const throttle = (callback: any, delay: number) => {
-    let time: any = null;
+  const throttle = (callback: () => void, delay: number) => {
+    let time: NodeJS.Timeout | null = null;
 
     return () => {
       if (time) return;

@@ -19,7 +19,7 @@ const About = () => {
 
   return (
     <GlobalSection>
-      <SectionHeader title="About" />
+      <SectionHeader title="Information" />
 
       <SectionBody>
         <SectionBody.Inner innerStyle={leftInner}>

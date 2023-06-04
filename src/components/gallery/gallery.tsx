@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useNavigate, useParams} from 'react-router-dom';
 import styled from 'styled-components';
+import type {IArtWorkData} from 'types/type';
 
 const ImgWrap = styled.div`
   width: 100%;
@@ -21,28 +22,30 @@ const LodingText = styled.p`
 `;
 
 interface IGalleryProps {
-  artwork: any;
+  artwork: IArtWorkData[];
 }
 
 const Gallery = ({artwork}: IGalleryProps) => {
   const history = useNavigate();
   const {uid} = useParams();
 
-  const [item, setUid] = useState({});
+  const [item, setItem] = useState<IArtWorkData | undefined>(undefined);
   useEffect(() => {
     if (uid && Number(uid) <= artwork.length - 1) {
-      setUid({...artwork[uid]});
+      setItem({...artwork[Number(uid)]});
     } else {
       history('/error');
     }
     window.scrollTo(0, 0);
-  }, [artwork, uid, history]);
-
-  const {designURL}: any = item;
+  }, [artwork, uid]);
 
   return (
     <ImgWrap>
-      {designURL ? <img src={designURL} alt={`${designURL} Design result`} /> : <LodingText>Loding...</LodingText>}
+      {item?.designURL ? (
+        <img src={item.designURL} alt={`${item.designURL} Design result`} />
+      ) : (
+        <LodingText>Loding...</LodingText>
+      )}
     </ImgWrap>
   );
 };

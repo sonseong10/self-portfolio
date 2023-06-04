@@ -8,16 +8,17 @@ import Observer from '../../utils/observer';
 import styled from 'styled-components';
 
 interface IPromotionProps {
-  promotionRef: any;
+  promotionRef: React.RefObject<HTMLElement>;
 }
 
 const Promotion = ({promotionRef}: IPromotionProps) => {
-  const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive] = useState<boolean | Element>(false);
 
   useEffect(() => {
     const observer = Observer(setIsActive);
-
-    observer.observe(promotionRef.current);
+    if (promotionRef.current) {
+      observer.observe(promotionRef.current);
+    }
 
     return () => observer.disconnect();
   }, [promotionRef]);

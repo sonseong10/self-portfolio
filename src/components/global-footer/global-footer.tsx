@@ -3,6 +3,7 @@ import palette from '../../assets/styles/constants/palette';
 import typography from '../../assets/styles/constants/typograpy';
 import media from '../../assets/styles/constants/media';
 import styled from 'styled-components';
+import {Link} from 'react-router-dom';
 
 const GlobalFooter = () => {
   return (
@@ -15,9 +16,9 @@ const GlobalFooter = () => {
       <ListItem className="license">
         <dt className="sr-only">License</dt>
         <dd>
-          <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer">
+          <Link to="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer">
             MIT Licensed
-          </a>
+          </Link>
         </dd>
       </ListItem>
 
@@ -25,9 +26,9 @@ const GlobalFooter = () => {
         <dt className="sr-only">Author</dt>
         <dd>
           <address>
-            <a href="https://github.com/sonseong10" target="_blank" rel="noopener noreferrer">
+            <Link to="https://github.com/sonseong10" target="_blank" rel="noopener noreferrer">
               Son seongyeol
-            </a>
+            </Link>
           </address>
         </dd>
       </ListItem>

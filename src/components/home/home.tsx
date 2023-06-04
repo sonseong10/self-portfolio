@@ -29,7 +29,7 @@ const Home = () => {
 
             <div>
               <dt>Name</dt>
-              <dd>Son seongyeol</dd>
+              <dd>손 성열(seongyeol Son)</dd>
             </div>
 
             <div>

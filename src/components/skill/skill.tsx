@@ -5,6 +5,7 @@ import RightGroup from './right-group/right-group';
 import GlobalSection from '../common/global-section';
 import SectionBody from '../common/section-body';
 import styled from 'styled-components';
+import type {ISkillsData} from 'types/type';
 
 const SectionBodyStyle = styled(SectionBody)`
   @media (orientation: landscape) {
@@ -14,16 +15,18 @@ const SectionBodyStyle = styled(SectionBody)`
 `;
 
 interface ISkillProps {
-  skills: any;
-  sectionRef: any;
-  loading: any;
+  skills: ISkillsData[];
+  sectionRef: React.MutableRefObject<HTMLElement[]>;
+  loading: boolean | undefined;
 }
 
 const Skill = ({skills, sectionRef, loading}: ISkillProps) => {
-  // const skillRef = (el?: any) => (sectionRef.current[0] = el);
-
   return (
-    <GlobalSection ref={(el?: any) => (sectionRef.current[0] = el)}>
+    <GlobalSection
+      ref={el => {
+        if (el && sectionRef.current) sectionRef.current[0] = el;
+      }}
+    >
       <SectionHeader title={'Skills'} />
 
       <SectionBodyStyle>

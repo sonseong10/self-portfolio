@@ -7,9 +7,10 @@ import media from '../../../assets/styles/constants/media';
 import Badge from '../../common/badge';
 import BaseButton from '../../common/base-button';
 import styled from 'styled-components';
+import type {IProjectData} from 'types/type';
 
 interface IDrawerItemProps {
-  project: any;
+  project: IProjectData;
   index: number;
 }
 const DrawerItem = ({project, index}: IDrawerItemProps) => {
@@ -57,7 +58,7 @@ const DrawerItem = ({project, index}: IDrawerItemProps) => {
             <DetailItem>
               <dt>핵심기술</dt>
               <dd className="badgeGroup">
-                {stack.map((item: any, index: number) => (
+                {stack.map((item, index) => (
                   <Badge key={index} name={item} color="gray"></Badge>
                 ))}
               </dd>

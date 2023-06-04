@@ -11,7 +11,7 @@ const ErrorPage = () => {
   const history = useNavigate();
 
   const goToHome = () => {
-    history('/main');
+    history('/');
   };
   return (
     <PageWrap>

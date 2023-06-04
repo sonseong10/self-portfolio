@@ -5,33 +5,7 @@ import SectionBody from '../common/section-body';
 import palette from '../../assets/styles/constants/palette';
 import DrawerItem from './drawer/drawer-item';
 import styled from 'styled-components';
-
-interface IProjectsProps {
-  projects: any;
-  sectionRef: any;
-}
-
-const Projects = ({projects, sectionRef}: IProjectsProps) => {
-  return (
-    <GlobalSection
-      ref={(el: any) => {
-        if (el && sectionRef.current) sectionRef.current[1] = el;
-      }}
-    >
-      <SectionHeader title={'Projects'} />
-
-      <SectionBody>
-        <ProjectList>
-          {projects.map((project: any, index: number) => (
-            <DrawerItem key={index} project={project} index={index} />
-          ))}
-        </ProjectList>
-      </SectionBody>
-    </GlobalSection>
-  );
-};
-
-export default Projects;
+import type {IProjectData} from 'types/type';
 
 const ProjectList = styled.ul`
   margin: 0;
@@ -41,3 +15,30 @@ const ProjectList = styled.ul`
   border-top: 1px solid ${palette.gray[300]};
   border-bottom: 1px solid ${palette.gray[300]};
 `;
+
+interface IProjectsProps {
+  projects: IProjectData[];
+  sectionRef: React.MutableRefObject<HTMLElement[]>;
+}
+
+const Projects = ({projects, sectionRef}: IProjectsProps) => {
+  return (
+    <GlobalSection
+      ref={el => {
+        if (el && sectionRef.current) sectionRef.current[1] = el;
+      }}
+    >
+      <SectionHeader title={'Projects'} />
+
+      <SectionBody>
+        <ProjectList>
+          {projects.map((project, index: number) => (
+            <DrawerItem key={index} project={project} index={index} />
+          ))}
+        </ProjectList>
+      </SectionBody>
+    </GlobalSection>
+  );
+};
+
+export default Projects;

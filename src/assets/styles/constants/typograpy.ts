@@ -1,4 +1,4 @@
-const textStyle = (fontSize: any) => {
+const textStyle = (fontSize: number) => {
   switch (fontSize) {
     case 12:
       return `

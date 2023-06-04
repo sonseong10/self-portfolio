@@ -23,7 +23,7 @@ const useTheme = () => {
     window.localStorage.setItem('app_theme', theme);
   }, [theme]);
 
-  return [theme, toggleTheme];
+  return {theme, toggleTheme};
 };
 
 export default useTheme;

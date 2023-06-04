@@ -1,6 +1,6 @@
-const Observer = (setState: any) => {
-  const target = (entries: any) => {
-    entries.forEach((entry: any) => {
+const Observer = (setState: React.Dispatch<React.SetStateAction<boolean | Element>>) => {
+  const target = (entries: IntersectionObserverEntry[]) => {
+    entries.forEach(entry => {
       if (entry.isIntersecting) {
         setState(entry.target);
       }

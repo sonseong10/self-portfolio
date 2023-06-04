@@ -11,11 +11,12 @@ import LoadingSkeleton from './loading-skeleton';
 import {useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
 import type {Settings} from 'react-slick';
+import type {IArtWorkData} from 'types/type';
 
 interface IArtworkProps {
-  artwork: any;
-  sectionRef: any;
-  loading: any;
+  artwork: IArtWorkData[];
+  sectionRef: React.MutableRefObject<HTMLElement[]>;
+  loading: boolean | undefined;
 }
 
 const Artwork = ({artwork, sectionRef, loading}: IArtworkProps) => {
@@ -29,7 +30,7 @@ const Artwork = ({artwork, sectionRef, loading}: IArtworkProps) => {
 
   return (
     <GlobalSection
-      ref={(el: any) => {
+      ref={(el: HTMLElement) => {
         if (el && sectionRef.current) sectionRef.current[2] = el;
       }}
     >
@@ -40,7 +41,7 @@ const Artwork = ({artwork, sectionRef, loading}: IArtworkProps) => {
           <LoadingSkeleton />
         ) : (
           <Carousel setting={artworkSettings as unknown as Settings}>
-            {artwork.map((item: any, index: number) => (
+            {artwork.map((item, index) => (
               <Card key={item.uid}>
                 <div className="imgBox">
                   {loaded ? null : (

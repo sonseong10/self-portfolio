@@ -4,14 +4,15 @@ import palette from '../../../../assets/styles/constants/palette';
 import typography from '../../../../assets/styles/constants/typograpy';
 import Observer from '../../../../utils/observer';
 import styled from 'styled-components';
+import type {ISkillsData} from 'types/type';
 
 interface ISkillBarProps {
-  item: any;
-  sectionRef: any;
+  item: ISkillsData;
+  sectionRef: React.MutableRefObject<HTMLElement[]>;
 }
 
 const SkillBar = ({item, sectionRef}: ISkillBarProps) => {
-  const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive] = useState<boolean | Element>(false);
 
   useEffect(() => {
     const observer = Observer(setIsActive);
@@ -79,7 +80,7 @@ const Progress = styled.div`
   }
 `;
 
-const Score = styled.div<{score: string}>`
+const Score = styled.div<{score: number}>`
   max-width: ${props => props.score}%;
   transform: none !important;
 `;

@@ -1,12 +1,13 @@
 import type {FirebaseApp} from 'firebase/app';
-import {getDatabase, ref, onValue, off} from 'firebase/database';
+import {getDatabase, ref, onValue, off, Database} from 'firebase/database';
 class FetchFirebase {
-  db: any;
+  db: Database;
   constructor(app: FirebaseApp | undefined) {
     this.db = getDatabase(app);
   }
 
-  fetchData(onUpdate: (arg0: any) => any, target: string | undefined) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  fetchData(onUpdate: (value: any) => void, target: string | undefined) {
     const query = ref(this.db, target);
     onValue(query, snapshot => {
       const value = snapshot.val();
