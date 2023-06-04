@@ -10,19 +10,19 @@ import styled, {css} from 'styled-components';
 const listItem = ['Skills', 'Projects', 'Artworks'];
 
 interface IGnbProps {
-  sectionRef: any;
-  toggleTheme: any;
-  theme: any;
+  sectionRef: React.MutableRefObject<HTMLElement[]>;
+  toggleTheme: () => void;
+  theme: string;
 }
 
 const Gnb = ({sectionRef, toggleTheme, theme}: IGnbProps) => {
   const tabRef = useRef<HTMLButtonElement>(null);
-  const [_, setActiveTab] = useState(false);
+  const [active, setActiveTab] = useState<boolean | Element>(false);
 
   useEffect(() => {
     const observer = Observer(setActiveTab);
 
-    sectionRef.current.forEach((tab: any) => observer.observe(tab));
+    sectionRef.current.forEach(tab => observer.observe(tab));
 
     return () => observer.disconnect();
   }, [sectionRef]);
@@ -44,7 +44,7 @@ const Gnb = ({sectionRef, toggleTheme, theme}: IGnbProps) => {
             <li key={index}>
               <button
                 ref={tabRef}
-                // className={sectionRef.current[index] === activeTab ? 'isActive' : undefined}
+                className={sectionRef.current[index] === active ? 'isActive' : undefined}
                 onClick={() => onBtnClick(index)}
                 type="button"
                 aria-label={`${item}으로 이동`}

@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 interface IThemeButtonProps {
   toggleTheme: () => void;
-  theme: 'dark' | 'ligth';
+  theme: 'dark' | 'ligth' | string;
 }
 
 const ThemeButton = ({toggleTheme, theme}: IThemeButtonProps) => {
