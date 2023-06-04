@@ -1,17 +1,16 @@
-import React, {forwardRef} from 'react';
+import React, {type ForwardedRef, type ReactNode} from 'react';
 import media from '../../assets/styles/constants/media';
 import styled from 'styled-components';
 
 interface IGlobalSectionProps {
-  ref: any;
-  children: any;
+  children: ReactNode;
 }
 
-const GlobalSection = ({ref, children}: IGlobalSectionProps) => {
+const GlobalSection = ({children}: IGlobalSectionProps, ref: ForwardedRef<HTMLElement>) => {
   return <SectionStyle ref={ref}>{children}</SectionStyle>;
 };
 
-export default forwardRef(GlobalSection);
+export default React.forwardRef<HTMLElement, IGlobalSectionProps>(GlobalSection);
 
 const SectionStyle = styled.section`
   margin-bottom: 60px;

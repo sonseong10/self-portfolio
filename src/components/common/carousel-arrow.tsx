@@ -2,41 +2,39 @@ import React, {type ReactNode} from 'react';
 import palette from '../../assets/styles/constants/palette';
 import MyIcon from '../icons/my-icon';
 import media from '../../assets/styles/constants/media';
-import styled from 'styled-components';
+import styled, {type CSSObject} from 'styled-components';
 
 interface ICarouselArrowProps {
-  children: ReactNode;
+  children: ReactNode | JSX.Element;
 }
 
 const CarouselArrow = ({children}: ICarouselArrowProps) => {
   return <button type="button">{children}</button>;
 };
 
-const PrevArrow = (props: any) => {
-  const {className, style, onClick} = props;
+interface IPrevArrowProps {
+  style?: CSSObject;
+  onClick?: () => void;
+}
+
+const PrevArrow = ({style, onClick}: IPrevArrowProps) => {
   return (
-    <ToolBtn
-      className={`${className} prevBtn`}
-      style={{...style}}
-      onClick={onClick}
-      type="button"
-      aria-label="prev button"
-    >
+    <ToolBtn style={style} onClick={onClick} type="button" aria-label="prev button">
       <MyIcon name="chevron" />
     </ToolBtn>
   );
 };
 
-const NextArrow = (props: any) => {
-  const {className, style, onClick} = props;
+interface INextArrowProps {
+  style?: CSSObject;
+  onClick?: () => void;
+}
+
+const NextArrow = (props: INextArrowProps) => {
+  const {style, onClick} = props;
+
   return (
-    <ToolBtn
-      className={`${className} nextBtn`}
-      style={{...style}}
-      onClick={onClick}
-      type="button"
-      aria-label="next button"
-    >
+    <ToolBtn style={style} onClick={onClick} type="button" aria-label="next button">
       <MyIcon name="chevron" />
     </ToolBtn>
   );
@@ -48,8 +46,8 @@ CarouselArrow.NextArrow = NextArrow;
 export default CarouselArrow;
 
 const ToolBtn = styled.button`
-  &.nextBtn,
-  &.prevBtn {
+  &.slick-next,
+  &.slick-prev {
     display: flex !important;
     justify-content: center;
     align-items: center;
@@ -76,7 +74,7 @@ const ToolBtn = styled.button`
     }
   }
 
-  &.nextBtn {
+  &.slick-next {
     right: 8px;
 
     svg {
@@ -88,7 +86,7 @@ const ToolBtn = styled.button`
     }
   }
 
-  &.prevBtn {
+  &.slick-prev {
     left: 8px;
 
     svg {

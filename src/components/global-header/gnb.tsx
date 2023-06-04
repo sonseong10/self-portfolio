@@ -1,9 +1,9 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {resetButton} from '../../assets/styles/components/reset-button';
 import media from '../../assets/styles/constants/media';
 import palette from '../../assets/styles/constants/palette';
 import typography from '../../assets/styles/constants/typograpy';
-// import Observer from '../../utils/observer';
+import Observer from '../../utils/observer';
 import ThemeButton from '../common/theme-button';
 import styled, {css} from 'styled-components';
 
@@ -17,12 +17,14 @@ interface IGnbProps {
 
 const Gnb = ({sectionRef, toggleTheme, theme}: IGnbProps) => {
   const tabRef = useRef<HTMLButtonElement>(null);
-  // const [activeTab, setActiveTab] = useState(false);
+  const [_, setActiveTab] = useState(false);
 
   useEffect(() => {
-    // const observer = Observer(setActiveTab);
-    // sectionRef.current.forEach((tab: any) => observer.observe(tab));
-    // return () => observer.disconnect();
+    const observer = Observer(setActiveTab);
+
+    sectionRef.current.forEach((tab: any) => observer.observe(tab));
+
+    return () => observer.disconnect();
   }, [sectionRef]);
 
   const onBtnClick = (index: number) => {
@@ -30,7 +32,7 @@ const Gnb = ({sectionRef, toggleTheme, theme}: IGnbProps) => {
       behavior: 'smooth',
       block: 'center',
     });
-    // setActiveTab(sectionRef.current[index]);
+    setActiveTab(sectionRef.current[index]);
   };
   return (
     <>

@@ -19,8 +19,8 @@ const artworkSettings = {
   autoplaySpeed: 3000,
   slidesToShow: 3,
   arrows: true,
-  nextArrow: CarouselArrow.NextArrow,
-  prevArrow: CarouselArrow.PrevArrow,
+  nextArrow: CarouselArrow.NextArrow({}),
+  prevArrow: CarouselArrow.PrevArrow({}),
 
   responsive: [
     {

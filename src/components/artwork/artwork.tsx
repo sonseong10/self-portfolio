@@ -28,7 +28,11 @@ const Artwork = ({artwork, sectionRef, loading}: IArtworkProps) => {
   };
 
   return (
-    <GlobalSection ref={el => (sectionRef.current[2] = el)}>
+    <GlobalSection
+      ref={(el: any) => {
+        if (el && sectionRef.current) sectionRef.current[2] = el;
+      }}
+    >
       <SectionHeader title="Artworks" />
 
       <CarouselWrap>

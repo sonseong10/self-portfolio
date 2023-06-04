@@ -5,10 +5,14 @@ import typography from '../../../assets/styles/constants/typograpy';
 import MyIcon from '../../icons/my-icon';
 import media from '../../../assets/styles/constants/media';
 import Badge from '../../common/badge';
-import BaseButton from '../../common/base-button.tsx';
+import BaseButton from '../../common/base-button';
 import styled from 'styled-components';
 
-const DrawerItem = ({project, index}) => {
+interface IDrawerItemProps {
+  project: any;
+  index: number;
+}
+const DrawerItem = ({project, index}: IDrawerItemProps) => {
   const [isActive, setIsActive] = useState(false);
 
   const {thumbnailURL, title, desc, role, personnel, stack, githubURL, deployURL} = project;
@@ -53,7 +57,7 @@ const DrawerItem = ({project, index}) => {
             <DetailItem>
               <dt>핵심기술</dt>
               <dd className="badgeGroup">
-                {stack.map((item, index) => (
+                {stack.map((item: any, index: number) => (
                   <Badge key={index} name={item} color="gray"></Badge>
                 ))}
               </dd>

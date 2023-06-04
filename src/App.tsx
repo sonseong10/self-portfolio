@@ -111,7 +111,7 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 function App({fetchItem}: any) {
-  const sectionRef = useRef<HTMLElement>(null);
+  const sectionRef = useRef<HTMLElement[]>([]);
   const promotionRef = useRef<HTMLElement>(null);
 
   const [skills, setSkills] = useState([]);
@@ -119,11 +119,10 @@ function App({fetchItem}: any) {
 
   const [projects, setProjects] = useState([]);
 
-  const [artwork, setArtwork] = useState<any>([]);
+  const [artwork, setArtwork] = useState([]);
   const [artworkLoading, setArtworkLoading] = useState<boolean | undefined>(undefined);
 
   const [theme, onToggle] = useTheme();
-
   useEffect(() => {
     try {
       setSkillLoading(true);
@@ -131,6 +130,7 @@ function App({fetchItem}: any) {
         setSkills(skills);
         setSkillLoading(false);
       }, 'skills');
+
       return () => {
         stopSync();
       };
@@ -146,7 +146,7 @@ function App({fetchItem}: any) {
     return () => {
       stopSync();
     };
-  }, [fetchItem]);
+  }, []);
 
   useEffect(() => {
     try {
@@ -161,7 +161,7 @@ function App({fetchItem}: any) {
     } catch (error) {
       setArtworkLoading(true);
     }
-  }, [fetchItem]);
+  }, []);
 
   useChannelPluginEffect();
 

@@ -20,10 +20,10 @@ interface ISkillProps {
 }
 
 const Skill = ({skills, sectionRef, loading}: ISkillProps) => {
-  const skillRef = (el: any) => (sectionRef.current[0] = el);
+  // const skillRef = (el?: any) => (sectionRef.current[0] = el);
 
   return (
-    <GlobalSection ref={skillRef}>
+    <GlobalSection ref={(el?: any) => (sectionRef.current[0] = el)}>
       <SectionHeader title={'Skills'} />
 
       <SectionBodyStyle>

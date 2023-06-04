@@ -13,7 +13,11 @@ interface IProjectsProps {
 
 const Projects = ({projects, sectionRef}: IProjectsProps) => {
   return (
-    <GlobalSection ref={el => (sectionRef.current[1] = el)}>
+    <GlobalSection
+      ref={(el: any) => {
+        if (el && sectionRef.current) sectionRef.current[1] = el;
+      }}
+    >
       <SectionHeader title={'Projects'} />
 
       <SectionBody>
