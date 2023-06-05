@@ -1,6 +1,6 @@
 import React, {type ReactNode} from 'react';
 import palette from '../../assets/styles/constants/palette';
-import MyIcon from '../icons/my-icon';
+import MyIcon from '../../assets/images/icons/my-icon';
 import media from '../../assets/styles/constants/media';
 import styled, {type CSSObject} from 'styled-components';
 

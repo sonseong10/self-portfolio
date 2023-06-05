@@ -3,7 +3,7 @@ import {firebaseApp} from './service/firebase';
 import FetchItem from './service/fetch-item';
 import './assets/styles/index.css';
 import {createRoot} from 'react-dom/client';
-import App from 'App';
+import App from 'pages/App';
 
 const fetchItem = new FetchItem(firebaseApp);
 
