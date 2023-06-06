@@ -1,6 +1,5 @@
 import React from 'react';
 import {BrowserRouter} from 'react-router-dom';
-import useChannelPluginEffect from '../useChannelPluginEffect';
 import ToTop from '../components/common/to-top';
 import palette from '../assets/styles/constants/palette';
 import media from '../assets/styles/constants/media';
@@ -105,8 +104,6 @@ interface IAppProps {
 }
 
 function App({fetchItem}: IAppProps) {
-  useChannelPluginEffect();
-
   return (
     <BrowserRouter>
       <GlobalStyle />

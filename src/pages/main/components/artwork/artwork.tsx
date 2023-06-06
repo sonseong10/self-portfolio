@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 
-import LoadingSkeleton from './loading-skeleton';
 import {useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
 import type {Settings} from 'react-slick';
@@ -13,6 +12,7 @@ import typography from 'assets/styles/constants/typograpy';
 import BaseButton from 'components/common/base-button';
 import Carousel from 'components/common/carousel';
 import {artworkSettings} from 'utils/slick-carousel';
+import Spinner from 'components/spinner/spinner';
 
 interface IArtworkProps {
   artwork: IArtWorkData[];
@@ -39,7 +39,7 @@ const Artwork = ({artwork, sectionRef, loading}: IArtworkProps) => {
 
       <CarouselWrap>
         {loading ? (
-          <LoadingSkeleton />
+          <Spinner />
         ) : (
           <Carousel setting={artworkSettings as unknown as Settings}>
             {artwork.map((item, index) => (

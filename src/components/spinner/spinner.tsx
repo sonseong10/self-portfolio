@@ -11,13 +11,14 @@ const rotation = keyframes`
 `;
 
 const Loading = styled.span`
-  width: 48px;
-  height: 48px;
-  border: 5px solid #fff;
+  width: 70px;
+  height: 70px;
+  border: 7px solid #0066ff;
   border-bottom-color: transparent;
   border-radius: 50%;
-  display: inline-block;
+  display: block;
   box-sizing: border-box;
+  margin: 0 auto;
   animation: ${rotation} 1s linear infinite;
 `;
 

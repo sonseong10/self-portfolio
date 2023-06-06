@@ -6,6 +6,7 @@ import palette from '../../../../assets/styles/constants/palette';
 import DrawerItem from './drawer/drawer-item';
 import styled from 'styled-components';
 import type {IProjectData} from 'types/type';
+import Spinner from 'components/spinner/spinner';
 
 const ProjectList = styled.ul`
   margin: 0;
@@ -19,9 +20,10 @@ const ProjectList = styled.ul`
 interface IProjectsProps {
   projects: IProjectData[];
   sectionRef: React.MutableRefObject<HTMLElement[]>;
+  loading: boolean | undefined;
 }
 
-const Projects = ({projects, sectionRef}: IProjectsProps) => {
+const Projects = ({projects, sectionRef, loading}: IProjectsProps) => {
   return (
     <GlobalSection
       ref={el => {
@@ -31,11 +33,15 @@ const Projects = ({projects, sectionRef}: IProjectsProps) => {
       <SectionHeader title={'Side Projects'} />
 
       <SectionBody>
-        <ProjectList>
-          {projects.map((project, index: number) => (
-            <DrawerItem key={index} project={project} index={index} />
-          ))}
-        </ProjectList>
+        {loading ? (
+          <Spinner />
+        ) : (
+          <ProjectList>
+            {projects.map((project, index: number) => (
+              <DrawerItem key={index} project={project} index={index} />
+            ))}
+          </ProjectList>
+        )}
       </SectionBody>
     </GlobalSection>
   );

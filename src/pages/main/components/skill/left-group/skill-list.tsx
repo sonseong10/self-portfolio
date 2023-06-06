@@ -1,8 +1,8 @@
 import React from 'react';
 import SkillBar from './progress/skill-bar';
-import LoadingSkeleton from './loading-skeleton';
 import styled from 'styled-components';
 import type {ISkillsData} from 'types/type';
+import Spinner from 'components/spinner/spinner';
 
 interface ISkillListProps {
   list: ISkillsData[];
@@ -13,11 +13,7 @@ interface ISkillListProps {
 const SkillList = ({list, sectionRef, loading}: ISkillListProps) => {
   return (
     <ListStyle>
-      {loading ? (
-        <LoadingSkeleton count={list.length} />
-      ) : (
-        list.map(item => <SkillBar key={item.uid} item={item} sectionRef={sectionRef} />)
-      )}
+      {loading ? <Spinner /> : list.map(item => <SkillBar key={item.uid} item={item} sectionRef={sectionRef} />)}
     </ListStyle>
   );
 };

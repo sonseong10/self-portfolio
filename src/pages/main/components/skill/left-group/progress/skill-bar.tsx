@@ -25,7 +25,7 @@ const SkillBar = ({item, sectionRef}: ISkillBarProps) => {
   return (
     <ListItem aria-label="skill level">
       <strong>{item.name}</strong>
-      <Progress aria-hidden>{isActive && <Score score={item.score + (item.alpa ? item.alpa : 0)} />}</Progress>
+      <Progress aria-hidden>{<Score isActive={isActive} score={item.score + (item.alpa ? item.alpa : 0)} />}</Progress>
       <strong>{item.score + (item.alpa ? item.alpa : 0)}%</strong>
     </ListItem>
   );
@@ -80,7 +80,7 @@ const Progress = styled.div`
   }
 `;
 
-const Score = styled.div<{score: number}>`
+const Score = styled.div<{score: number; isActive: boolean | Element}>`
   max-width: ${props => props.score}%;
-  transform: none !important;
+  transform: ${props => props.isActive && 'none !important'};
 `;

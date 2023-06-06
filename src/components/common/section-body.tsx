@@ -36,7 +36,7 @@ const SectionBodyStyle = styled.div<{style?: CSSObject}>`
 
   ${media.tablet} {
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
   }
 

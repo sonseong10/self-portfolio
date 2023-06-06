@@ -85,7 +85,7 @@ const About = () => {
     <GlobalSection>
       <SectionHeader title="Information" />
 
-      <SectionBody style={{alignItems: 'flex-start'}}>
+      <SectionBody>
         <SectionBody.Inner>
           <HistoryList>
             <ListItem
@@ -130,6 +130,10 @@ const HistoryList = styled.ul`
   margin: 0;
   padding-left: 0;
   list-style: none;
+
+  & > li {
+    margin-bottom: 14px;
+  }
 `;
 
 const Card = styled.button`

@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {Suspense, lazy, useEffect, useRef, useState} from 'react';
 import FetchItem from '../../service/fetch-item';
 import type {IArtWorkData, IProjectData, ISkillsData} from 'types/type';
 import Layout from 'components/common/layout';
@@ -9,11 +9,13 @@ import Skill from 'pages/main/components/skill/skill';
 import Projects from 'pages/main/components/projects/projects';
 import Promotion from 'pages/main/components/promotion/promotion';
 import Artwork from 'pages/main/components/artwork/artwork';
-import Gallery from 'pages/gallery/gallery';
-import ErrorPage from 'pages/404';
 import GlobalFooter from 'components/layout/footer/global-footer';
 import useTheme from 'utils/useTheme';
 import Home from './components/home/home';
+import Spinner from 'components/spinner/spinner';
+
+const ErrorPage = lazy(() => import('pages/404'));
+const Gallery = lazy(() => import('pages/gallery/gallery'));
 
 interface IMainProps {
   fetchItem: FetchItem;
@@ -27,6 +29,7 @@ function Main({fetchItem}: IMainProps) {
   const [skillLoading, setSkillLoading] = useState<boolean | undefined>(undefined);
 
   const [projects, setProjects] = useState<IProjectData[]>([]);
+  const [projectLoading, setProjectLoading] = useState<boolean | undefined>(undefined);
 
   const [artwork, setArtwork] = useState<IArtWorkData[]>([]);
   const [artworkLoading, setArtworkLoading] = useState<boolean | undefined>(undefined);
@@ -49,12 +52,18 @@ function Main({fetchItem}: IMainProps) {
   }, []);
 
   useEffect(() => {
-    const stopSync = fetchItem.fetchData((projects: IProjectData[]) => {
-      setProjects(projects);
-    }, 'projects');
-    return () => {
-      stopSync();
-    };
+    try {
+      setProjectLoading(true);
+      const stopSync = fetchItem.fetchData((projects: IProjectData[]) => {
+        setProjects(projects);
+        setProjectLoading(false);
+      }, 'projects');
+      return () => {
+        stopSync();
+      };
+    } catch (error) {
+      setProjectLoading(true);
+    }
   }, []);
 
   useEffect(() => {
@@ -81,13 +90,13 @@ function Main({fetchItem}: IMainProps) {
       <Routes>
         <Route path="/">
           <Route
-            path="/"
+            index
             element={
               <Layout.Main>
                 <Home />
                 <About />
                 <Skill skills={skills} sectionRef={sectionRef} loading={skillLoading} />
-                <Projects projects={projects} sectionRef={sectionRef} />
+                <Projects projects={projects} sectionRef={sectionRef} loading={projectLoading} />
                 <Promotion promotionRef={promotionRef} />
                 <Artwork artwork={artwork} sectionRef={sectionRef} loading={artworkLoading} />
               </Layout.Main>
@@ -96,9 +105,11 @@ function Main({fetchItem}: IMainProps) {
           <Route
             path="/artwork/:uid"
             element={
-              <Layout>
-                <Gallery artwork={artwork} />
-              </Layout>
+              <Suspense fallback={<Spinner />}>
+                <Layout>
+                  <Gallery artwork={artwork} />
+                </Layout>
+              </Suspense>
             }
           />
           <Route
