@@ -3,8 +3,27 @@ import CompanyLogo from 'assets/images/fastview_card.svg';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import typography from 'assets/styles/constants/typograpy';
+import media from 'assets/styles/constants/media';
 
 const StoryBoard = styled.div`
+  div.history-title {
+    img {
+      display: block;
+      margin: 0 auto;
+    }
+    h1 {
+      text-align: center;
+    }
+    ${media.tablet} {
+      h1 {
+        text-align: left;
+      }
+
+      img {
+        margin: initial;
+      }
+    }
+  }
   padding: 30px 0;
   ::selection {
     color: #fff;
@@ -82,6 +101,7 @@ const StoryBoard = styled.div`
         margin: 6px 0;
         dt {
           width: 10%;
+          flex-shrink: 0;
         }
         dd {
           margin: 0;
@@ -133,8 +153,10 @@ const StoryBoard = styled.div`
 function HistoryPage() {
   return (
     <StoryBoard>
-      <img src={CompanyLogo} alt="company_logo" width={300} />
-      <h1>이곳에서 이렇게 일했습니다.</h1>
+      <div className="history-title">
+        <img src={CompanyLogo} alt="company_logo" width={300} />
+        <h1>이곳에서 이렇게 일했습니다.</h1>
+      </div>
       <div className="wrapper">
         <div className="center-line"></div>
         <div className="row row-1">

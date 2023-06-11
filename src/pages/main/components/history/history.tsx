@@ -63,7 +63,7 @@ const History = ({sectionRef}: IHistoryProps) => {
     >
       <SectionHeader title={'Work'} />
 
-      <SectionBody>
+      <SectionBody style={{alignItems: 'center'}}>
         <BusinessCard to={'/history/fastview'} className="shadow">
           <div>
             <img src={CompanyLogo} alt="회사로고" />
