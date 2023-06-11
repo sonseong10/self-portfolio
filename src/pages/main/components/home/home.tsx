@@ -65,6 +65,7 @@ const HomeLeft = styled.div`
 
   h1,
   p {
+    text-align: center;
     margin: 0;
   }
 
