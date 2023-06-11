@@ -24,7 +24,7 @@ const DrawerItem = ({project, index}: IDrawerItemProps) => {
 
   return (
     <DrawerItemStyle>
-      <button onClick={onBtnClick} type="button" aria-label={`${title} 펼쳐보기`}>
+      <button onClick={onBtnClick} type="button" aria-label={`${title} 펼쳐보기`} className="shadow">
         {title}
 
         <IconBox className={isActive ? 'isActive' : undefined}>
@@ -83,16 +83,17 @@ const DrawerItemStyle = styled.li`
     position: relative;
     ${resetButton}
     padding: 0 8px;
+    margin-bottom: 8px;
     width: 100%;
     height: 48px;
     ${typography.base}
     text-align: left;
     color: ${palette.gray[100]};
+    border-radius: 8px;
+    transition: box-shadow 0.2s ease-in-out;
 
-    ${media.tablet} {
-      &:hover {
-        background-color: ${palette.gray[600]};
-      }
+    &:hover {
+      box-shadow: 2px 2px 8px ${palette.gray[500]};
     }
   }
 `;
@@ -127,7 +128,6 @@ const IconBox = styled.span`
 const Info = styled.div`
   padding: 0;
   max-height: 0;
-  border-bottom: 1px solid ${palette.gray[500]};
   overflow: hidden;
   transition: max-height 400ms ease-in-out;
 

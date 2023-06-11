@@ -48,6 +48,7 @@ const GlobalStyle = createGlobalStyle`
       border-color: ${palette.darkTheme.secondary};
     }
 
+    .row section,
     footer {
       background-color: ${palette.darkTheme.secondary};
     }
@@ -68,6 +69,10 @@ const GlobalStyle = createGlobalStyle`
     div > a {
       background-color: ${palette.darkTheme.primary};
       border-color: ${palette.darkTheme.secondary};
+
+      &.shadow{
+        box-shadow: 2px 2px 4px #000;
+      }
 
       &:active {
         background-color: ${palette.darkTheme.secondary};

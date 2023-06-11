@@ -7,7 +7,7 @@ import Observer from '../../../utils/observer';
 import ThemeButton from '../../common/theme-button';
 import styled, {css} from 'styled-components';
 
-const listItem = ['Skills', 'Projects', 'Artworks'];
+const listItem = ['Skills', 'Work', 'Projects', 'Artworks'];
 
 interface IGnbProps {
   sectionRef: React.MutableRefObject<HTMLElement[]>;

@@ -34,7 +34,7 @@ const GlobalHeader = ({sectionRef, artwork, toggleTheme, theme}: IGlobalHeaderPr
         </LogoImage>
       </RootBtn>
 
-      {loaction.pathname.includes('art') ? (
+      {loaction.pathname.includes('art') || loaction.pathname.includes('history') ? (
         <Lnb artwork={artwork} />
       ) : (
         <Gnb sectionRef={sectionRef} toggleTheme={toggleTheme} theme={theme} />

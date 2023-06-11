@@ -13,9 +13,11 @@ import GlobalFooter from 'components/layout/footer/global-footer';
 import useTheme from 'utils/useTheme';
 import Home from './components/home/home';
 import Spinner from 'components/spinner/spinner';
+import History from './components/history/history';
 
 const ErrorPage = lazy(() => import('pages/404'));
 const Gallery = lazy(() => import('pages/gallery/gallery'));
+const HistoryPage = lazy(() => import('pages/history/history'));
 
 interface IMainProps {
   fetchItem: FetchItem;
@@ -96,6 +98,7 @@ function Main({fetchItem}: IMainProps) {
                 <Home />
                 <About />
                 <Skill skills={skills} sectionRef={sectionRef} loading={skillLoading} />
+                <History sectionRef={sectionRef} />
                 <Projects projects={projects} sectionRef={sectionRef} loading={projectLoading} />
                 <Promotion promotionRef={promotionRef} />
                 <Artwork artwork={artwork} sectionRef={sectionRef} loading={artworkLoading} />
@@ -108,6 +111,16 @@ function Main({fetchItem}: IMainProps) {
               <Suspense fallback={<Spinner />}>
                 <Layout>
                   <Gallery artwork={artwork} />
+                </Layout>
+              </Suspense>
+            }
+          />
+          <Route
+            path="/history/fastview"
+            element={
+              <Suspense fallback={<Spinner />}>
+                <Layout>
+                  <HistoryPage />
                 </Layout>
               </Suspense>
             }

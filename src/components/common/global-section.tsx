@@ -13,6 +13,7 @@ const GlobalSection = ({children}: IGlobalSectionProps, ref: ForwardedRef<HTMLEl
 export default React.forwardRef<HTMLElement, IGlobalSectionProps>(GlobalSection);
 
 const SectionStyle = styled.section`
+  padding: 0 10px;
   margin-bottom: 60px;
 
   ${media.desktop} {

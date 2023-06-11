@@ -30,12 +30,12 @@ const Skill = ({skills, sectionRef, loading}: ISkillProps) => {
       <SectionHeader title={'Skills'} />
 
       <SectionBodyStyle>
-        <SectionBody.Inner ratio={2}>
-          <LeftGroup skills={skills} sectionRef={sectionRef} loading={loading} />
-        </SectionBody.Inner>
-
         <SectionBody.Inner>
           <RightGroup />
+        </SectionBody.Inner>
+
+        <SectionBody.Inner ratio={2}>
+          <LeftGroup skills={skills} sectionRef={sectionRef} loading={loading} />
         </SectionBody.Inner>
       </SectionBodyStyle>
     </GlobalSection>

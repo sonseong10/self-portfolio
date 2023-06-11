@@ -19,12 +19,12 @@ const RightGroup = () => {
 
       <GroupBox>
         <h3>Develop tool</h3>
-        <p>Git, Webpack, NPM, Yarn, Firebase, Netify, VSCode, Storybook</p>
+        <p>Git, GitFlow, Webpack, NPM, Yarn, Jenkins, GitAction, Firebase, Netify, Storybook</p>
       </GroupBox>
 
       <GroupBox>
         <h3>Etc</h3>
-        <p>Figma, Slack, Notion</p>
+        <p>VSCode, Figma, Slack, Notion, PostMan</p>
       </GroupBox>
     </RightGroupStyle>
   );

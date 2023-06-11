@@ -50,7 +50,6 @@ Layout.Main = Main;
 Layout.Footer = Footer;
 
 const Container = styled.div`
-  padding: 0 10px;
   width: 100%;
   margin: 0 auto;
   ${media.tablet} {
@@ -63,6 +62,7 @@ const Container = styled.div`
 
 const GlobalHeader = styled.header`
   position: sticky;
+  padding: 0 10px;
   top: 0;
   height: 60px;
   background-color: ${palette.white};

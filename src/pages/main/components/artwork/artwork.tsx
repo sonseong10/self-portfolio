@@ -32,7 +32,7 @@ const Artwork = ({artwork, sectionRef, loading}: IArtworkProps) => {
   return (
     <GlobalSection
       ref={(el: HTMLElement) => {
-        if (el && sectionRef.current) sectionRef.current[2] = el;
+        if (el && sectionRef.current) sectionRef.current[3] = el;
       }}
     >
       <SectionHeader title="Artworks" />

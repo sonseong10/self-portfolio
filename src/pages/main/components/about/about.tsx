@@ -24,14 +24,14 @@ interface IListItemProps {
 }
 
 const ListItem = ({data}: IListItemProps) => {
-  const [show, setShow] = useState<boolean>(true);
+  const [show, setShow] = useState<boolean>(false);
 
   const onToggle = () => {
     setShow(!show);
   };
   return (
     <li>
-      <Card onClick={onToggle} type="button">
+      <Card onClick={onToggle} type="button" className="shadow">
         <CardLeft>
           <div className="imgWrap">
             <img src={data.imgURL} alt="brand logo" />
@@ -72,7 +72,7 @@ const ListItem = ({data}: IListItemProps) => {
         {data.link ? (
           <li>
             <Link to={data.link} target="_blank" rel="noreferrer">
-              더 알아보기
+              공식사이트 이동
             </Link>
           </li>
         ) : null}
@@ -145,9 +145,14 @@ const Card = styled.button`
   margin-bottom: 8px;
   width: 100%;
   background-color: ${palette.white};
-  border: 1px solid ${palette.gray[500]};
-  border-radius: 4px;
+  border: none;
+  border-radius: 8px;
   cursor: pointer;
+  transition: box-shadow 0.2s ease-in-out;
+
+  &:hover {
+    box-shadow: 2px 2px 8px ${palette.gray[500]};
+  }
 `;
 
 const CardLeft = styled.div`
