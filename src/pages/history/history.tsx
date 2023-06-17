@@ -132,10 +132,10 @@ const StoryBoard = styled.div`
     .wrapper .row section {
       width: 100%;
     }
-    .row-1 section::before {
+    section::before {
       left: -7px;
     }
-    .row-1 section .icon {
+    section .icon {
       left: -60px;
     }
   }
@@ -159,7 +159,7 @@ function HistoryPage() {
       </div>
       <div className="wrapper">
         <div className="center-line"></div>
-        <div className="row row-1">
+        <div className="row">
           <section>
             <i className="icon fas fa-home"></i>
             <div className="details">
@@ -192,6 +192,7 @@ function HistoryPage() {
                   <dt>성장</dt>
                   <dd>
                     <ul>
+                      <li>최소한의 라이브러리로 제품개발</li>
                       <li>도전적인 상황에서 성장할 수 있는 기회를 얻음</li>
                       <li>긍정적인 마음가짐으로 어려움을 극복해 나감</li>
                     </ul>
@@ -201,7 +202,7 @@ function HistoryPage() {
             </div>
           </section>
         </div>
-        <div className="row row-2">
+        <div className="row ">
           <section>
             <i className="icon fas fa-star"></i>
             <div className="details">
@@ -258,7 +259,7 @@ function HistoryPage() {
             </div>
           </section>
         </div>
-        <div className="row row-1">
+        <div className="row">
           <section>
             <i className="icon fas fa-rocket"></i>
             <div className="details">
@@ -295,7 +296,7 @@ function HistoryPage() {
             </div>
           </section>
         </div>
-        <div className="row row-2">
+        <div className="row ">
           <section>
             <i className="icon fas fa-globe"></i>
             <div className="details">
@@ -370,6 +371,54 @@ function HistoryPage() {
           <section>
             <i className="icon fas fa-paper-plane"></i>
             <div className="details">
+              <span className="title">
+                신규 도메인
+                <br />
+                광고 서비스 시작
+              </span>
+              <span>2023.01</span>
+            </div>
+            <p>인/아웃 링크를 통한 자사 제품/컨텐츠 유통을 위해 광고서비스 적업시작</p>
+            <div className="bottom">
+              <dl>
+                <div>
+                  <dt>목표</dt>
+                  <dd>광고 도메인 학습 및 제품개발</dd>
+                </div>
+                <div>
+                  <dt>업무</dt>
+                  <dd>
+                    <ul>
+                      <li>광고용 스크립트 제작 및 어드민 기능제작</li>
+                    </ul>
+                  </dd>
+                </div>
+                <div>
+                  <dt>문제</dt>
+                  <dd>
+                    <ul>
+                      <li>인사이트 및 광고효율성 판단</li>
+                    </ul>
+                  </dd>
+                </div>
+                <div>
+                  <dt>성장</dt>
+                  <dd>
+                    <ul>
+                      <li>광고 도메인 플로우</li>
+                      <li>광고 반응형/고정형 스크립트 발행</li>
+                      <li>스크립트 최적화</li>
+                    </ul>
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </section>
+        </div>
+        <div className="row">
+          <section>
+            <i className="icon fas fa-paper-plane"></i>
+            <div className="details">
               <span className="title">Next.js 도입</span>
               <span>2023.03</span>
             </div>
@@ -409,7 +458,7 @@ function HistoryPage() {
             </div>
           </section>
         </div>
-        <div className="row row-2">
+        <div className="row">
           <section>
             <i className="icon fas fa-paper-plane"></i>
             <div className="details">
@@ -455,7 +504,7 @@ function HistoryPage() {
             </div>
           </section>
         </div>
-        <div className="row row-1">
+        <div className="row">
           <section>
             <i className="icon fas fa-map-marker-alt"></i>
             <div className="details">
@@ -489,7 +538,7 @@ function HistoryPage() {
             </div>
           </section>
         </div>
-        <div className="row row-2">
+        <div className="row">
           <section>
             <i className="icon fas fa-paper-plane"></i>
             <div className="details">
