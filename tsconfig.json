@@ -1,6 +1,6 @@
 {
+  "locale": "ko",
   "compilerOptions": {
-    "locale": "ko",
     "target": "es5",
     "lib": [
       "dom",
