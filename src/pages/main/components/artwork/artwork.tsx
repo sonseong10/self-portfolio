@@ -13,6 +13,7 @@ import BaseButton from 'components/common/base-button';
 import Carousel from 'components/common/carousel';
 import {artworkSettings} from 'utils/slick-carousel';
 import Spinner from 'components/spinner/spinner';
+import {Container} from 'components/common/layout';
 
 interface IArtworkProps {
   artwork: IArtWorkData[];
@@ -30,44 +31,46 @@ const Artwork = ({artwork, sectionRef, loading}: IArtworkProps) => {
   };
 
   return (
-    <GlobalSection
-      ref={(el: HTMLElement) => {
-        if (el && sectionRef.current) sectionRef.current[3] = el;
-      }}
-    >
-      <SectionHeader title="Artworks" />
+    <Container>
+      <GlobalSection
+        ref={(el: HTMLDivElement) => {
+          if (el && sectionRef.current) sectionRef.current[3] = el;
+        }}
+      >
+        <SectionHeader title="Artworks" />
 
-      <CarouselWrap>
-        {loading ? (
-          <Spinner />
-        ) : (
-          <Carousel setting={artworkSettings as unknown as Settings}>
-            {artwork.map((item, index) => (
-              <Card key={item.uid}>
-                <div className="imgBox">
-                  {loaded ? null : (
-                    <div
-                      style={{
-                        background: `${palette.gray[600]}`,
-                        height: '314px',
-                        width: '314px',
-                      }}
-                    />
-                  )}
-                  <img src={item.thumbnailURL} alt={`projects0${index}`} onLoad={() => setLoaded(true)} />
-                </div>
+        <CarouselWrap>
+          {loading ? (
+            <Spinner />
+          ) : (
+            <Carousel setting={artworkSettings as unknown as Settings}>
+              {artwork.map((item, index) => (
+                <Card key={item.uid}>
+                  <div className="imgBox">
+                    {loaded ? null : (
+                      <div
+                        style={{
+                          background: `${palette.gray[600]}`,
+                          height: '314px',
+                          width: '314px',
+                        }}
+                      />
+                    )}
+                    <img src={item.thumbnailURL} alt={`projects0${index}`} onLoad={() => setLoaded(true)} />
+                  </div>
 
-                <strong>{item.title}</strong>
+                  <strong>{item.title}</strong>
 
-                <BtnWrap>
-                  <BaseButton title="More" handleEvent={() => goToGallery(index)} />
-                </BtnWrap>
-              </Card>
-            ))}
-          </Carousel>
-        )}
-      </CarouselWrap>
-    </GlobalSection>
+                  <BtnWrap>
+                    <BaseButton title="More" handleEvent={() => goToGallery(index)} />
+                  </BtnWrap>
+                </Card>
+              ))}
+            </Carousel>
+          )}
+        </CarouselWrap>
+      </GlobalSection>
+    </Container>
   );
 };
 

@@ -1,71 +1,75 @@
 import media from 'assets/styles/constants/media';
 import palette from 'assets/styles/constants/palette';
 import typography from 'assets/styles/constants/typograpy';
-import GlobalSection from 'components/common/global-section';
+import {Container} from 'components/common/layout';
 import React from 'react';
 import styled from 'styled-components';
 
 const Home = () => {
   return (
-    <GlobalSection>
-      <HomeWrapper>
-        <HomeLeft>
-          <h1>FE Developer</h1>
+    <Container>
+      <HomeLeft>
+        <h1>
+          빠른적응 능력을 가진
+          <br /> 손성열 입니다.
+        </h1>
 
-          <p>
-            성실하게 팀원과 협업 하며 변함없이 <br />
-            열심히 나아가는 개발자입니다.
-          </p>
-        </HomeLeft>
+        <span>빠른적응 능력</span>
+        <ol>
+          <li>최신기술을 팔로우 하며 적용하기</li>
+          <li>배움에 있어 범주를 가리지않고 도전하기</li>
+          <li>넉살스러운 웃음과 스며드는 매력에 커뮤니케이션</li>
+        </ol>
+      </HomeLeft>
 
-        <HomeRight>
-          <dl>
-            <div>
-              <dt>Email</dt>
-              <dd>
-                <a href="mailto:sonseong10@gmail.com">sonseong10@gmail.com</a>
-              </dd>
-            </div>
+      <HomeRight>
+        <dl>
+          <div>
+            <dt>Email</dt>
+            <dd>
+              <a href="mailto:sonseong10@gmail.com">sonseong10@gmail.com</a>
+            </dd>
+          </div>
 
-            <div>
-              <dt>Name</dt>
-              <dd>손 성열(seongyeol Son)</dd>
-            </div>
+          <div>
+            <dt>Name</dt>
+            <dd>손 성열(seongyeol Son)</dd>
+          </div>
 
-            <div>
-              <dt>Birthday</dt>
-              <dd>
-                <time dateTime="1997-04-08">1997-04-08</time>
-              </dd>
-            </div>
-          </dl>
-        </HomeRight>
-      </HomeWrapper>
-    </GlobalSection>
+          <div>
+            <dt>Birthday</dt>
+            <dd>
+              <time dateTime="1997-04-08">1997-04-08</time>
+            </dd>
+          </div>
+        </dl>
+      </HomeRight>
+    </Container>
   );
 };
 export default React.memo(Home);
 
-const HomeWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  height: calc(100vh - 60px);
+// const HomeWrapper = styled.div`
+//   display: flex;
+//   flex-wrap: wrap;
+//   align-items: center;
+//   justify-content: center;
+//   flex-direction: column;
+//   height: calc(100vh - 60px);
 
-  ${media.desktop} {
-    justify-content: space-between;
-    flex-direction: row;
-  }
-`;
+//   ${media.desktop} {
+//     justify-content: space-between;
+//     flex-direction: row;
+//   }
+// `;
 
 const HomeLeft = styled.div`
   margin-bottom: 80px;
 
   h1,
   p {
-    text-align: center;
+    font-style: normal;
+    /* text-align: left; */
     margin: 0;
   }
 

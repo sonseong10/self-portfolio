@@ -2,13 +2,14 @@ import media from 'assets/styles/constants/media';
 import palette from 'assets/styles/constants/palette';
 import typography from 'assets/styles/constants/typograpy';
 import GlobalSection from 'components/common/global-section';
+import {Container} from 'components/common/layout';
 import SectionHeader from 'components/common/section-header';
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import Observer from 'utils/observer';
 
 interface IPromotionProps {
-  promotionRef: React.RefObject<HTMLElement>;
+  promotionRef: React.RefObject<HTMLDivElement>;
 }
 
 const Promotion = ({promotionRef}: IPromotionProps) => {
@@ -24,32 +25,34 @@ const Promotion = ({promotionRef}: IPromotionProps) => {
   }, [promotionRef]);
 
   return (
-    <GlobalSection ref={promotionRef}>
-      <SmHidden>
-        <div className="sr-only">
-          <SectionHeader title="promotion" />
-        </div>
+    <Container>
+      <GlobalSection ref={promotionRef}>
+        <SmHidden>
+          <div className="sr-only">
+            <SectionHeader title="promotion" />
+          </div>
 
-        <RowText className="left">
-          <Decoration className={`${isActive ? 'isActive' : undefined} space`}>I&#39;M LEARNING</Decoration>
-          <SideText className={isActive ? 'isActive' : undefined}>
-            BRAND LOGO <br /> ILLUSTRATION
-          </SideText>
-        </RowText>
+          <RowText className="left">
+            <Decoration className={`${isActive ? 'isActive' : undefined} space`}>I&#39;M LEARNING</Decoration>
+            <SideText className={isActive ? 'isActive' : undefined}>
+              BRAND LOGO <br /> ILLUSTRATION
+            </SideText>
+          </RowText>
 
-        <RowText className="center">
-          <Decoration className="regular">WEB PUBLISHING</Decoration>
-        </RowText>
+          <RowText className="center">
+            <Decoration className="regular">WEB PUBLISHING</Decoration>
+          </RowText>
 
-        <RowText className="right">
-          <SideText className={`${isActive ? 'isActive' : undefined} space`}>
-            PASSION <br />
-            IN
-          </SideText>
-          <Decoration className={isActive ? 'isActive' : undefined}>UI/UX DESIGN</Decoration>
-        </RowText>
-      </SmHidden>
-    </GlobalSection>
+          <RowText className="right">
+            <SideText className={`${isActive ? 'isActive' : undefined} space`}>
+              PASSION <br />
+              IN
+            </SideText>
+            <Decoration className={isActive ? 'isActive' : undefined}>UI/UX DESIGN</Decoration>
+          </RowText>
+        </SmHidden>
+      </GlobalSection>
+    </Container>
   );
 };
 

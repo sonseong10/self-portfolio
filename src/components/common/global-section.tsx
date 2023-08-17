@@ -6,13 +6,13 @@ interface IGlobalSectionProps {
   children: ReactNode;
 }
 
-const GlobalSection = ({children}: IGlobalSectionProps, ref: ForwardedRef<HTMLElement>) => {
+const GlobalSection = ({children}: IGlobalSectionProps, ref: ForwardedRef<HTMLDivElement>) => {
   return <SectionStyle ref={ref}>{children}</SectionStyle>;
 };
 
-export default React.forwardRef<HTMLElement, IGlobalSectionProps>(GlobalSection);
+export default React.forwardRef<HTMLDivElement, IGlobalSectionProps>(GlobalSection);
 
-const SectionStyle = styled.section`
+const SectionStyle = styled.div`
   padding: 0 10px;
   margin-bottom: 60px;
 

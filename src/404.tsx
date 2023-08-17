@@ -1,10 +1,10 @@
 import React from 'react';
 import {useNavigate} from 'react-router-dom';
-import Logo from '../assets/images/logo.svg';
-import media from '../assets/styles/constants/media';
-import palette from '../assets/styles/constants/palette';
-import typography from '../assets/styles/constants/typograpy';
-import BaseButton from '../components/common/base-button';
+import Logo from 'assets/images/logo.svg';
+import media from 'assets/styles/constants/media';
+import palette from 'assets/styles/constants/palette';
+import typography from 'assets/styles/constants/typograpy';
+import BaseButton from 'components/common/base-button';
 import styled from 'styled-components';
 
 const ErrorPage = () => {

@@ -6,6 +6,7 @@ import DrawerItem from './drawer/drawer-item';
 import styled from 'styled-components';
 import type {IProjectData} from 'types/type';
 import Spinner from 'components/spinner/spinner';
+import {Container} from 'components/common/layout';
 
 const ProjectList = styled.ul`
   margin: 0;
@@ -22,25 +23,27 @@ interface IProjectsProps {
 
 const Projects = ({projects, sectionRef, loading}: IProjectsProps) => {
   return (
-    <GlobalSection
-      ref={el => {
-        if (el && sectionRef.current) sectionRef.current[2] = el;
-      }}
-    >
-      <SectionHeader title={'Side Projects'} />
+    <Container>
+      <GlobalSection
+        ref={el => {
+          if (el && sectionRef.current) sectionRef.current[2] = el;
+        }}
+      >
+        <SectionHeader title={'Side Projects'} />
 
-      <SectionBody>
-        {loading ? (
-          <Spinner />
-        ) : (
-          <ProjectList>
-            {projects.map((project, index: number) => (
-              <DrawerItem key={index} project={project} index={index} />
-            ))}
-          </ProjectList>
-        )}
-      </SectionBody>
-    </GlobalSection>
+        <SectionBody>
+          {loading ? (
+            <Spinner />
+          ) : (
+            <ProjectList>
+              {projects.map((project, index: number) => (
+                <DrawerItem key={index} project={project} index={index} />
+              ))}
+            </ProjectList>
+          )}
+        </SectionBody>
+      </GlobalSection>
+    </Container>
   );
 };
 

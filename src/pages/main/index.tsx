@@ -15,9 +15,9 @@ import Home from './components/home/home';
 import Spinner from 'components/spinner/spinner';
 import History from './components/history/history';
 
-const ErrorPage = lazy(() => import('pages/404'));
-const Gallery = lazy(() => import('pages/gallery/gallery'));
-const HistoryPage = lazy(() => import('pages/history/history'));
+const ErrorPage = lazy(() => import('404'));
+const Gallery = lazy(() => import('pages/gallery'));
+const HistoryPage = lazy(() => import('pages/history'));
 
 interface IMainProps {
   fetchItem: FetchItem;
@@ -25,7 +25,7 @@ interface IMainProps {
 
 function Main({fetchItem}: IMainProps) {
   const sectionRef = useRef<HTMLElement[]>([]);
-  const promotionRef = useRef<HTMLElement>(null);
+  const promotionRef = useRef<HTMLDivElement>(null);
 
   const [skills, setSkills] = useState<ISkillsData[]>([]);
   const [skillLoading, setSkillLoading] = useState<boolean | undefined>(undefined);

@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import palette from 'assets/styles/constants/palette';
 import typography from 'assets/styles/constants/typograpy';
+import {Container} from 'components/common/layout';
 
 const BusinessCard = styled(Link)`
   width: 255px;
@@ -61,31 +62,33 @@ const History = ({sectionRef}: IHistoryProps) => {
         if (el && sectionRef.current) sectionRef.current[1] = el;
       }}
     >
-      <SectionHeader title={'Work'} />
+      <Container>
+        <SectionHeader title={'Work'} />
 
-      <SectionBody style={{alignItems: 'center'}}>
-        <BusinessCard to={'/history/fastview'} className="shadow">
-          <div>
-            <img src={CompanyLogo} alt="회사로고" />
-          </div>
-          <dl>
+        <SectionBody style={{alignItems: 'center'}}>
+          <BusinessCard to={'/history/fastview'} className="shadow">
             <div>
-              <dt>회사명</dt>
-              <dd>
-                <strong>Fastview</strong>
-              </dd>
+              <img src={CompanyLogo} alt="회사로고" />
             </div>
-            <div>
-              <dt>직책</dt>
-              <dd>손 성열 매니저</dd>
-            </div>
-            <div>
-              <dt>소속</dt>
-              <dd>제품개발기획팀</dd>
-            </div>
-          </dl>
-        </BusinessCard>
-      </SectionBody>
+            <dl>
+              <div>
+                <dt>회사명</dt>
+                <dd>
+                  <strong>Fastview</strong>
+                </dd>
+              </div>
+              <div>
+                <dt>직책</dt>
+                <dd>손 성열 매니저</dd>
+              </div>
+              <div>
+                <dt>소속</dt>
+                <dd>제품개발기획팀</dd>
+              </div>
+            </dl>
+          </BusinessCard>
+        </SectionBody>
+      </Container>
     </GlobalSection>
   );
 };

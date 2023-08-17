@@ -31,7 +31,7 @@ interface IMainProps {
 }
 
 const Main = ({children}: IMainProps) => {
-  return <Container as="main">{children}</Container>;
+  return <main>{children}</main>;
 };
 
 interface IFooterProps {
@@ -49,7 +49,7 @@ Layout.Header = Header;
 Layout.Main = Main;
 Layout.Footer = Footer;
 
-const Container = styled.div`
+export const Container = styled.section`
   width: 100%;
   margin: 0 auto;
   ${media.tablet} {

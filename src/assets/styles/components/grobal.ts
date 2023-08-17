@@ -1,12 +1,6 @@
-import React from 'react';
-import {BrowserRouter} from 'react-router-dom';
-import ToTop from '../components/common/to-top';
-import palette from '../assets/styles/constants/palette';
-import media from '../assets/styles/constants/media';
 import {createGlobalStyle} from 'styled-components';
-import FetchItem from '../service/fetch-item';
-import Main from 'pages/main/main';
-
+import palette from '../constants/palette';
+import media from '../constants/media';
 const GlobalStyle = createGlobalStyle`
   html,
   body,
@@ -104,18 +98,4 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-interface IAppProps {
-  fetchItem: FetchItem;
-}
-
-function App({fetchItem}: IAppProps) {
-  return (
-    <BrowserRouter>
-      <GlobalStyle />
-      <Main fetchItem={fetchItem} />
-      <ToTop />
-    </BrowserRouter>
-  );
-}
-
-export default App;
+export default GlobalStyle;
