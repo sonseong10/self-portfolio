@@ -96,10 +96,10 @@ function Main({fetchItem}: IMainProps) {
             element={
               <Layout.Main>
                 <Home />
-                <About />
-                <Skill skills={skills} sectionRef={sectionRef} loading={skillLoading} />
                 <History sectionRef={sectionRef} />
+                <Skill skills={skills} sectionRef={sectionRef} loading={skillLoading} />
                 <Projects projects={projects} sectionRef={sectionRef} loading={projectLoading} />
+                <About />
                 <Promotion promotionRef={promotionRef} />
                 <Artwork artwork={artwork} sectionRef={sectionRef} loading={artworkLoading} />
               </Layout.Main>
