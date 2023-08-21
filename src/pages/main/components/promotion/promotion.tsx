@@ -25,8 +25,8 @@ const Promotion = ({promotionRef}: IPromotionProps) => {
   }, [promotionRef]);
 
   return (
-    <Container>
-      <GlobalSection ref={promotionRef}>
+    <GlobalSection ref={promotionRef}>
+      <Container>
         <SmHidden>
           <div className="sr-only">
             <SectionHeader title="promotion" />
@@ -51,8 +51,8 @@ const Promotion = ({promotionRef}: IPromotionProps) => {
             <Decoration className={isActive ? 'isActive' : undefined}>UI/UX DESIGN</Decoration>
           </RowText>
         </SmHidden>
-      </GlobalSection>
-    </Container>
+      </Container>
+    </GlobalSection>
   );
 };
 

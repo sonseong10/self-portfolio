@@ -2,18 +2,18 @@ import React from 'react';
 import GlobalSection from '../../../../components/common/global-section';
 import SectionHeader from '../../../../components/common/section-header';
 import SectionBody from '../../../../components/common/section-body';
-import DrawerItem from './drawer/drawer-item';
-import styled from 'styled-components';
+// import DrawerItem from './drawer/drawer-item';
+// import styled from 'styled-components';
 import type {IProjectData} from 'types/type';
-import Spinner from 'components/spinner/spinner';
+// import Spinner from 'components/spinner/spinner';
 import {Container} from 'components/common/layout';
 
-const ProjectList = styled.ul`
-  margin: 0;
-  padding-left: 0;
-  width: 100%;
-  list-style: none;
-`;
+// const ProjectList = styled.ul`
+//   margin: 0;
+//   padding-left: 0;
+//   width: 100%;
+//   list-style: none;
+// `;
 
 interface IProjectsProps {
   projects: IProjectData[];
@@ -21,7 +21,7 @@ interface IProjectsProps {
   loading: boolean | undefined;
 }
 
-const Projects = ({projects, sectionRef, loading}: IProjectsProps) => {
+const Projects = ({sectionRef}: IProjectsProps) => {
   return (
     <Container>
       <GlobalSection
@@ -30,9 +30,9 @@ const Projects = ({projects, sectionRef, loading}: IProjectsProps) => {
         }}
       >
         <SectionHeader title={'Side Projects'} />
-
+        <span>실무경험 외 개인 학습용 프로젝트입니다.</span>
         <SectionBody>
-          {loading ? (
+          {/* {loading ? (
             <Spinner />
           ) : (
             <ProjectList>
@@ -40,7 +40,7 @@ const Projects = ({projects, sectionRef, loading}: IProjectsProps) => {
                 <DrawerItem key={index} project={project} index={index} />
               ))}
             </ProjectList>
-          )}
+          )} */}
         </SectionBody>
       </GlobalSection>
     </Container>

@@ -4,10 +4,8 @@ import SectionBody from 'components/common/section-body';
 import SectionHeader from 'components/common/section-header';
 
 import collegeLogo from 'assets/images/college-logo.png';
-import fastviewLogo from 'assets/images/fastview.svg';
 import typography from 'assets/styles/constants/typograpy';
 import palette from 'assets/styles/constants/palette';
-import media from 'assets/styles/constants/media';
 import MyIcon from 'assets/images/icons/my-icon';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
@@ -85,20 +83,12 @@ const About = () => {
   return (
     <Container>
       <GlobalSection>
-        <SectionHeader title="Information" />
+        <SectionHeader title="Education" />
+        <span>제가 수료한 교육과정을 소개합니다.</span>
 
         <SectionBody>
           <SectionBody.Inner>
             <HistoryList>
-              <ListItem
-                data={{
-                  imgURL: fastviewLogo,
-                  name: '패스트뷰',
-                  startDate: '2022-01',
-                  performance: ['제품개발기획팀 소속', 'FrontEnd 주니어 개발자'],
-                  link: 'https://www.fastviewkorea.com/2022/main/main.html',
-                }}
-              />
               <ListItem
                 data={{
                   imgURL: collegeLogo,
@@ -110,16 +100,6 @@ const About = () => {
                 }}
               />
             </HistoryList>
-          </SectionBody.Inner>
-
-          <SectionBody.Inner>
-            <Desc>
-              나만의 학습법으로 공부를 하며, 웹 개발 분야만큼은 수동적인 자세보단 능동적인 학습을 좋아합니다. 그리고
-              조별 과제에선 조장 역할로 지도력도 중요하지만, 적재적소 한 배치 능력으로 조원 모두가 프로젝트에 참여할 수
-              있게 했습니다.
-            </Desc>
-            <br />
-            <Desc>팀원들과 함께하는 개발을 선호하며, 무지개처럼 다채로운 능력을 갖춘 개발자로 성장하고 싶습니다.</Desc>
           </SectionBody.Inner>
         </SectionBody>
       </GlobalSection>
@@ -256,15 +236,5 @@ const InfoItem = styled.div`
       ${typography.small}
       color: ${palette.gray[300]}
     }
-  }
-`;
-
-const Desc = styled.p`
-  margin: 0;
-  ${typography.small}
-  color: ${palette.gray[200]};
-
-  ${media.tablet} {
-    padding: 0 20px;
   }
 `;

@@ -28,6 +28,7 @@ const Skill = ({sectionRef}: ISkillProps) => {
         }}
       >
         <SectionHeader title={'Skills'} />
+        <span>제가 가진 기술역량 소개해드립니다.</span>
 
         <SectionBodyStyle>
           <SectionBody.Inner>
@@ -38,8 +39,8 @@ const Skill = ({sectionRef}: ISkillProps) => {
                   <ol>
                     <li>
                       <ul>
-                        <li>HTML</li>
-                        <li>CSS</li>
+                        <li>HTML5</li>
+                        <li>CSS3</li>
                         <li>JavaScript</li>
                       </ul>
                     </li>

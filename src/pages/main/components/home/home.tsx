@@ -13,13 +13,6 @@ const Home = () => {
           빠른적응 능력을 가진
           <br /> 손성열 입니다.
         </h1>
-
-        <span>빠른적응 능력</span>
-        <ol>
-          <li>최신기술을 팔로우 하며 적용하기</li>
-          <li>배움에 있어 범주를 가리지않고 도전하기</li>
-          <li>넉살스러운 웃음과 스며드는 매력에 커뮤니케이션</li>
-        </ol>
       </HomeLeft>
 
       <HomeRight>
@@ -32,8 +25,8 @@ const Home = () => {
           </div>
 
           <div>
-            <dt>Name</dt>
-            <dd>손 성열(seongyeol Son)</dd>
+            <dt>Position</dt>
+            <dd>Front Developer</dd>
           </div>
 
           <div>
@@ -44,6 +37,8 @@ const Home = () => {
           </div>
         </dl>
       </HomeRight>
+
+      <span>빠른적응 능력이 무엇인지 소개 하도록 하겠습니다.</span>
     </Container>
   );
 };

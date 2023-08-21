@@ -57,13 +57,14 @@ interface IHistoryProps {
 
 const History = ({sectionRef}: IHistoryProps) => {
   return (
-    <GlobalSection
-      ref={el => {
-        if (el && sectionRef.current) sectionRef.current[1] = el;
-      }}
-    >
-      <Container>
+    <Container>
+      <GlobalSection
+        ref={el => {
+          if (el && sectionRef.current) sectionRef.current[1] = el;
+        }}
+      >
         <SectionHeader title={'Work'} />
+        <span>명함을 눌러 실무 경험을 확인하세요</span>
 
         <SectionBody style={{alignItems: 'center'}}>
           <BusinessCard to={'/history/fastview'} className="shadow">
@@ -88,8 +89,8 @@ const History = ({sectionRef}: IHistoryProps) => {
             </dl>
           </BusinessCard>
         </SectionBody>
-      </Container>
-    </GlobalSection>
+      </GlobalSection>
+    </Container>
   );
 };
 
