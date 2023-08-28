@@ -11,7 +11,7 @@ import Promotion from 'pages/main/components/promotion/promotion';
 import Artwork from 'pages/main/components/artwork';
 import GlobalFooter from 'components/layout/footer/global-footer';
 import useTheme from 'utils/useTheme';
-import Home from './components/home/home';
+import Home from './components/main';
 import Spinner from 'components/spinner/spinner';
 import History from './components/work/index';
 
