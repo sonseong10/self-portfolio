@@ -20,10 +20,21 @@ const HomeWrapper = styled.div`
     left: 50%;
     transform: translateX(-50%);
   }
+
+  > div {
+    width: 18em;
+  }
+
+  ${media.tablet} {
+    > div {
+      width: 43em;
+    }
+  }
 `;
 
-const HomeLeft = styled.div`
+const Intro = styled.div`
   h1 {
+    position: relative;
     margin-top: 0;
     margin-bottom: 1.5rem;
     font-size: 3rem;
@@ -32,9 +43,17 @@ const HomeLeft = styled.div`
     color: ${palette.gray[100]};
   }
 
+  p {
+    word-break: break-all;
+  }
+
   ${media.tablet} {
     h1 {
       font-size: 82px;
+    }
+
+    p {
+      font-size: 1.2rem;
     }
   }
 
@@ -42,15 +61,27 @@ const HomeLeft = styled.div`
     h1 {
       margin-bottom: 3rem;
       font-size: 6rem;
+
+      span::after {
+        position: absolute;
+        bottom: 16px;
+        left: 2px;
+        width: 240px;
+        height: 12px;
+        display: block;
+        background-color: ${palette.brandTheme};
+        content: '';
+        z-index: -1;
+      }
     }
   }
 `;
 
-const HomeRight = styled.div`
+const Info = styled.div`
   dl {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
     flex-direction: column;
     margin-bottom: 3rem;
 
@@ -111,14 +142,21 @@ function Main(): JSX.Element {
   return (
     <Container>
       <HomeWrapper>
-        <HomeLeft>
+        <Intro>
           <h1>
             안녕하세요
-            <br /> 손성열 입니다.
+            <br /> <span>손성열</span> 입니다.
           </h1>
-        </HomeLeft>
 
-        <HomeRight>
+          <p>
+            현재 초년차(2년차) 개발자로 웹 프론트엔드 개발자로 데이터 가공을 좋아해 백엔드 업무도 도맡아 프로젝트를
+            진행했지만, 현재는 프론트엔드 개발에 집중하여 커리어를 쌓고싶습니다.
+          </p>
+
+          <p>문서화하는 작업을 좋아하며 비개발자분들과 소통하는 시간또한 중요하다고 생각합니다.</p>
+        </Intro>
+
+        <Info>
           <dl>
             <div>
               <dt>Email</dt>
@@ -139,9 +177,7 @@ function Main(): JSX.Element {
               </dd>
             </div>
           </dl>
-        </HomeRight>
-
-        <i>Down Arrow</i>
+        </Info>
       </HomeWrapper>
     </Container>
   );
