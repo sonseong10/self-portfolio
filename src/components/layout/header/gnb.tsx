@@ -7,7 +7,7 @@ import Observer from '../../../utils/observer';
 import ThemeButton from '../../common/theme-button';
 import styled, {css} from 'styled-components';
 
-const listItem = ['Skills', 'Work', 'Projects', 'Artworks'];
+const listItem = ['Work', 'Skills', 'Projects', 'Education'];
 
 interface IGnbProps {
   sectionRef: React.MutableRefObject<HTMLElement[]>;
@@ -79,13 +79,13 @@ const NavigationBar = styled.nav`
   ul {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     margin: 0;
     padding-left: 0;
     list-style: none;
 
     li {
-      flex: 1;
+      margin-left: 14px;
 
       button {
         ${resetButton};
