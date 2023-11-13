@@ -24,11 +24,10 @@ const Skill = ({sectionRef}: ISkillProps) => {
     <Container>
       <GlobalSection
         ref={el => {
-          if (el && sectionRef.current) sectionRef.current[0] = el;
+          if (el && sectionRef.current) sectionRef.current[1] = el;
         }}
       >
-        <SectionHeader title={'Skills'} />
-        <span>제가 가진 기술역량 소개해드립니다.</span>
+        <SectionHeader title={'Skills'} description={'제가 가진 기술역량 소개해드립니다.'} />
 
         <SectionBodyStyle>
           <SectionBody.Inner>

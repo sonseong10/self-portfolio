@@ -37,6 +37,8 @@ function Main({fetchItem}: IMainProps) {
   const [artworkLoading, setArtworkLoading] = useState<boolean | undefined>(undefined);
   const {theme, toggleTheme} = useTheme();
 
+  console.log(sectionRef);
+
   useEffect(() => {
     try {
       setSkillLoading(true);

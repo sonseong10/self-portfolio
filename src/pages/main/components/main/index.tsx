@@ -10,7 +10,7 @@ const HomeWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   flex-direction: column;
   height: calc(100vh - 60px);
 
@@ -22,12 +22,18 @@ const HomeWrapper = styled.div`
   }
 
   > div {
-    width: 18em;
+    width: 18rem;
   }
 
   ${media.tablet} {
     > div {
-      width: 43em;
+      width: 36em;
+    }
+  }
+
+  ${media.desktop} {
+    > div {
+      width: 100%;
     }
   }
 `;
@@ -91,7 +97,7 @@ const Info = styled.div`
       dt {
         margin-bottom: 8px;
         color: ${palette.gray[100]};
-        font-weight: 700;
+        font-weight: 500;
       }
 
       dd,
@@ -149,8 +155,9 @@ function Main(): JSX.Element {
           </h1>
 
           <p>
-            현재 초년차(2년차) 개발자로 웹 프론트엔드 개발자로 데이터 가공을 좋아해 백엔드 업무도 도맡아 프로젝트를
-            진행했지만, 현재는 프론트엔드 개발에 집중하여 커리어를 쌓고싶습니다.
+            현재 초년차 개발자로 웹 프론트엔드 개발자로 데이터 가공을 좋아해 백엔드 업무도 도맡아 프로젝트를 진행했지만,
+            <br />
+            현재는 프론트엔드 개발에 집중하여 커리어를 쌓고싶습니다.
           </p>
 
           <p>문서화하는 작업을 좋아하며 비개발자분들과 소통하는 시간또한 중요하다고 생각합니다.</p>

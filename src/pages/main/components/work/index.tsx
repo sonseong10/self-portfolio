@@ -8,6 +8,12 @@ import {Link} from 'react-router-dom';
 import palette from 'assets/styles/constants/palette';
 import typography from 'assets/styles/constants/typograpy';
 import {Container} from 'components/common/layout';
+import media from 'assets/styles/constants/media';
+
+const NextArrow = (color?: string): string => {
+  color = color?.indexOf('#') === -1 ? color : color?.substring(1, color.length);
+  return `"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='none' viewBox='0 0 20 20'%3E,%3Cpath stroke='%23${color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M7.5 15l5-5-5-5'/%3E,%3C/svg%3E"`;
+};
 
 const BusinessCard = styled(Link)`
   width: 255px;
@@ -51,6 +57,80 @@ const BusinessCard = styled(Link)`
   }
 `;
 
+const BusinessList = styled.ul`
+  display: flex;
+  justify-content: center;
+  padding: 0;
+
+  list-style: none;
+
+  > li {
+    > div {
+      display: none;
+    }
+  }
+
+  ${media.desktop} {
+    justify-content: flex-start;
+    width: 100%;
+
+    > li {
+      width: 100%;
+      display: flex;
+      padding: 3rem 0;
+      border-bottom: 1px solid ${palette.gray[500]};
+
+      > div {
+        display: block;
+      }
+
+      dl {
+        margin: 0;
+
+        dd {
+          margin-left: 0;
+          color: ${palette.gray[200]};
+        }
+      }
+
+      h3 {
+        margin-top: 0;
+
+        a {
+          color: ${palette.gray[100]};
+          text-decoration: none;
+
+          display: flex;
+          align-items: center;
+          margin-right: 24px;
+          padding-right: 20px;
+
+          &::after {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            background: url(${NextArrow('#1d1d1d')}) no-repeat center center;
+            content: '';
+          }
+        }
+      }
+
+      h4 {
+        font-weight: 500;
+      }
+
+      > a {
+        margin-right: 24px;
+      }
+
+      ul {
+        list-style: initial;
+        padding-left: 16px;
+      }
+    }
+  }
+`;
+
 interface IHistoryProps {
   sectionRef: React.MutableRefObject<HTMLElement[]>;
 }
@@ -60,34 +140,74 @@ const History = ({sectionRef}: IHistoryProps) => {
     <Container>
       <GlobalSection
         ref={el => {
-          if (el && sectionRef.current) sectionRef.current[1] = el;
+          if (el && sectionRef.current) sectionRef.current[0] = el;
         }}
       >
-        <SectionHeader title={'Work'} />
-        <span>명함을 눌러 실무 경험을 확인하세요</span>
+        <SectionHeader title="Work Experience" description="명함을 눌러 자세한 실무경험을 확인하세요." />
 
         <SectionBody style={{alignItems: 'center'}}>
-          <BusinessCard to={'/history/fastview'} className="shadow">
-            <div>
-              <img src={CompanyLogo} alt="회사로고" />
-            </div>
-            <dl>
+          <BusinessList>
+            <li>
+              <BusinessCard to={'/history/fastview'} className="shadow">
+                <div>
+                  <img src={CompanyLogo} alt="회사로고" />
+                </div>
+                <dl>
+                  <div>
+                    <dt>회사명</dt>
+                    <dd>
+                      <strong>Fastview</strong>
+                    </dd>
+                  </div>
+                  <div>
+                    <dt>직책</dt>
+                    <dd>손 성열 매니저</dd>
+                  </div>
+                  <div>
+                    <dt>소속</dt>
+                    <dd>제품개발그룹</dd>
+                  </div>
+                </dl>
+              </BusinessCard>
+
               <div>
-                <dt>회사명</dt>
-                <dd>
-                  <strong>Fastview</strong>
-                </dd>
+                <h3>
+                  <a href="https://www.fastviewkorea.com/2022/main/main.html" target="_blank" rel="noreferrer">
+                    Fastview
+                  </a>
+                </h3>
+
+                <dl>
+                  <dt className="sr-only">근무기간</dt>
+                  <dd>
+                    <time dateTime="2022-1">2022.1</time>
+                    <span>-</span>
+                    <time dateTime="2022-1">2023.11</time>
+                  </dd>
+                </dl>
+
+                <dl>
+                  <dt className="sr-only">직책</dt>
+                  <dd>Web Frontend Developer</dd>
+                </dl>
+
+                <h4 className="sr-only">Description</h4>
+                <p>
+                  Vue2와 React18 그리고 Next13.js를 사용해서 제품(이커머스, 광고, CMS)의 백오피스와 사용자 화면작업을
+                  했습니다.
+                </p>
+                <h4>Details</h4>
+                <ul>
+                  <li>Vue에서 React로 리펙토링</li>
+                  <li>이커머스, 광고, CMS 등 다양한 도메인 지식</li>
+                  <li>스토리북을 활용하여 신규입사자 온보딩 문서제작</li>
+                  <li>백오피스 어드민에서 컴포넌트 재사용을 위한 Gitsubmobule제작</li>
+                </ul>
+                <h4>Tech Stacks</h4>
+                <p>React, Next.js, Redux-toolkit, TypeScript, SCSS, Styled-componenet Github</p>
               </div>
-              <div>
-                <dt>직책</dt>
-                <dd>손 성열 매니저</dd>
-              </div>
-              <div>
-                <dt>소속</dt>
-                <dd>제품개발기획팀</dd>
-              </div>
-            </dl>
-          </BusinessCard>
+            </li>
+          </BusinessList>
         </SectionBody>
       </GlobalSection>
     </Container>

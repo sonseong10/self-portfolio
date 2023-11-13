@@ -11,104 +11,6 @@ import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import {Container} from 'components/common/layout';
 
-interface IListItemProps {
-  data: {
-    imgURL: string;
-    name: string;
-    startDate: string;
-    endDate?: string;
-    performance?: string[];
-    link?: string;
-  };
-}
-
-const ListItem = ({data}: IListItemProps) => {
-  const [show, setShow] = useState<boolean>(false);
-
-  const onToggle = () => {
-    setShow(!show);
-  };
-  return (
-    <li>
-      <Card onClick={onToggle} type="button" className="shadow">
-        <CardLeft>
-          <div className="imgWrap">
-            <img src={data.imgURL} alt="brand logo" />
-          </div>
-        </CardLeft>
-
-        <CardRight>
-          <InfoList>
-            <InfoItem className="name">
-              <dt className="sr-only">기관명</dt>
-              <dd>
-                <strong>{data.name}</strong>
-              </dd>
-            </InfoItem>
-
-            <InfoItem>
-              <dt className="sr-only">시작일</dt>
-              <dd className="startDate">
-                <time dateTime={data.startDate}>{data.startDate}</time>
-              </dd>
-
-              <dt className="sr-only">종료일</dt>
-              <dd className="endDate">
-                {data.endDate ? <time dateTime={data.endDate}>{data.endDate}</time> : <span>재직중</span>}
-              </dd>
-            </InfoItem>
-          </InfoList>
-        </CardRight>
-
-        <IconBox className={show ? 'isActive' : undefined}>
-          <MyIcon name="chevron" />
-        </IconBox>
-      </Card>
-      <Drawer className={show ? 'isActive' : undefined}>
-        {data.performance?.map((i, index) => (
-          <li key={index}>{i}</li>
-        ))}
-        {data.link ? (
-          <li>
-            <Link to={data.link} target="_blank" rel="noreferrer">
-              공식사이트 이동
-            </Link>
-          </li>
-        ) : null}
-      </Drawer>
-    </li>
-  );
-};
-const About = () => {
-  return (
-    <Container>
-      <GlobalSection>
-        <SectionHeader title="Education" />
-        <span>제가 수료한 교육과정을 소개합니다.</span>
-
-        <SectionBody>
-          <SectionBody.Inner>
-            <HistoryList>
-              <ListItem
-                data={{
-                  imgURL: collegeLogo,
-                  name: '인하공업전문대학교',
-                  startDate: '2016-03',
-                  endDate: '2022-02',
-                  performance: ['컴퓨터시스템과 전공', '3-In프로젝트 수료'],
-                  link: 'https://cse.inhatc.ac.kr/cse/2199/subview.do',
-                }}
-              />
-            </HistoryList>
-          </SectionBody.Inner>
-        </SectionBody>
-      </GlobalSection>
-    </Container>
-  );
-};
-
-export default About;
-
 const HistoryList = styled.ul`
   margin: 0;
   padding-left: 0;
@@ -238,3 +140,101 @@ const InfoItem = styled.div`
     }
   }
 `;
+
+interface IListItemProps {
+  data: {
+    imgURL: string;
+    name: string;
+    startDate: string;
+    endDate?: string;
+    performance?: string[];
+    link?: string;
+  };
+}
+
+const ListItem: React.FC<IListItemProps> = ({data}: IListItemProps): JSX.Element => {
+  const [show, setShow] = useState<boolean>(false);
+
+  const onToggle = () => {
+    setShow(!show);
+  };
+  return (
+    <li>
+      <Card onClick={onToggle} type="button" className="shadow">
+        <CardLeft>
+          <div className="imgWrap">
+            <img src={data.imgURL} alt="brand logo" />
+          </div>
+        </CardLeft>
+
+        <CardRight>
+          <InfoList>
+            <InfoItem className="name">
+              <dt className="sr-only">기관명</dt>
+              <dd>
+                <strong>{data.name}</strong>
+              </dd>
+            </InfoItem>
+
+            <InfoItem>
+              <dt className="sr-only">시작일</dt>
+              <dd className="startDate">
+                <time dateTime={data.startDate}>{data.startDate}</time>
+              </dd>
+
+              <dt className="sr-only">종료일</dt>
+              <dd className="endDate">
+                {data.endDate ? <time dateTime={data.endDate}>{data.endDate}</time> : <span>재직중</span>}
+              </dd>
+            </InfoItem>
+          </InfoList>
+        </CardRight>
+
+        <IconBox className={show ? 'isActive' : undefined}>
+          <MyIcon name="chevron" />
+        </IconBox>
+      </Card>
+      <Drawer className={show ? 'isActive' : undefined}>
+        {data.performance?.map((i, index) => (
+          <li key={index}>{i}</li>
+        ))}
+        {data.link ? (
+          <li>
+            <Link to={data.link} target="_blank" rel="noreferrer">
+              공식사이트 이동
+            </Link>
+          </li>
+        ) : null}
+      </Drawer>
+    </li>
+  );
+};
+const About = () => {
+  return (
+    <Container>
+      <GlobalSection>
+        <SectionHeader title="Education" />
+        <span>제가 수료한 교육과정을 소개합니다.</span>
+
+        <SectionBody>
+          <SectionBody.Inner>
+            <HistoryList>
+              <ListItem
+                data={{
+                  imgURL: collegeLogo,
+                  name: '인하공업전문대학교',
+                  startDate: '2016-03',
+                  endDate: '2022-02',
+                  performance: ['컴퓨터시스템과 전공', '3-In프로젝트 수료'],
+                  link: 'https://cse.inhatc.ac.kr/cse/2199/subview.do',
+                }}
+              />
+            </HistoryList>
+          </SectionBody.Inner>
+        </SectionBody>
+      </GlobalSection>
+    </Container>
+  );
+};
+
+export default About;

@@ -29,8 +29,7 @@ const Projects = ({sectionRef}: IProjectsProps) => {
           if (el && sectionRef.current) sectionRef.current[2] = el;
         }}
       >
-        <SectionHeader title={'Side Projects'} />
-        <span>실무경험 외 개인 학습용 프로젝트입니다.</span>
+        <SectionHeader title="Side Projects" description="실무경험 외 개인 학습용 프로젝트입니다." />
         <SectionBody>
           {/* {loading ? (
             <Spinner />
