@@ -35,8 +35,6 @@ const Gnb = ({sectionRef, toggleTheme, theme}: IGnbProps) => {
     setActiveTab(sectionRef.current[index]);
   };
 
-  console.log(sectionRef, sectionRef.current[1] === active);
-
   return (
     <>
       <NavigationBar>
