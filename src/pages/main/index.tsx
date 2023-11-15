@@ -1,11 +1,11 @@
 import React, {Suspense, lazy, useEffect, useRef, useState} from 'react';
 import FetchItem from '../../service/fetch-item';
-import type {IArtWorkData, IProjectData, ISkillsData} from 'types/type';
+import type {IArtWorkData, IProjectData} from 'types/type';
 import Layout from 'components/common/layout';
 import GlobalHeader from 'components/layout/header/global-header';
 import {Route, Routes} from 'react-router-dom';
 import About from 'pages/main/components/about';
-import Skill from 'pages/main/components/skill/index';
+// import Skill from 'pages/main/components/skill/index';
 import Projects from 'pages/main/components/projects/index';
 import Promotion from 'pages/main/components/promotion/promotion';
 import Artwork from 'pages/main/components/artwork';
@@ -27,8 +27,8 @@ function Main({fetchItem}: IMainProps) {
   const sectionRef = useRef<HTMLElement[]>([]);
   const promotionRef = useRef<HTMLDivElement>(null);
 
-  const [skills, setSkills] = useState<ISkillsData[]>([]);
-  const [skillLoading, setSkillLoading] = useState<boolean | undefined>(undefined);
+  // const [skills, setSkills] = useState<ISkillsData[]>([]);
+  // const [skillLoading, setSkillLoading] = useState<boolean | undefined>(undefined);
 
   const [projects, setProjects] = useState<IProjectData[]>([]);
   const [projectLoading, setProjectLoading] = useState<boolean | undefined>(undefined);
@@ -37,23 +37,21 @@ function Main({fetchItem}: IMainProps) {
   const [artworkLoading, setArtworkLoading] = useState<boolean | undefined>(undefined);
   const {theme, toggleTheme} = useTheme();
 
-  console.log(sectionRef);
+  // useEffect(() => {
+  //   try {
+  //     setSkillLoading(true);
+  //     const stopSync = fetchItem.fetchData((skills: ISkillsData[]) => {
+  //       setSkills(skills);
+  //       setSkillLoading(false);
+  //     }, 'skills');
 
-  useEffect(() => {
-    try {
-      setSkillLoading(true);
-      const stopSync = fetchItem.fetchData((skills: ISkillsData[]) => {
-        setSkills(skills);
-        setSkillLoading(false);
-      }, 'skills');
-
-      return () => {
-        stopSync();
-      };
-    } catch (error) {
-      setSkillLoading(true);
-    }
-  }, []);
+  //     return () => {
+  //       stopSync();
+  //     };
+  //   } catch (error) {
+  //     setSkillLoading(true);
+  //   }
+  // }, []);
 
   useEffect(() => {
     try {
@@ -99,9 +97,9 @@ function Main({fetchItem}: IMainProps) {
               <Layout.Main>
                 <Home />
                 <History sectionRef={sectionRef} />
-                <Skill skills={skills} sectionRef={sectionRef} loading={skillLoading} />
+                {/* <Skill skills={skills} sectionRef={sectionRef} loading={skillLoading} /> */}
                 <Projects projects={projects} sectionRef={sectionRef} loading={projectLoading} />
-                <About />
+                <About sectionRef={sectionRef} />
                 <Promotion promotionRef={promotionRef} />
                 <Artwork artwork={artwork} sectionRef={sectionRef} loading={artworkLoading} />
               </Layout.Main>

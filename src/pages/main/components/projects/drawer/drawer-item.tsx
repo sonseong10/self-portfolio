@@ -14,7 +14,7 @@ interface IDrawerItemProps {
   index: number;
 }
 const DrawerItem = ({project, index}: IDrawerItemProps) => {
-  const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive] = useState(index > 1 ? true : false);
 
   const {thumbnailURL, title, desc, role, personnel, stack, githubURL, deployURL} = project;
 
@@ -93,7 +93,7 @@ const DrawerItemStyle = styled.li`
     transition: box-shadow 0.2s ease-in-out;
 
     &:hover {
-      box-shadow: 2px 2px 8px ${palette.gray[500]};
+      opacity: 0.6;
     }
   }
 `;

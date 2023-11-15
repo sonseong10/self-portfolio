@@ -174,7 +174,7 @@ function Main(): JSX.Element {
 
             <div>
               <dt>Position</dt>
-              <dd>Front Developer</dd>
+              <dd>Web Frontend Developer</dd>
             </div>
 
             <div>

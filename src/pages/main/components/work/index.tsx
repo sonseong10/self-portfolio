@@ -61,6 +61,7 @@ const BusinessList = styled.ul`
   display: flex;
   justify-content: center;
   padding: 0;
+  width: 100%;
 
   list-style: none;
 
@@ -123,10 +124,22 @@ const BusinessList = styled.ul`
         margin-right: 24px;
       }
 
-      ul {
+      ul:not(:last-child) {
         list-style: initial;
         padding-left: 16px;
       }
+    }
+  }
+`;
+
+const CommentsList = styled.ul`
+  list-style: none;
+  padding-left: 0;
+
+  li {
+    span {
+      color: ${palette.gray[300]};
+      margin-left: 6px;
     }
   }
 `;
@@ -204,7 +217,22 @@ const History = ({sectionRef}: IHistoryProps) => {
                   <li>백오피스 어드민에서 컴포넌트 재사용을 위한 Gitsubmobule제작</li>
                 </ul>
                 <h4>Tech Stacks</h4>
-                <p>React, Next.js, Redux-toolkit, TypeScript, SCSS, Styled-componenet Github</p>
+                <p>React, Next.js, Redux-toolkit, TypeScript, SCSS, Styled-componenet, Kotlin, MySQL, Github</p>
+
+                <h4>Comments</h4>
+                <CommentsList>
+                  <li>
+                    <q>
+                      팀에서는 막내. 하지만 각종 어드민 천재라고 함. 광고 붙이는 작업 많이 수행함, CMS에서 사용할
+                      에디터를 만들었음.
+                    </q>
+                    <span>이** 그룹장</span>
+                  </li>
+                  <li>
+                    <q>연차대비 데이터 가공하는걸 좋아하고 잘하는거 같다</q>
+                    <span>윤** 매니저</span>
+                  </li>
+                </CommentsList>
               </div>
             </li>
           </BusinessList>

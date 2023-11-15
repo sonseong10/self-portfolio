@@ -1,6 +1,5 @@
 import React from 'react';
 import logo from '../../../assets/images/logo.svg';
-import media from '../../../assets/styles/constants/media';
 import Gnb from './gnb';
 import {resetButton} from '../../../assets/styles/components/reset-button';
 import palette from '../../../assets/styles/constants/palette';
@@ -57,10 +56,6 @@ const RootBtn = styled.button`
   ${resetButton}
   background-color: ${palette.white};
   margin-right: 12px;
-
-  ${media.tablet} {
-    margin-right: 80px;
-  }
 `;
 
 const LogoImage = styled.figure`

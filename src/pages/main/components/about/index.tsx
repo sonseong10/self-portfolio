@@ -36,7 +36,7 @@ const Card = styled.button`
   transition: box-shadow 0.2s ease-in-out;
 
   &:hover {
-    box-shadow: 2px 2px 8px ${palette.gray[500]};
+    opacity: 0.6;
   }
 `;
 
@@ -153,7 +153,7 @@ interface IListItemProps {
 }
 
 const ListItem: React.FC<IListItemProps> = ({data}: IListItemProps): JSX.Element => {
-  const [show, setShow] = useState<boolean>(false);
+  const [show, setShow] = useState<boolean>(true);
 
   const onToggle = () => {
     setShow(!show);
@@ -201,7 +201,7 @@ const ListItem: React.FC<IListItemProps> = ({data}: IListItemProps): JSX.Element
         {data.link ? (
           <li>
             <Link to={data.link} target="_blank" rel="noreferrer">
-              공식사이트 이동
+              교육과정 이동
             </Link>
           </li>
         ) : null}
@@ -209,12 +209,20 @@ const ListItem: React.FC<IListItemProps> = ({data}: IListItemProps): JSX.Element
     </li>
   );
 };
-const About = () => {
+
+interface IAboutProps {
+  sectionRef: React.MutableRefObject<HTMLElement[]>;
+}
+
+const About = ({sectionRef}: IAboutProps) => {
   return (
     <Container>
-      <GlobalSection>
-        <SectionHeader title="Education" />
-        <span>제가 수료한 교육과정을 소개합니다.</span>
+      <GlobalSection
+        ref={el => {
+          if (el && sectionRef.current) sectionRef.current[2] = el;
+        }}
+      >
+        <SectionHeader title="Education" description="제가 수료한 교육과정을 소개합니다." />
 
         <SectionBody>
           <SectionBody.Inner>

@@ -7,7 +7,7 @@ import Observer from '../../../utils/observer';
 import ThemeButton from '../../common/theme-button';
 import styled, {css} from 'styled-components';
 
-const listItem = ['Work', 'Skills', 'Projects', 'Education'];
+const listItem = ['Work', 'Projects', 'Education'];
 
 interface IGnbProps {
   sectionRef: React.MutableRefObject<HTMLElement[]>;
@@ -30,10 +30,13 @@ const Gnb = ({sectionRef, toggleTheme, theme}: IGnbProps) => {
   const onBtnClick = (index: number) => {
     sectionRef.current[index].scrollIntoView({
       behavior: 'smooth',
-      block: 'center',
+      block: 'start',
     });
     setActiveTab(sectionRef.current[index]);
   };
+
+  console.log(sectionRef, sectionRef.current[1] === active);
+
   return (
     <>
       <NavigationBar>
