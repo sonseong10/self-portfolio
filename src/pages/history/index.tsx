@@ -581,6 +581,48 @@ function HistoryPage() {
             </div>
           </section>
         </div>
+        <div className="row">
+          <section>
+            <i className="icon fas fa-paper-plane"></i>
+            <div className="details">
+              <span className="title">백엔드 업무참여</span>
+              <span>2023.08</span>
+            </div>
+            <p>프로젝트 진행에 있어 회사에제안으로 백엔드 업무에 참여할수있는 기회를 제공받았습니다.</p>
+            <div className="bottom">
+              <dl>
+                <div>
+                  <dt>목표</dt>
+                  <dd>백엔드개발자의 업무방식 이해와 적응</dd>
+                </div>
+                <div>
+                  <dt>업무</dt>
+                  <dd>
+                    <ul>
+                      <li>Kotlin과 MySQL을 활용하여 공지사항 API제작</li>
+                    </ul>
+                  </dd>
+                </div>
+                <div>
+                  <dt>문제</dt>
+                  <dd>
+                    <ul>
+                      <li>컨벤션 차이와 언어문법 및 구조파악</li>
+                    </ul>
+                  </dd>
+                </div>
+                <div>
+                  <dt>성장</dt>
+                  <dd>
+                    <ul>
+                      <li>Kotlin, Springboot, QueryDSL, MySQL 등 활용한 API제작</li>
+                    </ul>
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </section>
+        </div>
       </div>
     </StoryBoard>
   );

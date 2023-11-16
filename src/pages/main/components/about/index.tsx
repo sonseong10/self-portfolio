@@ -18,6 +18,10 @@ const HistoryList = styled.ul`
 
   & > li {
     margin-bottom: 14px;
+
+    > ul {
+      list-style: initial;
+    }
   }
 `;
 
@@ -143,7 +147,7 @@ const InfoItem = styled.div`
 
 interface IListItemProps {
   data: {
-    imgURL: string;
+    imgURL?: string;
     name: string;
     startDate: string;
     endDate?: string;
@@ -153,7 +157,7 @@ interface IListItemProps {
 }
 
 const ListItem: React.FC<IListItemProps> = ({data}: IListItemProps): JSX.Element => {
-  const [show, setShow] = useState<boolean>(true);
+  const [show, setShow] = useState<boolean>(false);
 
   const onToggle = () => {
     setShow(!show);
@@ -161,11 +165,15 @@ const ListItem: React.FC<IListItemProps> = ({data}: IListItemProps): JSX.Element
   return (
     <li>
       <Card onClick={onToggle} type="button" className="shadow">
-        <CardLeft>
-          <div className="imgWrap">
-            <img src={data.imgURL} alt="brand logo" />
-          </div>
-        </CardLeft>
+        {data?.imgURL ? (
+          <CardLeft>
+            <div className="imgWrap">
+              <img src={data?.imgURL} alt="brand logo" />
+            </div>
+          </CardLeft>
+        ) : (
+          <></>
+        )}
 
         <CardRight>
           <InfoList>
@@ -184,7 +192,7 @@ const ListItem: React.FC<IListItemProps> = ({data}: IListItemProps): JSX.Element
 
               <dt className="sr-only">종료일</dt>
               <dd className="endDate">
-                {data.endDate ? <time dateTime={data.endDate}>{data.endDate}</time> : <span>재직중</span>}
+                {data.endDate ? <time dateTime={data.endDate}>{data.endDate}</time> : <span>참여중</span>}
               </dd>
             </InfoItem>
           </InfoList>
@@ -235,6 +243,20 @@ const About = ({sectionRef}: IAboutProps) => {
                   endDate: '2022-02',
                   performance: ['컴퓨터시스템과 전공', '3-In프로젝트 수료'],
                   link: 'https://cse.inhatc.ac.kr/cse/2199/subview.do',
+                }}
+              />
+              <ListItem
+                data={{
+                  name: 'AWSKRUG',
+                  startDate: '2023-08',
+                  performance: ['AWSKRUG 프론트엔드 소모임 활동중'],
+                }}
+              />
+              <ListItem
+                data={{
+                  name: 'Toss - Frontend Diving Club',
+                  startDate: '2023-11',
+                  performance: [],
                 }}
               />
             </HistoryList>
