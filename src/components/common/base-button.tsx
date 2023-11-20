@@ -26,7 +26,11 @@ interface ILinkProps {
 }
 
 const Link = ({title, URL}: ILinkProps) => {
-  return <PrimaryLink href={URL}>{title}</PrimaryLink>;
+  return (
+    <PrimaryLink href={URL} target="_blank">
+      {title}
+    </PrimaryLink>
+  );
 };
 
 BaseButton.Link = Link;
