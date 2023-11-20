@@ -20,8 +20,7 @@ const BusinessCard = styled(Link)`
   justify-content: space-between;
   border-radius: 6px;
   text-decoration: none;
-  background-color: ${palette.white};
-  box-shadow: 2px 2px 6px ${palette.gray[500]};
+  border: 1px solid ${palette.gray[500]};
   transition: box-shadow 0.2s ease-in-out;
 
   img {
@@ -36,6 +35,7 @@ const BusinessCard = styled(Link)`
 
       dt {
         color: ${palette.gray[400]};
+        margin-right: 2px;
       }
       dd {
         margin: 0 4px;
@@ -49,7 +49,7 @@ const BusinessCard = styled(Link)`
   }
 
   &:hover {
-    box-shadow: 4px 4px 10px ${palette.gray[500]};
+    opacity: 0.6;
   }
 `;
 
@@ -157,7 +157,7 @@ const History = ({sectionRef}: IHistoryProps) => {
         <SectionBody style={{alignItems: 'center'}}>
           <BusinessList>
             <li>
-              <BusinessCard to={'/history/fastview'} className="shadow">
+              <BusinessCard to={'/history/fastview'} className="card">
                 <div>
                   <img src={CompanyLogo} alt="회사로고" />
                 </div>

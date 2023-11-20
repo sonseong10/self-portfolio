@@ -65,10 +65,6 @@ const GlobalStyle = createGlobalStyle`
       background-color: ${palette.darkTheme.primary};
       border-color: ${palette.darkTheme.secondary};
 
-      &.shadow{
-        box-shadow: 2px 2px 4px #000;
-      }
-
       &:active {
         background-color: ${palette.darkTheme.secondary};
       }
