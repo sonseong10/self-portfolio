@@ -67,6 +67,11 @@ const BusinessList = styled.ul`
     }
   }
 
+  .work-date {
+    display: flex;
+    align-items: center;
+  }
+
   ${media.desktop} {
     justify-content: flex-start;
     width: 100%;
@@ -140,6 +145,14 @@ const CommentsList = styled.ul`
   }
 `;
 
+const Badge = styled.span`
+  background-color: #f4f5f6;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 6px;
+  font-size: 13px;
+`;
+
 interface IHistoryProps {
   sectionRef: React.MutableRefObject<HTMLElement[]>;
 }
@@ -186,12 +199,16 @@ const History = ({sectionRef}: IHistoryProps) => {
                   </a>
                 </h3>
 
-                <dl>
+                <dl className="work-date">
                   <dt className="sr-only">근무기간</dt>
                   <dd>
                     <time dateTime="2022-1">2022.1</time>
                     <span>-</span>
                     <time dateTime="2022-1">2023.11</time>
+                  </dd>
+                  <dt className="sr-only">총 기간</dt>
+                  <dd>
+                    <Badge>1년 9개월</Badge>
                   </dd>
                 </dl>
 

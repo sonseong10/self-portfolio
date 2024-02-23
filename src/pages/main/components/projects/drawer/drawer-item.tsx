@@ -14,7 +14,7 @@ interface IDrawerItemProps {
   index: number;
 }
 const DrawerItem = ({project, index}: IDrawerItemProps) => {
-  const [isActive, setIsActive] = useState(index > 1 ? true : false);
+  const [isActive, setIsActive] = useState(false);
 
   const {thumbnailURL, title, desc, role, personnel, stack, githubURL, deployURL} = project;
 
