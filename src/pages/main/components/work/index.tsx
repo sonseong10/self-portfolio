@@ -208,7 +208,7 @@ const History = ({sectionRef}: IHistoryProps) => {
                   </dd>
                   <dt className="sr-only">총 기간</dt>
                   <dd>
-                    <Badge>1년 9개월</Badge>
+                    <Badge>1년 11개월</Badge>
                   </dd>
                 </dl>
 
@@ -219,8 +219,8 @@ const History = ({sectionRef}: IHistoryProps) => {
 
                 <h4 className="sr-only">Description</h4>
                 <p>
-                  Vue2와 React18 그리고 Next13.js를 사용해서 제품(이커머스, 광고, CMS)의 백오피스와 사용자 화면작업을
-                  했습니다.
+                  스타트업 초기맴버로 활동하며 Vue2와 React18 그리고 Next13.js를 사용해서 제품(이커머스, 광고, CMS)의
+                  백오피스와 사용자 화면작업을 했습니다.
                 </p>
                 <h4>Details</h4>
                 <ul>
@@ -228,9 +228,10 @@ const History = ({sectionRef}: IHistoryProps) => {
                   <li>이커머스, 광고, CMS 등 다양한 도메인 지식</li>
                   <li>스토리북을 활용하여 신규입사자 온보딩 문서제작</li>
                   <li>백오피스 어드민에서 컴포넌트 재사용을 위한 Gitsubmobule제작</li>
+                  <li>GoogleADManager와 유사한 회사제품AD용 스크립트 제작</li>
                 </ul>
                 <h4>Tech Stacks</h4>
-                <p>React, Next.js, Redux-toolkit, TypeScript, SCSS, Styled-componenet, Kotlin, MySQL, Github</p>
+                <p>Vue2, React, Next.js, Redux-toolkit, TypeScript, SCSS, Styled-componenet, Kotlin, MySQL, Github</p>
 
                 <h4>Comments</h4>
                 <CommentsList>

@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
-import {resetButton} from '../../../../../assets/styles/components/reset-button';
-import palette from '../../../../../assets/styles/constants/palette';
-import typography from '../../../../../assets/styles/constants/typograpy';
-import MyIcon from '../../../../../assets/images/icons/my-icon';
-import media from '../../../../../assets/styles/constants/media';
-import Badge from '../../../../../components/common/badge';
-import BaseButton from '../../../../../components/common/base-button';
+import {resetButton} from 'assets/styles/components/reset-button';
+import palette from 'assets/styles/constants/palette';
+import typography from 'assets/styles/constants/typograpy';
+import MyIcon from 'assets/images/icons/my-icon';
+import media from 'assets/styles/constants/media';
+import Badge from 'components/common/badge';
+import BaseButton from 'components/common/base-button';
 import styled from 'styled-components';
 import type {IProjectData} from 'types/type';
 
@@ -14,7 +14,7 @@ interface IDrawerItemProps {
   index: number;
 }
 const DrawerItem = ({project, index}: IDrawerItemProps) => {
-  const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive] = useState(true);
 
   const {thumbnailURL, title, desc, role, personnel, stack, githubURL, deployURL} = project;
 
@@ -168,8 +168,7 @@ const Thumbnail = styled.div`
   }
 
   ${media.desktop} {
-    width: 500px;
-    height: 500px;
+    flex: 2;
   }
 `;
 

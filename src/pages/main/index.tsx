@@ -2,7 +2,6 @@ import React, {Suspense, lazy, useEffect, useRef, useState} from 'react';
 import FetchItem from '../../service/fetch-item';
 import type {IArtWorkData, IProjectData} from 'types/type';
 import Layout from 'components/common/layout';
-import GlobalHeader from 'components/layout/header/global-header';
 import {Route, Routes} from 'react-router-dom';
 import About from 'pages/main/components/about';
 // import Skill from 'pages/main/components/skill/index';
@@ -10,7 +9,6 @@ import Projects from 'pages/main/components/projects/index';
 import Promotion from 'pages/main/components/promotion/promotion';
 import Artwork from 'pages/main/components/artwork';
 import GlobalFooter from 'components/layout/footer/global-footer';
-import useTheme from 'utils/useTheme';
 import Home from './components/main';
 import Spinner from 'components/spinner/spinner';
 import History from './components/work/index';
@@ -35,23 +33,6 @@ function Main({fetchItem}: IMainProps) {
 
   const [artwork, setArtwork] = useState<IArtWorkData[]>([]);
   const [artworkLoading, setArtworkLoading] = useState<boolean | undefined>(undefined);
-  const {theme, toggleTheme} = useTheme();
-
-  // useEffect(() => {
-  //   try {
-  //     setSkillLoading(true);
-  //     const stopSync = fetchItem.fetchData((skills: ISkillsData[]) => {
-  //       setSkills(skills);
-  //       setSkillLoading(false);
-  //     }, 'skills');
-
-  //     return () => {
-  //       stopSync();
-  //     };
-  //   } catch (error) {
-  //     setSkillLoading(true);
-  //   }
-  // }, []);
 
   useEffect(() => {
     try {
@@ -84,11 +65,7 @@ function Main({fetchItem}: IMainProps) {
   }, []);
 
   return (
-    <div className={`App ${theme === 'dark' ? 'dark' : undefined}`}>
-      <Layout.Header>
-        <GlobalHeader sectionRef={sectionRef} artwork={artwork} toggleTheme={toggleTheme} theme={theme} />
-      </Layout.Header>
-
+    <div className="App">
       <Routes>
         <Route path="/">
           <Route

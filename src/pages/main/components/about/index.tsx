@@ -203,9 +203,7 @@ const ListItem: React.FC<IListItemProps> = ({data}: IListItemProps): JSX.Element
         </IconBox>
       </Card>
       <Drawer className={show ? 'isActive' : undefined}>
-        {data.performance?.map((i, index) => (
-          <li key={index}>{i}</li>
-        ))}
+        {data.performance?.map((i, index) => <li key={index}>{i}</li>)}
         {data.link ? (
           <li>
             <Link to={data.link} target="_blank" rel="noreferrer">

@@ -1,17 +1,11 @@
-import React, {useState} from 'react';
-
-import {useNavigate} from 'react-router-dom';
+import React from 'react';
 import styled from 'styled-components';
-import type {Settings} from 'react-slick';
 import type {IArtWorkData} from 'types/type';
 import GlobalSection from 'components/common/global-section';
 import SectionHeader from 'components/common/section-header';
 import media from 'assets/styles/constants/media';
 import palette from 'assets/styles/constants/palette';
-import typography from 'assets/styles/constants/typograpy';
-import BaseButton from 'components/common/base-button';
 import Carousel from 'components/common/carousel';
-import {artworkSettings} from 'utils/slick-carousel';
 import Spinner from 'components/spinner/spinner';
 import {Container} from 'components/common/layout';
 
@@ -21,15 +15,7 @@ interface IArtworkProps {
   loading: boolean | undefined;
 }
 
-const Artwork = ({artwork, sectionRef, loading}: IArtworkProps) => {
-  const history = useNavigate();
-
-  const [loaded, setLoaded] = useState(false);
-
-  const goToGallery = (index: number) => {
-    history(`/artwork/${index}`);
-  };
-
+const Artwork = ({sectionRef, loading}: IArtworkProps) => {
   return (
     <Container>
       <GlobalSection
@@ -39,36 +25,7 @@ const Artwork = ({artwork, sectionRef, loading}: IArtworkProps) => {
       >
         <SectionHeader title="Artworks" />
 
-        <CarouselWrap>
-          {loading ? (
-            <Spinner />
-          ) : (
-            <Carousel setting={artworkSettings as unknown as Settings}>
-              {artwork.map((item, index) => (
-                <Card key={item.uid}>
-                  <div className="imgBox">
-                    {loaded ? null : (
-                      <div
-                        style={{
-                          background: `${palette.gray[600]}`,
-                          height: '314px',
-                          width: '314px',
-                        }}
-                      />
-                    )}
-                    <img src={item.thumbnailURL} alt={`projects0${index}`} onLoad={() => setLoaded(true)} />
-                  </div>
-
-                  <strong>{item.title}</strong>
-
-                  <BtnWrap>
-                    <BaseButton title="More" handleEvent={() => goToGallery(index)} />
-                  </BtnWrap>
-                </Card>
-              ))}
-            </Carousel>
-          )}
-        </CarouselWrap>
+        <CarouselWrap>{loading ? <Spinner /> : <Carousel></Carousel>}</CarouselWrap>
       </GlobalSection>
     </Container>
   );
@@ -108,7 +65,10 @@ const CarouselWrap = styled.div`
       transform: scale(0.6);
       opacity: 0.8;
 
-      transition: transform 300ms ease-in-out, opacity 300ms ease-in-out, box-shadow 300ms ease-in-out;
+      transition:
+        transform 300ms ease-in-out,
+        opacity 300ms ease-in-out,
+        box-shadow 300ms ease-in-out;
 
       ${media.desktop} {
         &:hover {
@@ -126,40 +86,40 @@ const CarouselWrap = styled.div`
   }
 `;
 
-const Card = styled.div`
-  position: relative;
-  margin-bottom: 24px;
+// const Card = styled.div`
+//   position: relative;
+//   margin-bottom: 24px;
 
-  .imgBox {
-    cursor: pointer;
+//   .imgBox {
+//     cursor: pointer;
 
-    img {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-    }
+//     img {
+//       width: 100%;
+//       height: auto;
+//       object-fit: cover;
+//     }
 
-    ${media.tablet} {
-      border-radius: 4px;
-      overflow: hidden;
-    }
-  }
+//     ${media.tablet} {
+//       border-radius: 4px;
+//       overflow: hidden;
+//     }
+//   }
 
-  strong {
-    display: block;
-    margin: 10px 0;
-    text-align: center;
-    ${typography.base}
-    color: ${palette.gray[100]};
+//   strong {
+//     display: block;
+//     margin: 10px 0;
+//     text-align: center;
+//     ${typography.base}
+//     color: ${palette.gray[100]};
 
-    ${media.tablet} {
-      ${typography.midium}
-    }
-  }
-`;
+//     ${media.tablet} {
+//       ${typography.midium}
+//     }
+//   }
+// `;
 
-const BtnWrap = styled.div`
-  display: flex !important;
-  justify-content: center;
-  align-items: center;
-`;
+// const BtnWrap = styled.div`
+//   display: flex !important;
+//   justify-content: center;
+//   align-items: center;
+// `;

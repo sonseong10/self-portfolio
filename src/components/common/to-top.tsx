@@ -74,7 +74,9 @@ const TopBtn = styled.div`
       ${typography.base}
       color: ${palette.gray[200]};
       font-weight: 700;
-      transition: background-color 200ms ease-in-out, color 200ms ease-in-out;
+      transition:
+        background-color 200ms ease-in-out,
+        color 200ms ease-in-out;
 
       &:hover {
         background-color: ${palette.brandTheme};
