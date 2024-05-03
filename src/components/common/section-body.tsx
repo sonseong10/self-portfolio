@@ -1,6 +1,6 @@
 import React, {type ReactNode} from 'react';
 import media from '../../assets/styles/constants/media';
-import styled, {type CSSObject, type FlattenSimpleInterpolation} from 'styled-components';
+import styled, {type CSSObject} from 'styled-components';
 
 interface ISectionBodyProps {
   children: ReactNode;
@@ -10,7 +10,7 @@ interface ISectionBodyProps {
 interface IInnerProps {
   children: ReactNode;
   ratio?: number;
-  innerStyle?: CSSObject | FlattenSimpleInterpolation;
+  innerStyle?: CSSObject;
 }
 
 const SectionBody = ({children, style}: ISectionBodyProps) => {
@@ -51,7 +51,7 @@ const SectionBodyStyle = styled.div<{style?: CSSObject}>`
   ${props => props.style}
 `;
 
-const InnerStyle = styled.div<{ratio?: number; innerStyle?: CSSObject | FlattenSimpleInterpolation}>`
+const InnerStyle = styled.div<{ratio?: number; innerStyle?: CSSObject}>`
   flex: 1 1;
 
   ${media.desktop} {
