@@ -38,11 +38,5 @@
       "Hyperlink",
       { "name": "Link", "linkAttribute": "to" }
     ]
-  },
-  "overrides": [
-    {
-      "files": "*.mdx",
-      "extends": "plugin:mdx/recommended"
-    }
-  ]
+  }
 }
