@@ -1,8 +1,7 @@
 import React from 'react';
-import GlobalSection from '../../../../components/common/global-section';
-import SectionHeader from '../../../../components/common/section-header';
-import SectionBody from '../../../../components/common/section-body';
-import DrawerItem from './drawer/drawer-item';
+import GlobalSection from 'components/common/global-section';
+import SectionHeader from 'components/common/section-header';
+import SectionBody from 'components/common/section-body';
 import styled from 'styled-components';
 import type {IProjectData} from 'types/type';
 import Spinner from 'components/spinner/spinner';
@@ -10,6 +9,7 @@ import {Container} from 'components/common/layout';
 import palette from 'assets/styles/constants/palette';
 import typography from 'assets/styles/constants/typograpy';
 import {NextArrow} from 'assets/styles/constants/svgIcon';
+import ListItem from './list/ListItem';
 
 const ProjectList = styled.ul`
   margin: 0;
@@ -69,7 +69,7 @@ const Projects = ({loading, projects, sectionRef}: IProjectsProps) => {
           ) : (
             <ProjectList>
               {projects.map((project, index: number) => (
-                <DrawerItem key={index} project={project} index={index} />
+                <ListItem key={index} project={project} index={index} />
               ))}
             </ProjectList>
           )}

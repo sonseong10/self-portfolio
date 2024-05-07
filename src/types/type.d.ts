@@ -11,7 +11,7 @@ export interface IProjectData {
   githubURL: string;
   personnel: number;
   role: string;
-  stack: string[];
+  stack: {name: string; value: string}[] | string[];
   thumbnailURL: string;
   title: string;
   uid: number;

@@ -73,9 +73,9 @@ const PrimaryBtn = styled.button`
 
 const PrimaryLink = styled.a`
   ${baseStyle}
-  width: 46%;
+  width: 50%;
 
   ${media.tablet} {
-    width: 46%;
+    width: 125px;
   }
 `;
