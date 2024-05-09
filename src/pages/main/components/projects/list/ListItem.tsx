@@ -7,12 +7,12 @@ import BaseButton from 'components/common/base-button';
 import styled from 'styled-components';
 import type {IProjectData} from 'types/type';
 
-interface IListItemProps {
+interface IDrawerItemProps {
   project: IProjectData;
   index: number;
 }
-const ListItem = ({project, index}: IListItemProps) => {
-  const {thumbnailURL, title, desc, role, stack, githubURL, deployURL} = project;
+const DrawerItem = ({project, index}: IDrawerItemProps) => {
+  const {thumbnailURL, title, desc, stack, githubURL, deployURL} = project;
 
   return (
     <Info>
@@ -22,39 +22,25 @@ const ListItem = ({project, index}: IListItemProps) => {
 
       <Detail>
         <strong>{title}</strong>
+        <p>{desc}</p>
         <DetailList>
-          <DetailItem>
-            <dt>내용</dt>
-            <dd>{desc}</dd>
-          </DetailItem>
-          <DetailItem>
-            <dt>역할</dt>
-            <dd>{role}</dd>
-          </DetailItem>
-          <DetailItem>
-            <dt>사용기술</dt>
-            <dd>
-              <dl>
-                {stack.map((item, index) =>
-                  typeof item !== 'string' ? (
-                    <DetailItem key={index}>
-                      <dt>
-                        <Badge name={item.name} color="gray"></Badge>
-                      </dt>
-                      <dd>{item.value}</dd>
-                    </DetailItem>
-                  ) : (
-                    <DetailItem key={index}>
-                      <dt>
-                        <Badge name={item} color="gray"></Badge>
-                      </dt>
-                      <dd></dd>
-                    </DetailItem>
-                  )
-                )}
-              </dl>
-            </dd>
-          </DetailItem>
+          {stack.map((item, index) =>
+            typeof item !== 'string' ? (
+              <DetailItem key={index}>
+                <dt>
+                  <Badge name={item.name} color="gray"></Badge>
+                </dt>
+                <dd>{item.value}</dd>
+              </DetailItem>
+            ) : (
+              <DetailItem key={index}>
+                <dt>
+                  <Badge name={item} color="gray"></Badge>
+                </dt>
+                <dd></dd>
+              </DetailItem>
+            )
+          )}
         </DetailList>
 
         <BtnGroup>
@@ -67,7 +53,7 @@ const ListItem = ({project, index}: IListItemProps) => {
   );
 };
 
-export default ListItem;
+export default DrawerItem;
 
 const Info = styled.div`
   ${media.tablet} {
@@ -138,11 +124,7 @@ const DetailItem = styled.div`
   dt {
     flex-shrink: 0;
     color: ${palette.gray[100]};
-
-    &::after {
-      margin-right: 8px;
-      content: ':';
-    }
+    margin-right: 8px;
   }
 
   dd {
