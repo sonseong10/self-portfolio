@@ -8,11 +8,12 @@ import styled, {css} from 'styled-components';
 interface IBaseButtonProps {
   title: string;
   handleEvent: () => void;
+  color: string;
 }
 
-const BaseButton = ({title, handleEvent}: IBaseButtonProps) => {
+const BaseButton = ({title, handleEvent, color}: IBaseButtonProps) => {
   return (
-    <PrimaryBtn type="button" onClick={handleEvent}>
+    <PrimaryBtn type="button" onClick={handleEvent} color={color}>
       {title}
     </PrimaryBtn>
   );
@@ -23,11 +24,12 @@ export default BaseButton;
 interface ILinkProps {
   title: string;
   URL: string;
+  color?: string;
 }
 
-const Link = ({title, URL}: ILinkProps) => {
+const Link = ({title, URL, color}: ILinkProps) => {
   return (
-    <PrimaryLink href={URL} target="_blank">
+    <PrimaryLink href={URL} target="_blank" color={color}>
       {title}
     </PrimaryLink>
   );
@@ -48,10 +50,10 @@ const baseStyle = css`
   text-decoration: none;
   border: 1px solid ${palette.gray[500]};
   border-radius: 4px;
-  transition: background-color 300ms ease-in-out;
+  transition: opacity 200ms ease-in-out;
 
   &:active {
-    background-color: ${palette.gray[600]};
+    opacity: 0.6;
   }
 
   ${media.tablet} {
@@ -61,7 +63,7 @@ const baseStyle = css`
   ${media.desktop} {
     width: 240px;
     &:hover {
-      background-color: ${palette.gray[600]};
+      opacity: 0.6;
     }
   }
 `;
@@ -71,9 +73,21 @@ const PrimaryBtn = styled.button`
   ${baseStyle}
 `;
 
-const PrimaryLink = styled.a`
+const PrimaryLink = styled.a<{color?: string}>`
   ${baseStyle}
   width: 50%;
+
+  ${props => {
+    if (props.color === 'primary') {
+      return css`
+        border-color: #0066ff;
+        background-color: #0066ff;
+        color: #fff;
+      `;
+    } else {
+      return css``;
+    }
+  }}
 
   ${media.tablet} {
     width: 125px;
