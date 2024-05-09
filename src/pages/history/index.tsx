@@ -299,6 +299,54 @@ function HistoryPage() {
             </div>
           </section>
         </div>
+        <div className="row">
+          <section>
+            <i className="icon fas fa-paper-plane"></i>
+            <div className="details">
+              <span className="title">
+                신규 도메인
+                <br />
+                광고 서비스 시작
+              </span>
+              <span>2023.01</span>
+            </div>
+            <p>인/아웃 링크를 통한 자사 제품/컨텐츠 유통을 위해 광고서비스 적업시작</p>
+            <div className="bottom">
+              <dl>
+                <div>
+                  <dt>목표</dt>
+                  <dd>광고 도메인 학습 및 제품개발</dd>
+                </div>
+                <div>
+                  <dt>업무</dt>
+                  <dd>
+                    <ul>
+                      <li>광고용 스크립트 제작 및 어드민 기능제작</li>
+                    </ul>
+                  </dd>
+                </div>
+                <div>
+                  <dt>문제</dt>
+                  <dd>
+                    <ul>
+                      <li>인사이트 및 광고효율성 판단</li>
+                    </ul>
+                  </dd>
+                </div>
+                <div>
+                  <dt>성장</dt>
+                  <dd>
+                    <ul>
+                      <li>광고 도메인 플로우</li>
+                      <li>광고 반응형/고정형 스크립트 발행</li>
+                      <li>스크립트 최적화</li>
+                    </ul>
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </section>
+        </div>
         <div className="row ">
           <section>
             <i className="icon fas fa-globe"></i>
@@ -307,7 +355,7 @@ function HistoryPage() {
                 프론트팀 서브모듈 <br />
                 스토리북 도입
               </span>
-              <span>2022.06</span>
+              <span>2023.03</span>
             </div>
             <p>프론트팀 서브모듈 개발 및 스토리북 도입 제안</p>
             <div className="bottom">
@@ -363,54 +411,6 @@ function HistoryPage() {
                     <ul>
                       <li>팀장님과 팀원을 설득하기 위한 라이브러리 비교 방법</li>
                       <li>스토리북 도입 및 Git서브모듈 사용 방법</li>
-                    </ul>
-                  </dd>
-                </div>
-              </dl>
-            </div>
-          </section>
-        </div>
-        <div className="row">
-          <section>
-            <i className="icon fas fa-paper-plane"></i>
-            <div className="details">
-              <span className="title">
-                신규 도메인
-                <br />
-                광고 서비스 시작
-              </span>
-              <span>2023.01</span>
-            </div>
-            <p>인/아웃 링크를 통한 자사 제품/컨텐츠 유통을 위해 광고서비스 적업시작</p>
-            <div className="bottom">
-              <dl>
-                <div>
-                  <dt>목표</dt>
-                  <dd>광고 도메인 학습 및 제품개발</dd>
-                </div>
-                <div>
-                  <dt>업무</dt>
-                  <dd>
-                    <ul>
-                      <li>광고용 스크립트 제작 및 어드민 기능제작</li>
-                    </ul>
-                  </dd>
-                </div>
-                <div>
-                  <dt>문제</dt>
-                  <dd>
-                    <ul>
-                      <li>인사이트 및 광고효율성 판단</li>
-                    </ul>
-                  </dd>
-                </div>
-                <div>
-                  <dt>성장</dt>
-                  <dd>
-                    <ul>
-                      <li>광고 도메인 플로우</li>
-                      <li>광고 반응형/고정형 스크립트 발행</li>
-                      <li>스크립트 최적화</li>
                     </ul>
                   </dd>
                 </div>

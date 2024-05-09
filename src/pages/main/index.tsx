@@ -4,7 +4,6 @@ import type {IArtWorkData, IProjectData} from 'types/type';
 import Layout from 'components/common/layout';
 import {Route, Routes} from 'react-router-dom';
 import About from 'pages/main/components/about';
-// import Skill from 'pages/main/components/skill/index';
 import Projects from 'pages/main/components/projects/index';
 import Promotion from 'pages/main/components/promotion/promotion';
 import Artwork from 'pages/main/components/artwork';
@@ -25,14 +24,10 @@ function Main({fetchItem}: IMainProps) {
   const sectionRef = useRef<HTMLElement[]>([]);
   const promotionRef = useRef<HTMLDivElement>(null);
 
-  // const [skills, setSkills] = useState<ISkillsData[]>([]);
-  // const [skillLoading, setSkillLoading] = useState<boolean | undefined>(undefined);
-
   const [projects, setProjects] = useState<IProjectData[]>([]);
   const [projectLoading, setProjectLoading] = useState<boolean | undefined>(undefined);
 
-  const [artwork, setArtwork] = useState<IArtWorkData[]>([]);
-  const [artworkLoading, setArtworkLoading] = useState<boolean | undefined>(undefined);
+  const [artworks, setArtwork] = useState<IArtWorkData[]>([]);
 
   useEffect(() => {
     try {
@@ -45,22 +40,20 @@ function Main({fetchItem}: IMainProps) {
         stopSync();
       };
     } catch (error) {
-      setProjectLoading(true);
+      console.error(error);
     }
   }, []);
 
   useEffect(() => {
     try {
-      setArtworkLoading(true);
       const stopSync = fetchItem.fetchData((artworks: IArtWorkData[]) => {
         setArtwork(artworks);
-        setArtworkLoading(false);
       }, 'artwork');
       return () => {
         stopSync();
       };
     } catch (error) {
-      setArtworkLoading(true);
+      console.error(error);
     }
   }, []);
 
@@ -77,8 +70,8 @@ function Main({fetchItem}: IMainProps) {
                 {/* <Skill skills={skills} sectionRef={sectionRef} loading={skillLoading} /> */}
                 <Projects projects={projects} sectionRef={sectionRef} loading={projectLoading} />
                 <About sectionRef={sectionRef} />
+                <Artwork artworks={artworks} sectionRef={sectionRef} />
                 <Promotion promotionRef={promotionRef} />
-                <Artwork artwork={artwork} sectionRef={sectionRef} loading={artworkLoading} />
               </Layout.Main>
             }
           ></Route>
@@ -87,7 +80,7 @@ function Main({fetchItem}: IMainProps) {
             element={
               <Suspense fallback={<Spinner />}>
                 <Layout>
-                  <Gallery artwork={artwork} />
+                  <Gallery artwork={artworks} />
                 </Layout>
               </Suspense>
             }

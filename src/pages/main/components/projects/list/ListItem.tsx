@@ -46,7 +46,7 @@ const DrawerItem = ({project, index}: IDrawerItemProps) => {
         <BtnGroup>
           <BaseButton.Link title="GitHub" URL={githubURL} />
 
-          <BaseButton.Link title="DeployPage" URL={deployURL} />
+          <BaseButton.Link title="DeployPage" URL={deployURL} color="primary" />
         </BtnGroup>
       </Detail>
     </Info>

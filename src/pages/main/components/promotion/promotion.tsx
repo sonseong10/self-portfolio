@@ -66,11 +66,6 @@ const SmHidden = styled.div`
     align-items: stretch;
     justify-content: center;
     flex-direction: column;
-    height: 400px;
-  }
-
-  ${media.desktop} {
-    height: 600px;
   }
 `;
 
@@ -158,7 +153,7 @@ const Decoration = styled.span`
   }
 
   ${media.tablet} {
-    font-size: 86px;
+    font-size: 46px;
 
     span {
       ${typography.base}
@@ -166,7 +161,7 @@ const Decoration = styled.span`
   }
 
   ${media.desktop} {
-    font-size: 130px;
+    font-size: 100px;
   }
 `;
 

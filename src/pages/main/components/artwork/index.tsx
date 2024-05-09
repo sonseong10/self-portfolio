@@ -3,19 +3,15 @@ import styled from 'styled-components';
 import type {IArtWorkData} from 'types/type';
 import GlobalSection from 'components/common/global-section';
 import SectionHeader from 'components/common/section-header';
-import media from 'assets/styles/constants/media';
-import palette from 'assets/styles/constants/palette';
-import Carousel from 'components/common/carousel';
-import Spinner from 'components/spinner/spinner';
 import {Container} from 'components/common/layout';
+import {Link} from 'react-router-dom';
 
 interface IArtworkProps {
-  artwork: IArtWorkData[];
+  artworks: IArtWorkData[];
   sectionRef: React.MutableRefObject<HTMLElement[]>;
-  loading: boolean | undefined;
 }
 
-const Artwork = ({sectionRef, loading}: IArtworkProps) => {
+const Artwork = ({artworks, sectionRef}: IArtworkProps) => {
   return (
     <Container>
       <GlobalSection
@@ -25,7 +21,15 @@ const Artwork = ({sectionRef, loading}: IArtworkProps) => {
       >
         <SectionHeader title="Artworks" />
 
-        <CarouselWrap>{loading ? <Spinner /> : <Carousel></Carousel>}</CarouselWrap>
+        {artworks && artworks.length > 0 && (
+          <CarouselWrap>
+            {artworks.map((item, index) => (
+              <Link to={`/artwork/${item.uid}`} key={item.uid}>
+                <img src={item.thumbnailURL} alt={`프로젝트${index}`} />
+              </Link>
+            ))}
+          </CarouselWrap>
+        )}
       </GlobalSection>
     </Container>
   );
@@ -34,54 +38,11 @@ const Artwork = ({sectionRef, loading}: IArtworkProps) => {
 export default Artwork;
 
 const CarouselWrap = styled.div`
-  margin: 0 -10px;
+  a > img {
+    width: calc(100% / 4);
 
-  .slick-dots {
-    bottom: 122px;
-
-    li {
-      margin: 0;
-
-      button::before {
-        color: ${palette.gray[300]};
-      }
-    }
-  }
-
-  @media (orientation: landscape) {
-    /* Landscape 모드일 때 적용할 CSS */
-    width: 340px;
-    margin: 0 auto;
-  }
-
-  ${media.tablet} {
-    width: auto;
-    margin: 0;
-
-    .slick-slide {
-      border-radius: 4px;
-      overflow: hidden;
-      padding: 10px;
-      transform: scale(0.6);
-      opacity: 0.8;
-
-      transition:
-        transform 300ms ease-in-out,
-        opacity 300ms ease-in-out,
-        box-shadow 300ms ease-in-out;
-
-      ${media.desktop} {
-        &:hover {
-          box-shadow: 4px 4px 12px rgba(0, 0, 0, 13%);
-          opacity: 1;
-        }
-      }
-    }
-
-    .slick-center {
-      transform: scale(0.9);
-      box-shadow: 4px 4px 12px rgba(0, 0, 0, 13%);
-      opacity: 1;
+    &:hover {
+      opacity: 0.6;
     }
   }
 `;

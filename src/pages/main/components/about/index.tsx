@@ -157,7 +157,7 @@ interface IListItemProps {
 }
 
 const ListItem: React.FC<IListItemProps> = ({data}: IListItemProps): JSX.Element => {
-  const [show, setShow] = useState<boolean>(false);
+  const [show, setShow] = useState<boolean>(true);
 
   const onToggle = () => {
     setShow(!show);
