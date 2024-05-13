@@ -192,7 +192,7 @@ const ListItem: React.FC<IListItemProps> = ({data}: IListItemProps): JSX.Element
 
               <dt className="sr-only">종료일</dt>
               <dd className="endDate">
-                {data.endDate ? <time dateTime={data.endDate}>{data.endDate}</time> : <span>참여중</span>}
+                {data.endDate ? <time dateTime={data.endDate}>{data.endDate}</time> : <span>활동중</span>}
               </dd>
             </InfoItem>
           </InfoList>
@@ -207,7 +207,7 @@ const ListItem: React.FC<IListItemProps> = ({data}: IListItemProps): JSX.Element
         {data.link ? (
           <li>
             <Link to={data.link} target="_blank" rel="noreferrer">
-              교육과정 이동
+              소개 사이트 이동
             </Link>
           </li>
         ) : null}
@@ -221,6 +221,39 @@ interface IAboutProps {
 }
 
 const About = ({sectionRef}: IAboutProps) => {
+  const data = [
+    {
+      imgURL: collegeLogo,
+      name: '인하공업전문대학교',
+      startDate: '2016-03',
+      endDate: '2022-02',
+      performance: ['컴퓨터시스템과 전공', '3-In프로젝트 수료'],
+      link: 'https://cse.inhatc.ac.kr/cse/2199/subview.do',
+    },
+    {
+      imgURL:
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/2560px-Amazon_Web_Services_Logo.svg.png',
+      name: 'AWS security and risk management forum korea',
+      startDate: '2023-08',
+      endDate: '2023-08',
+      performance: ['AWS 기술스텍에 관심이 생겨서 회사 개발팀내 대표로 참석하여 수료'],
+      link: 'https://www.datanet.co.kr/conference/event60.html',
+    },
+    {
+      imgURL: 'https://awskrug.github.io/images/g-gurumi.png',
+      name: 'AWSKRUG',
+      startDate: '2023-08',
+      performance: ['AWSKRUG 프론트엔드 소모임 활동중'],
+      link: 'https://awskrug.github.io/',
+    },
+    {
+      imgURL: 'https://framerusercontent.com/images/y7135TGP0TiQ7gtLbQ0IrWOzww.jpg',
+      name: 'Toss - Frontend Diving Club',
+      startDate: '2023-11',
+      performance: ['미니 아고라 #1 - 웹으로 에디터 개발하기(예비군일정으로 인해 미참석)'],
+      link: 'https://toss.tech/article/frontend-diving-club',
+    },
+  ];
   return (
     <Container>
       <GlobalSection
@@ -233,30 +266,9 @@ const About = ({sectionRef}: IAboutProps) => {
         <SectionBody>
           <SectionBody.Inner>
             <HistoryList>
-              <ListItem
-                data={{
-                  imgURL: collegeLogo,
-                  name: '인하공업전문대학교',
-                  startDate: '2016-03',
-                  endDate: '2022-02',
-                  performance: ['컴퓨터시스템과 전공', '3-In프로젝트 수료'],
-                  link: 'https://cse.inhatc.ac.kr/cse/2199/subview.do',
-                }}
-              />
-              <ListItem
-                data={{
-                  name: 'AWSKRUG',
-                  startDate: '2023-08',
-                  performance: ['AWSKRUG 프론트엔드 소모임 활동중'],
-                }}
-              />
-              <ListItem
-                data={{
-                  name: 'Toss - Frontend Diving Club',
-                  startDate: '2023-11',
-                  performance: [],
-                }}
-              />
+              {data.map((item, index) => (
+                <ListItem data={item} key={index} />
+              ))}
             </HistoryList>
           </SectionBody.Inner>
         </SectionBody>
