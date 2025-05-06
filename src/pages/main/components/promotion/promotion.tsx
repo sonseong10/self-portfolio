@@ -9,7 +9,7 @@ import styled from 'styled-components';
 import Observer from 'utils/observer';
 
 interface IPromotionProps {
-  promotionRef: React.RefObject<HTMLDivElement>;
+  promotionRef: React.RefObject<HTMLDivElement | null>;
 }
 
 const Promotion = ({promotionRef}: IPromotionProps) => {
@@ -17,7 +17,7 @@ const Promotion = ({promotionRef}: IPromotionProps) => {
 
   useEffect(() => {
     const observer = Observer(setIsActive);
-    if (promotionRef.current) {
+    if (promotionRef?.current) {
       observer.observe(promotionRef.current);
     }
 

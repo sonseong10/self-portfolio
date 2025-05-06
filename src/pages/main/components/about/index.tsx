@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, type JSX} from 'react';
 import GlobalSection from 'components/common/global-section';
 import SectionBody from 'components/common/section-body';
 import SectionHeader from 'components/common/section-header';

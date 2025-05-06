@@ -2,7 +2,7 @@ import media from 'assets/styles/constants/media';
 import palette from 'assets/styles/constants/palette';
 import typography from 'assets/styles/constants/typograpy';
 import {Container} from 'components/common/layout';
-import React from 'react';
+import React, {type JSX} from 'react';
 import styled from 'styled-components';
 
 const HomeWrapper = styled.div`
@@ -149,10 +149,20 @@ function Main(): JSX.Element {
     <Container>
       <HomeWrapper>
         <Intro>
-          <h1>
-            안녕하세요
-            <br /> <span>손성열</span> 입니다.
-          </h1>
+          <div>
+            <div>
+              <span>안녕하세요</span>
+              <span>손성열</span> 입니다.
+            </div>
+            <div>
+              <span>안녕하세요</span>
+              <span>손성열</span> 입니다.
+            </div>
+            <div>
+              <span>안녕하세요</span>
+              <span>손성열</span> 입니다.
+            </div>
+          </div>
 
           <p>
             현재 초년차 개발자로 웹 프론트엔드 개발자로 데이터 가공을 좋아해 백엔드 업무도 도맡아 프로젝트를 진행했으며,

@@ -39,7 +39,7 @@ function Main({fetchItem}: IMainProps) {
       return () => {
         stopSync();
       };
-    } catch (error) {
+    } catch (error: unknown | {code: number}) {
       console.error(error);
     }
   }, []);
@@ -67,7 +67,6 @@ function Main({fetchItem}: IMainProps) {
               <Layout.Main>
                 <Home />
                 <History sectionRef={sectionRef} />
-                {/* <Skill skills={skills} sectionRef={sectionRef} loading={skillLoading} /> */}
                 <Projects projects={projects} sectionRef={sectionRef} loading={projectLoading} />
                 <About sectionRef={sectionRef} />
                 <Artwork artworks={artworks} sectionRef={sectionRef} />
