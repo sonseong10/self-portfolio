@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {type JSX} from 'react';
 import palette from '../../assets/styles/constants/palette';
 import typography from '../../assets/styles/constants/typograpy';
 import styled from 'styled-components';

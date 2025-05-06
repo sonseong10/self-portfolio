@@ -11,7 +11,9 @@ class FetchFirebase {
     const query = ref(this.db, target);
     onValue(query, snapshot => {
       const value = snapshot.val();
-      value && onUpdate(value);
+      if (value) {
+        onUpdate(value);
+      }
     });
 
     return () => off(query);

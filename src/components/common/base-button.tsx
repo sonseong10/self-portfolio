@@ -8,7 +8,7 @@ import styled, {css} from 'styled-components';
 interface IBaseButtonProps {
   title: string;
   handleEvent: () => void;
-  color: string;
+  color?: string;
 }
 
 const BaseButton = ({title, handleEvent, color}: IBaseButtonProps) => {

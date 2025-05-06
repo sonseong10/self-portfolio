@@ -20,10 +20,14 @@ const ToTop = () => {
     };
   };
 
-  const updateScroll = () => {
+  const updateScroll = (): void => {
     const {scrollY} = window;
-    scrollY > 10 ? setScrollFlag(true) : setScrollFlag(false);
+    if (scrollY > 10) {
+      setScrollFlag(true);
+    }
+    setScrollFlag(false);
   };
+
   const handleScroll = throttle(updateScroll, 100);
 
   useEffect(() => {
