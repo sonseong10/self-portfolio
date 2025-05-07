@@ -3,8 +3,8 @@ import {createVanillaExtractPlugin} from '@vanilla-extract/next-plugin';
 
 const withVanillaExtract = createVanillaExtractPlugin();
 
-const nextConfig: NextConfig = {
+const nextConfig: NextConfig = withVanillaExtract({
   reactStrictMode: true,
-};
+});
 
-export default withVanillaExtract(nextConfig);
+export default nextConfig;
