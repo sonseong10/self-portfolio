@@ -17,7 +17,7 @@ export const logo = style({
   display: "block",
   width: "36px",
   height: "36px",
-  background: 'url("/portfolio-logo.svg") no-repeat center center',
+  background: 'url("/icons/portfolio-logo.svg") no-repeat center center',
   backgroundSize: "32px",
 });
 
