@@ -2,6 +2,7 @@ import Header from "@/components/layout/header/Header";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "@/styles/global.css";
+import { contentWrapper } from "@/styles/main.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -56,7 +57,7 @@ export default function RootLayout({
       </head>
       <body>
         <Header />
-        <main>{children}</main>
+        <main className={contentWrapper}>{children}</main>
         <footer />
       </body>
     </html>

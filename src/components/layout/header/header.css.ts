@@ -4,8 +4,13 @@ import { themeColor } from "@/styles/tokens.css";
 import { style } from "@vanilla-extract/css";
 
 export const header = style({
+  position: "fixed",
+  top: 0,
+  right: 0,
+  left: 0,
   backgroundColor: themeColor.background,
   borderBottom: `1px solid ${themeColor.border}`,
+  zIndex: 1000,
 });
 
 export const logo = style({
@@ -53,7 +58,7 @@ export const themeButton = style({
   selectors: {
     "&.light": {
       background: `url(${SVG.LightMode()}) no-repeat center center`,
-      backgroundSize: "24px",
+      backgroundSize: "22px",
     },
 
     "&.dark": {

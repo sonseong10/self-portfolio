@@ -1,4 +1,5 @@
 import { createGlobalTheme, globalStyle } from "@vanilla-extract/css";
+import { themeColor } from "./tokens.css";
 
 globalStyle("html body", {
   margin: 0,
@@ -14,6 +15,10 @@ globalStyle("*.screen_out", {
   height: 1,
   fontSize: 1,
   zIndex: -999,
+});
+
+globalStyle("body", {
+  backgroundColor: themeColor.background,
 });
 
 export const vars = createGlobalTheme(":root", {
