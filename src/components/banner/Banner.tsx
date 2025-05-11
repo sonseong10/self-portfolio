@@ -4,11 +4,13 @@ import {
   areaBanner,
   box,
   githubLink,
+  altText,
   innerBottom,
   innerTop,
   pointText,
   video,
   visualTitle,
+  moveToNext,
 } from "./banner.css";
 
 function Banner() {
@@ -20,7 +22,9 @@ function Banner() {
             href={"https://github.com/sonseong10"}
             target="_blank"
             className={githubLink}
-          />
+          >
+            <span className={altText}>sonseong10 github로 이동</span>
+          </Link>
         </div>
         <video
           className={video}
@@ -31,7 +35,7 @@ function Banner() {
           playsInline
         />
         <div className={innerBottom}>
-          <span>자세히 알아보기</span>
+          <span className={moveToNext}>자세히 알아보기</span>
         </div>
         <strong className={visualTitle}>
           안녕하세요,

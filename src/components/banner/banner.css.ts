@@ -131,12 +131,19 @@ export const githubLink = style({
   display: "block",
   width: "80px",
   height: "80px",
-  padding: "5px 5px 5px 16px",
+  padding: "10px",
   borderBottomLeftRadius: "32px",
-  background: `url(${SVG.GithubIcon()}) no-repeat center center`,
-  backgroundSize: "56px",
   backgroundColor: themeColor.background,
+  textDecoration: "none",
   zIndex: 100,
+});
+
+export const altText = style({
+  display: "block",
+  mask: `url(${SVG.GithubIcon()}) no-repeat center center`,
+  maskSize: "64px",
+  backgroundColor: themeColor.text,
+  color: "transparent",
 });
 
 export const innerBottom = style({
@@ -182,6 +189,17 @@ export const innerBottom = style({
   "@media": {
     [breakpoints.mobile]: {
       zIndex: -1,
+    },
+  },
+});
+
+export const moveToNext = style({
+  selectors: {
+    "&::after": {
+      display: "inline-block",
+      maskImage: `url(${SVG.CrossArrow()})`,
+      maskRepeat: "no-repeat",
+      content: "",
     },
   },
 });
