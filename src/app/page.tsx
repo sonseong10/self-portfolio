@@ -1,3 +1,4 @@
+import Title from "@/components/ui/title/Title";
 import LastCommit from "@/components/widget/github/LastCommit";
 import MyInfo from "@/components/widget/myInfo/MyInfo";
 import {
@@ -25,9 +26,31 @@ export default function Home() {
             <MyInfo />
           </div>
         </div>
+      </div>
 
+      <div>
+        <div className={container}>
+          <div className={areaContent}>
+            <Title text="📷 내가 경험했던 성장과정" />
+          </div>
+        </div>
+        <ul>
+          <li>
+            <a href="">
+              <span>직무경험</span>
+              <strong>첫회사 스타트업에서</strong>
+
+              <span>#스타트업</span>
+              <span>#직무경험</span>
+              <span>1년 11개월</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div className={container}>
         <div className={areaContent}>
-          <h2>성장과정</h2>
+          <Title text="더 나은 개발을 위한 사이드 프로젝트" />
         </div>
       </div>
     </section>
