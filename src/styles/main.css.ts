@@ -67,6 +67,7 @@ export const areaWidget = style({
     },
     [breakpoints.mobile]: {
       display: "flex",
+      height: "auto",
       flexDirection: "column",
       width: "100%",
     },
@@ -75,18 +76,25 @@ export const areaWidget = style({
 
 globalStyle(`${areaWidget} > div, ${areaWidget} > a `, {
   "@media": {
-    [breakpoints.wide]: {
-      //
-    },
-    [breakpoints.desktop]: {
-      //
-    },
     [breakpoints.tablet]: {
       width: "calc((100% / 3) - 8px)",
-      height: "240px",
     },
     [breakpoints.mobile]: {
       width: "100%",
+    },
+  },
+});
+
+export const areaContent = style({
+  "@media": {
+    [breakpoints.wide]: {
+      marginTop: "120px",
+    },
+    [breakpoints.desktop]: {
+      marginTop: "80px",
+    },
+    [breakpoints.mobile]: {
+      marginTop: "80px",
     },
   },
 });

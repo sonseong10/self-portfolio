@@ -34,10 +34,15 @@ const slideItem = style({
   flexDirection: "column",
   alignItems: "center",
   justifyContent: "center",
-  minHeight: "146px",
   fontSize: "16px",
 
   "@media": {
+    [breakpoints.wide]: {
+      minHeight: "140px",
+    },
+    [breakpoints.desktop]: {
+      minHeight: "120px",
+    },
     [breakpoints.tablet]: {
       minHeight: "180px",
     },

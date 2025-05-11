@@ -43,6 +43,7 @@ export const wrapper = style({
     },
     [breakpoints.mobile]: {
       maxWidth: "412px",
+      padding: "0 14px",
     },
   },
 });

@@ -1,3 +1,4 @@
+import { breakpoints } from "@/styles/cpnstructs/breakPoint";
 import SVG from "@/styles/svgIcon";
 import { themeColor } from "@/styles/tokens.css";
 import { style } from "@vanilla-extract/css";
@@ -8,6 +9,7 @@ const linkBox = style({
   textDecoration: "none",
   padding: "20px",
   backgroundColor: "#f3f3f3",
+
   fontSize: "14px",
   color: "#000",
   borderRadius: " 24px",
@@ -23,6 +25,15 @@ const linkBox = style({
       height: "24px",
       background: `url(${SVG.CrossArrow()}) no-repeat center center`,
       zIndex: 1,
+    },
+  },
+
+  "@media": {
+    [breakpoints.wide]: {
+      minHeight: "230px",
+    },
+    [breakpoints.desktop]: {
+      minHeight: "210px",
     },
   },
 });
@@ -54,8 +65,8 @@ const listItem = style({
   selectors: {
     "&.date": {
       position: "absolute",
-      bottom: "4px",
-      right: "16px",
+      bottom: "20px",
+      right: "20px",
       marginBottom: "0",
       color: themeColor.subText,
       fontSize: "12px",

@@ -1,6 +1,11 @@
 import LastCommit from "@/components/widget/github/LastCommit";
 import MyInfo from "@/components/widget/myInfo/MyInfo";
-import { areaBanner, areaWidget, container } from "@/styles/main.css";
+import {
+  areaBanner,
+  areaContent,
+  areaWidget,
+  container,
+} from "@/styles/main.css";
 import dynamic from "next/dynamic";
 const Banner = dynamic(() => import("@/components/banner/Banner"), {
   ssr: !true,
@@ -19,6 +24,10 @@ export default function Home() {
 
             <MyInfo />
           </div>
+        </div>
+
+        <div className={areaContent}>
+          <h2>성장과정</h2>
         </div>
       </div>
     </section>
