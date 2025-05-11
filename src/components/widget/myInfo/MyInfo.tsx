@@ -25,7 +25,7 @@ function MyInfo() {
           <div className={slideItem}>
             <div>
               <Image
-                src={"/me.jpeg"}
+                src={"/images/me.jpeg"}
                 alt="내모습"
                 width={50}
                 height={50}
