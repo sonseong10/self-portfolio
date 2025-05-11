@@ -1,0 +1,42 @@
+import Link from "next/link";
+import { badge, historyList, linkBox, listItem } from "./lastCommit.css";
+
+type Commit = {
+  message: string;
+  author: string;
+  date: string;
+  repo: string;
+  url: string;
+};
+
+export default async function LastCommit() {
+  const res = await fetch("http://localhost:3000/api/last-commit", {
+    cache: "no-store",
+  });
+
+  const commit: Commit = await res.json();
+
+  return (
+    <Link className={linkBox} href={commit.url} target="_blank">
+      <div>
+        <span className={badge}>최근 커밋 </span>
+      </div>
+      <dl className={historyList}>
+        <div>
+          <dt>레포지토리</dt>
+          <dd className={listItem}>{commit.repo.split("/").pop()}</dd>
+        </div>
+        <div>
+          <dt>메시지</dt>
+          <dd className={listItem}>{commit.message}</dd>
+        </div>
+        <div>
+          <dt className="screen_out">날짜</dt>
+          <dd className={`${listItem} date`}>
+            {new Date(commit.date).toLocaleString()}
+          </dd>
+        </div>
+      </dl>
+    </Link>
+  );
+}

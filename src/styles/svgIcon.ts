@@ -14,11 +14,16 @@ const BannerLeftTop = (): string => {
   return `"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='currentColor' viewBox='0 0 22 22'%3E%3Cpath d='M20 22h2V0H0v2c11 0 20 9 20 20z' fill-rule='evenodd' clip-rule='evenodd' fill='currentColor' /%3E%3C/svg%3E"`;
 };
 
+const CrossArrow = (): string => {
+  return `"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='arrow'%3E%3Cline x1='7' y1='17' x2='17' y2='7'/%3E%3Cpolyline points='7 7 17 7 17 17'/%3E%3Cscript xmlns=''/%3E%3C/svg%3E"`;
+};
+
 const SVG = {
   Darkmode,
   LightMode,
   GithubIcon,
   BannerLeftTop,
+  CrossArrow,
 };
 
 export default SVG;
