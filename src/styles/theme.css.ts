@@ -3,19 +3,21 @@ import { themeBreakPoint, themeColor } from "@/styles/tokens.css";
 
 const lightColors = {
   background: "#fff",
-  primary: "#3b82f6",
+  primary: "#035ce5",
   text: "#1d1d1d",
   subText: "#6b7280",
   border: "#e5e7eb",
+  card: "#f3f3f3",
   buttonHover: "#eeeeee",
 };
 
 const darkColors = {
   background: "#000",
-  primary: "#60a5fa",
+  primary: "#0041a3",
   text: "#f4f6f8",
   subText: "#9ca3af",
   border: "#374151",
+  card: "#333",
   buttonHover: "#222224",
 };
 

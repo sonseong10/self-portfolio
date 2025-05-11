@@ -8,10 +8,10 @@ const linkBox = style({
   display: "block",
   textDecoration: "none",
   padding: "20px",
-  backgroundColor: "#f3f3f3",
+  backgroundColor: themeColor.card,
 
   fontSize: "14px",
-  color: "#000",
+  color: themeColor.text,
   borderRadius: " 24px",
   boxSizing: "border-box",
 
@@ -23,7 +23,8 @@ const linkBox = style({
       display: "block",
       width: "24px",
       height: "24px",
-      background: `url(${SVG.CrossArrow()}) no-repeat center center`,
+      mask: `url(${SVG.CrossArrow()}) no-repeat center center`,
+      backgroundColor: themeColor.text,
       zIndex: 1,
     },
   },

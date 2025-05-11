@@ -6,6 +6,7 @@ export const themeColor = createThemeContract({
   text: null,
   subText: null,
   border: null,
+  card: null,
   buttonHover: null,
 });
 
