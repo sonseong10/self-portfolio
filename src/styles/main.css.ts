@@ -1,4 +1,4 @@
-import { style } from "@vanilla-extract/css";
+import { globalStyle, style } from "@vanilla-extract/css";
 import { breakpoints } from "./cpnstructs/breakPoint";
 
 export const container = style({
@@ -60,13 +60,33 @@ export const areaWidget = style({
       height: "486px",
     },
     [breakpoints.tablet]: {
+      display: "flex",
       width: "100%",
       height: "232px",
       marginTop: "20px",
-      fontSize: "0",
     },
     [breakpoints.mobile]: {
-      width: "412px",
+      display: "flex",
+      flexDirection: "column",
+      width: "100%",
+    },
+  },
+});
+
+globalStyle(`${areaWidget} > div, ${areaWidget} > a `, {
+  "@media": {
+    [breakpoints.wide]: {
+      //
+    },
+    [breakpoints.desktop]: {
+      //
+    },
+    [breakpoints.tablet]: {
+      width: "calc((100% / 3) - 8px)",
+      height: "240px",
+    },
+    [breakpoints.mobile]: {
+      width: "100%",
     },
   },
 });

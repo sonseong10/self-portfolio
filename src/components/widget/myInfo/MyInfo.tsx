@@ -44,8 +44,8 @@ function MyInfo() {
         </SwiperSlide>
 
         <SwiperSlide>
-          <div className={`${slideItem} font`}>
-            <span className={sildeImage}>ENFP</span>
+          <div className={slideItem}>
+            <span className={`${sildeImage} font`}>ENFP</span>
             <span>mbti</span>
           </div>
         </SwiperSlide>

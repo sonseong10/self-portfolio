@@ -1,11 +1,31 @@
+import { breakpoints } from "@/styles/cpnstructs/breakPoint";
 import { themeColor } from "@/styles/tokens.css";
 import { globalStyle, style } from "@vanilla-extract/css";
 
 const box = style({
-  padding: "10px",
+  padding: "20px",
   backgroundColor: themeColor.primary,
   color: "#fff",
   borderRadius: "24px",
+  width: "100%",
+  boxSizing: "border-box",
+
+  "@media": {
+    [breakpoints.wide]: {
+      marginTop: "16px",
+    },
+    [breakpoints.desktop]: {
+      marginTop: "16px",
+    },
+    [breakpoints.tablet]: {
+      marginTop: "0",
+      marginLeft: "8px",
+    },
+    [breakpoints.mobile]: {
+      marginTop: "16px",
+      marginLeft: "0",
+    },
+  },
 });
 
 const slideItem = style({
@@ -14,8 +34,17 @@ const slideItem = style({
   flexDirection: "column",
   alignItems: "center",
   justifyContent: "center",
-  minHeight: "120px",
+  minHeight: "146px",
   fontSize: "16px",
+
+  "@media": {
+    [breakpoints.tablet]: {
+      minHeight: "180px",
+    },
+    [breakpoints.mobile]: {
+      minHeight: "120px",
+    },
+  },
 });
 
 const sildeImage = style({
@@ -28,6 +57,7 @@ const sildeImage = style({
   selectors: {
     "&.font": {
       fontStyle: "italic",
+      fontWeight: "700",
     },
   },
 });

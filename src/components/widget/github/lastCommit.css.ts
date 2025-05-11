@@ -11,6 +11,7 @@ const linkBox = style({
   fontSize: "14px",
   color: "#000",
   borderRadius: " 24px",
+  boxSizing: "border-box",
 
   selectors: {
     "&::before": {
