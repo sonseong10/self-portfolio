@@ -9,7 +9,8 @@ export const areaBanner = style({
     [breakpoints.wide]: {
       width: "1094px",
       height: "621px",
-      borderRadius: "40px",
+      borderTopLeftRadius: "38px",
+      borderBottomRightRadius: "38px",
       overflow: "hidden",
     },
     [breakpoints.desktop]: {
@@ -21,6 +22,7 @@ export const areaBanner = style({
       height: "405px",
     },
     [breakpoints.mobile]: {
+      borderBottomLeftRadius: "38px",
       height: "auto",
     },
   },
@@ -38,8 +40,6 @@ export const box = style({
     [breakpoints.wide]: {
       width: "1094px",
       height: "621px",
-      borderRadius: "39px",
-      overflow: "hidden",
     },
     [breakpoints.desktop]: {
       width: "755px",
@@ -112,7 +112,7 @@ export const innerTop = style({
 
     "&::after": {
       position: "absolute",
-      right: 0,
+      right: "1px",
       bottom: "-34px",
       width: "41px",
       height: "38px",
