@@ -196,9 +196,16 @@ export const innerBottom = style({
 export const moveToNext = style({
   selectors: {
     "&::after": {
+      position: "relative",
+      bottom: "-3px",
+      right: "-8px",
       display: "inline-block",
+      width: "20px",
+      height: "20px",
       maskImage: `url(${SVG.CrossArrow()})`,
       maskRepeat: "no-repeat",
+      backgroundColor: themeColor.text,
+      transform: "rotate(135deg)",
       content: "",
     },
   },
