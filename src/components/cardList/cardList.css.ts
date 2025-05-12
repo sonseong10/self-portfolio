@@ -64,6 +64,7 @@ const listLink = style({
 
 const areaContent = style({
   flex: 6,
+  boxSizing: "border-box",
 
   "@media": {
     [breakpoints.wide]: {
@@ -72,15 +73,15 @@ const areaContent = style({
     },
     [breakpoints.desktop]: {
       height: "365px",
-      padding: "0 6px",
+      padding: "24px 24px 12px",
     },
     [breakpoints.tablet]: {
       height: "328px",
-      padding: "0 4px",
+      padding: "18px 18px 6px",
     },
     [breakpoints.mobile]: {
       height: "309px",
-      padding: "0 6px",
+      padding: "16px 16px 10px",
     },
   },
 });
@@ -104,13 +105,21 @@ const infoTitle = style({
   fontSize: "26px",
   lineHeight: "1.38",
   letterSpacing: "-.6px",
+
+  "@media": {
+    [breakpoints.desktop]: {
+      height: "56px",
+      marginTop: "16px",
+      fontSize: "18px",
+      lineHeight: "1.55",
+    },
+  },
 });
 
 const infoTag = style({
   display: "block",
   overflow: "hidden",
   height: "26px",
-  marginTop: "32px",
   fontSize: "16px",
   lineHeight: "1.73",
   color: themeColor.subText,
@@ -150,7 +159,7 @@ globalStyle(`${list} > li:nth-child(even) > a`, {
   justifyContent: "flex-end",
 });
 
-globalStyle(`${list} > li:nth-child(3n)`, {
+globalStyle(`${list} > li.row`, {
   "@media": {
     [breakpoints.wide]: {
       width: "770px",
@@ -167,7 +176,7 @@ globalStyle(`${list} > li:nth-child(3n)`, {
   },
 });
 
-globalStyle(`${list} > li:nth-child(3n) > a`, {
+globalStyle(`${list} > li.row > a`, {
   "@media": {
     [breakpoints.wide]: {
       flexDirection: "row",
@@ -178,7 +187,7 @@ globalStyle(`${list} > li:nth-child(3n) > a`, {
   },
 });
 
-globalStyle(`${list} > li:nth-child(3n) img`, {
+globalStyle(`${list} > li.row img`, {
   "@media": {
     [breakpoints.wide]: {
       flex: "7",
