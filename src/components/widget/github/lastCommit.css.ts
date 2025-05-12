@@ -31,10 +31,20 @@ const linkBox = style({
 
   "@media": {
     [breakpoints.wide]: {
+      marginTop: "16px",
       minHeight: "230px",
     },
     [breakpoints.desktop]: {
+      marginTop: "16px",
       minHeight: "210px",
+    },
+    [breakpoints.tablet]: {
+      marginTop: "0",
+      marginLeft: "8px",
+    },
+    [breakpoints.mobile]: {
+      marginTop: "16px",
+      marginLeft: "0",
     },
   },
 });
