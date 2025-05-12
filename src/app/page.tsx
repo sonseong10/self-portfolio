@@ -2,6 +2,7 @@ import CardList from "@/components/cardList/CardList";
 import SideProject from "@/components/sideProject/SideProject";
 import Title from "@/components/ui/title/Title";
 import LastCommit from "@/components/widget/github/LastCommit";
+import Intro from "@/components/widget/intro/Intro";
 import MyInfo from "@/components/widget/myInfo/MyInfo";
 import {
   areaBanner,
@@ -23,6 +24,8 @@ export default function Home() {
           <Banner />
 
           <div className={areaWidget}>
+            <Intro />
+
             <LastCommit />
 
             <MyInfo />

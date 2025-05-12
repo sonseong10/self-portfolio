@@ -13,11 +13,24 @@ const list = style({
   margin: 0,
   padding: 0,
   listStyle: "none",
-  animation: `${marqueeAnim} 80s linear infinite`,
+  animation: `${marqueeAnim} 70s linear infinite`,
+  willChange: "transform",
 
   selectors: {
     [`&:hover`]: {
       animationPlayState: "paused",
+    },
+  },
+
+  "@media": {
+    [breakpoints.wide]: {
+      marginTop: "43px",
+    },
+    [breakpoints.desktop]: {
+      marginTop: "24px",
+    },
+    [breakpoints.mobile]: {
+      animation: `${marqueeAnim} 70s linear infinite`,
     },
   },
 });
@@ -162,7 +175,7 @@ globalStyle(`${list} > li:nth-child(even) > a`, {
 globalStyle(`${list} > li.row`, {
   "@media": {
     [breakpoints.wide]: {
-      width: "770px",
+      width: "560px",
     },
     [breakpoints.desktop]: {
       width: "308px",
@@ -180,9 +193,11 @@ globalStyle(`${list} > li.row > a`, {
   "@media": {
     [breakpoints.wide]: {
       flexDirection: "row",
+      alignItems: "center",
     },
     [breakpoints.desktop]: {
       flexDirection: "column",
+      alignItems: "flex-start",
     },
   },
 });
@@ -191,10 +206,13 @@ globalStyle(`${list} > li.row img`, {
   "@media": {
     [breakpoints.wide]: {
       flex: "7",
-      height: "100%",
+      height: "max-content",
+      width: "100%",
     },
     [breakpoints.desktop]: {
       flexDirection: "column",
+      width: "100%",
+      height: "100px",
     },
   },
 });

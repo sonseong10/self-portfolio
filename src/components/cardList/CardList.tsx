@@ -28,8 +28,11 @@ const cardData = [
   {
     title: "GitHub 활동 정보",
     category: "개발",
-    tags: ["#커밋수", "#개발활동"],
-    components: <div></div>,
+    tags: ["#가장많이사용한", "#개발언어"],
+    image: {
+      type: "image",
+      src: "https://github-readme-stats.vercel.app/api/top-langs/?username=sonseong10&layout=compact&hide_border=true&bg_color=00000000&title_color=00000000&text_color=6b7280",
+    },
     type: "row",
   },
   {
@@ -64,8 +67,8 @@ function CardItem({
   type,
   tags,
   image,
-  components,
-}: (typeof cardData)[0]) {
+}: // components,
+(typeof cardData)[0]) {
   return (
     <li className={`${listItem} ${type}`}>
       <a href="" className={`${listLink}`}>
@@ -79,18 +82,15 @@ function CardItem({
           </span>
         </div>
 
-        {image ? (
-          <Image
-            src={image.src}
-            alt={`${title}`}
-            width={100}
-            height={100}
-            className={`${areaThumbnail} ${image.type}`}
-            priority
-          />
-        ) : components ? (
-          components
-        ) : null}
+        <Image
+          src={image.src}
+          alt={`${title}`}
+          width={100}
+          height={100}
+          className={`${areaThumbnail} ${image.type}`}
+          priority
+          unoptimized
+        />
       </a>
     </li>
   );
@@ -100,7 +100,7 @@ function CardList() {
   return (
     <ul className={list}>
       {[...cardData, ...cardData].map((item, index) => (
-        <CardItem key={index} {...item} aria-hidden={index > cardData.length} />
+        <CardItem key={index} {...item} />
       ))}
     </ul>
   );
