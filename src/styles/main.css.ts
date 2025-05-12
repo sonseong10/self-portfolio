@@ -28,9 +28,11 @@ export const contentWrapper = style({
   "@media": {
     [breakpoints.wide]: {
       paddingTop: "91px",
+      paddingBottom: "123px",
     },
     [breakpoints.desktop]: {
       paddingTop: "84px",
+      paddingBottom: "80px",
     },
     [breakpoints.tablet]: {
       paddingTop: "72px",
