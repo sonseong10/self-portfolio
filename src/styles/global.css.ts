@@ -14,6 +14,7 @@ globalStyle("*.screen_out", {
   width: 1,
   height: 1,
   fontSize: 1,
+  opacity: 0,
   zIndex: -999,
 });
 
