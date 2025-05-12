@@ -1,4 +1,5 @@
 import CardList from "@/components/cardList/CardList";
+import SideProject from "@/components/sideProject/SideProject";
 import Title from "@/components/ui/title/Title";
 import LastCommit from "@/components/widget/github/LastCommit";
 import MyInfo from "@/components/widget/myInfo/MyInfo";
@@ -40,7 +41,9 @@ export default function Home() {
 
       <div className={container}>
         <div className={areaContent}>
-          <Title text="더 나은 개발을 위한 사이드 프로젝트" />
+          <Title text="🖥 더 나은 개발을 위한 사이드 프로젝트" />
+
+          <SideProject />
         </div>
       </div>
     </section>
