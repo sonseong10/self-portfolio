@@ -1,9 +1,9 @@
-import CardList from "@/components/cardList/CardList";
-import SideProject from "@/components/sideProject/SideProject";
+import CardList from "@/components/main/cardList/CardList";
+import SideProject from "@/components/main/sideProject/SideProject";
 import Title from "@/components/ui/title/Title";
-import LastCommit from "@/components/widget/github/LastCommit";
-import Intro from "@/components/widget/intro/Intro";
-import MyInfo from "@/components/widget/myInfo/MyInfo";
+import LastCommit from "@/components/main/widget/github/LastCommit";
+import Intro from "@/components/main/widget/intro/Intro";
+import MyInfo from "@/components/main/widget/myInfo/MyInfo";
 import {
   areaBanner,
   areaContent,
@@ -11,7 +11,7 @@ import {
   container,
 } from "@/styles/main.css";
 import dynamic from "next/dynamic";
-const Banner = dynamic(() => import("@/components/banner/Banner"), {
+const Banner = dynamic(() => import("@/components/main/banner/Banner"), {
   ssr: !true,
 });
 
