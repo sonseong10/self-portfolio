@@ -6,7 +6,7 @@ function Intro() {
     <Link href={"/about/me"} className={widgetBox}>
       <span>
         어떤개발자로
-        <br /> 성장하고 싶나요
+        <br /> 성장하고 있나요
       </span>
     </Link>
   );
