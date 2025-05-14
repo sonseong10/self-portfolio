@@ -1,4 +1,5 @@
 import { breakpoints } from "@/styles/cpnstructs/breakPoint";
+import SVG from "@/styles/svgIcon";
 import { themeColor } from "@/styles/tokens.css";
 import { globalStyle, style } from "@vanilla-extract/css";
 
@@ -119,6 +120,31 @@ globalStyle(`${btnGroup} > a`, {
       height: "48px",
       lineHeight: "48px",
       borderRadius: "24px",
+    },
+  },
+});
+
+globalStyle(`${btnGroup} > a::after`, {
+  position: "relative",
+  top: "4px",
+  display: "inline-block",
+  width: "24px",
+  height: "24px",
+  background: `url(${SVG.CrossArrow()}) no-repeat center center`,
+  color: themeColor.text,
+  content: "",
+
+  "@media": {
+    [breakpoints.desktop]: {
+      width: "24px",
+      height: "24px",
+    },
+    [breakpoints.tablet]: {
+      backgroundSize: "16px",
+      top: "6px",
+    },
+    [breakpoints.mobile]: {
+      display: "none",
     },
   },
 });
