@@ -10,6 +10,8 @@ import {
   titleIcon,
 } from "./aboutMe.css";
 import dynamic from "next/dynamic";
+import Image from "next/image";
+import { earth, earthBox } from "./components/designs/4/form.css";
 
 const ConfettiButton = dynamic(
   () => import("./components/designs/2/PopButton")
@@ -189,7 +191,21 @@ export default function DropdownScroll() {
         }}
         className={innserSection}
       >
-        <SubTitle icon="💙" content="다양한 웹 사용자에게 모두 공평하게" />
+        <SubTitle icon="💙" content="다양한 웹 사용자에게 모두 편리하게" />
+
+        <div
+          style={{ maxWidth: "400px", margin: "0 auto" }}
+          className={earthBox}
+        >
+          <Image
+            className={earth}
+            src="/images/earth.png"
+            alt="earth"
+            width={400}
+            height={400}
+            priority
+          />
+        </div>
       </div>
     </>
   );

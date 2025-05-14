@@ -1,5 +1,5 @@
 import { themeColor } from "@/styles/tokens.css";
-import { style } from "@vanilla-extract/css";
+import { keyframes, style } from "@vanilla-extract/css";
 
 export const form = style({
   display: "flex",
@@ -59,4 +59,53 @@ export const handRight = style({
   right: "12px",
   top: "38px",
   zIndex: 10,
+});
+
+const spin = keyframes({
+  "0%": {
+    transform: "rotate(0deg)",
+  },
+  "100%": {
+    transform: "rotate(360deg)",
+  },
+});
+
+export const earthBox = style({
+  position: "relative",
+
+  selectors: {
+    "&::before": {
+      position: "absolute",
+      display: "block",
+      top: "0px",
+      right: "-128px",
+      padding: "16px",
+      borderRadius: "12px",
+      background: themeColor.card,
+      fontSize: "32px",
+      color: themeColor.text,
+      content: `${"W3C & i18n"}`,
+      zIndex: 7,
+    },
+
+    "&::after": {
+      position: "absolute",
+      display: "block",
+      left: "-120px",
+      bottom: "10px",
+      padding: "16px",
+      borderRadius: "12px",
+      background: themeColor.card,
+      fontSize: "32px",
+      color: themeColor.text,
+      content: `${"Attr: aria-label & role"}`,
+      zIndex: 10,
+    },
+  },
+});
+
+export const earth = style({
+  position: "relative",
+  animation: `${spin} 12s infinite linear`,
+  zIndex: 8,
 });

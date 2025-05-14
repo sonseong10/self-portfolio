@@ -6,6 +6,7 @@ export const subTitle = style({
   display: "block",
   marginBottom: "20px",
   fontSize: "20px",
+  color: themeColor.text,
 });
 
 export const titleIcon = style({
