@@ -1,7 +1,24 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { dropDownBtn, list, listItem } from "./dropdownList.css";
+import {
+  dropDownBtn,
+  innserSection,
+  list,
+  listItem,
+  subTitle,
+  titleIcon,
+} from "./aboutMe.css";
+import dynamic from "next/dynamic";
+
+const ConfettiButton = dynamic(
+  () => import("./components/designs/2/PopButton")
+);
+const LoginPage = dynamic(() => import("./components/designs/4/LoginForm"));
+const LineSVG = dynamic(() => import("./components/designs/1/LineSVG"));
+const WavyBox = dynamic(() => import("./components/designs/3/TypingText"), {
+  ssr: false,
+});
 
 const sections = [
   {
@@ -25,6 +42,17 @@ const sections = [
       "SSR 기반에서는 SEO를 고려한 DOM트리 구조로 작성하는 시멘틱 마크업을 좋아합니다.",
   },
 ];
+
+function SubTitle({ icon, content }: { icon: string; content: string }) {
+  return (
+    <div>
+      <div aria-hidden className={titleIcon}>
+        {icon}
+      </div>
+      <strong className={subTitle}>{content}</strong>
+    </div>
+  );
+}
 
 export default function DropdownScroll() {
   const [active, setActive] = useState(1); // index 1이 첫 li
@@ -105,15 +133,8 @@ export default function DropdownScroll() {
 
   return (
     <>
-      <div
-        style={{
-          height: "100vh",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          textAlign: "center",
-        }}
-      >
+      <div className={innserSection}>
+        <SubTitle icon="👨‍💻" content="어떤 개발자 인가요" />
         <ul className={list}>
           {sections.map((item, idx) => {
             const globalIndex = idx;
@@ -150,15 +171,27 @@ export default function DropdownScroll() {
         ref={(el) => {
           sectionRefs.current[sections.length + 1] = el;
         }}
-        style={{ height: "100vh" }}
-      ></div>
+        className={innserSection}
+      >
+        <SubTitle icon="🎨" content="그래픽작업을 좋아하며" />
+
+        <div style={{ display: "flex", flexWrap: "wrap" }}>
+          <LineSVG />
+          <ConfettiButton />
+          <LoginPage />
+          <WavyBox />
+        </div>
+      </div>
 
       <div
         ref={(el) => {
           sectionRefs.current[sections.length + 2] = el;
         }}
-        style={{ height: "100vh" }}
-      ></div>
+        className={innserSection}
+      >
+        <SubTitle icon="💙" content="다양한 웹 사용자에게 모두 공평하게" />
+      </div>
     </>
   );
 }
+

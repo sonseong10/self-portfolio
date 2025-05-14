@@ -1,11 +1,32 @@
+import { breakpoints } from "@/styles/cpnstructs/breakPoint";
 import { themeColor } from "@/styles/tokens.css";
 import { globalStyle, style } from "@vanilla-extract/css";
+
+export const subTitle = style({
+  display: "block",
+  marginBottom: "20px",
+  fontSize: "20px",
+});
+
+export const titleIcon = style({
+  display: "inline-block",
+  marginBottom: "12px",
+  fontSize: "40px",
+});
 
 export const list = style({
   width: "552px",
   listStyle: "none",
   padding: 0,
   margin: "0 auto",
+
+  "@media": {
+    [breakpoints.mobile]: {
+      width: "100vw",
+      padding: "0 10px",
+      boxSizing: "border-box",
+    },
+  },
 });
 
 globalStyle(`${list} > li > p`, {
@@ -67,4 +88,26 @@ export const dropDownBtn = style({
   fontSize: "18px",
   textAlign: "left",
   cursor: "pointer",
+});
+
+export const innserSection = style({
+  height: "100vh",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+  textAlign: "center",
+  maxWidth: "640px",
+  margin: "0 auto",
+});
+
+export const innerBox = style({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  margin: "10px",
+  width: "300px",
+  height: "300px",
+  borderRadius: "24px",
+  backgroundColor: themeColor.card,
 });
