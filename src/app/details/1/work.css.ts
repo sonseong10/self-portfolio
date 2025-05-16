@@ -1,13 +1,133 @@
-import { style } from "@vanilla-extract/css";
+import { breakpoints } from "@/styles/cpnstructs/breakPoint";
+import SVG from "@/styles/svgIcon";
+import { themeColor } from "@/styles/tokens.css";
+import { globalStyle, style } from "@vanilla-extract/css";
 
 const layout = style({
   display: "flex",
+  maxWidth: "1200px",
+  margin: "0 auto",
+
+  "@media": {
+    [breakpoints.wide]: {
+      maxWidth: "1316px",
+    },
+    [breakpoints.desktop]: {
+      maxWidth: "952px",
+    },
+    [breakpoints.tablet]: {
+      maxWidth: "712px",
+    },
+    [breakpoints.mobile]: {
+      maxWidth: "412px",
+    },
+  },
 });
 
 const lnbWrapper = style({
   position: "sticky",
   top: "100px",
-  alignSelf: "start",
+  marginTop: "18px",
   scrollMarginTop: "80px",
+  alignSelf: "start",
+  flex: 2,
 });
-export { layout, lnbWrapper };
+
+globalStyle(`${lnbWrapper} ul`, {
+  margin: 0,
+  padding: 0,
+});
+
+globalStyle(`${lnbWrapper} ul > li`, {
+  marginBottom: "4px",
+});
+
+globalStyle(`${lnbWrapper} ul.inner`, {
+  marginTop: "4px",
+  paddingLeft: "10px",
+});
+
+globalStyle(`${lnbWrapper} a`, {
+  color: themeColor.text,
+  fontSize: "13px",
+  textDecoration: "none",
+});
+
+const contents = style({
+  flex: 8,
+  fontSize: "14px",
+  color: themeColor.text,
+});
+
+const outLink = style({
+  display: "inline-block",
+  marginBottom: "8px",
+  color: themeColor.text,
+  textDecoration: "none",
+  cursor: "pointer",
+
+  selectors: {
+    "&:focus": {
+      opacity: 0.6,
+      outline: `2px solid ${themeColor.text}`,
+      borderRadius: "2px",
+    },
+
+    "&:hover": {
+      opacity: 0.6,
+    },
+
+    "&::after": {
+      display: "inline-block",
+      width: "12px",
+      height: "12px",
+      mask: `url(${SVG.CrossArrow()}) no-repeat center center`,
+      maskSize: "12px",
+      backgroundColor: themeColor.text,
+      content: "",
+    },
+  },
+});
+
+globalStyle(`${contents} h3`, {
+  fontSize: "18px",
+});
+
+globalStyle(`${contents} h4`, {
+  fontSize: "16px",
+});
+
+globalStyle(`${contents} dl, ${contents} ul,${contents} ol`, {
+  margin: 0,
+  padding: 0,
+  listStyle: "none",
+});
+
+globalStyle(`${contents} dl > div > dt, ${contents} dl > div > dd`, {
+  display: "inline-block",
+});
+
+globalStyle(`${contents} dl > div`, {
+  marginBottom: "8px",
+});
+
+globalStyle(`${contents} dl > div > dd`, {
+  display: "inline-block",
+  marginLeft: "10px",
+  lineHeight: "22px",
+});
+
+globalStyle(`${contents} p`, {
+  margin: "0",
+  lineHeight: "22px",
+});
+
+globalStyle(`${contents} dl div dd.long_text`, {
+  display: "block",
+  marginLeft: "0",
+});
+
+globalStyle(`${contents} dt`, {
+  color: themeColor.subText,
+});
+export { layout, outLink, lnbWrapper, contents };

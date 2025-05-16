@@ -1,36 +1,61 @@
 import Link from "next/link";
-import { layout, lnbWrapper } from "./work.css";
+import { contents, layout, lnbWrapper, outLink } from "./work.css";
 
 function HistoryPage() {
   return (
     <>
       <header>
-        <h2 id="career-heading">경력 이야기</h2>
+        <h2 id="career-heading" className="screen_out">
+          경력 이야기
+        </h2>
       </header>
 
       <div className={layout}>
         <aside aria-labelledby="career-heading" className={lnbWrapper}>
+          <h2 className="screen_out">경력 섹션 내비게이션</h2>
           <nav aria-label="경력 섹션 내비게이션">
             <ul>
               <li>
-                <Link href="#intro-startup">스타트업 입사 계기</Link>
+                <Link
+                  href="#intro-startup"
+                  aria-label="스타트업 입사 계기로 이동"
+                >
+                  스타트업 입사 계기
+                </Link>
               </li>
               <li>
-                <Link href="#about-fastview">(주)Fastview 소개</Link>
+                <Link href="#about-fastview" aria-label="회사소개로 이동">
+                  (주)Fastview 소개
+                </Link>
               </li>
               <li>
-                <Link href="#job-experience">담당 직무 경험</Link>
-                <ul>
+                <Link href="#job-experience" aria-label="직무 경험으로 이동">
+                  담당 직무 경험
+                </Link>
+                <ul className="inner">
                   <li>
-                    <Link href="#ads-domain">광고(Ads) 도메인</Link>
+                    <Link
+                      href="#ads-domain"
+                      aria-label=" 광고(Ads) 도메인 업무설명으로 이동"
+                    >
+                      광고(Ads) 도메인
+                    </Link>
                   </li>
                   <li>
-                    <Link href="#submoduls-onboding">
+                    <Link
+                      href="#submoduls-onboding"
+                      aria-label="서브모듈 및 온보딩 문서 제작으로 이동"
+                    >
                       서브모듈 기반 공통 컴포넌트 관리 및 온보딩 문서 제작
                     </Link>
                   </li>
                   <li>
-                    <Link href="#commuse-domain">이커머스 도메인</Link>
+                    <Link
+                      href="#commuse-domain"
+                      aria-label=" 이커머스 도메인제작으로 이동"
+                    >
+                      이커머스 도메인
+                    </Link>
                   </li>
                 </ul>
               </li>
@@ -38,7 +63,7 @@ function HistoryPage() {
           </nav>
         </aside>
 
-        <div>
+        <div className={contents}>
           <section id="intro-startup" aria-labelledby="intro-startup-heading">
             <h3 id="intro-startup-heading">스타트업 입사 계기</h3>
             <p>
@@ -50,6 +75,14 @@ function HistoryPage() {
 
           <section id="about-fastview" aria-labelledby="about-fastview-heading">
             <h3 id="about-fastview-heading">(주)Fastview 소개</h3>
+            <Link
+              href={"https://www.fastviewkorea.com/2022/main/main.html"}
+              aria-label="회사 소개사이트 이동"
+              className={outLink}
+              target="_blank"
+            >
+              소개사이트
+            </Link>
             <p>
               콘텐츠 유통 플랫폼 <strong>뷰어스(ViewUs)</strong>를 운영하는
               콘텐츠 테크 스타트업으로, 콘텐츠 제작부터 유통, 수익화까지 전
@@ -95,7 +128,7 @@ function HistoryPage() {
 
                     <div>
                       <dt>업무 내용</dt>
-                      <dd>
+                      <dd className="long_text">
                         시니어 개발자의 기존 텍스트형 스크립트 가이드를
                         바탕으로, 이미지형 광고 모듈의 상태 관리 로직과
                         애니메이션 처리를 전담하였습니다. TS 기반 스크립트 개발
@@ -110,14 +143,8 @@ function HistoryPage() {
                     상승하여 슬라이드형 광고 비중이 점진적으로 확대되었습니다.)
                     <br />
                     <strong>과제:</strong>
-                    리뉴얼과 신규 기능이 동시에 진행되면서 속도 중심의 개발이
-                    요구되었고, 그 결과 상품등록 개발에서 클라이언트에서 모든
-                    예외 처리를 담당하게 되었습니다. 이로 인해 유지보수 난이도가
-                    증가하고, 유사한 기능을 가진 컴포넌트가 중복 생성되거나,
-                    일부는 재사용되지 않고 폐기되는 상황이 반복되었습니다.
-                    장기적으로는 컴포넌트 공통화 전략 수립과, 기능 단위로 분리된
-                    컴포넌트 라이브러리(서브 모듈) 구성이 필요하다고
-                    판단했습니다.
+                    추가 광고타입이 늘어날수록 모듈이 무거워져 페이지 렌더링
+                    속도를 저하 시킬 가능성이 있습니다.
                   </p>
                 </article>
               </li>
@@ -151,7 +178,7 @@ function HistoryPage() {
 
                     <div>
                       <dt>업무 내용</dt>
-                      <dd>
+                      <dd className="long_text">
                         여러 하위 이커머스 도메인에서 중복되는 UI 컴포넌트를
                         통합·관리하기 위해 Git Submodule을 활용한 공통 모듈
                         시스템을 도입했습니다.
@@ -211,18 +238,18 @@ function HistoryPage() {
 
                     <div>
                       <dt>사용기술</dt>
-                      <dd>
-                        back: spring boot2.7 Kotlin1.6(Gradle) | JAVA11 | MySQL
+                      <dd className="long_text">
+                        Back: spring boot2.7 Kotlin1.6(Gradle) | JAVA11 | MySQL
                         <br />
                         Front: Vue2+Jquery | React18(Typescript) + Redux-toolkit
                         | Styled-components <br />
-                        tool: Figma | Jira
+                        Tool: Figma | Jira
                       </dd>
                     </div>
 
                     <div>
                       <dt>업무 내용</dt>
-                      <dd>
+                      <dd className="long_text">
                         <p>
                           스토어 서비스 페이지 리뉴얼을 위한 기능 추가 및 기존
                           기술 부채를 개선하기 위하여 아래와 같은 기능 제작을
@@ -247,12 +274,11 @@ function HistoryPage() {
                           </li>
 
                           <li>
+                            <br />
                             어드민에서 상품등록시 공급사별 엑셀시트를 받아 DB에
                             바로 update를 하는 프로세스를 개선 했습니다.
                             <br />
-                            개선이 필요한 부분
-                            <br />
-                            1. 유관부서에서 상품정보 업로드 시 데이터가 많은경우
+                            1. 커머스 부서에서 요청하면 백엔드 개발자분이
                             업로드를 진행하는 동안 다른 업무를 진행불가
                             <br />
                             2. 받은 데이터에 오타및 형식 오류가 있는 경우 장시간
