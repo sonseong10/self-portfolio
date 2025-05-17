@@ -1,5 +1,12 @@
 import Link from "next/link";
-import { contents, layout, lnbWrapper, outLink } from "./work.css";
+import {
+  contents,
+  layout,
+  linkGroup,
+  lnbWrapper,
+  navigationLink,
+  outLink,
+} from "./work.css";
 
 function HistoryPage() {
   return (
@@ -75,6 +82,10 @@ function HistoryPage() {
 
           <section id="about-fastview" aria-labelledby="about-fastview-heading">
             <h3 id="about-fastview-heading">(주)Fastview 소개</h3>
+            <strong>
+              근무기간: 1년11개월 (<time dateTime="2022-01">2022.01</time> ~
+              <time dateTime="2023-11">2023.11</time>)
+            </strong>
             <Link
               href={"https://www.fastviewkorea.com/2022/main/main.html"}
               aria-label="회사 소개사이트 이동"
@@ -317,10 +328,13 @@ function HistoryPage() {
       </div>
 
       <footer>
-        <div>
-          <button>이전글</button>
-          <button>메인으로</button>
-          <button>다음글</button>
+        <div className={linkGroup}>
+          <Link href={"/details/6"} className={navigationLink}>
+            이전글
+          </Link>
+          <Link href={"/details/2"} className={navigationLink}>
+            다음글
+          </Link>
         </div>
       </footer>
     </>

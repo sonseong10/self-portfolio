@@ -31,6 +31,18 @@ const lnbWrapper = style({
   scrollMarginTop: "80px",
   alignSelf: "start",
   flex: 2,
+
+  "@media": {
+    [breakpoints.desktop]: {
+      display: "block",
+    },
+    [breakpoints.tablet]: {
+      display: "none",
+    },
+    [breakpoints.mobile]: {
+      display: "none",
+    },
+  },
 });
 
 globalStyle(`${lnbWrapper} ul`, {
@@ -44,7 +56,7 @@ globalStyle(`${lnbWrapper} ul > li`, {
 
 globalStyle(`${lnbWrapper} ul.inner`, {
   marginTop: "4px",
-  paddingLeft: "10px",
+  padding: "0 14px",
 });
 
 globalStyle(`${lnbWrapper} a`, {
@@ -60,8 +72,8 @@ const contents = style({
 });
 
 const outLink = style({
-  display: "inline-block",
-  marginBottom: "8px",
+  display: "block",
+  margin: "8px 0",
   color: themeColor.text,
   textDecoration: "none",
   cursor: "pointer",
@@ -131,3 +143,49 @@ globalStyle(`${contents} dt`, {
   color: themeColor.subText,
 });
 export { layout, outLink, lnbWrapper, contents };
+
+export const linkGroup = style({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  "@media": {
+    [breakpoints.wide]: {
+      margin: "80px auto",
+      maxWidth: "1316px",
+    },
+    [breakpoints.desktop]: {
+      margin: "40px auto",
+      maxWidth: "952px",
+    },
+    [breakpoints.tablet]: {
+      margin: "40px auto",
+      maxWidth: "712px",
+    },
+    [breakpoints.mobile]: {
+      margin: "20px auto",
+      maxWidth: "412px",
+    },
+  },
+});
+
+export const navigationLink = style({
+  display: "inline-block",
+  margin: "0 8px",
+  padding: " 4px 8px",
+  width: "130px",
+  height: "44px",
+  backgroundColor: `${themeColor.card}`,
+  borderRadius: "8px",
+  lineHeight: " 36px",
+  color: themeColor.text,
+  textAlign: "center",
+  textDecoration: "none",
+  boxSizing: "border-box",
+  cursor: "pointer",
+
+  selectors: {
+    "&:hover": {
+      opacity: 0.6,
+    },
+  },
+});
