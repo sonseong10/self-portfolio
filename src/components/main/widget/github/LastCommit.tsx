@@ -16,6 +16,11 @@ export default async function LastCommit() {
 
   const commit: Commit = await res.json();
 
+  const dateFormatter = new Intl.DateTimeFormat("ko-KR", {
+    dateStyle: "medium",
+    timeStyle: "short",
+  });
+
   return (
     <Link className={linkBox} href={commit.url} target="_blank">
       <div>
@@ -33,7 +38,7 @@ export default async function LastCommit() {
         <div>
           <dt className="screen_out">날짜</dt>
           <dd className={`${listItem} date`}>
-            {new Date(commit.date).toLocaleString()}
+            {dateFormatter.format(new Date(commit.date))}
           </dd>
         </div>
       </dl>

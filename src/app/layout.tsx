@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "@/styles/global.css";
 import { contentWrapper } from "@/styles/main.css";
+import { cookies } from "next/headers";
+import { darkTheme, lightTheme } from "@/styles/theme.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,15 +21,25 @@ export const metadata: Metadata = {
   description: "Self Portfolio",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookieStore = await cookies();
+  const themeCookie = cookieStore.get("theme")?.value;
+
+  const themeClass =
+    themeCookie === "dark"
+      ? darkTheme
+      : themeCookie === "light"
+      ? lightTheme
+      : lightTheme;
+
   return (
     <html
       lang="ko-KR"
-      className={`${geistSans.variable} ${geistMono.variable}`}
+      className={`${geistSans.variable} ${geistMono.variable} ${themeClass}`}
     >
       <head>
         <meta charSet="utf-8" />

@@ -8,33 +8,27 @@ function ThemeButton() {
   const [isDark, setIsDark] = useState<boolean | null>(null);
 
   useEffect(() => {
-    const prefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    ).matches;
-    const theme = prefersDark ? darkTheme : lightTheme;
-
-    // 기존 클래스 초기화
-    document.body.classList.remove(darkTheme, lightTheme);
-    document.body.classList.add(theme);
-
-    setIsDark(prefersDark);
+    const currentTheme = document.documentElement.classList.contains(darkTheme)
+      ? "dark"
+      : "light";
+    setIsDark(currentTheme === "dark");
   }, []);
 
   const toggleTheme = () => {
     const nextTheme = isDark ? lightTheme : darkTheme;
-
-    // 기존 클래스 제거
-    document.body.classList.remove(darkTheme, lightTheme);
-    document.body.classList.add(nextTheme);
-
+    document.documentElement.classList.remove(darkTheme, lightTheme);
+    document.documentElement.classList.add(nextTheme);
+    localStorage.setItem("user-theme", isDark ? "light" : "dark");
     setIsDark(!isDark);
   };
+  if (isDark === null) return null;
 
   return (
     <button
       className={`${themeButton} ${isDark ? "light" : "dark"}`}
       onClick={toggleTheme}
-    ></button>
+      aria-label="Toggle theme"
+    />
   );
 }
 
