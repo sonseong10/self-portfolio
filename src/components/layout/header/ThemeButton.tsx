@@ -1,31 +1,27 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { themeButton } from "./header.css";
 import { darkTheme, lightTheme } from "@/styles/theme.css";
+import { useThemeStore } from "@/store/themeStore";
+import { useInitTheme } from "@/utils/initTheme";
 
 function ThemeButton() {
-  const [isDark, setIsDark] = useState<boolean | null>(null);
+  useInitTheme();
+
+  const theme = useThemeStore((state) => state.theme);
+  const toggleTheme = useThemeStore((state) => state.toggleTheme);
 
   useEffect(() => {
-    const currentTheme = document.documentElement.classList.contains(darkTheme)
-      ? "dark"
-      : "light";
-    setIsDark(currentTheme === "dark");
-  }, []);
-
-  const toggleTheme = () => {
-    const nextTheme = isDark ? lightTheme : darkTheme;
     document.documentElement.classList.remove(darkTheme, lightTheme);
-    document.documentElement.classList.add(nextTheme);
-    localStorage.setItem("user-theme", isDark ? "light" : "dark");
-    setIsDark(!isDark);
-  };
-  if (isDark === null) return null;
+    document.documentElement.classList.add(
+      theme === "dark" ? darkTheme : lightTheme
+    );
+  }, [theme]);
 
   return (
     <button
-      className={`${themeButton} ${isDark ? "light" : "dark"}`}
+      className={`${themeButton} ${theme === "dark" ? "light" : "dark"}`}
       onClick={toggleTheme}
       aria-label="Toggle theme"
     />
