@@ -24,6 +24,23 @@ const layout = style({
   },
 });
 
+export const codeBox = style({
+  "@media": {
+    [breakpoints.wide]: {
+      width: "calc(1316px - 20px) ",
+    },
+    [breakpoints.desktop]: {
+      width: "calc(952px - 20px)",
+    },
+    [breakpoints.tablet]: {
+      width: "calc(712px - 20px)",
+    },
+    [breakpoints.mobile]: {
+      width: "calc(412px - 20px)",
+    },
+  },
+});
+
 const lnbWrapper = style({
   position: "sticky",
   top: "100px",
