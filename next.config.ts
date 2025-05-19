@@ -6,7 +6,7 @@ const withVanillaExtract = createVanillaExtractPlugin();
 const nextConfig: NextConfig = withVanillaExtract({
   reactStrictMode: true,
   images: {
-    domains: ["ghchart.rshah.org"],
+    domains: ["ghchart.rshah.org", "github.com"],
   },
 });
 
