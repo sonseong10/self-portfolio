@@ -12,9 +12,7 @@ type Commit = {
 export default async function LastCommit() {
   const baseUrl = process.env.VERCEL_URL?.startsWith("localhost")
     ? "http://localhost:3000"
-    : `https://${
-        process.env.VERCEL_URL ?? "https://self-portfolio-omega.vercel.app"
-      }`;
+    : `https://${process.env.VERCEL_URL ?? "self-portfolio-omega.vercel.app"}`;
 
   const res = await fetch(`${baseUrl}/api/last-commit`, {
     cache: "no-store",
