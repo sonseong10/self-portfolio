@@ -1,5 +1,6 @@
 import { globalStyle, style } from "@vanilla-extract/css";
 import { breakpoints } from "./cpnstructs/breakPoint";
+import { themeColor } from "./tokens.css";
 
 export const container = style({
   position: "relative",
@@ -97,6 +98,43 @@ export const areaContent = style({
     },
     [breakpoints.mobile]: {
       marginTop: "80px",
+    },
+  },
+});
+
+export const notFoundContainer = style({
+  display: "grid",
+  placeItems: "center",
+  height: "100vh",
+  textAlign: "center",
+  color: themeColor.text,
+});
+
+export const linkBadge = style({
+  display: "inline-block",
+  padding: "8px 12px",
+  backgroundColor: themeColor.buttonHover,
+  fontSize: "16px",
+  color: themeColor.text,
+  textDecoration: "none",
+  margin: "0 0.8rem",
+  boxSizing: "border-box",
+  borderRadius: "20px",
+
+  selectors: {
+    "&.home": {
+      marginTop: "40px",
+      width: "150px",
+      height: "52px",
+      lineHeight: "38px",
+      fontWeight: 700,
+      fontSize: "18px",
+      borderRadius: "26px",
+      backgroundColor: themeColor.border,
+    },
+
+    "&:hover": {
+      opacity: "0.6",
     },
   },
 });
