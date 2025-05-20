@@ -30,7 +30,7 @@ function Section({ children }: { children: React.ReactNode }) {
   );
 }
 
-export function GradientTitle() {
+function GradientTitle() {
   return (
     <motion.strong
       className={gradientTitle}
