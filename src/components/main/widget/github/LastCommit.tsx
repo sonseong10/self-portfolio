@@ -10,15 +10,18 @@ type Commit = {
 };
 
 export default async function LastCommit() {
-  const baseUrl = process.env.VERCEL_URL?.startsWith("localhost")
-    ? "http://localhost:3000"
-    : `https://${process.env.VERCEL_URL ?? "self-portfolio-omega.vercel.app"}`;
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
   const res = await fetch(`${baseUrl}/api/last-commit`, {
     cache: "no-store",
   });
 
-  console.log(baseUrl);
+  const contentType = res.headers.get("content-type") ?? "";
+  if (!contentType.includes("application/json")) {
+    const html = await res.text();
+    console.error("⛔️ HTML received instead of JSON:", html.slice(0, 100));
+    throw new Error("API returned HTML instead of JSON.");
+  }
 
   const commit: Commit = await res.json();
 
