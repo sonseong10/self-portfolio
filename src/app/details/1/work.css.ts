@@ -206,3 +206,13 @@ export const navigationLink = style({
     },
   },
 });
+
+export const gradientTitle = style({
+  fontSize: "80px",
+  fontWeight: 800,
+  background: "linear-gradient(90deg, #4facfe, #00f2fe)",
+  WebkitBackgroundClip: "text",
+  WebkitTextFillColor: "transparent",
+  textAlign: "center",
+  marginBottom: "1rem",
+});
