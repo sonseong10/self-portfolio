@@ -9,8 +9,14 @@ export const header = style({
   right: 0,
   left: 0,
   backgroundColor: themeColor.background,
-  borderBottom: `1px solid ${themeColor.border}`,
+  borderBottom: `1px solid ${themeColor.background}`,
   zIndex: 1000,
+
+  selectors: {
+    "&.scroll": {
+      borderColor: themeColor.border,
+    },
+  },
 });
 
 export const logo = style({

@@ -11,6 +11,8 @@ import {
   container,
 } from "@/styles/main.css";
 import dynamic from "next/dynamic";
+import Education from "@/components/main/education/education";
+
 const Banner = dynamic(() => import("@/components/main/banner/Banner"), {
   ssr: !true,
 });
@@ -47,6 +49,14 @@ export default function Home() {
           <Title text="🖥 더 나은 개발을 위한 사이드 프로젝트" />
 
           <SideProject />
+        </div>
+      </div>
+
+      <div className={container}>
+        <div className={areaContent}>
+          <Title text="📚 교육과 기타 활동" />
+
+          <Education />
         </div>
       </div>
     </section>
