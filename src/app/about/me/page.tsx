@@ -8,11 +8,16 @@ import {
   listItem,
   subTitle,
   titleIcon,
+  earth,
+  earthBox,
+  graphicWrapper,
+  graphicItem,
 } from "./aboutMe.css";
 import dynamic from "next/dynamic";
 import Image from "next/image";
-import { earth, earthBox } from "./components/designs/4/form.css";
+import { motion } from "framer-motion";
 
+// 동적 import
 const ConfettiButton = dynamic(
   () => import("./components/designs/2/PopButton")
 );
@@ -22,6 +27,7 @@ const WavyBox = dynamic(() => import("./components/designs/3/TypingText"), {
   ssr: false,
 });
 
+// 소개 섹션
 const sections = [
   {
     title: "기술 선택과 책임",
@@ -45,6 +51,7 @@ const sections = [
   },
 ];
 
+// 소제목 렌더링 컴포넌트
 function SubTitle({ icon, content }: { icon: string; content: string }) {
   return (
     <div>
@@ -57,18 +64,20 @@ function SubTitle({ icon, content }: { icon: string; content: string }) {
 }
 
 export default function DropdownScroll() {
-  const [active, setActive] = useState(1); // index 1이 첫 li
+  const [active, setActive] = useState(0);
+  const sectionRefs = useRef<HTMLElement[]>([]);
   const scrollLock = useRef(false);
-  const sectionRefs = useRef<(HTMLElement | null)[]>([]);
   const touchStartY = useRef<number | null>(null);
+
+  const setSectionRef = (index: number) => (el: HTMLElement | null) => {
+    if (el) sectionRefs.current[index] = el;
+  };
 
   const handleScroll = (direction: "up" | "down") => {
     setActive((prev) => {
       const next =
         direction === "down"
           ? Math.min(prev + 1, sectionRefs.current.length - 1)
-          : prev - 1 === 0
-          ? 1
           : Math.max(prev - 1, 0);
 
       const nextEl = sectionRefs.current[next];
@@ -92,9 +101,7 @@ export default function DropdownScroll() {
       e.preventDefault();
       if (scrollLock.current) return;
       lockScroll();
-
-      if (e.deltaY > 0) handleScroll("down");
-      else if (e.deltaY < 0) handleScroll("up");
+      e.deltaY > 0 ? handleScroll("down") : handleScroll("up");
     };
 
     const onTouchStart = (e: TouchEvent) => {
@@ -103,17 +110,13 @@ export default function DropdownScroll() {
 
     const onTouchEnd = (e: TouchEvent) => {
       if (touchStartY.current === null || scrollLock.current) return;
-
       const deltaY = touchStartY.current - e.changedTouches[0].clientY;
-      if (Math.abs(deltaY) < 30) return; // 스와이프 감지 최소 거리
-
+      if (Math.abs(deltaY) < 30) return;
       lockScroll();
-      if (deltaY > 0) handleScroll("down");
-      else handleScroll("up");
-
+      deltaY > 0 ? handleScroll("down") : handleScroll("up");
       touchStartY.current = null;
     };
-
+    window.scrollTo({ top: 0 });
     window.addEventListener("wheel", onWheel, { passive: false });
     window.addEventListener("touchstart", onTouchStart, { passive: false });
     window.addEventListener("touchend", onTouchEnd, { passive: false });
@@ -126,7 +129,7 @@ export default function DropdownScroll() {
   }, []);
 
   useEffect(() => {
-    const originalStyle = window.getComputedStyle(document.body).overflow;
+    const originalStyle = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => {
       document.body.style.overflow = originalStyle;
@@ -135,26 +138,23 @@ export default function DropdownScroll() {
 
   return (
     <>
-      <div className={innserSection}>
+      {/* 텍스트 리스트 섹션 */}
+      <div ref={setSectionRef(0)} className={innserSection}>
         <SubTitle icon="👨‍💻" content="어떤 개발자 인가요" />
         <ul className={list}>
           {sections.map((item, idx) => {
-            const globalIndex = idx;
+            const isVisible = active === idx + 1;
             return (
-              <li
+              <motion.li
                 key={idx}
-                ref={(el) => {
-                  sectionRefs.current[globalIndex + 1] = el as HTMLElement;
-                }}
-                className={`${listItem} ${
-                  active === globalIndex + 1 ? "isActive" : ""
-                }`}
+                ref={setSectionRef(idx + 1)}
+                className={`${listItem} ${isVisible ? "isActive" : ""}`}
               >
                 <button
                   className={dropDownBtn}
                   onClick={() => {
-                    setActive(globalIndex + 1);
-                    sectionRefs.current[globalIndex + 1]?.scrollIntoView({
+                    setActive(idx + 1);
+                    sectionRefs.current[idx + 1]?.scrollIntoView({
                       behavior: "smooth",
                       block: "center",
                     });
@@ -163,36 +163,57 @@ export default function DropdownScroll() {
                   {item.title}
                 </button>
                 <p>{item.content}</p>
-              </li>
+              </motion.li>
             );
           })}
         </ul>
       </div>
 
-      <div
-        ref={(el) => {
-          sectionRefs.current[sections.length + 1] = el;
-        }}
+      <motion.div
+        ref={setSectionRef(sections.length + 1)}
         className={innserSection}
+        initial={{ opacity: 0, y: 60 }}
+        animate={active === sections.length + 1 ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6 }}
       >
         <SubTitle icon="🎨" content="그래픽작업을 좋아하며" />
-
-        <div style={{ display: "flex", flexWrap: "wrap" }}>
-          <LineSVG />
-          <ConfettiButton />
-          <LoginPage />
-          <WavyBox />
+        <div className={graphicWrapper}>
+          <div
+            className={graphicItem}
+            style={{ flex: "0 0 auto", scrollSnapAlign: "center" }}
+          >
+            <LineSVG />
+          </div>
+          <div
+            className={graphicItem}
+            style={{ flex: "0 0 auto", scrollSnapAlign: "center" }}
+          >
+            <ConfettiButton />
+          </div>
+          <div
+            className={graphicItem}
+            style={{ flex: "0 0 auto", scrollSnapAlign: "center" }}
+          >
+            <LoginPage />
+          </div>
+          <div
+            className={graphicItem}
+            style={{ flex: "0 0 auto", scrollSnapAlign: "center" }}
+          >
+            <WavyBox />
+          </div>
         </div>
-      </div>
+      </motion.div>
 
-      <div
-        ref={(el) => {
-          sectionRefs.current[sections.length + 2] = el;
-        }}
+      {/* 지구 이미지 섹션 */}
+      <motion.div
+        ref={setSectionRef(sections.length + 2)}
         className={innserSection}
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={active === sections.length + 2 ? { opacity: 1, scale: 1 } : {}}
+        transition={{ duration: 0.6 }}
       >
         <SubTitle icon="💙" content="다양한 웹 사용자에게 모두 편리하게" />
-
         <div
           style={{ maxWidth: "400px", margin: "0 auto" }}
           className={earthBox}
@@ -206,8 +227,7 @@ export default function DropdownScroll() {
             priority
           />
         </div>
-      </div>
+      </motion.div>
     </>
   );
 }
-

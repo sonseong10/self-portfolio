@@ -3,7 +3,13 @@
 import { memo, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { handLeft, handRight, innerAnimal, mascotEyes } from "./form.css";
+import {
+  handLeft,
+  handRight,
+  innerAnimal,
+  mascotEyes,
+  mascotFace,
+} from "./form.css";
 
 function LoginMascot({
   focus,
@@ -20,11 +26,10 @@ function LoginMascot({
 
   return (
     <div className={innerAnimal}>
-      {/* 고양이 이미지 */}
       <Image
         src="/images/animals/face.png"
         alt="Mascot"
-        className="absolute w-full"
+        className={mascotFace}
         width={100}
         height={100}
         priority
@@ -35,9 +40,6 @@ function LoginMascot({
         src="/images/animals/eyes.png"
         alt="Eyes"
         className={mascotEyes}
-        style={{
-          top: `${focus === "email" ? "62px" : "60px"}`,
-        }}
         animate={{ x: eyeX }}
         transition={{ type: "spring", stiffness: 300 }}
       />

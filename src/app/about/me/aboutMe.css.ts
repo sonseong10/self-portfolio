@@ -1,6 +1,6 @@
 import { breakpoints } from "@/styles/cpnstructs/breakPoint";
 import { themeColor } from "@/styles/tokens.css";
-import { globalStyle, style } from "@vanilla-extract/css";
+import { globalStyle, keyframes, style } from "@vanilla-extract/css";
 
 export const subTitle = style({
   display: "block",
@@ -106,9 +106,113 @@ export const innerBox = style({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  margin: "10px",
-  width: "300px",
-  height: "300px",
+  width: "100%",
+  height: "100%",
   borderRadius: "24px",
   backgroundColor: themeColor.card,
+});
+
+const spin = keyframes({
+  "0%": {
+    transform: "rotate(0deg)",
+  },
+  "100%": {
+    transform: "rotate(360deg)",
+  },
+});
+
+export const earthBox = style({
+  position: "relative",
+
+  selectors: {
+    "&::before": {
+      position: "absolute",
+      display: "block",
+      top: "0px",
+      right: "-128px",
+      padding: "16px",
+      borderRadius: "12px",
+      background: themeColor.card,
+      fontSize: "32px",
+      color: themeColor.text,
+      content: `${"W3C & i18n"}`,
+      zIndex: 7,
+
+      "@media": {
+        [breakpoints.tablet]: {
+          right: "0px",
+        },
+        [breakpoints.mobile]: {
+          position: "static",
+          order: 2,
+          marginTop: "8px",
+          fontSize: "20px",
+        },
+      },
+    },
+
+    "&::after": {
+      position: "absolute",
+      display: "block",
+      left: "-120px",
+      bottom: "10px",
+      padding: "16px",
+      borderRadius: "12px",
+      background: themeColor.card,
+      fontSize: "32px",
+      color: themeColor.text,
+      content: `${"Attr: aria-label & role"}`,
+      zIndex: 10,
+
+      "@media": {
+        [breakpoints.tablet]: {
+          left: "0px",
+        },
+        [breakpoints.mobile]: {
+          position: "static",
+          fontSize: "20px",
+        },
+      },
+    },
+  },
+
+  "@media": {
+    [breakpoints.mobile]: {
+      display: "flex",
+      flexDirection: "column",
+    },
+  },
+});
+
+export const earth = style({
+  position: "relative",
+  animation: `${spin} 12s infinite linear`,
+  zIndex: 8,
+
+  "@media": {
+    [breakpoints.mobile]: {
+      width: "280px",
+      height: "280px",
+    },
+  },
+});
+
+export const graphicWrapper = style({
+  display: "flex",
+  flexWrap: "wrap",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "10px",
+});
+
+export const graphicItem = style({
+  width: "300px",
+  height: "300px",
+
+  "@media": {
+    [breakpoints.mobile]: {
+      width: "160px",
+      height: "160px",
+    },
+  },
 });

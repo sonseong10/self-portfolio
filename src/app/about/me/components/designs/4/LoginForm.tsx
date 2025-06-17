@@ -31,7 +31,7 @@ export default function LoginPage() {
 
           <input
             type="password"
-            placeholder="Password"
+            placeholder="password"
             value={password}
             onFocus={() => setFocusedInput("password")}
             onBlur={() => setFocusedInput(null)}

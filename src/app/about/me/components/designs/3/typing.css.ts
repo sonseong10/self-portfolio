@@ -1,3 +1,4 @@
+import { breakpoints } from "@/styles/cpnstructs/breakPoint";
 import { themeColor } from "@/styles/tokens.css";
 import { keyframes, style } from "@vanilla-extract/css";
 
@@ -13,6 +14,12 @@ export const text = style({
   fontWeight: "bold",
   color: themeColor.text,
   whiteSpace: "pre",
+
+  "@media": {
+    [breakpoints.mobile]: {
+      fontSize: "28px",
+    },
+  },
 });
 
 export const cursor = style({
