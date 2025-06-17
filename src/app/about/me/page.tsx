@@ -173,7 +173,9 @@ export default function DropdownScroll() {
         ref={setSectionRef(sections.length + 1)}
         className={innserSection}
         initial={{ opacity: 0, y: 60 }}
-        animate={active === sections.length + 1 ? { opacity: 1, y: 0 } : {}}
+        animate={
+          active === sections.length + 1 ? { opacity: 1, y: 0 } : undefined
+        }
         transition={{ duration: 0.6 }}
       >
         <SubTitle icon="🎨" content="그래픽작업을 좋아하며" />
@@ -210,7 +212,9 @@ export default function DropdownScroll() {
         ref={setSectionRef(sections.length + 2)}
         className={innserSection}
         initial={{ opacity: 0, scale: 0.9 }}
-        animate={active === sections.length + 2 ? { opacity: 1, scale: 1 } : {}}
+        animate={
+          active === sections.length + 2 ? { opacity: 1, scale: 1 } : undefined
+        }
         transition={{ duration: 0.6 }}
       >
         <SubTitle icon="💙" content="다양한 웹 사용자에게 모두 편리하게" />

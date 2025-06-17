@@ -88,6 +88,7 @@ export const dropDownBtn = style({
   backgroundColor: "transparent",
   fontSize: "18px",
   textAlign: "left",
+  fontWeight: "700",
   cursor: "pointer",
 });
 
