@@ -101,7 +101,11 @@ export default function DropdownScroll() {
       e.preventDefault();
       if (scrollLock.current) return;
       lockScroll();
-      e.deltaY > 0 ? handleScroll("down") : handleScroll("up");
+      if (e.deltaY > 0) {
+        handleScroll("down");
+      } else {
+        handleScroll("up");
+      }
     };
 
     const onTouchStart = (e: TouchEvent) => {
@@ -113,7 +117,11 @@ export default function DropdownScroll() {
       const deltaY = touchStartY.current - e.changedTouches[0].clientY;
       if (Math.abs(deltaY) < 30) return;
       lockScroll();
-      deltaY > 0 ? handleScroll("down") : handleScroll("up");
+      if (deltaY > 0) {
+        handleScroll("down");
+      } else {
+        handleScroll("up");
+      }
       touchStartY.current = null;
     };
     window.scrollTo({ top: 0 });
