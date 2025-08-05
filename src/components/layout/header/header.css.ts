@@ -78,3 +78,29 @@ export const themeButton = style({
     },
   },
 });
+
+export const navList = style({
+  display: "flex",
+  gap: "12px",
+  paddingLeft: "0",
+  listStyle: "none",
+});
+
+export const navItem = style({
+  display: "inline-block",
+  padding: "8px 16px",
+  borderRadius: "16px",
+  textDecoration: "none",
+  fontSize: "16px",
+  color: themeColor.text,
+
+  "@media": {
+    "(hover: hover)": {
+      selectors: {
+        "&:hover": {
+          backgroundColor: themeColor.buttonHover,
+        },
+      },
+    },
+  },
+});
