@@ -19,7 +19,7 @@ export default async function LastCommit() {
   const contentType = res.headers.get("content-type") ?? "";
   if (!contentType.includes("application/json")) {
     const html = await res.text();
-    console.error("⛔️ HTML received instead of JSON:", html.slice(0, 100));
+    console.error("HTML received instead of JSON:", html.slice(0, 100));
     throw new Error("API returned HTML instead of JSON.");
   }
 
