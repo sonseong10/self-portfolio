@@ -131,6 +131,7 @@ globalStyle(`${btnGroup} > a::after`, {
   width: "24px",
   height: "24px",
   background: `url(${SVG.CrossArrow()}) no-repeat center center`,
+  backgroundColor: themeColor.text,
   color: themeColor.text,
   content: "",
 

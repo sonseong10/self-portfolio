@@ -1,14 +1,55 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 import {
   contents,
   layout,
   linkGroup,
   lnbWrapper,
+  lnbList,
   navigationLink,
   outLink,
+  careerList,
+  careerContent,
+  careerContentWrap,
+  careerTitle,
+  swapText,
 } from "./work.css";
 
 function HistoryPage() {
+  const [activeId, setActiveId] = useState<string | null>(null);
+  const sectionsRef = useRef<HTMLElement[]>([]);
+
+  useEffect(() => {
+    const sections = document.querySelectorAll("section[id]");
+    sectionsRef.current = Array.from(sections) as HTMLElement[];
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.find((e) => e.isIntersecting);
+        if (visible?.target.id) setActiveId(visible.target.id);
+      },
+      { rootMargin: "-40% 0px -50% 0px", threshold: 0.1 }
+    );
+
+    sections.forEach((sec) => observer.observe(sec));
+    return () => observer.disconnect();
+  }, []);
+
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const href = e.currentTarget.getAttribute("href");
+    if (!href?.startsWith("#")) return;
+    const target = document.querySelector(href);
+    if (target) {
+      window.scrollTo({
+        top: target.getBoundingClientRect().top + window.scrollY - 100,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <>
       <header>
@@ -18,58 +59,58 @@ function HistoryPage() {
       </header>
 
       <div className={layout}>
+        {/* LNB */}
         <aside aria-labelledby="career-heading" className={lnbWrapper}>
-          <h2 className="screen_out">경력 섹션 내비게이션</h2>
           <nav aria-label="경력 섹션 내비게이션">
-            <ul>
-              <li>
-                <Link
-                  href="#intro-startup"
-                  aria-label="스타트업 입사 계기로 이동"
-                >
-                  스타트업 입사 계기
-                </Link>
-              </li>
-              <li>
-                <Link href="#about-fastview" aria-label="회사소개로 이동">
-                  (주)Fastview 소개
-                </Link>
-              </li>
-              <li>
-                <Link href="#job-experience" aria-label="직무 경험으로 이동">
-                  담당 직무 경험
-                </Link>
-                <ul className="inner">
-                  <li>
-                    <Link
-                      href="#ads-domain"
-                      aria-label=" 광고(Ads) 도메인 업무설명으로 이동"
-                    >
-                      광고(Ads) 도메인
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="#submoduls-onboding"
-                      aria-label="서브모듈 및 온보딩 문서 제작으로 이동"
-                    >
-                      서브모듈 기반 공통 컴포넌트 관리 및 온보딩 문서 제작
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="#commuse-domain"
-                      aria-label=" 이커머스 도메인제작으로 이동"
-                    >
-                      이커머스 도메인
-                    </Link>
-                  </li>
-                </ul>
-              </li>
+            <ul className={lnbList}>
+              {[
+                { id: "intro-startup", label: "스타트업 입사 계기" },
+                { id: "about-fastview", label: "(주)Fastview 소개" },
+                {
+                  id: "job-experience",
+                  label: "담당 직무 경험",
+                  children: [
+                    { id: "ads-domain", label: "광고(Ads) 도메인" },
+                    {
+                      id: "submoduls-onboding",
+                      label: "서브모듈 및 온보딩 문서 제작",
+                    },
+                    { id: "commuse-domain", label: "이커머스 도메인" },
+                  ],
+                },
+              ].map((item) => (
+                <li key={item.id}>
+                  <Link
+                    href={`#${item.id}`}
+                    onClick={handleSmoothScroll}
+                    aria-current={activeId === item.id ? "true" : undefined}
+                  >
+                    {item.label}
+                  </Link>
+                  {item.children && (
+                    <ul className="inner">
+                      {item.children.map((child) => (
+                        <li key={child.id}>
+                          <Link
+                            href={`#${child.id}`}
+                            onClick={handleSmoothScroll}
+                            aria-current={
+                              activeId === child.id ? "true" : undefined
+                            }
+                          >
+                            {child.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              ))}
             </ul>
           </nav>
         </aside>
 
+        {/* 본문 */}
         <div className={contents}>
           <section id="intro-startup" aria-labelledby="intro-startup-heading">
             <h3 id="intro-startup-heading">스타트업 입사 계기</h3>
@@ -83,62 +124,54 @@ function HistoryPage() {
           <section id="about-fastview" aria-labelledby="about-fastview-heading">
             <h3 id="about-fastview-heading">(주)Fastview 소개</h3>
             <strong>
-              근무기간: 1년11개월 (<time dateTime="2022-01">2022.01</time> ~
+              근무기간: 1년 11개월 (<time dateTime="2022-01">2022.01</time> ~
               <time dateTime="2023-11">2023.11</time>)
             </strong>
             <Link
-              href={"https://www.fastviewkorea.com/2022/main/main.html"}
+              href="https://www.fastviewkorea.com/2022/main/main.html"
               aria-label="회사 소개사이트 이동"
               className={outLink}
               target="_blank"
             >
-              소개사이트
+              공식 사이트
             </Link>
             <p>
               콘텐츠 유통 플랫폼 <strong>뷰어스(ViewUs)</strong>를 운영하는
               콘텐츠 테크 스타트업으로, 콘텐츠 제작부터 유통, 수익화까지 전
-              과정을 아우르는 솔루션을 제공합니다.
-              <br />
-              또한, 커머스몰 <strong>코하루</strong>와 B2B 이커머스 플랫폼
-              <strong>셀러밀</strong>을 통해 커머스 분야에서도 활발히 활동하고
-              있습니다.
-              <br />
-              Google Ad Manager 및 자사 광고 스크립트를 통해 수익 모델을
-              운영하고 있습니다.
+              과정을 아우르는 솔루션을 제공합니다. 또한 커머스몰
+              <strong>코하루</strong>와 B2B 플랫폼 <strong>셀러밀</strong>을
+              통해 커머스 분야에서도 활발히 활동 중입니다.
             </p>
           </section>
 
+          {/* 직무 경험 */}
           <section id="job-experience" aria-labelledby="job-experience-heading">
             <h3 id="job-experience-heading">담당 직무 경험</h3>
-
-            <ol>
+            <ol className={careerList}>
               <li>
                 <article>
                   <h4 id="ads-domain">광고(Ads) 도메인</h4>
-                  <dl>
-                    <div>
-                      <dt>기간</dt>
+                  <dl className={careerContent}>
+                    <div className={careerContentWrap}>
+                      <dt className={careerTitle}>작업 기간</dt>
                       <dd>
-                        <time dateTime="2023-03">2023.03</time> ~
+                        <time dateTime="2023-03">2023.03</time>-
                         <time dateTime="2023-06">2023.06</time>
                       </dd>
                     </div>
-
-                    <div>
-                      <dt>참여 인원</dt>
+                    <div className={careerContentWrap}>
+                      <dt className={careerTitle}>참여 인원</dt>
                       <dd>시니어 1명 + 주니어(본인 포함 2명)</dd>
                     </div>
-
-                    <div>
-                      <dt>사용기술</dt>
+                    <div className={careerContentWrap}>
+                      <dt className={careerTitle}>사용 기술</dt>
                       <dd>
                         스크립트: Typescript, HTML5, CSS3/ 어드민:
                         React+Reduxtoolkit+Styled-components
                       </dd>
                     </div>
-
-                    <div>
-                      <dt>업무 내용</dt>
+                    <div className={careerContentWrap}>
+                      <dt className={careerTitle}>업무 내용</dt>
                       <dd className="long_text">
                         시니어 개발자의 기존 텍스트형 스크립트 가이드를
                         바탕으로, 이미지형 광고 모듈의 상태 관리 로직과
@@ -148,47 +181,50 @@ function HistoryPage() {
                       </dd>
                     </div>
                   </dl>
-                  <p>
-                    <strong>성과:</strong> Google Analytics 지표 기준 PV 및 CTR
-                    향상 (정량 수치는 대외비 텍스트형 대비 클릭률이 약간
-                    상승하여 슬라이드형 광고 비중이 점진적으로 확대되었습니다.)
-                    <br />
-                    <strong>과제:</strong>
-                    추가 광고타입이 늘어날수록 모듈이 무거워져 페이지 렌더링
-                    속도를 저하 시킬 가능성이 있습니다.
-                  </p>
+                  <ul>
+                    <li>
+                      <span className={swapText}>수행 성과</span>
+                      <span>
+                        Google Analytics 지표 기준 PV 및 CTR 향상 트래픽 일정량
+                        상승
+                      </span>
+                    </li>
+                    <li>
+                      <span className={swapText}>고려 사항</span>
+                      <span>
+                        추가 광고타입이 늘어날수록 모듈이 무거워져 페이지 렌더링
+                        속도를 저하 시킬 가능성이 있습니다.
+                      </span>
+                    </li>
+                  </ul>
                 </article>
               </li>
-
               <li>
                 <article>
                   <h4 id="submoduls-onboding">
                     서브모듈 기반 공통 컴포넌트 관리 및 온보딩 문서 제작
                   </h4>
-                  <dl>
-                    <div>
-                      <dt>기간</dt>
+                  <dl className={careerContent}>
+                    <div className={careerContentWrap}>
+                      <dt className={careerTitle}>작업 기간</dt>
                       <dd>
-                        <time dateTime="2023-03">2023.03</time> ~
+                        <time dateTime="2023-03">2023.03</time>~
                         <time dateTime="2023-11">2023.11</time>
                       </dd>
                     </div>
-
-                    <div>
-                      <dt>참여 인원</dt>
-                      <dd>시니어 1명, 주니어 1명(본인)</dd>
+                    <div className={careerContentWrap}>
+                      <dt className={careerTitle}>참여 인원</dt>
+                      <dd>시니어 1명 + 주니어(본인 포함 1명)</dd>
                     </div>
-
-                    <div>
-                      <dt>사용 기술</dt>
+                    <div className={careerContentWrap}>
+                      <dt className={careerTitle}>사용 기술</dt>
                       <dd>
                         React, Redux Toolkit, TypeScript, Styled-components,
                         Storybook
                       </dd>
                     </div>
-
-                    <div>
-                      <dt>업무 내용</dt>
+                    <div className={careerContentWrap}>
+                      <dt className={careerTitle}>업무 내용</dt>
                       <dd className="long_text">
                         여러 하위 이커머스 도메인에서 중복되는 UI 컴포넌트를
                         통합·관리하기 위해 Git Submodule을 활용한 공통 모듈
@@ -216,110 +252,98 @@ function HistoryPage() {
                       </dd>
                     </div>
                   </dl>
-                  <p>
-                    <strong>성과:</strong> 중복 컴포넌트 생성을 방지하고, 공통
-                    UI 모듈의 재사용성을 향상시켜 전체 번들 크기를 줄였습니다.
-                    <br />
-                    <strong>과제:</strong> Submodule 특성상 변경 시 모든
-                    프로젝트에 반영되어야 하며, Git 충돌 해결에 추가 공수가
-                    필요했습니다.
-                  </p>
+                  <ul>
+                    <li>
+                      <span className={swapText}>수행 성과</span>
+                      <span>
+                        중복 컴포넌트 생성을 방지하고, 공통 UI 모듈의 재사용성을
+                        향상시켜 전체 번들 크기를 줄였습니다.
+                      </span>
+                    </li>
+                    <li>
+                      <span className={swapText}>고려 사항</span>
+                      <span>
+                        Submodule 특성상 변경 시 모든 프로젝트에 반영되어야
+                        하며, Git 충돌 해결에 추가 공수가 필요했습니다.
+                      </span>
+                    </li>
+                  </ul>
                 </article>
               </li>
 
               <li>
                 <article>
                   <h4 id="commuse-domain">이커머스 도메인</h4>
-                  <dl>
-                    <div>
-                      <dt>기간</dt>
+                  <dl className={careerContent}>
+                    <div className={careerContentWrap}>
+                      <dt className={careerTitle}>작업 기간</dt>
                       <dd>
-                        <time dateTime="2022-03">2022.03</time> ~
+                        <time dateTime="2022-03">2022.03</time>-
                         <time dateTime="2022-10">2022.10</time>
                       </dd>
                     </div>
-
-                    <div>
-                      <dt>참여 인원</dt>
+                    <div className={careerContentWrap}>
+                      <dt className={careerTitle}>참여 인원</dt>
                       <dd>
-                        개발팀(백엔드: 6, 프론트: 5(본인포함))+ 기획팀(기획자:
-                        3, 디자이너:1, QA: 1)
+                        개발팀(백엔드 6명, 프론트엔드 5명(본인 포함)) +
+                        기획팀(기획자 3명, 디자이너 1명, QA 1명)
                       </dd>
                     </div>
-
-                    <div>
-                      <dt>사용기술</dt>
+                    <div className={careerContentWrap}>
+                      <dt className={careerTitle}>사용 기술</dt>
                       <dd className="long_text">
-                        Back: spring boot2.7 Kotlin1.6(Gradle) | JAVA11 | MySQL
+                        Back: Spring Boot 2.7 (Kotlin 1.6, Java 11, MySQL)
                         <br />
-                        Front: Vue2+Jquery | React18(Typescript) + Redux-toolkit
-                        | Styled-components <br />
-                        Tool: Figma | Jira
+                        Front: Vue2 + jQuery / React18(TypeScript) + Redux
+                        Toolkit / Styled-components
+                        <br />
+                        Tool: Figma, Jira
                       </dd>
                     </div>
-
-                    <div>
-                      <dt>업무 내용</dt>
+                    <div className={careerContentWrap}>
+                      <dt className={careerTitle}>업무 내용</dt>
                       <dd className="long_text">
-                        <p>
-                          스토어 서비스 페이지 리뉴얼을 위한 기능 추가 및 기존
-                          기술 부채를 개선하기 위하여 아래와 같은 기능 제작을
-                          진행했습니다.
-                        </p>
                         <ul>
                           <li>
-                            렌더링 시점 컨트롤이 필요했으며 프론트팀 회의를
-                            통해서 vue2 &gt; React로 프레임워크 마이그레이션
-                            작업을 진행 했습니다.
-                            <br />
-                            저는 브라우저 sessionStorage를 이용한 7일간 조회한
-                            상품목록 기능과 추가적으로 GA(Google Analytics)
-                            수집을 위해 비회원/회원으로 구분하여 컴포넌트를
-                            제작했으며
-                            <br />
-                            상품상세 페이지에서 윗젯 리스트(동일 카테고리 id
-                            상품 목록)
-                            <br />
-                            텍스트+이미지 리뷰/문의 컴포넌트 기능을
-                            제작했습니다.
+                            렌더링 시점 제어가 필요하여 Vue2 → React로
+                            프레임워크 마이그레이션을 진행했습니다. <br />
+                            sessionStorage를 이용한 7일간 조회 상품 목록 기능과
+                            비회원/회원별 GA(Google Analytics) 데이터 수집
+                            로직을 구현했습니다. <br />
+                            상품 상세 페이지에 동일 카테고리 추천 위젯,
+                            텍스트/이미지 리뷰 및 문의 컴포넌트를 제작했습니다.
                           </li>
-
                           <li>
-                            <br />
-                            어드민에서 상품등록시 공급사별 엑셀시트를 받아 DB에
-                            바로 update를 하는 프로세스를 개선 했습니다.
-                            <br />
-                            1. 커머스 부서에서 요청하면 백엔드 개발자분이
-                            업로드를 진행하는 동안 다른 업무를 진행불가
-                            <br />
-                            2. 받은 데이터에 오타및 형식 오류가 있는 경우 장시간
-                            데이터를 조회해서 수정과정을 걸쳐야함 딜레이가
-                            발생됌
-                            <br />
-                            기획자님, 유관부서, 백엔드개발자님과 회의를 진행하며
-                            개편이후 상품데이터를 동일한 DB구조로 가져갈 수
-                            있도록 보안한 신규상품등록과 상품수정 기능을 어드민
-                            화면을 제작을 진행했습니다.
+                            어드민 상품 등록 시 공급사별 엑셀 업로드 프로세스를
+                            개선했습니다. <br />
+                            커머스 부서 요청 시 백엔드 개발자의 수동 업로드
+                            의존도를 제거하고, 오류 검증 및 수정 과정을
+                            간소화하여 효율성을 높였습니다. <br />
+                            기획자, 유관부서, 백엔드 개발자와 협의하여 신규 상품
+                            등록 및 수정 화면을 제작했습니다.
                           </li>
                         </ul>
                       </dd>
                     </div>
                   </dl>
-                  <p>
-                    <strong>성과:</strong> 유관부서에 업무 딜레이 시간감축,
-                    통합된 상품데이터로 안전성 확보, GA기반 사용자 맞춤형
-                    추천상품이라는 신규 아젠다를 확보
-                    <br />
-                    <strong>과제:</strong>
-                    리뉴얼과 신규 기능이 동시에 진행되면서 속도 중심의 개발이
-                    요구되었고, 그 결과 상품등록 개발에서 클라이언트에서 모든
-                    예외 처리를 담당하게 되었습니다. 이로 인해 유지보수 난이도가
-                    증가하고, 유사한 기능을 가진 컴포넌트가 중복 생성되거나,
-                    일부는 재사용되지 않고 폐기되는 상황이 반복되었습니다.
-                    장기적으로는 컴포넌트 공통화 전략 수립과, 기능 단위로 분리된
-                    컴포넌트 라이브러리(서브 모듈) 구성이 필요하다고
-                    판단했습니다.
-                  </p>
+                  <ul>
+                    <li>
+                      <span className={swapText}>수행 성과</span>
+                      <span>
+                        업무 프로새스를 감소시키고, 통합된 상품 데이터로
+                        안정성을 확보했습니다. 또한 GA 기반 신규 아젠다를
+                        확보했습니다.
+                      </span>
+                    </li>
+                    <li>
+                      <span className={swapText}>고려 사항</span>
+                      <span>
+                        리뉴얼과 새기능이 병행되면서 속도 중심의 개발이
+                        요구되었고, 클라이언트 측에서 예외 처리를 담당하게 되어
+                        유지보수 난이도가 증가했습니다.
+                      </span>
+                    </li>
+                  </ul>
                 </article>
               </li>
             </ol>

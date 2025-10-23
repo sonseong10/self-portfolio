@@ -18,6 +18,16 @@ globalStyle("*.screen_out", {
   zIndex: -999,
 });
 
+globalStyle("dd", {
+  margin: 0,
+});
+
+globalStyle("ul", {
+  listStyle: "none",
+  padding: 0,
+  margin: 0,
+});
+
 globalStyle("body", {
   backgroundColor: themeColor.background,
 });
