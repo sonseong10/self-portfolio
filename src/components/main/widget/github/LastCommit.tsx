@@ -31,6 +31,8 @@ export default async function LastCommit() {
     timeStyle: "short",
   });
 
+  console.log(commit)
+
   return (
     <Link
       className={linkBox}
