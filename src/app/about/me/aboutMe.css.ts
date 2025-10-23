@@ -31,7 +31,6 @@ export const list = style({
 });
 
 globalStyle(`${list} > li > p`, {
-  width: "46%",
   display: "block",
   opacity: "1",
   transition: "transform 0.4s ease, opacity 0.4s ease",
@@ -50,16 +49,16 @@ globalStyle(`${list} > li:not(.isActive) > button`, {
 });
 
 globalStyle(`${list} > li:nth-child(1).isActive`, {
-  backgroundColor: "#fac6ac",
+  background: `linear-gradient(180deg, #fac6ac 0, transparent 100%)`,
 });
 globalStyle(`${list} > li:nth-child(2).isActive`, {
-  backgroundColor: "#ffe596",
+  background: "linear-gradient(180deg, #ffe596 0, transparent 100%)",
 });
 globalStyle(`${list} > li:nth-child(3).isActive`, {
-  backgroundColor: "#c7fbc4",
+  background: "linear-gradient(180deg, #c7fbc4 0, transparent 100%)",
 });
 globalStyle(`${list} > li:nth-child(4).isActive`, {
-  backgroundColor: "#b7ecff",
+  background: "linear-gradient(180deg,#b7ecffff 0, transparent 100%)",
 });
 
 export const listItem = style({

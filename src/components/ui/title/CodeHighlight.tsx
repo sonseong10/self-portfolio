@@ -1,6 +1,6 @@
 "use client";
 
-import { codeBox } from "@/app/details/1/work.css";
+// import { codeBox } from "@/app/details/1/work.css";
 import { useThemeStore } from "@/store/themeStore";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import {
@@ -12,7 +12,7 @@ export default function CodeHighlightExample({ code }: { code: string }) {
   const theme = useThemeStore((state) => state.theme);
   return (
     <div
-      className={codeBox}
+      // className={codeBox}
       style={{
         overflowX: "auto",
         borderRadius: "0.5rem",

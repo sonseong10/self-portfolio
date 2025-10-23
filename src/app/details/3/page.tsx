@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import {
   contents,
-  gradientTitle,
+  // gradientTitle,
   layout,
   linkGroup,
   navigationLink,
@@ -33,7 +33,7 @@ function Section({ children }: { children: React.ReactNode }) {
 function GradientTitle() {
   return (
     <motion.strong
-      className={gradientTitle}
+      // className={gradientTitle}
       initial={{ opacity: 0, scale: 0.9, y: 20 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
