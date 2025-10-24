@@ -21,7 +21,8 @@ export default async function LastCommit() {
       cache: "no-store",
     });
     commit = await res.json();
-  } catch (_) {
+  } catch (e) {
+    console.error(e)
     commit.error = "API 요청 실패";
   } 
 
