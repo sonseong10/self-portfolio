@@ -23,7 +23,7 @@ export default async function LastCommit() {
     commit = await res.json();
   } catch (_) {
     commit.error = "API 요청 실패";
-  }
+  } 
 
   const dateFormatter = new Intl.DateTimeFormat("ko-KR", {
     dateStyle: "medium",

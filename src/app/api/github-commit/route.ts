@@ -1,4 +1,3 @@
-// src/app/api/github-commit/route.ts
 import { NextResponse } from "next/server";
 
 const USERNAME = "sonseong10";
