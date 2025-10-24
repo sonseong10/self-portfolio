@@ -22,7 +22,11 @@ globalStyle("dd", {
   margin: 0,
 });
 
-globalStyle("ul", {
+globalStyle("div.col", {
+  flexDirection: "column",
+});
+
+globalStyle("ul, ol", {
   listStyle: "none",
   padding: 0,
   margin: 0,

@@ -93,6 +93,7 @@ export const linkBadge = style({
   selectors: {
     "&.home": {
       marginTop: "2.5rem",
+      padding: 0,
       width: "150px",
       height: "52px",
       lineHeight: "52px",

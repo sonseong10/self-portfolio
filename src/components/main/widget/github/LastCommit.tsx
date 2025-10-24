@@ -2,53 +2,49 @@ import Link from "next/link";
 import { badge, historyList, linkBox, listItem } from "./lastCommit.css";
 
 type Commit = {
-  message: string;
-  author: string;
-  date: string;
-  repo: string;
-  url: string;
-  error: string;
+  message?: string;
+  author?: string;
+  date?: string;
+  repo?: string;
+  url?: string;
+  error?: string;
 };
 
 export default async function LastCommit() {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+  const username = "sonseong10";
+  let commit: Commit = {};
 
-  const res = await fetch(`${baseUrl}/api/last-commit`, {
-    cache: "no-store",
-  });
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
-  const contentType = res.headers.get("content-type") ?? "";
-  if (!contentType.includes("application/json")) {
-    const html = await res.text();
-    console.error("HTML received instead of JSON:", html.slice(0, 100));
-    throw new Error("API returned HTML instead of JSON.");
+  try {
+    const res = await fetch(`${baseUrl}/api/github-commit`, {
+      cache: "no-store",
+    });
+    commit = await res.json();
+  } catch (e) {
+    commit.error = "API 요청 실패";
   }
-
-  const commit: Commit = await res.json();
 
   const dateFormatter = new Intl.DateTimeFormat("ko-KR", {
     dateStyle: "medium",
     timeStyle: "short",
   });
 
-  console.log(commit)
+  const hasCommit = !commit.error && commit.repo && commit.message;
+  const href = hasCommit ? commit.url : `https://github.com/${username}`;
 
   return (
-    <Link
-      className={linkBox}
-      href={typeof commit?.error === "string" ? "https://github.com/sonseong10" : commit.url}
-      target="_blank"
-    >
+    <Link className={linkBox} href={href!} target="_blank">
       <div>
         <span className={badge}>최근 커밋</span>
       </div>
-      {typeof commit?.error === "string" ? (
-        <span>{"7일 이내 작업한 커밋이 없습니다."}</span>
-      ) : (
+      {hasCommit ? (
         <dl className={historyList}>
           <div>
             <dt>레포지토리</dt>
-            <dd className={listItem}>{commit.repo.split("/").pop()}</dd>
+            <dd className={listItem}>
+              {commit.repo?.split("/").pop() ?? "알 수 없음"}
+            </dd>
           </div>
           <div>
             <dt>메시지</dt>
@@ -57,10 +53,12 @@ export default async function LastCommit() {
           <div>
             <dt className="screen_out">날짜</dt>
             <dd className={`${listItem} date`}>
-              {dateFormatter.format(new Date(commit.date))}
+              {commit.date ? dateFormatter.format(new Date(commit.date)) : "-"}
             </dd>
           </div>
         </dl>
+      ) : (
+        <span>{commit.error ?? "최근 작업한 커밋이 없습니다."}</span>
       )}
     </Link>
   );

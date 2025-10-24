@@ -1,4 +1,4 @@
-// app/api/github-commit/route.ts
+// src/app/api/github-commit/route.ts
 import { NextResponse } from "next/server";
 
 const USERNAME = "sonseong10";
@@ -23,7 +23,8 @@ interface PushEvent {
     avatar_url: string;
   };
   payload: {
-    commits: Commit[];
+    commits?: Commit[];
+    head: string;
   };
   created_at: string;
 }
@@ -52,21 +53,22 @@ export async function GET() {
     const data: GitHubEvent[] = await res.json();
     const pushEvent = data.find((event) => event.type === "PushEvent");
 
-    if (!pushEvent || !pushEvent.payload?.commits?.length) {
+    if (!pushEvent) {
       return NextResponse.json(
         { error: "최근 PushEvent가 없습니다." },
         { status: 404 }
       );
     }
 
-    const latestCommit = pushEvent.payload.commits.at(-1); // 가장 최신 커밋 (마지막 요소)
+    const latestCommit = pushEvent.payload.commits?.at(-1);
+    const latestSha = latestCommit?.sha ?? pushEvent.payload.head;
 
     return NextResponse.json({
-      message: latestCommit?.message,
+      message: latestCommit?.message ?? "커밋 메시지 없음",
       author: latestCommit?.author?.name ?? pushEvent.actor.login,
       date: pushEvent.created_at,
       repo: pushEvent.repo.name,
-      url: `https://github.com/${pushEvent.repo.name}/commit/${latestCommit?.sha}`,
+      url: `https://github.com/${pushEvent.repo.name}/commit/${latestSha}`,
     });
   } catch (e) {
     return NextResponse.json(

@@ -130,7 +130,7 @@ globalStyle(`${btnGroup} > a::after`, {
   display: "inline-block",
   width: "24px",
   height: "24px",
-  background: `url(${SVG.CrossArrow()}) no-repeat center center`,
+  mask: `url(${SVG.CrossArrow()}) no-repeat center center`,
   backgroundColor: themeColor.text,
   color: themeColor.text,
   content: "",

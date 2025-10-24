@@ -5,17 +5,10 @@ import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { GLTFLoader } from "three-stdlib";
 import { OrbitControls } from "three-stdlib";
-import {
-  contents,
-  displayText,
-  downloadBtn,
-  layout,
-  linkGroup,
-  navigationLink,
-  threeDContainer,
-} from "../1/work.css";
+import { contents, layout, linkGroup, navigationLink } from "../1/work.css";
 import { clone } from "three/examples/jsm/utils/SkeletonUtils.js";
 import Link from "next/link";
+import { displayText, downloadBtn, threeDContainer } from "./style.css";
 
 export default function Home() {
   const mountRef = useRef<HTMLDivElement>(null);
@@ -127,7 +120,7 @@ export default function Home() {
     <div className={`${layout} col`}>
       <div ref={mountRef} className={threeDContainer}>
         {!isLoaded && <div className={displayText}>로딩 중</div>}
-        <span className={displayText}>이런거 만들어요.</span>
+        <span className={displayText}>재밌는 당근 찾기</span>
       </div>
 
       <div className={contents}>
